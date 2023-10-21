@@ -1,0 +1,1 @@
+start /d "D:\IDE\Unity_Editor\2021.3.21f1c1\Editor\" Unity.exe -projectPath "E:\IDE_Cache\Unity_Project\Learn\Zero ARPG"
