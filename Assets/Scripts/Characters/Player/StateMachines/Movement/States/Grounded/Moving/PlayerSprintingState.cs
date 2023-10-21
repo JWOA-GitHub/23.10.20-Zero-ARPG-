@@ -6,27 +6,31 @@ namespace JWOAGameSystem
 {
     public class PlayerSprintingState : PlayerMovementState
     {
-        public void Enter()
+        public PlayerSprintingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
+        {
+        }
+
+        public override void Enter()
         {
             
         }
 
-        public void Exit()
+        public override void Exit()
         {
             
         }
 
-        public void HandleInput()
+        public override void HandleInput()
         {
             
         }
 
-        public void LogicUpdate()
+        public override void LogicUpdate()
         {
             
         }
 
-        public void PhysicsUpdate()
+        public override void PhysicsUpdate()
         {
             
         }

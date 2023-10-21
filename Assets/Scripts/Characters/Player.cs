@@ -5,17 +5,25 @@ using UnityEngine;
 
 namespace JWOAGameSystem
 {
+    [RequireComponent(typeof(PlayerInput))]
     public class Player : MonoBehaviour
     {
-        private PlayerMovementStateMachine movementStateMachine;
+        public Rigidbody Rigidbody { get;  private set; }
+        [Tooltip("玩家输入动作表管理")]public PlayerInput Input { get; private set; }
+        [Tooltip("玩家移动状态机")]private PlayerMovementStateMachine movementStateMachine;
 
         private void Awake()
         {
-            movementStateMachine = new PlayerMovementStateMachine();
+            Rigidbody = GetComponent<Rigidbody>();
+
+            Input = GetComponent<PlayerInput>();
+
+            movementStateMachine = new PlayerMovementStateMachine(this);
         }
 
         private void Start()
         {
+            
             movementStateMachine.ChangeState(movementStateMachine.IdingState);
         }
 

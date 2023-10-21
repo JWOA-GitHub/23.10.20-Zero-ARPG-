@@ -6,6 +6,10 @@ namespace JWOAGameSystem
 {
     public class PlayerWalkingState : PlayerMovementState
     {
+        public PlayerWalkingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
+        {
+        }
+
         public void Enter()
         {
             
