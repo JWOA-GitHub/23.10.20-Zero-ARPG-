@@ -8,23 +8,26 @@ namespace JWOAGameSystem
     [RequireComponent(typeof(PlayerInput))]
     public class Player : MonoBehaviour
     {
-        public Rigidbody Rigidbody { get;  private set; }
-        [Tooltip("玩家输入动作表管理")]public PlayerInput Input { get; private set; }
-        [Tooltip("玩家移动状态机")]private PlayerMovementStateMachine movementStateMachine;
+        public Rigidbody Rigidbody { get; private set; }
+        [Tooltip("玩家输入动作表管理")] public PlayerInput Input { get; private set; }
+
+        [SerializeField] public Transform MainCameraTransform { get; private set; }
+
+        [Tooltip("玩家移动状态机")] private PlayerMovementStateMachine movementStateMachine;
 
         private void Awake()
         {
             Rigidbody = GetComponent<Rigidbody>();
-
             Input = GetComponent<PlayerInput>();
+
+            MainCameraTransform = Camera.main.transform;
 
             movementStateMachine = new PlayerMovementStateMachine(this);
         }
 
         private void Start()
         {
-            
-            movementStateMachine.ChangeState(movementStateMachine.IdingState);
+            movementStateMachine.InitState(movementStateMachine.IdingState);
         }
 
         private void Update()

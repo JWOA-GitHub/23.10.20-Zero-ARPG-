@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace JWOAGameSystem
 {
+    /// <summary>
+    /// 摄像机Z轴 滚轮切换距离摄像机距离
+    /// </summary>
     public class CameraZoom : MonoBehaviour
     {
         [SerializeField, Tooltip("默认距离")][Range(0f, 10f)] private float defaultDistance = 6f;
