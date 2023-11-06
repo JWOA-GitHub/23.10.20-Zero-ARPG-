@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace JWOAGameSystem
 {
-    public class PlayerWalkingState : PlayerGroundedState
+    public class PlayerWalkingState : PlayerMovingState //PlayerGroundedState
     {
         public PlayerWalkingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
@@ -18,27 +18,11 @@ namespace JWOAGameSystem
             base.Enter();
 
             // 移动速度缓慢，类似走路
-            speedModeifier = 0.225f;
+            stateMachine.ReusableData.MovementSpeedModifier = movementData.WalkData.SpeedModifier;
         }
         #endregion
 
-        // #region Reusable Methods 可复用方法
-        // protected override void AddInputActionsCallbacks()
-        // {
-        //     base.AddInputActionsCallbacks();
 
-        //     stateMachine.Player.Input.PlayerActions.Movement.canceled += OnMovementCanceled;
-        // }
-
-        // protected override void RemoveInputActionsCallbacks()
-        // {
-        //     base.RemoveInputActionsCallbacks();
-
-        //     stateMachine.Player.Input.PlayerActions.Movement.canceled -= OnMovementCanceled;
-        // }
-        // #endregion
-
-  
         #region Input Methods
         /// <summary> 按下使行走状态切换到奔跑状态
         /// </summary>
@@ -49,12 +33,6 @@ namespace JWOAGameSystem
             stateMachine.ChangeState(stateMachine.RunningState);
         }
 
-        // /// <summary> 松开移动按键恢复到空闲状态
-        // /// </summary>
-        // protected void OnMovementCanceled(InputAction.CallbackContext context)
-        // {
-        //     stateMachine.ChangeState(stateMachine.IdingState);
-        // }
         #endregion
     }
 }

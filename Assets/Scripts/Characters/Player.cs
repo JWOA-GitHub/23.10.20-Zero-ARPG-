@@ -8,10 +8,12 @@ namespace JWOAGameSystem
     [RequireComponent(typeof(PlayerInput))]
     public class Player : MonoBehaviour
     {
+        [field: Header("References")]
+        [field: SerializeField] public PlayerSO Data { get; set; }
         public Rigidbody Rigidbody { get; private set; }
         [Tooltip("玩家输入动作表管理")] public PlayerInput Input { get; private set; }
 
-        [SerializeField] public Transform MainCameraTransform { get; private set; }
+        public Transform MainCameraTransform { get; private set; }
 
         [Tooltip("玩家移动状态机")] private PlayerMovementStateMachine movementStateMachine;
 

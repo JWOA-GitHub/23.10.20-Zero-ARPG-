@@ -17,7 +17,7 @@ namespace JWOAGameSystem
         {
             base.Enter();
 
-            speedModeifier = 0f;
+            stateMachine.ReusableData.MovementSpeedModifier = movementData.BaseSpeed;
 
             ResetVelocity();
         }
@@ -26,26 +26,13 @@ namespace JWOAGameSystem
         {
             base.LogicUpdate();
 
-            if (movementInput == Vector2.zero)
+            if (stateMachine.ReusableData.MovementInput == Vector2.zero)
             {
                 return;
             }
 
             OnMove();
         }
-
-        // private void OnMove()
-        // {
-        //     // 判断 Walk Toggle On 则过渡到“步行状态”，否则，过渡到“跑步”状态
-        //     if (shouldWalk)
-        //     {
-        //         stateMachine.ChangeState(stateMachine.WalkingState);
-
-        //         return;
-        //     }
-
-        //     stateMachine.ChangeState(stateMachine.RunningState);
-        // }
         #endregion
     }
 }

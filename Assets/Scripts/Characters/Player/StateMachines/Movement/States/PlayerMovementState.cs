@@ -10,40 +10,45 @@ namespace JWOAGameSystem
     {
         [Tooltip("移动输入状态机：空闲、步行、跑步、冲刺")]
         protected PlayerMovementStateMachine stateMachine;
-        /// <summary> Vector2 按键输入！！！
-        /// <see cref="movementInput"/>
-        /// </summary>
-        [Tooltip("移动按键输入")] protected Vector2 movementInput;
-        [Tooltip("基础速度")] protected float baseSpeed = 5f;
-        [Tooltip("速度调整器(倍率)")] protected float speedModeifier = 1f;
+
+        protected PlayerGroundedData movementData;
+
+        // // /// <summary> Vector2 按键输入！！！
+        // // /// <see cref="movementInput"/>
+        // // /// </summary>
+        // // [Tooltip("移动按键输入")] protected Vector2 movementInput;
+        // [Tooltip("基础速度")] protected float baseSpeed = 5f;
+        // [Tooltip("速度调整器(倍率)")] protected float speedModeifier = 1f;
 
         // MARKER： 创建Vector3 是因为在后面的“滑动系统”中，需要“x”和“z”轴的值！！！！
-        /// <summary>当前旋转目标角度
-        /// <see cref="currentTargetRotation"/>
-        /// </summary>
-        [Tooltip("当前旋转目标角度")] protected Vector3 currentTargetRotation;
+        // /// <summary>当前旋转目标角度
+        // /// <see cref="currentTargetRotation"/>
+        // /// </summary>
+        // [Tooltip("当前旋转目标角度")] protected Vector3 currentTargetRotation;
 
-        /// <summary>达到目标角度所需的时间
-        /// <see cref="timeToReachTargetRotation"/>
-        /// </summary>
-        [Tooltip("达到目标角度所需的时间")] protected Vector3 timeToReachTargetRotation;
+        // /// <summary>达到目标角度所需的时间
+        // /// <see cref="timeToReachTargetRotation"/>
+        // /// </summary>
+        // [Tooltip("达到目标角度所需的时间")] protected Vector3 timeToReachTargetRotation;
 
-        /// <summary>平滑玩家旋转角度的速度
-        /// <see cref="dampedTargetRotationCurrentVelocity"/>
-        /// </summary>
-        [Tooltip("平滑玩家旋转角度的速度")] protected Vector3 dampedTargetRotationCurrentVelocity;
+        // /// <summary>平滑玩家旋转角度的速度
+        // /// <see cref="dampedTargetRotationCurrentVelocity"/>
+        // /// </summary>
+        // [Tooltip("平滑玩家旋转角度的速度")] protected Vector3 dampedTargetRotationCurrentVelocity;
 
-        /// <summary>阻尼目标旋转经过时间
-        /// <see cref="dampedTargetRotationPassedTime"/>
-        /// </summary>
-        [Tooltip("阻尼目标旋转经过时间")] protected Vector3 dampedTargetRotationPassedTime;
+        // /// <summary>阻尼目标旋转经过时间
+        // /// <see cref="dampedTargetRotationPassedTime"/>
+        // /// </summary>
+        // [Tooltip("阻尼目标旋转经过时间")] protected Vector3 dampedTargetRotationPassedTime;
 
 
-        [Tooltip("判断移动是否开启步行，不开启则为跑步状态")] protected bool shouldWalk;
+        // [Tooltip("判断移动是否开启步行，不开启则为跑步状态")] protected bool shouldWalk;
 
         public PlayerMovementState(PlayerMovementStateMachine playerMovementStateMachine)
         {
             stateMachine = playerMovementStateMachine;
+
+            movementData = stateMachine.Player.Data.GroundedData;
 
             InitializeData();
         }
@@ -51,7 +56,7 @@ namespace JWOAGameSystem
         private void InitializeData()
         {
             // 初始化到达目标旋转角度的时间
-            timeToReachTargetRotation.y = 0.14f;
+            stateMachine.ReusableData.TimeToReachTargetRotation = movementData.BaseRotationData.TargetRotationReachTime;
         }
 
         #region IState Mathods
@@ -68,19 +73,15 @@ namespace JWOAGameSystem
         }
 
 
-
         public virtual void HandleInput()
         {
             ReadMovementInput();
         }
 
-
         public virtual void LogicUpdate()
         {
 
         }
-
-
 
         public virtual void PhysicsUpdate()
         {
@@ -96,12 +97,12 @@ namespace JWOAGameSystem
         #region Main Methods
         private void ReadMovementInput()
         {
-            movementInput = stateMachine.Player.Input.PlayerActions.Movement.ReadValue<Vector2>();
+            stateMachine.ReusableData.MovementInput = stateMachine.Player.Input.PlayerActions.Movement.ReadValue<Vector2>();
         }
 
         private void Move()
         {
-            if (movementInput == Vector2.zero || speedModeifier == 0f)
+            if (stateMachine.ReusableData.MovementInput == Vector2.zero || stateMachine.ReusableData.MovementSpeedModifier == 0f)
             {
                 return;
             }
@@ -145,10 +146,10 @@ namespace JWOAGameSystem
         /// <param name="targetAngle">目标角度</param>
         private void UpdateTargetRotationData(float targetAngle)
         {
-            currentTargetRotation.y = targetAngle;
+            stateMachine.ReusableData.CurrentTargetRotation.y = targetAngle;
 
             // 重置旋转到目标所需的时间
-            dampedTargetRotationPassedTime.y = 0f;
+            stateMachine.ReusableData.DampedTargetRotationPassedTime.y = 0f;
         }
 
         /// <summary> 获取移动输入方向的角度（获取的输入为Vector2！！！！
@@ -197,7 +198,7 @@ namespace JWOAGameSystem
         protected Vector3 GetMovementInputDirection()
         {
             // Debug.Log(movementInput);
-            return new Vector3(movementInput.x, 0, movementInput.y);
+            return new Vector3(stateMachine.ReusableData.MovementInput.x, 0, stateMachine.ReusableData.MovementInput.y);
         }
 
         /// <summary> 获取玩家移动速度（基本速度*速度调整速率数）
@@ -205,7 +206,7 @@ namespace JWOAGameSystem
         /// <returns>获取玩家移动速度</returns>
         protected float GetMovementSpeed()
         {
-            return baseSpeed * speedModeifier;
+            return movementData.BaseSpeed * stateMachine.ReusableData.MovementSpeedModifier;
         }
 
 
@@ -228,15 +229,16 @@ namespace JWOAGameSystem
         {
             float currentYAngle = stateMachine.Player.Rigidbody.rotation.eulerAngles.y;
             // Debug.Log(currentYAngle + "      wanjia ");
-            if (currentYAngle == currentTargetRotation.y)
+            if (currentYAngle == stateMachine.ReusableData.CurrentTargetRotation.y)
             {
                 return;
             }
 
-            float smoothedYAngle = Mathf.SmoothDamp(currentYAngle, currentTargetRotation.y, ref dampedTargetRotationCurrentVelocity.y, timeToReachTargetRotation.y - dampedTargetRotationPassedTime.y);
+            float smoothedYAngle = Mathf.SmoothDamp(currentYAngle, stateMachine.ReusableData.CurrentTargetRotation.y,
+            ref stateMachine.ReusableData.DampedTargetRotationCurrentVelocity.y, stateMachine.ReusableData.TimeToReachTargetRotation.y - stateMachine.ReusableData.DampedTargetRotationPassedTime.y);
 
             // MARKER： 因此此方法是在FixedUpdate方法中调用的，所以使用 Time.deltaTime 变量时，unity会自动返回 fixedDeltaTime
-            dampedTargetRotationPassedTime.y += Time.deltaTime;
+            stateMachine.ReusableData.DampedTargetRotationPassedTime.y += Time.deltaTime;
 
             Quaternion targetRotation = Quaternion.Euler(0f, smoothedYAngle, 0f);
 
@@ -258,7 +260,7 @@ namespace JWOAGameSystem
                 directionAngle = AddCameraRotationToAngle(directionAngle);
             }
 
-            if (directionAngle != currentTargetRotation.y)
+            if (directionAngle != stateMachine.ReusableData.CurrentTargetRotation.y)
             {
                 UpdateTargetRotationData(directionAngle);
             }
@@ -302,7 +304,7 @@ namespace JWOAGameSystem
         /// <param name="context">输入动作表</param>
         protected virtual void OnWalkToggleStarted(InputAction.CallbackContext context)
         {
-            shouldWalk = !shouldWalk;
+            stateMachine.ReusableData.ShouldWalk = !stateMachine.ReusableData.ShouldWalk;
         }
 
         #endregion

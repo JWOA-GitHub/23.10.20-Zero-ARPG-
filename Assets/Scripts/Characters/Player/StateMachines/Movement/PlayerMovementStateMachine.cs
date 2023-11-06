@@ -7,6 +7,7 @@ namespace JWOAGameSystem
     public class PlayerMovementStateMachine : StateMachine
     {
         public Player Player { get; }
+        public PlayerStateReusableData ReusableData { get; }
         [Tooltip("玩家空闲状态")] public PlayerIdlingState IdingState { get; }
         [Tooltip("玩家步行状态")] public PlayerWalkingState WalkingState { get; }
         [Tooltip("玩家跑步状态")] public PlayerRunningState RunningState { get; }
@@ -15,6 +16,7 @@ namespace JWOAGameSystem
         public PlayerMovementStateMachine(Player player)
         {
             Player = player;
+            ReusableData = new PlayerStateReusableData();
 
             IdingState = new PlayerIdlingState(this);
 

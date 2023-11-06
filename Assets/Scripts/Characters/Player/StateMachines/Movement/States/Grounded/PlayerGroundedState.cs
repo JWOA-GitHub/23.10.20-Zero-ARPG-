@@ -29,7 +29,7 @@ namespace JWOAGameSystem
         protected virtual void OnMove()
         {
             // 判断 Walk Toggle On 则过渡到“步行状态”，否则，过渡到“跑步”状态
-            if (shouldWalk)
+            if (stateMachine.ReusableData.ShouldWalk)
             {
                 stateMachine.ChangeState(stateMachine.WalkingState);
 
