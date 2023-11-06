@@ -1,6 +1,8 @@
 using System;
+using System.Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace JWOAGameSystem
 {
@@ -36,6 +38,9 @@ namespace JWOAGameSystem
         /// </summary>
         [Tooltip("阻尼目标旋转经过时间")] protected Vector3 dampedTargetRotationPassedTime;
 
+
+        [Tooltip("判断移动是否开启步行，不开启则为跑步状态")] protected bool shouldWalk;
+
         public PlayerMovementState(PlayerMovementStateMachine playerMovementStateMachine)
         {
             stateMachine = playerMovementStateMachine;
@@ -53,11 +58,15 @@ namespace JWOAGameSystem
         public virtual void Enter()
         {
             Debug.Log("State: " + GetType().Name);
+
+            AddInputActionsCallbacks();
         }
+
         public virtual void Exit()
         {
-
+            RemoveInputActionsCallbacks();
         }
+
 
 
         public virtual void HandleInput()
@@ -76,7 +85,8 @@ namespace JWOAGameSystem
         public virtual void PhysicsUpdate()
         {
             Move();
-            // 传参movementInput为Vector2！！
+
+            // 传参movementInput为Vector2！！ 旋转已加在Move中
             // Rotate(movementInput);
         }
 
@@ -186,7 +196,7 @@ namespace JWOAGameSystem
         /// <returns>获取移动输入</returns>
         protected Vector3 GetMovementInputDirection()
         {
-            Debug.Log(movementInput);
+            // Debug.Log(movementInput);
             return new Vector3(movementInput.x, 0, movementInput.y);
         }
 
@@ -264,6 +274,37 @@ namespace JWOAGameSystem
         {
             return Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         }
+
+        /// <summary>重置移动速度为0
+        /// </summary>
+        protected void ResetVelocity()
+        {
+            stateMachine.Player.Rigidbody.velocity = Vector3.zero;
+        }
+
+
+        protected virtual void AddInputActionsCallbacks()
+        {
+            stateMachine.Player.Input.PlayerActions.WalkeToggle.started += OnWalkToggleStarted;
+        }
+
+
+        protected virtual void RemoveInputActionsCallbacks()
+        {
+            stateMachine.Player.Input.PlayerActions.WalkeToggle.started -= OnWalkToggleStarted;
+        }
+        #endregion
+
+        #region Input Methods
+        /// <summary>
+        /// 按键判断是否切换行走/跑步状态
+        /// </summary>
+        /// <param name="context">输入动作表</param>
+        protected virtual void OnWalkToggleStarted(InputAction.CallbackContext context)
+        {
+            shouldWalk = !shouldWalk;
+        }
+
         #endregion
     }
 }

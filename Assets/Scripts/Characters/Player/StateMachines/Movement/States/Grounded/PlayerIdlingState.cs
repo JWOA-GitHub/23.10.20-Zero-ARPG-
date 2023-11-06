@@ -1,38 +1,51 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace JWOAGameSystem
 {
-    public class PlayerIdlingState : PlayerMovementState
+    public class PlayerIdlingState : PlayerGroundedState
     {
         public PlayerIdlingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
 
-        public void Enter()
+        #region  IState Methods
+        public override void Enter()
         {
-            
+            base.Enter();
+
+            speedModeifier = 0f;
+
+            ResetVelocity();
         }
 
-        public void Exit()
+        public override void LogicUpdate()
         {
-            
+            base.LogicUpdate();
+
+            if (movementInput == Vector2.zero)
+            {
+                return;
+            }
+
+            OnMove();
         }
 
-        public void HandleInput()
-        {
-            
-        }
+        // private void OnMove()
+        // {
+        //     // 判断 Walk Toggle On 则过渡到“步行状态”，否则，过渡到“跑步”状态
+        //     if (shouldWalk)
+        //     {
+        //         stateMachine.ChangeState(stateMachine.WalkingState);
 
-        public void LogicUpdate()
-        {
-            
-        }
+        //         return;
+        //     }
 
-        public void PhysicsUpdate()
-        {
-            
-        }
+        //     stateMachine.ChangeState(stateMachine.RunningState);
+        // }
+        #endregion
     }
 }
