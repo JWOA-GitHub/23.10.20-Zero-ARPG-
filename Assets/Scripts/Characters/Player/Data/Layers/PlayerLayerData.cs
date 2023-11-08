@@ -4,7 +4,7 @@ using UnityEngine;
 namespace JWOAGameSystem
 {
     [Serializable]
-    public class PlayerLayerData : MonoBehaviour
+    public class PlayerLayerData
     {
         [field: SerializeField] public LayerMask GroundLayer { get; private set; }
     }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,7 +22,7 @@ namespace JWOAGameSystem
         #endregion
 
         #region  Main Methods
-        /// <summary> 浮动，漂浮碰撞体
+        /// <summary> 浮动胶囊，漂浮碰撞体
         /// </summary>
         private void Float()
         {
@@ -31,8 +32,46 @@ namespace JWOAGameSystem
 
             if (Physics.Raycast(downwardsRayFromCapsuleCenter, out RaycastHit hit, slopeData.FloatRayDistance, stateMachine.Player.LayerData.GroundLayer, QueryTriggerInteraction.Ignore))
             {
+                // 若从碰撞体中心到地面的距离足以被Raycast检测，会快速到达浮动点！！ 因此增加“坠落”
+                // 当在阶梯时，hit.normal为垂直于平面指向斜上方的方向, 中心检测方向为向下，因此+负号
+                float groundAngle = Vector3.Angle(hit.normal, -downwardsRayFromCapsuleCenter.direction);
 
+                // 获取斜坡移动速度调节器（根据所在斜坡角度 倾斜越大，速度越慢  防止漂浮在角度太高的地面上，使得无法行走 而是会跌落或滑动
+                float slopeSpeedModifier = SetSlopeSpeedModifierOnAngle(groundAngle);
+
+                if (slopeSpeedModifier == 0f)
+                {
+                    return;
+                }
+
+                //若缩放游戏玩家该碰撞体 将不会漂浮在对应位置，（通过碰撞中心y * 玩家y解决）   若比例过大，距离将超过“2”，射线将找不到东西，玩家将进入“地面”（通过增加距离值解决：从射线命中中减去距离，即-hit.distance
+
+                // 获取碰撞体中心到地面的距离
+                float distanceToFloatingPoint = stateMachine.Player.ColliderUtility.CapsuleColliderData.ColliderCenterInLocalSpace.y
+                            * stateMachine.Player.transform.localScale.y - hit.distance;
+
+                if (distanceToFloatingPoint == 0f)
+                {
+                    return;
+                }
+
+                //将该值与之前的额外力相乘，并删除当前的垂直速度
+                // 计算出碰撞体中心点到地面 浮动的力度！！！！
+                float amountToLift = distanceToFloatingPoint * slopeData.StepReachForce - GetPlayerVerticalVelocity().y;
+
+                Vector3 liftForce = new Vector3(0f, amountToLift, 0f);
+
+                stateMachine.Player.Rigidbody.AddForce(liftForce, ForceMode.VelocityChange);    // 即时的速度变化，忽略质量
             }
+        }
+
+        private float SetSlopeSpeedModifierOnAngle(float angle)
+        {
+            float slopeSpeedModifier = movementData.SlopeSpeedAngles.Evaluate(angle);
+
+            stateMachine.ReusableData.MovementOnSlopesSpeedModifier = slopeSpeedModifier;
+
+            return slopeSpeedModifier;
         }
         #endregion
 

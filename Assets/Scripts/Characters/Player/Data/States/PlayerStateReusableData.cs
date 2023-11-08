@@ -7,6 +7,10 @@ namespace JWOAGameSystem
     {
         public Vector2 MovementInput { get; set; }
         public float MovementSpeedModifier { get; set; } = 1f;
+        /// <summary>斜坡移动速度调节器
+        /// <see cref="MovementOnSlopesSpeedModifier"/>
+        /// </summary>
+        public float MovementOnSlopesSpeedModifier { get; set; } = 1f;
         public bool ShouldWalk { get; set; }
         // MARKER： 创建Vector3 是因为在后面的“滑动系统”中，需要“x”和“z”轴的值！！！！
         /// <summary>当前旋转目标角度

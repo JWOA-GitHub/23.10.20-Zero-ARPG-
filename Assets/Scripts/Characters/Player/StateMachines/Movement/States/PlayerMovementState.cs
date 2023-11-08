@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace JWOAGameSystem
 {
-    public class  PlayerMovementState : IState
+    public class PlayerMovementState : IState
     {
         [Tooltip("移动输入状态机：空闲、步行、跑步、冲刺")]
         protected PlayerMovementStateMachine stateMachine;
@@ -203,7 +203,15 @@ namespace JWOAGameSystem
         /// <returns>获取玩家移动速度</returns>
         protected float GetMovementSpeed()
         {
-            return movementData.BaseSpeed * stateMachine.ReusableData.MovementSpeedModifier;
+            return movementData.BaseSpeed * stateMachine.ReusableData.MovementSpeedModifier * stateMachine.ReusableData.MovementOnSlopesSpeedModifier;
+        }
+
+        /// <summary> 获取玩家垂直方向的力
+        /// </summary>
+        /// <returns>返回玩家垂直方向的力</returns>
+        protected Vector3 GetPlayerVerticalVelocity()
+        {
+            return new Vector3(0f, stateMachine.Player.Rigidbody.velocity.y, 0f);
         }
 
 
