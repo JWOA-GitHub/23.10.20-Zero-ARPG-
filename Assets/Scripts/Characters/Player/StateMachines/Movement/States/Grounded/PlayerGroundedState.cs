@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,9 +5,36 @@ namespace JWOAGameSystem
 {
     public class PlayerGroundedState : PlayerMovementState
     {
+        private SlopeData slopeData;
         public PlayerGroundedState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
+            slopeData = stateMachine.Player.ColliderUtility.SlopeData;
         }
+
+        #region IState Methods
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+
+            Float();
+        }
+        #endregion
+
+        #region  Main Methods
+        /// <summary> 浮动，漂浮碰撞体
+        /// </summary>
+        private void Float()
+        {
+            Vector3 capsuleColliderCenterInWorldSpace = stateMachine.Player.ColliderUtility.CapsuleColliderData.Collider.bounds.center;
+
+            Ray downwardsRayFromCapsuleCenter = new Ray(capsuleColliderCenterInWorldSpace, Vector3.down);
+
+            if (Physics.Raycast(downwardsRayFromCapsuleCenter, out RaycastHit hit, slopeData.FloatRayDistance, stateMachine.Player.LayerData.GroundLayer, QueryTriggerInteraction.Ignore))
+            {
+
+            }
+        }
+        #endregion
 
         #region Reusable Methods 可复用方法
         protected override void AddInputActionsCallbacks()

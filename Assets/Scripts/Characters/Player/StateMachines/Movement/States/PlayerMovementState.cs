@@ -1,12 +1,9 @@
-using System;
-using System.Data;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace JWOAGameSystem
 {
-    public class PlayerMovementState : IState
+    public class  PlayerMovementState : IState
     {
         [Tooltip("移动输入状态机：空闲、步行、跑步、冲刺")]
         protected PlayerMovementStateMachine stateMachine;

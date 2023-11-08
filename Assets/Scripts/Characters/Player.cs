@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JWOAGameSystem
@@ -10,6 +7,11 @@ namespace JWOAGameSystem
     {
         [field: Header("References")]
         [field: SerializeField] public PlayerSO Data { get; set; }
+
+        [field: Header("Collisions")]
+        [field: SerializeField] public CapsuleColliderUtility ColliderUtility { get; private set; }
+        [field: SerializeField] public PlayerLayerData LayerData { get; private set; }
+
         public Rigidbody Rigidbody { get; private set; }
         [Tooltip("玩家输入动作表管理")] public PlayerInput Input { get; private set; }
 
@@ -22,9 +24,18 @@ namespace JWOAGameSystem
             Rigidbody = GetComponent<Rigidbody>();
             Input = GetComponent<PlayerInput>();
 
+            ColliderUtility.Initialize(gameObject);
+            ColliderUtility.CalculateCapsuleColliderDimensions();
+
             MainCameraTransform = Camera.main.transform;
 
             movementStateMachine = new PlayerMovementStateMachine(this);
+        }
+
+        private void OnValidate()
+        {
+            ColliderUtility.Initialize(gameObject);
+            ColliderUtility.CalculateCapsuleColliderDimensions();
         }
 
         private void Start()

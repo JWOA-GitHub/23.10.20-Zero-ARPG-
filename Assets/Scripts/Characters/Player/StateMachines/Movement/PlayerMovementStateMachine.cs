@@ -13,6 +13,7 @@ namespace JWOAGameSystem
         [Tooltip("玩家跑步状态")] public PlayerRunningState RunningState { get; }
         [Tooltip("玩家冲刺状态")] public PlayerSprintingState SprintingState { get; }
 
+
         public PlayerMovementStateMachine(Player player)
         {
             Player = player;

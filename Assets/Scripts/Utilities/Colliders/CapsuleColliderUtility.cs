@@ -12,6 +12,17 @@ namespace JWOAGameSystem
         [field: SerializeField] public DefaultColliderData DefaultColliderData { get; private set; }
         [field: SerializeField] public SlopeData SlopeData { get; private set; }
 
+        public void Initialize(GameObject gameObject)
+        {
+            if (CapsuleColliderData != null)
+            {
+                return;
+            }
+
+            CapsuleColliderData = new CapsuleColliderData();
+
+            CapsuleColliderData.Initialize(gameObject);
+        }
 
         /// <summary> 计算胶囊碰撞体尺寸
         /// </summary>
@@ -24,6 +35,16 @@ namespace JWOAGameSystem
 
             // 更新中心点
             RecalculateCapsuleColliderCenter();
+
+            float halfColliderHeight = CapsuleColliderData.Collider.height / 2f;
+
+            // MARKER: 判断"高度"是否为"半径"的两倍或更小， 需要使“高度”在任何时候 至少是“半径”的两倍！！！
+            if (halfColliderHeight < CapsuleColliderData.Collider.radius)
+            {
+                SetCapsuleColliderRadius(halfColliderHeight);
+            }
+
+            CapsuleColliderData.UpdateColliderData();
         }
 
 

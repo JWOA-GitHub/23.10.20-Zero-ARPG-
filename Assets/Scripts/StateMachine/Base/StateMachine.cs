@@ -10,6 +10,8 @@ namespace JWOAGameSystem
         public void InitState(IState state)
         {
             currentState = state;
+
+            currentState.Enter();
         }
 
         public void ChangeState(IState newState)
