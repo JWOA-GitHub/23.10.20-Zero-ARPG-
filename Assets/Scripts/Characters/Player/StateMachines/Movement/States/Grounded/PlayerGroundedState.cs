@@ -81,6 +81,8 @@ namespace JWOAGameSystem
             base.AddInputActionsCallbacks();
 
             stateMachine.Player.Input.PlayerActions.Movement.canceled += OnMovementCanceled;
+
+            stateMachine.Player.Input.PlayerActions.Dash.started += OnDashStarted;
         }
 
         protected override void RemoveInputActionsCallbacks()
@@ -111,6 +113,14 @@ namespace JWOAGameSystem
         {
             stateMachine.ChangeState(stateMachine.IdingState);
         }
+
+        /// <summary> 进入冲刺状态
+        /// </summary>
+        protected virtual void OnDashStarted(InputAction.CallbackContext context)
+        {
+            stateMachine.ChangeState(stateMachine.DashingState);
+        }
+
         #endregion
     }
 }

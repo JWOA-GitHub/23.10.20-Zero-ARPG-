@@ -41,7 +41,6 @@ namespace JWOAGameSystem
         private void Start()
         {
             movementStateMachine.InitState(movementStateMachine.IdingState);
-            Debug.Log(movementStateMachine.IdingState);
         }
 
         private void Update()

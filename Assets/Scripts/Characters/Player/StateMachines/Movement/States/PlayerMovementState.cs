@@ -88,6 +88,21 @@ namespace JWOAGameSystem
             // Rotate(movementInput);
         }
 
+        public virtual void OnAnimationEnterEvent()
+        {
+
+        }
+
+        public virtual void OnAnimationExitEvent()
+        {
+
+        }
+
+        public virtual void OnAnimationTransitionEvent()
+        {
+
+        }
+
         #endregion
 
 
@@ -311,6 +326,8 @@ namespace JWOAGameSystem
         {
             stateMachine.ReusableData.ShouldWalk = !stateMachine.ReusableData.ShouldWalk;
         }
+
+
 
         #endregion
     }
