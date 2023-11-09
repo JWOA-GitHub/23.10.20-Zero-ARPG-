@@ -304,13 +304,15 @@ namespace JWOAGameSystem
             stateMachine.Player.Rigidbody.velocity = Vector3.zero;
         }
 
-
+        /// <summary>  绑定 切换行走奔跑状态 按键
+        /// </summary>
         protected virtual void AddInputActionsCallbacks()
         {
             stateMachine.Player.Input.PlayerActions.WalkeToggle.started += OnWalkToggleStarted;
         }
 
-
+        /// <summary> 绑定 切换行走奔跑状态 按键
+        /// </summary>
         protected virtual void RemoveInputActionsCallbacks()
         {
             stateMachine.Player.Input.PlayerActions.WalkeToggle.started -= OnWalkToggleStarted;
@@ -326,8 +328,6 @@ namespace JWOAGameSystem
         {
             stateMachine.ReusableData.ShouldWalk = !stateMachine.ReusableData.ShouldWalk;
         }
-
-
 
         #endregion
     }
