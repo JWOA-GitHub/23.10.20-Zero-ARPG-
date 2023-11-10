@@ -37,11 +37,13 @@ namespace JWOAGameSystem
 
         public override void OnAnimationTransitionEvent()
         {
-            base.OnAnimationTransitionEvent();
+            // base.OnAnimationTransitionEvent();
 
             if (stateMachine.ReusableData.MovementInput == Vector2.zero)
             {
-                stateMachine.ChangeState(stateMachine.IdingState);
+                // TODO： 动画某一帧触发！ 冲刺后若没有按键输入则会进入硬停止状态
+                // stateMachine.ChangeState(stateMachine.IdingState);
+                stateMachine.ChangeState(stateMachine.HardStoppingState);
 
                 return;
             }
@@ -68,6 +70,7 @@ namespace JWOAGameSystem
             // MARKER： 防止在冲刺过程中移动！
             characterRotationDirection.y = 0f;
 
+            // TODO：character
             stateMachine.Player.Rigidbody.velocity = characterRotationDirection * GetMovementSpeed();
         }
 
@@ -102,13 +105,14 @@ namespace JWOAGameSystem
         #endregion
 
         #region Input Methods
+
         protected override void OnMovementCanceled(InputAction.CallbackContext context)
         {
             // 留空，这样如果按下并释放移动输入键，则不会进入“待机状态”
         }
         protected override void OnDashStarted(InputAction.CallbackContext context)
         {
-            
+
         }
         #endregion
 

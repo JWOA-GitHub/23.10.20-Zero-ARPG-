@@ -131,6 +131,7 @@ namespace JWOAGameSystem
 
             // MARKER: 刚体移动（需减去当前已有速度，否则持续按下会越来越快！
             // stateMachine.Player.Rigidbody.AddForce(movementSpeed * movementDirection - currentPlayerHorizontalVelocity, ForceMode.VelocityChange);
+            // TODO：character
             stateMachine.Player.Rigidbody.AddForce(movementSpeed * targetRotationDirection - currentPlayerHorizontalVelocity, ForceMode.VelocityChange);
         }
 
@@ -226,6 +227,7 @@ namespace JWOAGameSystem
         /// <returns>返回玩家垂直方向的力</returns>
         protected Vector3 GetPlayerVerticalVelocity()
         {
+            // TODO：character
             return new Vector3(0f, stateMachine.Player.Rigidbody.velocity.y, 0f);
         }
 
@@ -235,6 +237,7 @@ namespace JWOAGameSystem
         /// <returns>获取玩家当前水平速度</returns>
         protected Vector3 GetPlayerHorizontalVelocity()
         {
+            // TODO：character
             Vector3 playerHorizontalVelocity = stateMachine.Player.Rigidbody.velocity;
 
             playerHorizontalVelocity.y = 0f;
@@ -247,6 +250,7 @@ namespace JWOAGameSystem
         /// </summary>
         protected void RotateTowardsTargetRotation()
         {
+            // TODO：character
             float currentYAngle = stateMachine.Player.Rigidbody.rotation.eulerAngles.y;
             // Debug.Log(currentYAngle + "      wanjia ");
             if (currentYAngle == stateMachine.ReusableData.CurrentTargetRotation.y)
@@ -263,6 +267,7 @@ namespace JWOAGameSystem
             Quaternion targetRotation = Quaternion.Euler(0f, smoothedYAngle, 0f);
 
             // Debug.Log(targetRotation.eulerAngles);
+            // TODO：character
             stateMachine.Player.Rigidbody.MoveRotation(targetRotation);
         }
 
@@ -301,6 +306,7 @@ namespace JWOAGameSystem
         /// </summary>
         protected void ResetVelocity()
         {
+            // TODO：character
             stateMachine.Player.Rigidbody.velocity = Vector3.zero;
         }
 
@@ -316,6 +322,29 @@ namespace JWOAGameSystem
         protected virtual void RemoveInputActionsCallbacks()
         {
             stateMachine.Player.Input.PlayerActions.WalkeToggle.started -= OnWalkToggleStarted;
+        }
+
+        /// <summary> 水平缓慢减速（往反方向缓慢加速！！）！
+        /// </summary>
+        protected void DecelerateHorizontally()
+        {
+            Vector3 playerHorizontalVelocity = GetPlayerHorizontalVelocity();
+
+            stateMachine.Player.Rigidbody.AddForce(-playerHorizontalVelocity * stateMachine.ReusableData.MovementDecelerationForce, ForceMode.Acceleration); // 忽略质量的加速度，此ForceMode会乘以deltaTime
+        }
+
+        /// <summary> 通过检查玩家水平（x与z轴）速度的大小判断玩家是否正在移动(不检查y轴)
+        /// </summary>
+        /// <param name="minimumMagnitude">判断玩家是否移动的最小移动变量模大小！</param>
+        /// <returns>判断玩家是否在移动：当速度变量的模为0或接近于0时返回true，否则返回false</returns>
+        protected bool IsMovingHorizontally(float minimumMagnitude = 0.1f)
+        {
+            // 该水平速度包含 y 速度为0的值 会受到影响
+            Vector3 playerHorizontalVelocity = GetPlayerHorizontalVelocity();
+
+            Vector2 playerHorizontalMovement = new Vector2(playerHorizontalVelocity.x, playerHorizontalVelocity.z);
+
+            return playerHorizontalMovement.magnitude > minimumMagnitude;
         }
         #endregion
 

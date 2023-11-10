@@ -61,6 +61,7 @@ namespace JWOAGameSystem
 
                 Vector3 liftForce = new Vector3(0f, amountToLift, 0f);
 
+                // TODO：character
                 stateMachine.Player.Rigidbody.AddForce(liftForce, ForceMode.VelocityChange);    // 即时的速度变化，忽略质量
             }
         }
@@ -107,7 +108,7 @@ namespace JWOAGameSystem
         #endregion
 
         #region  Input Methods
-        /// <summary> 松开移动按键恢复到空闲状态
+        /// <summary> 当前状态 停止移动！即松开移动按键时 触发的事！base默认为切换到Idle状态！
         /// </summary>
         protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
         {

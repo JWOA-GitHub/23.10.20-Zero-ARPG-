@@ -12,6 +12,7 @@ namespace JWOAGameSystem
         [field: SerializeField] public CapsuleColliderUtility ColliderUtility { get; private set; }
         [field: SerializeField] public PlayerLayerData LayerData { get; private set; }
 
+        // TODO：character
         public Rigidbody Rigidbody { get; private set; }
         [Tooltip("玩家输入动作表管理")] public PlayerInput Input { get; private set; }
 
@@ -21,6 +22,7 @@ namespace JWOAGameSystem
 
         private void Awake()
         {
+            // TODO：character
             Rigidbody = GetComponent<Rigidbody>();
             Input = GetComponent<PlayerInput>();
 

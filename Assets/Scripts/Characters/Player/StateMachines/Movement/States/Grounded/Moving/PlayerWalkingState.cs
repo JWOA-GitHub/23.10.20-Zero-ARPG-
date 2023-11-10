@@ -20,6 +20,11 @@ namespace JWOAGameSystem
 
 
         #region Input Methods
+        protected override void OnMovementCanceled(InputAction.CallbackContext context)
+        {
+            stateMachine.ChangeState(stateMachine.LightStoppingState);
+        }
+
         /// <summary> 按下使行走状态切换到奔跑状态
         /// </summary>
         protected override void OnWalkToggleStarted(InputAction.CallbackContext context)

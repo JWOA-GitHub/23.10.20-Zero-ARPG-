@@ -11,6 +11,10 @@ namespace JWOAGameSystem
         /// <see cref="MovementOnSlopesSpeedModifier"/>
         /// </summary>
         public float MovementOnSlopesSpeedModifier { get; set; } = 1f;
+        /// <summary>移动速度减速力调节器
+        /// <see cref="MovementDecelerationForce"/>
+        /// </summary>
+        public float MovementDecelerationForce { get; set; } = 1f;
         public bool ShouldWalk { get; set; }
         // MARKER： 创建Vector3 是因为在后面的“滑动系统”中，需要“x”和“z”轴的值！！！！
         /// <summary>当前旋转目标角度

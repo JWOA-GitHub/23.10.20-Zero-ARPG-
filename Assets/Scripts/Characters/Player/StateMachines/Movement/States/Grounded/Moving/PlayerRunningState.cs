@@ -54,13 +54,18 @@ namespace JWOAGameSystem
 
                 return;
             }
-            
+
             // 若输入移动则切换到行走状态
             stateMachine.ChangeState(stateMachine.WalkingState);
         }
         #endregion
 
         #region Input Methods
+        protected override void OnMovementCanceled(InputAction.CallbackContext context)
+        {
+            stateMachine.ChangeState(stateMachine.MediumStoppingState);
+        }
+
         /// <summary> 按下使奔跑状态切换到行走状态
         /// </summary>
         protected override void OnWalkToggleStarted(InputAction.CallbackContext context)
