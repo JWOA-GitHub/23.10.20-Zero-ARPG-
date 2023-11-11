@@ -66,6 +66,10 @@ namespace JWOAGameSystem
                 return ref dampedTargetRotationPassedTime;
             }
         }
+
+        // 当前跳跃力
+        public Vector3 CurrentJumpForce { get; set; }
+
         // 更改玩家旋转所需时间处用
         public PlayerRotationData RotationData { get; set; }
     }

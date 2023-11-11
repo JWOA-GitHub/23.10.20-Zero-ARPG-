@@ -15,6 +15,8 @@ namespace JWOAGameSystem
 
             stateMachine.ReusableData.MovementSpeedModifier = movementData.BaseSpeed;
 
+            stateMachine.ReusableData.CurrentJumpForce = airborneData.JumpData.StationaryForce;
+
             ResetVelocity();
         }
 

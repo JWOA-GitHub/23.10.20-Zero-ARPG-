@@ -84,6 +84,9 @@ namespace JWOAGameSystem
             stateMachine.Player.Input.PlayerActions.Movement.canceled += OnMovementCanceled;
 
             stateMachine.Player.Input.PlayerActions.Dash.started += OnDashStarted;
+
+            // 每个接地状态都可切换到跳跃状态！！
+            stateMachine.Player.Input.PlayerActions.Jump.started += OnJumpStarted;
         }
 
         protected override void RemoveInputActionsCallbacks()
@@ -91,6 +94,10 @@ namespace JWOAGameSystem
             base.RemoveInputActionsCallbacks();
 
             stateMachine.Player.Input.PlayerActions.Movement.canceled -= OnMovementCanceled;
+
+            stateMachine.Player.Input.PlayerActions.Dash.started -= OnDashStarted;
+
+            stateMachine.Player.Input.PlayerActions.Jump.started -= OnJumpStarted;
         }
 
         protected virtual void OnMove()
@@ -122,6 +129,11 @@ namespace JWOAGameSystem
             stateMachine.ChangeState(stateMachine.DashingState);
         }
 
+
+        protected void OnJumpStarted(InputAction.CallbackContext context)
+        {
+            stateMachine.ChangeState(stateMachine.JumpingState);
+        }
         #endregion
     }
 }

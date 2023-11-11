@@ -9,6 +9,7 @@ namespace JWOAGameSystem
         protected PlayerMovementStateMachine stateMachine;
 
         protected PlayerGroundedData movementData;
+        protected PlayerAirborneData airborneData;
 
         // // /// <summary> Vector2 按键输入！！！
         // // /// <see cref="movementInput"/>
@@ -46,6 +47,7 @@ namespace JWOAGameSystem
             stateMachine = playerMovementStateMachine;
 
             movementData = stateMachine.Player.Data.GroundedData;
+            airborneData = stateMachine.Player.Data.AirborneData;
 
             InitializeData();
         }
@@ -57,8 +59,6 @@ namespace JWOAGameSystem
             // MARKER: 设置为方法，因为需要在 退出“冲刺”状态时重新设置旋转数据！（冲刺状态的旋转时间与基本的不同！！
             SetBaseRotationData();
         }
-
-
 
         #region IState Mathods
         public virtual void Enter()

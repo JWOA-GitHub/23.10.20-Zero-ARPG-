@@ -26,6 +26,8 @@ namespace JWOAGameSystem
 
             stateMachine.ReusableData.MovementSpeedModifier = sprintData.SpeedModeifier;
 
+            stateMachine.ReusableData.CurrentJumpForce = airborneData.JumpData.StrongForce;
+
             startTime = Time.time;
         }
 

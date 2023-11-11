@@ -15,6 +15,8 @@ namespace JWOAGameSystem
 
             // 移动速度缓慢，类似走路
             stateMachine.ReusableData.MovementSpeedModifier = movementData.WalkData.SpeedModifier;
+
+            stateMachine.ReusableData.CurrentJumpForce = airborneData.JumpData.WeakForce;
         }
         #endregion
 

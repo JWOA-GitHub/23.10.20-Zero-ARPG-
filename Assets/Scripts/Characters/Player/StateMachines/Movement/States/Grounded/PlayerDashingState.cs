@@ -34,6 +34,8 @@ namespace JWOAGameSystem
 
             stateMachine.ReusableData.MovementSpeedModifier = dashData.SpeedModeifier;
 
+            stateMachine.ReusableData.CurrentJumpForce = airborneData.JumpData.StrongForce;
+
             // 默认旋转时间为0,14s，在Jump和Dash中旋转只需0.02s
             stateMachine.ReusableData.RotationData = dashData.RotationData;
 
