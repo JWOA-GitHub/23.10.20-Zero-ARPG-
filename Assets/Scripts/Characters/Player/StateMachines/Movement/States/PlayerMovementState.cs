@@ -53,8 +53,12 @@ namespace JWOAGameSystem
         private void InitializeData()
         {
             // 初始化到达目标旋转角度的时间
-            stateMachine.ReusableData.TimeToReachTargetRotation = movementData.BaseRotationData.TargetRotationReachTime;
+            // stateMachine.ReusableData.TimeToReachTargetRotation = movementData.BaseRotationData.TargetRotationReachTime;
+            // MARKER: 设置为方法，因为需要在 退出“冲刺”状态时重新设置旋转数据！（冲刺状态的旋转时间与基本的不同！！
+            SetBaseRotationData();
         }
+
+
 
         #region IState Mathods
         public virtual void Enter()
@@ -205,6 +209,16 @@ namespace JWOAGameSystem
         #endregion
 
         #region Reusable Methods 可复用方法
+        /// <summary> 设置复原基本旋转数据（旋转所需时间等，后面其他状态可能更改旋转时间等
+        /// </summary>
+        protected void SetBaseRotationData()
+        {
+            stateMachine.ReusableData.RotationData = movementData.BaseRotationData;
+
+            // 初始化到达目标旋转角度的时间
+            stateMachine.ReusableData.TimeToReachTargetRotation = stateMachine.ReusableData.RotationData.TargetRotationReachTime;
+        }
+
         /// <summary> 获取移动输入方向
         /// </summary>
         /// <returns>获取移动输入</returns>

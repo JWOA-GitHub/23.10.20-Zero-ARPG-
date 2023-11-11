@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,11 @@ namespace JWOAGameSystem
         /// </summary>
         private int consecutiveDashesUsed;
 
+        /// <summary>判断进入该状态时是否在移动（即快速按下移动后按下冲刺，尚未旋转到对应方向则继续旋转！！）
+        /// <see cref="shouldKeepRotating"/>
+        /// </summary>
+        private bool shouldKeepRotating;
+
         public PlayerDashingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
             dashData = movementData.DashData;
@@ -28,11 +34,36 @@ namespace JWOAGameSystem
 
             stateMachine.ReusableData.MovementSpeedModifier = dashData.SpeedModeifier;
 
+            // 默认旋转时间为0,14s，在Jump和Dash中旋转只需0.02s
+            stateMachine.ReusableData.RotationData = dashData.RotationData;
+
             AddForceOnTransitionFromStationaryState();
+
+            // 判断进入该状态时是否在移动（若尚未旋转到对应方向则继续旋转！！）
+            shouldKeepRotating = stateMachine.ReusableData.MovementInput != Vector2.zero;
 
             UpdateConsecutiveDashes();
 
             startTime = Time.time;
+        }
+        public override void Exit()
+        {
+            base.Exit();
+
+            SetBaseRotationData();
+        }
+
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+
+            if (!shouldKeepRotating)
+            {
+                return;
+            }
+
+            // 仅在移动时更新转向！！
+            RotateTowardsTargetRotation();
         }
 
         public override void OnAnimationTransitionEvent()
@@ -70,10 +101,15 @@ namespace JWOAGameSystem
             // MARKER： 防止在冲刺过程中移动！
             characterRotationDirection.y = 0f;
 
+            // MARKER： 更新旋转方向！！！（在“移动”旋转未完成时 开始冲刺后没有输入“移动”的情况！！ 需要调整旋转方向 否则不会自动完成旋转
+            UpdateTargetRotation(characterRotationDirection, false);
+
             // TODO：character
             stateMachine.Player.Rigidbody.velocity = characterRotationDirection * GetMovementSpeed();
         }
 
+        /// <summary> 更新连续冲刺次数consecutiveDashesUsed  
+        /// </summary> 
         private void UpdateConsecutiveDashes()
         {
             if (!IsConsecutive())
@@ -104,12 +140,35 @@ namespace JWOAGameSystem
         }
         #endregion
 
-        #region Input Methods
+        #region Reusable Methods
+        protected override void AddInputActionsCallbacks()
+        {
+            base.AddInputActionsCallbacks();
 
+            stateMachine.Player.Input.PlayerActions.Movement.performed += OnMovementPerformed;
+        }
+
+        protected override void RemoveInputActionsCallbacks()
+        {
+            base.RemoveInputActionsCallbacks();
+
+            stateMachine.Player.Input.PlayerActions.Movement.performed -= OnMovementPerformed;
+        }
+        #endregion
+
+        #region Input Methods
         protected override void OnMovementCanceled(InputAction.CallbackContext context)
         {
             // 留空，这样如果按下并释放移动输入键，则不会进入“待机状态”
         }
+
+        /// <summary> 解决在冲刺中间按下并松开“移动”键读取是否完成旋转！冲刺结束后自动往对应方向完成旋转
+        /// </summary>
+        private void OnMovementPerformed(InputAction.CallbackContext context)
+        {
+            shouldKeepRotating = true;
+        }
+
         protected override void OnDashStarted(InputAction.CallbackContext context)
         {
 

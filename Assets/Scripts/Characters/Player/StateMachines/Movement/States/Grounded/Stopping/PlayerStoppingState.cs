@@ -24,6 +24,9 @@ namespace JWOAGameSystem
         {
             base.PhysicsUpdate();
 
+            // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
+            RotateTowardsTargetRotation();
+
             if (!IsMovingHorizontally())
             {
                 return;

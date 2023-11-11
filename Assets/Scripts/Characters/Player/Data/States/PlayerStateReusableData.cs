@@ -66,6 +66,7 @@ namespace JWOAGameSystem
                 return ref dampedTargetRotationPassedTime;
             }
         }
-
+        // 更改玩家旋转所需时间处用
+        public PlayerRotationData RotationData { get; set; }
     }
 }
