@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace JWOAGameSystem
 {
     public interface IState
@@ -26,5 +28,9 @@ namespace JWOAGameSystem
         /// <summary> 当动画进入到某一帧时的事件，可用于“进入某一帧则转换到其他状态”等 如Dash状态后若没有输入移动 会进入僵直“硬停止”状态
         /// </summary>
         public void OnAnimationTransitionEvent();
+        /// <summary> 判断如触地检测是否可跳跃等
+        /// </summary>
+        /// <param name="other"></param>
+        public void OnTriggerEnter(Collider collider);
     }
 }

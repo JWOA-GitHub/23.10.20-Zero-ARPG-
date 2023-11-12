@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -105,6 +106,16 @@ namespace JWOAGameSystem
         public virtual void OnAnimationTransitionEvent()
         {
 
+        }
+
+        public virtual void OnTriggerEnter(Collider collider)
+        {
+            if (stateMachine.Player.LayerData.IsGroundLayer(collider.gameObject.layer))
+            {
+                OnContactWithGround(collider);
+
+                return;
+            }
         }
 
         #endregion
@@ -307,7 +318,7 @@ namespace JWOAGameSystem
             return directionAngle;
         }
 
-        /// <summary> 获取目标旋转角度方向
+        /// <summary> 获取目标绕y轴的旋转角度方向
         /// </summary>
         /// <param name="targetAngle">玩家相对于摄像机的旋转角度（Y轴）</param>
         /// <returns></returns>
@@ -359,6 +370,32 @@ namespace JWOAGameSystem
             Vector2 playerHorizontalMovement = new Vector2(playerHorizontalVelocity.x, playerHorizontalVelocity.z);
 
             return playerHorizontalMovement.magnitude > minimumMagnitude;
+        }
+
+        /// <summary> 判断是否在往上方移动（如上坡移动！）
+        /// </summary>
+        /// <param name="minimumVelocity">默认最小y轴速度判断 0.1f</param>
+        /// <returns>返回当前y轴速度是否大于minimumVelocity=0.1</returns>
+        protected bool IsMovingUp(float minimumVelocity = 0.1f)
+        {
+            return GetPlayerVerticalVelocity().y > minimumVelocity;
+        }
+
+        /// <summary> 判断是否在往下方移动（如下坡移动！）
+        /// </summary>
+        /// <param name="minimumVelocity">默认最小y轴速度判断 0.1f</param>
+        /// <returns>返回当前y轴速度是否小于-minimumVelocity=0.1</returns>
+        protected bool IsMovingDown(float minimumVelocity = 0.1f)
+        {
+            return GetPlayerVerticalVelocity().y < -minimumVelocity;
+        }
+
+        /// <summary> 与地面接触后触发的调用！！
+        /// </summary>
+        /// <param name="collider"></param>
+        protected virtual void OnContactWithGround(Collider collider)
+        {
+
         }
         #endregion
 

@@ -45,6 +45,11 @@ namespace JWOAGameSystem
             movementStateMachine.InitState(movementStateMachine.IdingState);
         }
 
+        private void OnTriggerEnter(Collider collider)
+        {
+            movementStateMachine.OnTriggerEnter(collider);
+        }
+
         private void Update()
         {
             movementStateMachine.HandleInput();
