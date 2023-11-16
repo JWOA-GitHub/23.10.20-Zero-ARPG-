@@ -26,6 +26,8 @@ namespace JWOAGameSystem
 
             stateMachine.ReusableData.MovementSpeedModifier = 0f;
 
+            stateMachine.ReusableData.MovementDecelerationForce = jumpData.DecelerationForce;
+
             shouldKeepRotationg = stateMachine.ReusableData.MovementInput != Vector2.zero;
 
             Jump();
@@ -47,6 +49,21 @@ namespace JWOAGameSystem
                 RotateTowardsTargetRotation();
 
             }
+
+            // 玩家跳起来到达顶部需要一定时间，看起来有点漂浮，因此向玩家的“垂直轴”添加力
+            if (IsMovingUp())
+            {
+                // 增加垂直向上的力！！！
+                DecelerateVertically();
+            }
+        }
+        #endregion
+
+        #region Resable Methods
+        protected override void ResetSprintState()
+        {
+            // 除了“跳跃中”状态的每个“空中”状态都会重置“ShouldSprint”属性
+            // base.ResetSprintState();
         }
         #endregion
 
@@ -82,13 +99,20 @@ namespace JWOAGameSystem
                 // 判断处于上坡时
                 if (IsMovingUp())
                 {
+                    float forceModifier = jumpData.JumpForceModifierOnSlopeUpwards.Evaluate(groundAngle);
 
+                    // 上坡时移动速度变化！ 0-20°为1，20-35°为0.75,35.1-75°为0.5， 75.1-90°为1.
+                    jumpForce.x *= forceModifier;
+                    jumpForce.z *= forceModifier;
                 }
 
                 // 判断处于下坡时
                 if (IsMovingDown())
                 {
+                    float forceModifier = jumpData.JumpForceModifierOnSlopeDownwards.Evaluate(groundAngle);
 
+                    // 下坡时跳跃速度变化！ 0-20°、70.1-90°为1， 20-70°为0.85.
+                    jumpForce.y *= forceModifier;
                 }
             }
 

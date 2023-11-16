@@ -16,6 +16,10 @@ namespace JWOAGameSystem
         /// </summary>
         public float MovementDecelerationForce { get; set; } = 1f;
         public bool ShouldWalk { get; set; }
+        /// <summary>判断其他状态(如疾跑）跳跃后是否继续切换为疾跑
+        /// <see cref="ShouldSprint"/>
+        /// </summary>
+        public bool ShouldSprint { get; set; }
         // MARKER： 创建Vector3 是因为在后面的“滑动系统”中，需要“x”和“z”轴的值！！！！
         /// <summary>当前旋转目标角度
         /// <see cref="currentTargetRotation"/>

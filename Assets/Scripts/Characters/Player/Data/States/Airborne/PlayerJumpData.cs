@@ -14,6 +14,15 @@ namespace JWOAGameSystem
         /// <see cref = "JumpToGroundRayDistance"/>
         /// </summary>
         [field: SerializeField][field: Range(0f, 5f)] public float JumpToGroundRayDistance { get; private set; } = 2f;
+        /// <summary> 斜坡向上跳跃力修改曲线！
+        /// <see cref="JumpForceModifierOnSlopeUpwards" />
+        /// </summary>
+        [field: SerializeField] public AnimationCurve JumpForceModifierOnSlopeUpwards { get; private set; }
+        /// <summary> 斜坡向下跳跃力修改曲线！
+        /// <see cref="JumpForceModifierOnSlopeDownwards" />
+        /// </summary>
+        [field: SerializeField] public AnimationCurve JumpForceModifierOnSlopeDownwards { get; private set; }
+
         /// <summary> 静止力
         /// <see cref = "StationaryForce"/>
         /// </summary>
@@ -30,5 +39,9 @@ namespace JWOAGameSystem
         /// <see cref = "StrongForce"/>
         /// </summary>
         [field: SerializeField] public Vector3 StrongForce { get; private set; }
+        /// <summary> 减速力度
+        /// <see cref = "DecelerationForce"/>
+        /// </summary>
+        [field: SerializeField][field: Range(0f, 10f)] public float DecelerationForce { get; private set; } = 1.5f;
     }
 }

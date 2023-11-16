@@ -13,6 +13,14 @@ namespace JWOAGameSystem
         }
 
         #region IState Methods
+        public override void Enter()
+        {
+            base.Enter();
+
+            UpdateShouldSprintState();
+        }
+        
+        
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
@@ -22,6 +30,24 @@ namespace JWOAGameSystem
         #endregion
 
         #region  Main Methods
+        /// <summary> 若ShouldSprint属性为true且没有按下movement，则将shouldSprint设为flase！；判断接地状态是否继续“疾跑”！！ 更新ShouldSprint
+        /// </summary>
+        private void UpdateShouldSprintState()
+        {
+            if (!stateMachine.ReusableData.ShouldSprint)
+            {
+                return;
+            }
+
+            if (stateMachine.ReusableData.MovementInput != Vector2.zero)
+            {
+                return;
+            }
+
+            stateMachine.ReusableData.ShouldSprint = false;
+        }
+
+
         /// <summary> 浮动胶囊，漂浮碰撞体
         /// </summary>
         private void Float()
@@ -102,6 +128,14 @@ namespace JWOAGameSystem
 
         protected virtual void OnMove()
         {
+            // MARKER：判断如“疾跑”状态“跳跃”后是否继续“疾跑”
+            if (stateMachine.ReusableData.ShouldSprint)
+            {
+                stateMachine.ChangeState(stateMachine.SprintingState);
+
+                return;
+            }
+
             // 判断 Walk Toggle On 则过渡到“步行状态”，否则，过渡到“跑步”状态
             if (stateMachine.ReusableData.ShouldWalk)
             {
@@ -130,7 +164,7 @@ namespace JWOAGameSystem
         }
 
 
-        protected void OnJumpStarted(InputAction.CallbackContext context)
+        protected virtual void OnJumpStarted(InputAction.CallbackContext context)
         {
             stateMachine.ChangeState(stateMachine.JumpingState);
         }

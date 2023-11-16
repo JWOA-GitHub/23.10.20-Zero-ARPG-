@@ -349,13 +349,22 @@ namespace JWOAGameSystem
             stateMachine.Player.Input.PlayerActions.WalkeToggle.started -= OnWalkToggleStarted;
         }
 
-        /// <summary> 水平缓慢减速（往反方向缓慢加速！！）！
+        /// <summary> 水平缓慢减速，在移动后滑动效果（往反方向缓慢加速！！）！
         /// </summary>
         protected void DecelerateHorizontally()
         {
             Vector3 playerHorizontalVelocity = GetPlayerHorizontalVelocity();
 
             stateMachine.Player.Rigidbody.AddForce(-playerHorizontalVelocity * stateMachine.ReusableData.MovementDecelerationForce, ForceMode.Acceleration); // 忽略质量的加速度，此ForceMode会乘以deltaTime
+        }
+
+        /// <summary> 垂直缓慢减速即增加垂直向上的力（往反方向缓慢加速！！）！
+        /// </summary>
+        protected void DecelerateVertically()
+        {
+            Vector3 playerVerticalVelocity = GetPlayerVerticalVelocity();
+
+            stateMachine.Player.Rigidbody.AddForce(-playerVerticalVelocity * stateMachine.ReusableData.MovementDecelerationForce, ForceMode.Acceleration); // 忽略质量的加速度，此ForceMode会乘以deltaTime
         }
 
         /// <summary> 通过检查玩家水平（x与z轴）速度的大小判断玩家是否正在移动(不检查y轴)

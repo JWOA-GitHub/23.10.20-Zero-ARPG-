@@ -13,7 +13,14 @@ namespace JWOAGameSystem
         /// </summary>
         private float startTime;
 
+        /// <summary> 判断按住一定时间后才持续冲刺状态，否则松开手就退出
+        /// <see cref="keepSprinting"/>
+        /// </summary>
         private bool keepSprinting;
+        /// <summary> 判断是否重置疾跑状态！ 
+        /// <see cref="shouldResetSprintState"/>
+        /// </summary>
+        private bool shouldResetSprintState;
         public PlayerSprintingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
             sprintData = movementData.SprintData;
@@ -27,6 +34,8 @@ namespace JWOAGameSystem
             stateMachine.ReusableData.MovementSpeedModifier = sprintData.SpeedModeifier;
 
             stateMachine.ReusableData.CurrentJumpForce = airborneData.JumpData.StrongForce;
+
+            shouldResetSprintState = true;
 
             startTime = Time.time;
         }
@@ -54,7 +63,13 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            keepSprinting = false;
+            // 若不重置“疾跑”状态，则一旦“着陆”就开始“疾跑”
+            if (shouldResetSprintState)
+            {
+                keepSprinting = false;
+
+                stateMachine.ReusableData.ShouldSprint = false;
+            }
         }
         #endregion
 
@@ -95,9 +110,21 @@ namespace JWOAGameSystem
         {
             stateMachine.ChangeState(stateMachine.HardStoppingState);
         }
+
+        protected override void OnJumpStarted(InputAction.CallbackContext context)
+        {
+            // 在currentState.Exit前调用！！
+            shouldResetSprintState = false;
+
+            base.OnJumpStarted(context);
+        }
+
         private void OnSprintPerformed(InputAction.CallbackContext context)
         {
             keepSprinting = true;
+
+            // 在“跳跃”和“着陆”后保留“疾跑”！
+            stateMachine.ReusableData.ShouldSprint = true;
         }
         #endregion
     }
