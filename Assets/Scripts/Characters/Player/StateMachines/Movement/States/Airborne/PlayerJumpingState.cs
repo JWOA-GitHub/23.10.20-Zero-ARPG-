@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace JWOAGameSystem
 {
@@ -144,6 +145,13 @@ namespace JWOAGameSystem
             ResetVelocity();
 
             stateMachine.Player.Rigidbody.AddForce(jumpForce, ForceMode.VelocityChange); // 与时间质量无关
+        }
+        #endregion
+
+        #region Input Methods
+        protected override void OnMovementCanceled(InputAction.CallbackContext context)
+        {
+            // base.OnMovementCanceled(context);
         }
         #endregion
 

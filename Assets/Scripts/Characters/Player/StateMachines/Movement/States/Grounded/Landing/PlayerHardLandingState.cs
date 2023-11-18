@@ -15,12 +15,12 @@ namespace JWOAGameSystem
         #region IState Methods
         public override void Enter()
         {
+            stateMachine.ReusableData.MovementSpeedModifier = 0f;
+
             base.Enter();
 
             // 禁用“移动”按键输入！！ 在特定帧或结束时开启！
             stateMachine.Player.Input.PlayerActions.Movement.Disable();
-
-            stateMachine.ReusableData.MovementSpeedModifier = 0f;
 
             ResetVelocity();
         }

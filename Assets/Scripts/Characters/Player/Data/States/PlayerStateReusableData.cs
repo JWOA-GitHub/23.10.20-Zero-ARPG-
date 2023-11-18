@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace JWOAGameSystem
@@ -15,6 +16,17 @@ namespace JWOAGameSystem
         /// <see cref="MovementDecelerationForce"/>
         /// </summary>
         public float MovementDecelerationForce { get; set; } = 1f;
+
+        /// <summary>横向摄像机重新居中数据
+        /// <see cref="SidewaysCameraRecenteringData"/>
+        /// </summary>
+        public List<PlayerCameraRecenteringData> SidewaysCameraRecenteringData { get; set; }
+        /// <summary>向后摄像机重新居中数据
+        /// <see cref="BackwardsCameraRecenteringData"/>
+        /// </summary>
+        public List<PlayerCameraRecenteringData> BackwardsCameraRecenteringData { get; set; }
+
+
         public bool ShouldWalk { get; set; }
         /// <summary>判断其他状态(如疾跑）跳跃后是否继续切换为疾跑
         /// <see cref="ShouldSprint"/>

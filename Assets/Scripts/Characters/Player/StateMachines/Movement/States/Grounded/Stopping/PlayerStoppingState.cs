@@ -15,9 +15,11 @@ namespace JWOAGameSystem
         #region IState Methods
         public override void Enter()
         {
-            base.Enter();
-
             stateMachine.ReusableData.MovementSpeedModifier = 0;
+
+            SetBaseCameraRecenteringData();
+
+            base.Enter();
         }
 
         public override void PhysicsUpdate()
@@ -62,11 +64,11 @@ namespace JWOAGameSystem
         #endregion
 
         #region Input Methods
-        // 无法在按下“移动”输入键的情况下进入“停止”状态（如“跳跃”状态按住移动键，而回调不会被调用，因为输入已被按下
-        protected override void OnMovementCanceled(InputAction.CallbackContext context)
-        {
+        // // 无法在按下“移动”输入键的情况下进入“停止”状态（如“跳跃”状态按住移动键，而回调不会被调用，因为输入已被按下
+        // protected override void OnMovementCanceled(InputAction.CallbackContext context)
+        // {
 
-        }
+        // }
 
         private void ONMovementStarted(InputAction.CallbackContext context)
         {

@@ -18,6 +18,9 @@ namespace JWOAGameSystem
             base.Enter();
 
             UpdateShouldSprintState();
+
+            // MARKER: 更改状态时，不会更新相机水平居中重新定位时间，因此每次切换状态都更新！ 计算基础移动速度时，还需计算当前状态的速度修改器！！ 因此需要将每个状态更新的速度修改器  在 base.Enter前调用！！！
+            UpdateCameraRecenteringState(stateMachine.ReusableData.MovementInput);
         }
 
 
@@ -96,6 +99,14 @@ namespace JWOAGameSystem
         {
             float slopeSpeedModifier = movementData.SlopeSpeedAngles.Evaluate(angle);
 
+            // MARKER： “进入”和“退出”斜坡，需要更新速度修改器，即地面角度更新时，需要确保将相机 水平居中“重新定位时间” 更新为新的玩家速度！！
+            if (stateMachine.ReusableData.MovementSpeedModifier != slopeSpeedModifier)
+            {
+                stateMachine.ReusableData.MovementOnSlopesSpeedModifier = slopeSpeedModifier;
+
+                UpdateCameraRecenteringState(stateMachine.ReusableData.MovementInput);
+            }
+
             stateMachine.ReusableData.MovementOnSlopesSpeedModifier = slopeSpeedModifier;
 
             return slopeSpeedModifier;
@@ -122,7 +133,7 @@ namespace JWOAGameSystem
         {
             base.AddInputActionsCallbacks();
 
-            stateMachine.Player.Input.PlayerActions.Movement.canceled += OnMovementCanceled;
+            // stateMachine.Player.Input.PlayerActions.Movement.canceled += OnMovementCanceled;
 
             stateMachine.Player.Input.PlayerActions.Dash.started += OnDashStarted;
 
@@ -134,7 +145,7 @@ namespace JWOAGameSystem
         {
             base.RemoveInputActionsCallbacks();
 
-            stateMachine.Player.Input.PlayerActions.Movement.canceled -= OnMovementCanceled;
+            // stateMachine.Player.Input.PlayerActions.Movement.canceled -= OnMovementCanceled;
 
             stateMachine.Player.Input.PlayerActions.Dash.started -= OnDashStarted;
 
@@ -192,12 +203,12 @@ namespace JWOAGameSystem
         #endregion
 
         #region  Input Methods
-        /// <summary> 当前状态 停止移动！即松开移动按键时 触发的事！base默认为切换到Idle状态！
-        /// </summary>
-        protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
-        {
-            stateMachine.ChangeState(stateMachine.IdingState);
-        }
+        // /// <summary> 当前状态 停止移动！即松开移动按键时 触发的事！base默认为切换到Idle状态！
+        // /// </summary>
+        // protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
+        // {
+        //     stateMachine.ChangeState(stateMachine.IdingState);
+        // }
 
         /// <summary> 进入冲刺状态
         /// </summary>

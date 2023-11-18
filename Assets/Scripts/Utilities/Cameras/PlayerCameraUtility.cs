@@ -18,7 +18,7 @@ namespace JWOAGameSystem
             cinemachinePOV = virtualCamera.GetCinemachineComponent<CinemachinePOV>();
         }
 
-        public void EnableRecentering(float waitTime = -1f, float recenteringTime = -1f)
+        public void EnableRecentering(float waitTime = -1f, float recenteringTime = -1f, float baseMovementSpeed = 1f, float movementSpeed = 1f)
         {
             cinemachinePOV.m_HorizontalRecentering.m_enabled = true;
 
@@ -33,6 +33,10 @@ namespace JWOAGameSystem
             {
                 recenteringTime = DefaultHorizontalRecenteringTime;
             }
+
+            // 根据移动速度来获取相机更新水平居中的时间，速度越快时间越短
+            recenteringTime = recenteringTime * baseMovementSpeed / movementSpeed;
+
 
             cinemachinePOV.m_HorizontalRecentering.m_WaitTime = waitTime;
             cinemachinePOV.m_HorizontalRecentering.m_RecenteringTime = recenteringTime;

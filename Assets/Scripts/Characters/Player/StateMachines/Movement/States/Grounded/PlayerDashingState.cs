@@ -30,9 +30,9 @@ namespace JWOAGameSystem
         #region IState Methods
         public override void Enter()
         {
-            base.Enter();
-
             stateMachine.ReusableData.MovementSpeedModifier = dashData.SpeedModeifier;
+
+            base.Enter();
 
             stateMachine.ReusableData.CurrentJumpForce = airborneData.JumpData.StrongForce;
 
@@ -159,10 +159,10 @@ namespace JWOAGameSystem
         #endregion
 
         #region Input Methods
-        protected override void OnMovementCanceled(InputAction.CallbackContext context)
-        {
-            // 留空，这样如果按下并释放移动输入键，则不会进入“待机状态”
-        }
+        // protected override void OnMovementCanceled(InputAction.CallbackContext context)
+        // {
+        //     // 留空，这样如果按下并释放移动输入键，则不会进入“待机状态”
+        // }
 
         /// <summary> 解决在冲刺中间按下并松开“移动”键读取是否完成旋转！冲刺结束后自动往对应方向完成旋转
         /// </summary>

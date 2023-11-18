@@ -1,14 +1,13 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace JWOAGameSystem
 {
     [Serializable]
-    public class PlayerWalkData
+    public class PlayerIdleData
     {
-        [field: SerializeField][field: Range(0f, 1f)] public float SpeedModifier { get; private set; } = 0.225f;
-
         /// <summary>向后摄像机重新居中数据
         /// <see cref="BackwardsCameraRecenteringData"/>
         /// </summary>

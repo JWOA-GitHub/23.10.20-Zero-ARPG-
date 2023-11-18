@@ -27,6 +27,7 @@ namespace JWOAGameSystem
         // 曲线效果：当与斜坡的角度越大时，则斜坡速度调节器为值越小
 
         [field: SerializeField] public PlayerRotationData BaseRotationData { get; private set; }
+        [field: SerializeField] public PlayerIdleData IdleData { get; private set; }
         [field: SerializeField] public PlayerWalkData WalkData { get; private set; }
         [field: SerializeField] public PlayerRunData RunData { get; private set; }
         [field: SerializeField] public PlayerSprintData SprintData { get; private set; }

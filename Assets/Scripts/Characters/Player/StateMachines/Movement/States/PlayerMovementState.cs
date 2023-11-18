@@ -51,8 +51,11 @@ namespace JWOAGameSystem
             movementData = stateMachine.Player.Data.GroundedData;
             airborneData = stateMachine.Player.Data.AirborneData;
 
+            SetBaseCameraRecenteringData();
+
             InitializeData();
         }
+
 
         private void InitializeData()
         {
@@ -231,6 +234,14 @@ namespace JWOAGameSystem
         #endregion
 
         #region Reusable Methods 可复用方法
+        /// <summary> 设置摄像机重新居中基本数据
+        /// </summary>
+        protected void SetBaseCameraRecenteringData()
+        {
+            stateMachine.ReusableData.BackwardsCameraRecenteringData = movementData.BackwardsCameraRecenteringData;
+            stateMachine.ReusableData.SidewaysCameraRecenteringData = movementData.SidewaysCameraRecenteringData;
+        }
+
         /// <summary> 设置复原基本旋转数据（旋转所需时间等，后面其他状态可能更改旋转时间等
         /// </summary>
         protected void SetBaseRotationData()
@@ -482,13 +493,13 @@ namespace JWOAGameSystem
             if (movementInput == Vector2.down)
             {
                 // MARKER： 设置摄像机重新居中！
-                SetCameraRecenteringState(cameraVerticalAngle, movementData.BackwardsCameraRecenteringData);
+                SetCameraRecenteringState(cameraVerticalAngle, stateMachine.ReusableData.BackwardsCameraRecenteringData);
 
                 return;
             }
 
             // 剩下的横向移动的设置，且对角线使用与侧向方向相同的设置
-            SetCameraRecenteringState(cameraVerticalAngle, movementData.SidewaysCameraRecenteringData);
+            SetCameraRecenteringState(cameraVerticalAngle, stateMachine.ReusableData.SidewaysCameraRecenteringData);
 
         }
 
@@ -515,7 +526,16 @@ namespace JWOAGameSystem
 
         protected void EnableCameraRecentering(float waitTime = -1f, float recenteringTime = -1f)
         {
-            stateMachine.Player.CameraUtility.EnableRecentering(waitTime, recenteringTime);
+            float movementSpeed = GetMovementSpeed();
+
+            if (movementSpeed == 0f)
+            {
+                // 防止通过移动速度获取相机水平居中时间时，除以0！！
+                movementSpeed = movementData.BaseSpeed;
+            }
+
+            // 增加移动速度，为不同的速度设置不同的相机水平居中更新时间！
+            stateMachine.Player.CameraUtility.EnableRecentering(waitTime, recenteringTime, movementData.BaseSpeed, movementSpeed);
         }
 
         protected void DisableCameraRecentering()
@@ -535,6 +555,14 @@ namespace JWOAGameSystem
             stateMachine.ReusableData.ShouldWalk = !stateMachine.ReusableData.ShouldWalk;
         }
 
+        /// <summary> 调用摄像机取消居中方法！！（原为私有方法，不会与“GroundedState”方法冲突！！ 后删除GroundState中 virtual 停止移动方法！
+        /// </summary>
+        /// <param name="context"></param>
+        protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
+        {
+            DisableCameraRecentering();
+        }
+
         private void OnMouseMovementStarted(InputAction.CallbackContext context)
         {
             UpdateCameraRecenteringState(stateMachine.ReusableData.MovementInput);
@@ -546,15 +574,6 @@ namespace JWOAGameSystem
             // UpdateCameraRecenteringState(stateMachine.ReusableData.MovementInput);
             UpdateCameraRecenteringState(context.ReadValue<Vector2>());
         }
-
-        /// <summary> 调用摄像机取消居中方法！！（私有方法，不会与“GroundedState”方法冲突！！
-        /// </summary>
-        /// <param name="context"></param>
-        private void OnMovementCanceled(InputAction.CallbackContext context)
-        {
-            DisableCameraRecentering();
-        }
-
         #endregion
     }
 }

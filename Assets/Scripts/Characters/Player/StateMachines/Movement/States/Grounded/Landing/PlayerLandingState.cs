@@ -13,11 +13,11 @@ namespace JWOAGameSystem
 
 
         #region Input Methods
-        protected override void OnMovementCanceled(InputAction.CallbackContext context)
-        {
-            // 只想在动画结束时过渡到“Idle”状态
-            // base.OnMovementCanceled(context);
-        }
+        // protected override void OnMovementCanceled(InputAction.CallbackContext context)
+        // {
+        //     // 只想在动画结束时过渡到“Idle”状态
+        //     // base.OnMovementCanceled(context);
+        // }
         #endregion
     }
 }

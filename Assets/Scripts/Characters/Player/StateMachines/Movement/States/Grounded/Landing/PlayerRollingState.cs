@@ -17,9 +17,9 @@ namespace JWOAGameSystem
         #region IState Methods
         public override void Enter()
         {
-            base.Enter();
-
             stateMachine.ReusableData.MovementSpeedModifier = rollData.SpeedModeifier;
+
+            base.Enter();
 
             // 防止进入滚动状态后继续冲刺
             stateMachine.ReusableData.ShouldSprint = false;
