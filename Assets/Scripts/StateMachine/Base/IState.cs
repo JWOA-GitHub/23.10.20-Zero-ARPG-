@@ -32,5 +32,6 @@ namespace JWOAGameSystem
         /// </summary>
         /// <param name="other"></param>
         public void OnTriggerEnter(Collider collider);
+        public void OnTriggerExit(Collider collider);
     }
 }

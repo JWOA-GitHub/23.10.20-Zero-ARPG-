@@ -7,6 +7,10 @@ namespace JWOAGameSystem
     public class PlayerGroundedData
     {
         [field: SerializeField][field: Range(0f, 25f)] public float BaseSpeed { get; private set; } = 5f;
+        /// <summary>地面到坠落射线检测距离，默认为1
+        /// <see cref="GroundToFallRayDistance"/>
+        /// </summary>
+        [field: SerializeField][field: Range(0f, 5f)] public float GroundToFallRayDistance { get; private set; } = 1f;
         /// <summary>斜坡不同角度对应不同移动速度曲线
         /// <see cref="SlopeSpeedAngles"/>
         /// </summary>

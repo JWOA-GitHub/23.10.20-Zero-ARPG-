@@ -12,6 +12,10 @@ namespace JWOAGameSystem
         /// <see cref = "shouldKeepRotationg"/>
         /// </summary>
         private bool shouldKeepRotationg;
+        /// <summary>判断是否能切换到坠落状态，（且垂直速度需小于0才会切换）
+        /// <see cref="canStartFalling"/>
+        /// </summary>
+        private bool canStartFalling;
         public PlayerJumpingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
             jumpData = airborneData.JumpData;
@@ -38,6 +42,26 @@ namespace JWOAGameSystem
             base.Exit();
 
             SetBaseRotationData();
+
+            canStartFalling = false;
+        }
+
+        public override void LogicUpdate()
+        {
+            base.LogicUpdate();
+
+            if (!canStartFalling && IsMovingUp())
+            {
+                canStartFalling = true;
+            }
+
+            // 防止如头顶有障碍物，则撞到会马上切换为坠落状态
+            if (!canStartFalling || GetPlayerVerticalVelocity().y > 0)
+            {
+                return;
+            }
+
+            stateMachine.ChangeState(stateMachine.FallingState);
         }
 
         public override void PhysicsUpdate()

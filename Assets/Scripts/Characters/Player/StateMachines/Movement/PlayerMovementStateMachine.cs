@@ -20,6 +20,7 @@ namespace JWOAGameSystem
         [Tooltip("玩家中停止状态")] public PlayerMediumStoppingState MediumStoppingState { get; }
         [Tooltip("玩家硬停止状态")] public PlayerHardStoppingState HardStoppingState { get; }
         [Tooltip("玩家跳跃状态")] public PlayerJumpingState JumpingState { get; }
+        [Tooltip("玩家坠落状态")] public PlayerFallingState FallingState { get; }
 
         //TODO: 重构状态为字典类型
         public PlayerMovementStateMachine(Player player)
@@ -39,6 +40,7 @@ namespace JWOAGameSystem
             HardStoppingState = new PlayerHardStoppingState(this);
 
             JumpingState = new PlayerJumpingState(this);
+            FallingState = new PlayerFallingState(this);
         }
 
     }

@@ -19,8 +19,8 @@ namespace JWOAGameSystem
 
             UpdateShouldSprintState();
         }
-        
-        
+
+
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
@@ -100,6 +100,21 @@ namespace JWOAGameSystem
 
             return slopeSpeedModifier;
         }
+
+        // MARKER: 判断脚底碰撞器是否接近地面
+        /// <summary> 判断脚底碰撞器是否接近地面
+        /// </summary>
+        /// <returns>脚底碰撞器接触地面layer的数量overlappedGroundColliders.Length > 0</returns>
+        private bool IsThereGroundUnderneath()
+        {
+            BoxCollider groundCheckCollider = stateMachine.Player.ColliderUtility.TriggerColliderData.GroundCheckCollider;
+            Vector3 groundColliderCenterInWorldSpace = groundCheckCollider.bounds.center;
+
+            Collider[] overlappedGroundColliders = Physics.OverlapBox(groundColliderCenterInWorldSpace, groundCheckCollider.bounds.extents, groundCheckCollider.transform.rotation, stateMachine.Player.LayerData.GroundLayer, QueryTriggerInteraction.Ignore);
+
+            return overlappedGroundColliders.Length > 0;
+        }
+
         #endregion
 
         #region Reusable Methods 可复用方法
@@ -145,6 +160,34 @@ namespace JWOAGameSystem
             }
 
             stateMachine.ChangeState(stateMachine.RunningState);
+        }
+
+        protected override void OnContactWithGroundExited(Collider collider)
+        {
+            base.OnContactWithGroundExited(collider);
+
+            // 即判断脚底碰撞器是否已离开地面！
+            if (IsThereGroundUnderneath())
+            {
+                return;
+            }
+
+            Vector3 capsuleColliderCenterInWorldSpace = stateMachine.Player.ColliderUtility.CapsuleColliderData.Collider.bounds.center;
+
+            // 射线检测距离：获取玩家碰撞体底部！（碰撞体中心-碰撞体y轴一半的聚财）
+            Ray downwardsRayFromCapusuleBottom = new Ray(capsuleColliderCenterInWorldSpace - stateMachine.Player.ColliderUtility.CapsuleColliderData.ColliderVerticalExtents, Vector3.down);
+
+            if (!Physics.Raycast(downwardsRayFromCapusuleBottom, out _, movementData.GroundToFallRayDistance, stateMachine.Player.LayerData.GroundLayer, QueryTriggerInteraction.Ignore)) // 忽略“地面触发碰撞器”效果
+            {
+                OnFall();
+            }
+        }
+
+        /// <summary> 切换到坠落状态！
+        /// </summary>
+        protected virtual void OnFall()
+        {
+            stateMachine.ChangeState(stateMachine.FallingState);
         }
         #endregion
 

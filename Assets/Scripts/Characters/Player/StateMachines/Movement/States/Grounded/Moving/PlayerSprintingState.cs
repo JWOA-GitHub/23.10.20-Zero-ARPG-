@@ -103,6 +103,14 @@ namespace JWOAGameSystem
 
             stateMachine.Player.Input.PlayerActions.Sprint.performed -= OnSprintPerformed;
         }
+
+        protected override void OnFall()
+        {
+            // MARKER：确保只有按住一定时间后才会打开持续疾跑
+            shouldResetSprintState = false;
+
+            base.OnFall();
+        }
         #endregion
 
         #region Input Methods

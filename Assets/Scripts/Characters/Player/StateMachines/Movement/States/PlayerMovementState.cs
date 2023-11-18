@@ -118,6 +118,16 @@ namespace JWOAGameSystem
             }
         }
 
+        public virtual void OnTriggerExit(Collider collider)
+        {
+            if (stateMachine.Player.LayerData.IsGroundLayer(collider.gameObject.layer))
+            {
+                OnContactWithGroundExited(collider);
+
+                return;
+            }
+        }
+
         #endregion
 
 
@@ -335,6 +345,16 @@ namespace JWOAGameSystem
             stateMachine.Player.Rigidbody.velocity = Vector3.zero;
         }
 
+        /// <summary>重置y轴移动速度为0
+        /// </summary>
+        protected void ResetVerticalVelocity()
+        {
+            Vector3 playerHorizontalVelocity = GetPlayerHorizontalVelocity();
+
+            // TODO：character
+            stateMachine.Player.Rigidbody.velocity = playerHorizontalVelocity;
+        }
+
         /// <summary>  绑定 切换行走奔跑状态 按键
         /// </summary>
         protected virtual void AddInputActionsCallbacks()
@@ -406,11 +426,18 @@ namespace JWOAGameSystem
         {
 
         }
+
+        /// <summary> 与地面退出接触时的调用！！
+        /// </summary>
+        /// <param name="collider"></param>
+        protected virtual void OnContactWithGroundExited(Collider collider)
+        {
+
+        }
         #endregion
 
         #region Input Methods
-        /// <summary>
-        /// 按键判断是否切换行走/跑步状态
+        /// <summary> 按键判断是否切换行走/跑步状态
         /// </summary>
         /// <param name="context">输入动作表</param>
         protected virtual void OnWalkToggleStarted(InputAction.CallbackContext context)
