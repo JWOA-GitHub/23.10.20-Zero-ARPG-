@@ -8,6 +8,12 @@ namespace JWOAGameSystem
     public class PlayerFallingState : PlayerAirborneState
     {
         private PlayerFallData fallData;
+
+        /// <summary>通过判断进入状态时的距离 与 触地时的距离 差 进入不同的着陆状态   
+        /// <see cref="playerPositionOnEnter"/>
+        /// </summary>
+        private Vector3 playerPositionOnEnter;
+
         public PlayerFallingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
             fallData = airborneData.FallData;
@@ -17,6 +23,8 @@ namespace JWOAGameSystem
         public override void Enter()
         {
             base.Enter();
+
+            playerPositionOnEnter = stateMachine.Player.transform.position;
 
             stateMachine.ReusableData.MovementSpeedModifier = 0f;
 
@@ -36,6 +44,31 @@ namespace JWOAGameSystem
         {
             // 坠落状态不需要重置shouldSprint
             // base.ResetSprintState();
+        }
+
+        protected override void OnContactWithGround(Collider collider)
+        {
+            // TODO： 坠落伤害？
+            // base.OnContactWithGround(collider);
+            // 获取进入该状态时的位置 与 触地位置的距离！！
+            float fallDistance = Mathf.Abs(playerPositionOnEnter.y - stateMachine.Player.transform.position.y);
+
+            if (fallDistance < fallData.MinimumDisatanceToBeConsideredHardFall)
+            {
+                stateMachine.ChangeState(stateMachine.LightLandingState);
+
+                return;
+            }
+
+            // 在WalkToggle关闭,并且未在疾跑时 才能过渡到“硬着陆”状态！！
+            if (stateMachine.ReusableData.ShouldWalk && !stateMachine.ReusableData.ShouldSprint || stateMachine.ReusableData.MovementInput == Vector2.zero)
+            {
+                stateMachine.ChangeState(stateMachine.HardLandingState);
+
+                return;
+            }
+
+            stateMachine.ChangeState(stateMachine.RollingState);
         }
         #endregion
 

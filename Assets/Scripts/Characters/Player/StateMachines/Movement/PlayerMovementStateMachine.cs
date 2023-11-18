@@ -19,6 +19,11 @@ namespace JWOAGameSystem
         [Tooltip("玩家轻停止状态")] public PlayerLightStoppingState LightStoppingState { get; }
         [Tooltip("玩家中停止状态")] public PlayerMediumStoppingState MediumStoppingState { get; }
         [Tooltip("玩家硬停止状态")] public PlayerHardStoppingState HardStoppingState { get; }
+
+        [Tooltip("玩家轻着陆状态")] public PlayerLightLandingState LightLandingState { get; }
+        [Tooltip("玩家滚动状态（中着陆")] public PlayerRollingState RollingState { get; }
+        [Tooltip("玩家硬着陆状态")] public PlayerHardLandingState HardLandingState { get; }
+
         [Tooltip("玩家跳跃状态")] public PlayerJumpingState JumpingState { get; }
         [Tooltip("玩家坠落状态")] public PlayerFallingState FallingState { get; }
 
@@ -38,6 +43,10 @@ namespace JWOAGameSystem
             LightStoppingState = new PlayerLightStoppingState(this);
             MediumStoppingState = new PlayerMediumStoppingState(this);
             HardStoppingState = new PlayerHardStoppingState(this);
+
+            LightLandingState = new PlayerLightLandingState(this);
+            RollingState = new PlayerRollingState(this);
+            HardLandingState = new PlayerHardLandingState(this);
 
             JumpingState = new PlayerJumpingState(this);
             FallingState = new PlayerFallingState(this);

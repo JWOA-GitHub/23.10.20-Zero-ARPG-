@@ -23,7 +23,8 @@ namespace JWOAGameSystem
         #region Reusable Methods
         protected override void OnContactWithGround(Collider collider)
         {
-            stateMachine.ChangeState(stateMachine.IdingState);
+            // stateMachine.ChangeState(stateMachine.IdingState);
+            stateMachine.ChangeState(stateMachine.LightLandingState);
         }
 
         /// <summary> 重置ShouldSprint为false！
