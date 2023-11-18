@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -240,6 +241,32 @@ namespace JWOAGameSystem
             stateMachine.ReusableData.TimeToReachTargetRotation = stateMachine.ReusableData.RotationData.TargetRotationReachTime;
         }
 
+        /// <summary>  增加按键绑定： 如："切换行走奔跑状态"、"移动取消输入"按键
+        /// </summary>
+        protected virtual void AddInputActionsCallbacks()
+        {
+            stateMachine.Player.Input.PlayerActions.WalkeToggle.started += OnWalkToggleStarted;
+
+            stateMachine.Player.Input.PlayerActions.Look.started += OnMouseMovementStarted;
+
+            stateMachine.Player.Input.PlayerActions.Movement.performed += OnMovementPerformed;
+            stateMachine.Player.Input.PlayerActions.Movement.canceled += OnMovementCanceled;
+        }
+
+
+        /// <summary> 移除按键绑定： 如："切换行走奔跑状态"、"移动取消输入"按键
+        /// </summary>
+        protected virtual void RemoveInputActionsCallbacks()
+        {
+            stateMachine.Player.Input.PlayerActions.WalkeToggle.started -= OnWalkToggleStarted;
+
+            stateMachine.Player.Input.PlayerActions.Look.started -= OnMouseMovementStarted;
+
+            stateMachine.Player.Input.PlayerActions.Movement.performed -= OnMovementPerformed;
+            stateMachine.Player.Input.PlayerActions.Movement.canceled -= OnMovementCanceled;
+        }
+
+
         /// <summary> 获取移动输入方向
         /// </summary>
         /// <returns>获取移动输入</returns>
@@ -355,19 +382,6 @@ namespace JWOAGameSystem
             stateMachine.Player.Rigidbody.velocity = playerHorizontalVelocity;
         }
 
-        /// <summary>  绑定 切换行走奔跑状态 按键
-        /// </summary>
-        protected virtual void AddInputActionsCallbacks()
-        {
-            stateMachine.Player.Input.PlayerActions.WalkeToggle.started += OnWalkToggleStarted;
-        }
-
-        /// <summary> 绑定 切换行走奔跑状态 按键
-        /// </summary>
-        protected virtual void RemoveInputActionsCallbacks()
-        {
-            stateMachine.Player.Input.PlayerActions.WalkeToggle.started -= OnWalkToggleStarted;
-        }
 
         /// <summary> 水平缓慢减速，在移动后滑动效果（往反方向缓慢加速！！）！
         /// </summary>
@@ -434,6 +448,82 @@ namespace JWOAGameSystem
         {
 
         }
+
+        /// <summary> 根据相机角度和运动输入禁用或启用“水平居中”选项，有一种情况会禁用“重新定位”，即当停止移动时，实际是在OnMovementCanceled中执行“重新定位”操作！
+        /// </summary>
+        /// <param name="movementInput"></param>
+        protected void UpdateCameraRecenteringState(Vector2 movementInput)
+        {
+            if (movementInput == Vector2.zero)
+            {
+                return;
+            }
+
+            // 往前时取消摄像机居中更新
+            if (movementInput == Vector2.up)
+            {
+                DisableCameraRecentering();
+
+                return;
+            }
+
+            //MARKER： 获取相机垂直角度 （判断范围是否在“-90”到“90”之间，因为向上看与向下看具有相同的效果，但是我们只检查列表中的正角度
+            float cameraVerticalAngle = stateMachine.Player.MainCameraTransform.eulerAngles.x;
+
+            // eulerAngles 仅返回正值，即“-90”会返回“270”，当为正值时，我们需要将其设为“90”而不是“270”
+            if (cameraVerticalAngle >= 270f)
+            {
+                cameraVerticalAngle -= 360f;
+            }
+
+            // 因此使用绝对值转换为正值（判断范围是否在“-90”到“90”之间，因为向上看与向下看具有相同的效果，但是我们只检查列表中的正角度
+            cameraVerticalAngle = Mathf.Abs(cameraVerticalAngle);
+            // 向后时需获取相机角度 迭代“向后”列表，查看是否在范围内，如果不在范围内则禁用
+            if (movementInput == Vector2.down)
+            {
+                // MARKER： 设置摄像机重新居中！
+                SetCameraRecenteringState(cameraVerticalAngle, movementData.BackwardsCameraRecenteringData);
+
+                return;
+            }
+
+            // 剩下的横向移动的设置，且对角线使用与侧向方向相同的设置
+            SetCameraRecenteringState(cameraVerticalAngle, movementData.SidewaysCameraRecenteringData);
+
+        }
+
+        /// <summary> 设置摄像机重新居中状态！
+        /// </summary>
+        /// <param name="cameraVerticalAngle"></param>
+        /// <param name="cameraRecenteringData"></param>
+        protected void SetCameraRecenteringState(float cameraVerticalAngle, List<PlayerCameraRecenteringData> cameraRecenteringData)
+        {
+            foreach (PlayerCameraRecenteringData recenteringData in cameraRecenteringData)
+            {
+                if (!recenteringData.IsWithingRange(cameraVerticalAngle))
+                {
+                    continue;
+                }
+
+                EnableCameraRecentering(recenteringData.WaitTime, recenteringData.RecenteringTime);
+
+                return;
+            }
+
+            DisableCameraRecentering();
+        }
+
+        protected void EnableCameraRecentering(float waitTime = -1f, float recenteringTime = -1f)
+        {
+            stateMachine.Player.CameraUtility.EnableRecentering(waitTime, recenteringTime);
+        }
+
+        protected void DisableCameraRecentering()
+        {
+            stateMachine.Player.CameraUtility.DisableRecentering();
+        }
+
+
         #endregion
 
         #region Input Methods
@@ -443,6 +533,26 @@ namespace JWOAGameSystem
         protected virtual void OnWalkToggleStarted(InputAction.CallbackContext context)
         {
             stateMachine.ReusableData.ShouldWalk = !stateMachine.ReusableData.ShouldWalk;
+        }
+
+        private void OnMouseMovementStarted(InputAction.CallbackContext context)
+        {
+            UpdateCameraRecenteringState(stateMachine.ReusableData.MovementInput);
+        }
+
+        private void OnMovementPerformed(InputAction.CallbackContext context)
+        {
+            // MARKER: 使用Vector2作为回调的主要原因：按住移动按键时，读取MovementInput在“Update”方法中读取的“移动输入”尚未更新为在此回调中拥有的值，因为此回调是在设置值之前调用的，因此要实时更新context变量中更新后的值
+            // UpdateCameraRecenteringState(stateMachine.ReusableData.MovementInput);
+            UpdateCameraRecenteringState(context.ReadValue<Vector2>());
+        }
+
+        /// <summary> 调用摄像机取消居中方法！！（私有方法，不会与“GroundedState”方法冲突！！
+        /// </summary>
+        /// <param name="context"></param>
+        private void OnMovementCanceled(InputAction.CallbackContext context)
+        {
+            DisableCameraRecentering();
         }
 
         #endregion

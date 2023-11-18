@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace JWOAGameSystem
@@ -11,6 +12,14 @@ namespace JWOAGameSystem
         /// <see cref="GroundToFallRayDistance"/>
         /// </summary>
         [field: SerializeField][field: Range(0f, 5f)] public float GroundToFallRayDistance { get; private set; } = 1f;
+        /// <summary>横向摄像机重新居中数据
+        /// <see cref="SidewaysCameraRecenteringData"/>
+        /// </summary>
+        [field: SerializeField] public List<PlayerCameraRecenteringData> SidewaysCameraRecenteringData { get; private set; }
+        /// <summary>向后摄像机重新居中数据
+        /// <see cref="BackwardsCameraRecenteringData"/>
+        /// </summary>
+        [field: SerializeField] public List<PlayerCameraRecenteringData> BackwardsCameraRecenteringData { get; private set; }
         /// <summary>斜坡不同角度对应不同移动速度曲线
         /// <see cref="SlopeSpeedAngles"/>
         /// </summary>
