@@ -25,6 +25,19 @@ namespace JWOAGameSystem
             ResetVelocity();
         }
 
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+
+            if (!IsMovingHorizontally())
+            {
+                return;
+            }
+
+            // 正在移动则移除速度，防止滑行
+            ResetVelocity();
+        }
+
         public override void Exit()
         {
             base.Exit();

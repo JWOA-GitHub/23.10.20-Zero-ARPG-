@@ -103,6 +103,8 @@ namespace JWOAGameSystem
             // 判断是否按下了移动键 改变跳跃方向！！！ 否则会默认往玩家面前跳！！
             if (shouldKeepRotationg)
             {
+                UpdateTargetRotation(GetMovementInputDirection());
+
                 jumpDirection = GetTargetRotationDirection(stateMachine.ReusableData.CurrentTargetRotation.y);
             }
 

@@ -26,6 +26,8 @@ namespace JWOAGameSystem
             Collider = gameObject.GetComponent<CapsuleCollider>();
 
             UpdateColliderData();
+
+           
         }
 
         public void UpdateColliderData()

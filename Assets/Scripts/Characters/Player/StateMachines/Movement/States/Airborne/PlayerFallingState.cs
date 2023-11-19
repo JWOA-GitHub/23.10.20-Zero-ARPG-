@@ -51,7 +51,10 @@ namespace JWOAGameSystem
             // TODO： 坠落伤害？
             // base.OnContactWithGround(collider);
             // 获取进入该状态时的位置 与 触地位置的距离！！
-            float fallDistance = Mathf.Abs(playerPositionOnEnter.y - stateMachine.Player.transform.position.y);
+            // float fallDistance = Mathf.Abs(playerPositionOnEnter.y - stateMachine.Player.transform.position.y);
+            // 当着陆高度在起始点上方则始终过渡到“轻着陆”状态
+            float fallDistance = playerPositionOnEnter.y - stateMachine.Player.transform.position.y;
+            
 
             if (fallDistance < fallData.MinimumDisatanceToBeConsideredHardFall)
             {

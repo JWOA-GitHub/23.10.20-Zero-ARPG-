@@ -34,6 +34,19 @@ namespace JWOAGameSystem
             OnMove();
         }
 
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+
+            if (!IsMovingHorizontally())
+            {
+                return;
+            }
+
+            // 正在移动则移除速度，防止滑行
+            ResetVelocity();
+        }
+
         // 在动画的最后一帧自动进入“Idle”
         public override void OnAnimationTransitionEvent()
         {

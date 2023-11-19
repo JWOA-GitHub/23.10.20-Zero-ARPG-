@@ -289,10 +289,20 @@ namespace JWOAGameSystem
 
         /// <summary> 获取玩家移动速度（基本速度*速度调整速率数）
         /// </summary>
+        /// <param name="shouldConsiderSlopes">是否考虑斜坡，默认true！</param>
         /// <returns>获取玩家移动速度</returns>
-        protected float GetMovementSpeed()
+        protected float GetMovementSpeed(bool shouldConsiderSlopes = true)
         {
-            return movementData.BaseSpeed * stateMachine.ReusableData.MovementSpeedModifier * stateMachine.ReusableData.MovementOnSlopesSpeedModifier;
+            // 增加对斜坡移动速度处理！
+            float movementSpeed = movementData.BaseSpeed * stateMachine.ReusableData.MovementSpeedModifier;
+
+            if (shouldConsiderSlopes)
+            {
+                movementSpeed *= stateMachine.ReusableData.MovementOnSlopesSpeedModifier;
+            }
+
+            // return movementData.BaseSpeed * stateMachine.ReusableData.MovementSpeedModifier * stateMachine.ReusableData.MovementOnSlopesSpeedModifier;
+            return movementSpeed;
         }
 
         /// <summary> 获取玩家垂直方向的力

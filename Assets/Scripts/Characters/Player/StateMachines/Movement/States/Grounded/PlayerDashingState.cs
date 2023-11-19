@@ -39,7 +39,8 @@ namespace JWOAGameSystem
             // 默认旋转时间为0,14s，在Jump和Dash中旋转只需0.02s
             stateMachine.ReusableData.RotationData = dashData.RotationData;
 
-            AddForceOnTransitionFromStationaryState();
+            // AddForceOnTransitionFromStationaryState();
+            Dash();
 
             // 判断进入该状态时是否在移动（若尚未旋转到对应方向则继续旋转！！）
             shouldKeepRotating = stateMachine.ReusableData.MovementInput != Vector2.zero;
@@ -88,26 +89,32 @@ namespace JWOAGameSystem
         #region Main Methods
         /// <summary> 对于停止状态的处理：增加从静止状态过渡的力
         /// </summary>
-        private void AddForceOnTransitionFromStationaryState()
+        // private void AddForceOnTransitionFromStationaryState()
+        /// <summary> 总是往某个方向的“冲刺”添加一个力，取决于“移动”是否按下
+        /// </summary>
+        private void Dash()
         {
-            if (stateMachine.ReusableData.MovementInput != Vector2.zero)
-            {
-                return;
-            }
-
             // 力：添加到玩家面向的方向乘以移动速度
 
             // 获取水平旋转方向
-            Vector3 characterRotationDirection = stateMachine.Player.transform.forward;
+            Vector3 dashDirection = stateMachine.Player.transform.forward;
 
             // MARKER： 防止在冲刺过程中移动！
-            characterRotationDirection.y = 0f;
+            dashDirection.y = 0f;
 
             // MARKER： 更新旋转方向！！！（在“移动”旋转未完成时 开始冲刺后没有输入“移动”的情况！！ 需要调整旋转方向 否则不会自动完成旋转
-            UpdateTargetRotation(characterRotationDirection, false);
+            UpdateTargetRotation(dashDirection, false);
+
+            if (stateMachine.ReusableData.MovementInput != Vector2.zero)
+            {
+                // return;
+                UpdateTargetRotation(GetMovementInputDirection());
+
+                dashDirection = GetTargetRotationDirection(stateMachine.ReusableData.CurrentTargetRotation.y);
+            }
 
             // TODO：character
-            stateMachine.Player.Rigidbody.velocity = characterRotationDirection * GetMovementSpeed();
+            stateMachine.Player.Rigidbody.velocity = dashDirection * GetMovementSpeed(false);
         }
 
         /// <summary> 更新连续冲刺次数consecutiveDashesUsed  

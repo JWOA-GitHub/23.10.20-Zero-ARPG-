@@ -45,9 +45,15 @@ namespace JWOAGameSystem
             }
 
             CapsuleColliderData.UpdateColliderData();
+
+            OnInitialize();
         }
 
-        
+        protected virtual void OnInitialize()
+        {
+
+        }
+
         private void SetCapsuleColliderRadius(float radius)
         {
             CapsuleColliderData.Collider.radius = radius;
