@@ -15,8 +15,17 @@ namespace JWOAGameSystem
         {
             base.Enter();
 
+            StartAnimation(stateMachine.Player.AnimationData.AirborneParameterHash);
+
             // 每次进入“空中”状态时，ShouldSprint都重置为false
             ResetSprintState();
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+
+            StopAnimation(stateMachine.Player.AnimationData.AirborneParameterHash);
         }
         #endregion
 

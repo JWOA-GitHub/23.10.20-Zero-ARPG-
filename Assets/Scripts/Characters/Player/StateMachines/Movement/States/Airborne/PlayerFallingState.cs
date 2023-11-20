@@ -24,11 +24,20 @@ namespace JWOAGameSystem
         {
             base.Enter();
 
+            StartAnimation(stateMachine.Player.AnimationData.FallParameterHash);
+
             playerPositionOnEnter = stateMachine.Player.transform.position;
 
             stateMachine.ReusableData.MovementSpeedModifier = 0f;
 
             ResetVerticalVelocity();
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+
+            StopAnimation(stateMachine.Player.AnimationData.FallParameterHash);
         }
 
         public override void PhysicsUpdate()
@@ -54,7 +63,7 @@ namespace JWOAGameSystem
             // float fallDistance = Mathf.Abs(playerPositionOnEnter.y - stateMachine.Player.transform.position.y);
             // 当着陆高度在起始点上方则始终过渡到“轻着陆”状态
             float fallDistance = playerPositionOnEnter.y - stateMachine.Player.transform.position.y;
-            
+
 
             if (fallDistance < fallData.MinimumDisatanceToBeConsideredHardFall)
             {

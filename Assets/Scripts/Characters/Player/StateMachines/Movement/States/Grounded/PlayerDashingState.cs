@@ -34,6 +34,8 @@ namespace JWOAGameSystem
 
             base.Enter();
 
+            StartAnimation(stateMachine.Player.AnimationData.DashParameterHash);
+
             stateMachine.ReusableData.CurrentJumpForce = airborneData.JumpData.StrongForce;
 
             // 默认旋转时间为0,14s，在Jump和Dash中旋转只需0.02s
@@ -52,6 +54,8 @@ namespace JWOAGameSystem
         public override void Exit()
         {
             base.Exit();
+
+            StopAnimation(stateMachine.Player.AnimationData.DashParameterHash);
 
             SetBaseRotationData();
         }

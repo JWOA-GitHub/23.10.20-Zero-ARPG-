@@ -136,6 +136,21 @@ namespace JWOAGameSystem
 
 
         #region Main Methods
+        /// <summary> 开启对应动画哈希值，设为true
+        /// </summary>
+        /// <param name="animationHash"></param>
+        protected void StartAnimation(int animationHash)
+        {
+            stateMachine.Player.Animator.SetBool(animationHash, true);
+        }
+
+        /// <summary> 关闭对应动画哈希值，设为false
+        /// </summary>
+        /// <param name="animationHash"></param>
+        protected void StopAnimation(int animationHash)
+        {
+            stateMachine.Player.Animator.SetBool(animationHash, false);
+        }
         private void ReadMovementInput()
         {
             stateMachine.ReusableData.MovementInput = stateMachine.Player.Input.PlayerActions.Movement.ReadValue<Vector2>();

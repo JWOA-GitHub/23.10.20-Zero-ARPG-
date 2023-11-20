@@ -19,10 +19,21 @@ namespace JWOAGameSystem
 
             base.Enter();
 
+            StartAnimation(stateMachine.Player.AnimationData.HardLandParameterHash);
+
             // 禁用“移动”按键输入！！ 在特定帧或结束时开启！
             stateMachine.Player.Input.PlayerActions.Movement.Disable();
 
             ResetVelocity();
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+
+            StopAnimation(stateMachine.Player.AnimationData.HardLandParameterHash);
+
+            stateMachine.Player.Input.PlayerActions.Movement.Enable();
         }
 
         public override void PhysicsUpdate()
@@ -36,13 +47,6 @@ namespace JWOAGameSystem
 
             // 正在移动则移除速度，防止滑行
             ResetVelocity();
-        }
-
-        public override void Exit()
-        {
-            base.Exit();
-
-            stateMachine.Player.Input.PlayerActions.Movement.Enable();
         }
 
         // 在动画退出的某一帧 启用动画输入！

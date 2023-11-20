@@ -17,12 +17,20 @@ namespace JWOAGameSystem
         {
             base.Enter();
 
+            StartAnimation(stateMachine.Player.AnimationData.GroundedParameterHash);
+
             UpdateShouldSprintState();
 
             // MARKER: 更改状态时，不会更新相机水平居中重新定位时间，因此每次切换状态都更新！ 计算基础移动速度时，还需计算当前状态的速度修改器！！ 因此需要将每个状态更新的速度修改器  在 base.Enter前调用！！！
             UpdateCameraRecenteringState(stateMachine.ReusableData.MovementInput);
         }
 
+        public override void Exit()
+        {
+            base.Exit();
+
+            StopAnimation(stateMachine.Player.AnimationData.GroundedParameterHash);
+        }
 
         public override void PhysicsUpdate()
         {

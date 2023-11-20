@@ -1,3 +1,4 @@
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 namespace JWOAGameSystem
@@ -16,8 +17,12 @@ namespace JWOAGameSystem
         [field: Header("Cameras")]
         [field: SerializeField] public PlayerCameraUtility CameraUtility { get; private set; }
 
+        [field: Header("Animations")]
+        [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
+
         // TODO：character
         public Rigidbody Rigidbody { get; private set; }
+        public Animator Animator { get; private set; }
         [Tooltip("玩家输入动作表管理")] public PlayerInput Input { get; private set; }
 
         public Transform MainCameraTransform { get; private set; }
@@ -28,11 +33,13 @@ namespace JWOAGameSystem
         {
             // TODO：character
             Rigidbody = GetComponent<Rigidbody>();
+            Animator = GetComponentInChildren<Animator>();
             Input = GetComponent<PlayerInput>();
 
             ColliderUtility.Initialize(gameObject);
             ColliderUtility.CalculateCapsuleColliderDimensions();
             CameraUtility.Initialize();
+            AnimationData.Initialize();
 
             MainCameraTransform = Camera.main.transform;
 

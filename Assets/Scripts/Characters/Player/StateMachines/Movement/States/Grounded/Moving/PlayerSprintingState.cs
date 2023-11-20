@@ -33,11 +33,28 @@ namespace JWOAGameSystem
 
             base.Enter();
 
+            StartAnimation(stateMachine.Player.AnimationData.SprintParameterHash);
+
             stateMachine.ReusableData.CurrentJumpForce = airborneData.JumpData.StrongForce;
 
             shouldResetSprintState = true;
 
             startTime = Time.time;
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+
+            StopAnimation(stateMachine.Player.AnimationData.SprintParameterHash);
+
+            // 若不重置“疾跑”状态，则一旦“着陆”就开始“疾跑”
+            if (shouldResetSprintState)
+            {
+                keepSprinting = false;
+
+                stateMachine.ReusableData.ShouldSprint = false;
+            }
         }
 
         public override void LogicUpdate()
@@ -56,20 +73,6 @@ namespace JWOAGameSystem
             }
 
             StopSprinting();
-        }
-
-
-        public override void Exit()
-        {
-            base.Exit();
-
-            // 若不重置“疾跑”状态，则一旦“着陆”就开始“疾跑”
-            if (shouldResetSprintState)
-            {
-                keepSprinting = false;
-
-                stateMachine.ReusableData.ShouldSprint = false;
-            }
         }
         #endregion
 
