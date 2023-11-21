@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -67,7 +68,7 @@ namespace JWOAGameSystem
         #region IState Mathods
         public virtual void Enter()
         {
-            Debug.Log("State: " + GetType().Name);
+            // Debug.Log("State: " + GetType().Name);
 
             AddInputActionsCallbacks();
         }
@@ -81,6 +82,8 @@ namespace JWOAGameSystem
         public virtual void HandleInput()
         {
             ReadMovementInput();
+
+            ReadAttackInput();
         }
 
         public virtual void LogicUpdate()
@@ -91,6 +94,8 @@ namespace JWOAGameSystem
         public virtual void PhysicsUpdate()
         {
             Move();
+
+            stateMachine.Player.AnimationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
 
             // 传参movementInput为Vector2！！ 旋转已加在Move中
             // Rotate(movementInput);
@@ -150,6 +155,14 @@ namespace JWOAGameSystem
         {
             stateMachine.Player.Animator.SetBool(animationHash, false);
         }
+
+        /// <summary> 判断LeftButton是否被按住
+        /// </summary>
+        private void ReadAttackInput()
+        {
+            stateMachine.ReusableData.LightAttackInput = stateMachine.Player.Input.PlayerActions.Attack.IsPressed();
+        }
+
         private void ReadMovementInput()
         {
             stateMachine.ReusableData.MovementInput = stateMachine.Player.Input.PlayerActions.Movement.ReadValue<Vector2>();
@@ -273,9 +286,11 @@ namespace JWOAGameSystem
             stateMachine.Player.Input.PlayerActions.WalkeToggle.started += OnWalkToggleStarted;
 
             stateMachine.Player.Input.PlayerActions.Look.started += OnMouseMovementStarted;
+            stateMachine.Player.Input.PlayerActions.Attack.started += OnAttackComboStarted;
 
             stateMachine.Player.Input.PlayerActions.Movement.performed += OnMovementPerformed;
             stateMachine.Player.Input.PlayerActions.Movement.canceled += OnMovementCanceled;
+
         }
 
 
@@ -286,6 +301,7 @@ namespace JWOAGameSystem
             stateMachine.Player.Input.PlayerActions.WalkeToggle.started -= OnWalkToggleStarted;
 
             stateMachine.Player.Input.PlayerActions.Look.started -= OnMouseMovementStarted;
+            stateMachine.Player.Input.PlayerActions.Attack.started += OnAttackComboStarted;
 
             stateMachine.Player.Input.PlayerActions.Movement.performed -= OnMovementPerformed;
             stateMachine.Player.Input.PlayerActions.Movement.canceled -= OnMovementCanceled;
@@ -598,6 +614,12 @@ namespace JWOAGameSystem
             // MARKER: 使用Vector2作为回调的主要原因：按住移动按键时，读取MovementInput在“Update”方法中读取的“移动输入”尚未更新为在此回调中拥有的值，因为此回调是在设置值之前调用的，因此要实时更新context变量中更新后的值
             // UpdateCameraRecenteringState(stateMachine.ReusableData.MovementInput);
             UpdateCameraRecenteringState(context.ReadValue<Vector2>());
+        }
+
+
+        protected virtual void OnAttackComboStarted(InputAction.CallbackContext context)
+        {
+            stateMachine.ChangeState(stateMachine.NormalAttacking_1_State);
         }
         #endregion
     }

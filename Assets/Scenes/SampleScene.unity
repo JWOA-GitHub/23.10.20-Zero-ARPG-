@@ -308,6 +308,13 @@ MonoBehaviour:
     rollParameterName: isRolling
     hardLandParameterName: isHardLanding
     fallParameterName: isIdling
+    normalAttack_1_ParameterName: isNormalAttacking
+    normalAttack_2_ParameterName: isNormalAttacking_2
+    normalAttack_3_ParameterName: isNormalAttacking_3
+    normalAttack_AnimationData:
+      NormalAttack_1_StateName: combo_01_1
+      NormalAttack_2_StateName: combo_01_2
+      NormalAttack_3_StateName: combo_01_3
 --- !u!54 &42516718
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2582,8 +2589,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 543450653296089241}
   - {fileID: 1123572375}
+  - {fileID: 543450653296089241}
   - {fileID: 1084491632}
   - {fileID: 592467870}
   - {fileID: 1822707798}
@@ -2641,6 +2648,13 @@ MonoBehaviour:
     rollParameterName: isRolling
     hardLandParameterName: isHardLanding
     fallParameterName: isFalling
+    normalAttack_1_ParameterName: isLeftButton
+    normalAttack_2_ParameterName: isNormalAttacking_01_2
+    normalAttack_3_ParameterName: isNormalAttacking_01_3
+    normalAttack_AnimationData:
+      NormalAttack_1_StateName: combo_01_1
+      NormalAttack_2_StateName: combo_01_2
+      NormalAttack_3_StateName: combo_01_3
 --- !u!114 &888789709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3000,7 +3014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140816988919453937, guid: 46252afb22e7bd84888a9bdf0de02faa, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3140816988919453937, guid: 46252afb22e7bd84888a9bdf0de02faa, type: 3}
       propertyPath: m_LocalScale.x
@@ -6848,7 +6862,7 @@ Transform:
   m_Children:
   - {fileID: 7690664323816607270}
   m_Father: {fileID: 888789707}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &585548295739027921
 Transform:

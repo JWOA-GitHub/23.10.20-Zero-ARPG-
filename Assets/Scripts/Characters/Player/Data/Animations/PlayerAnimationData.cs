@@ -28,8 +28,18 @@ namespace JWOAGameSystem
         [Header("Airborne Parameter Names")] // 默认为Jump
         [SerializeField] private string fallParameterName = "isFalling";
 
-        // [Header("AttackCombo Parameter Names")]
+        [Header("AttackCombo Parameter Names")]
+        [SerializeField] private string normalAttack_1_ParameterName = "isLeftButton";
+        [SerializeField] private string normalAttack_2_ParameterName = "isNormalAttacking_01_2";
+        [SerializeField] private string normalAttack_3_ParameterName = "isNormalAttacking_01_3";
 
+        [Header("Animation Clip Name")]
+        [SerializeField] private PlayerNormalAttack_AnimationData normalAttack_AnimationData;
+
+
+        public AnimatorStateInfo animatorStateInfo;
+
+        public PlayerNormalAttack_AnimationData NormalAttack_AnimationData { get => normalAttack_AnimationData; }
 
         public int GroundedParameterHash { get; private set; }
         public int MovingParameterHash { get; private set; }
@@ -49,6 +59,10 @@ namespace JWOAGameSystem
         public int HardLandParameterHash { get; private set; }
 
         public int FallParameterHash { get; private set; }
+
+        public int NormalAttack_1_ParameterHash { get; private set; }
+        public int NormalAttack_2_ParameterHash { get; private set; }
+        public int NormalAttack_3_ParameterHash { get; private set; }
 
         public void Initialize()
         {
@@ -70,6 +84,10 @@ namespace JWOAGameSystem
             HardLandParameterHash = Animator.StringToHash(hardLandParameterName);
 
             FallParameterHash = Animator.StringToHash(fallParameterName);
+
+            NormalAttack_1_ParameterHash = Animator.StringToHash(normalAttack_1_ParameterName);
+            NormalAttack_2_ParameterHash = Animator.StringToHash(normalAttack_2_ParameterName);
+            NormalAttack_3_ParameterHash = Animator.StringToHash(normalAttack_3_ParameterName);
         }
 
 

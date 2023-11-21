@@ -72,7 +72,6 @@ namespace JWOAGameSystem
             if (shouldKeepRotationg)
             {
                 RotateTowardsTargetRotation();
-
             }
 
             // 玩家跳起来到达顶部需要一定时间，看起来有点漂浮，因此向玩家的“垂直轴”添加力

@@ -7,6 +7,8 @@ namespace JWOAGameSystem
     public class PlayerStateReusableData
     {
         public Vector2 MovementInput { get; set; }
+        public bool LightAttackInput { get; set; }
+
         public float MovementSpeedModifier { get; set; } = 1f;
         /// <summary>斜坡移动速度调节器
         /// <see cref="MovementOnSlopesSpeedModifier"/>
@@ -32,6 +34,10 @@ namespace JWOAGameSystem
         /// <see cref="ShouldSprint"/>
         /// </summary>
         public bool ShouldSprint { get; set; }
+        /// <summary> 判断是否轻刀连招
+        /// </summary>
+        public bool ShouldLightCombo { get; set; }
+
         // MARKER： 创建Vector3 是因为在后面的“滑动系统”中，需要“x”和“z”轴的值！！！！
         /// <summary>当前旋转目标角度
         /// <see cref="currentTargetRotation"/>
