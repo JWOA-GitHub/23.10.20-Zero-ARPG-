@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -209,7 +208,7 @@ namespace JWOAGameSystem
             stateMachine.ReusableData.DampedTargetRotationPassedTime.y = 0f;
         }
 
-        /// <summary> 获取移动输入方向的角度（获取的输入为Vector2！！！！
+        /// <summary> 获取移动输入方向的角度
         /// </summary>
         /// <param name="direction">移动按键的输入方向</param>
         /// <returns></returns>
@@ -362,6 +361,7 @@ namespace JWOAGameSystem
             // MARKER： 因此此方法是在FixedUpdate方法中调用的，所以使用 Time.deltaTime 变量时，unity会自动返回 fixedDeltaTime
             stateMachine.ReusableData.DampedTargetRotationPassedTime.y += Time.deltaTime;
 
+            // Debug.Log(smoothedYAngle);
             Quaternion targetRotation = Quaternion.Euler(0f, smoothedYAngle, 0f);
 
             // Debug.Log(targetRotation.eulerAngles);
@@ -395,9 +395,9 @@ namespace JWOAGameSystem
         /// </summary>
         /// <param name="targetAngle">玩家相对于摄像机的旋转角度（Y轴）</param>
         /// <returns></returns>
-        protected Vector3 GetTargetRotationDirection(float targetAngle)
+        protected Vector3 GetTargetRotationDirection(float targetRotationAngle)
         {
-            return Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            return Quaternion.Euler(0f, targetRotationAngle, 0f) * Vector3.forward;
         }
 
         /// <summary>重置移动速度为0

@@ -53,7 +53,6 @@ namespace JWOAGameSystem
 
             stateMachine.ChangeState(stateMachine.RunningState);
         }
-
         #endregion
     }
 }

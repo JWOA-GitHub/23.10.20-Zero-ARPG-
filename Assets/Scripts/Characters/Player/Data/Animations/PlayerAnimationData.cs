@@ -12,6 +12,7 @@ namespace JWOAGameSystem
         [SerializeField] private string stoppingParameterName = "Stopping";
         [SerializeField] private string landingParameterName = "Landing";
         [SerializeField] private string airborneParameterName = "Airborne";
+        [SerializeField] private string attackComboParameterName = "AttackCombo";
 
         [Header("Grounded Parameter Names")] // 默认为run
         [SerializeField] private string idleParameterName = "isIdling";
@@ -25,7 +26,9 @@ namespace JWOAGameSystem
         [SerializeField] private string hardLandParameterName = "isHardLanding";
 
         [Header("Airborne Parameter Names")] // 默认为Jump
-        [SerializeField] private string fallParameterName = "isIdling";
+        [SerializeField] private string fallParameterName = "isFalling";
+
+        // [Header("AttackCombo Parameter Names")]
 
 
         public int GroundedParameterHash { get; private set; }
@@ -33,6 +36,7 @@ namespace JWOAGameSystem
         public int StoppingParameterHash { get; private set; }
         public int LandingParameterHash { get; private set; }
         public int AirborneParameterHash { get; private set; }
+        public int AttackComboParameterHash { get; private set; }
 
         public int IdleParameterHash { get; private set; }
         public int DashParameterHash { get; private set; }
@@ -53,6 +57,7 @@ namespace JWOAGameSystem
             StoppingParameterHash = Animator.StringToHash(stoppingParameterName);
             LandingParameterHash = Animator.StringToHash(landingParameterName);
             AirborneParameterHash = Animator.StringToHash(airborneParameterName);
+            AttackComboParameterHash = Animator.StringToHash(attackComboParameterName);
 
             IdleParameterHash = Animator.StringToHash(idleParameterName);
             DashParameterHash = Animator.StringToHash(dashParameterName);
