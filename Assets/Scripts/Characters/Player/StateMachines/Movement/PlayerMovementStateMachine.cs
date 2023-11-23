@@ -27,9 +27,9 @@ namespace JWOAGameSystem
         [Tooltip("玩家跳跃状态")] public PlayerJumpingState JumpingState { get; }
         [Tooltip("玩家坠落状态")] public PlayerFallingState FallingState { get; }
 
-        [Tooltip("玩家普通攻击1状态")] public PlayerNormalAttacking_1_State NormalAttacking_1_State { get; }
-        [Tooltip("玩家普通攻击2状态")] public PlayerNormalAttacking_2_State NormalAttacking_2_State { get; }
-        [Tooltip("玩家普通攻击3状态")] public PlayerNormalAttacking_3_State NormalAttacking_3_State { get; }
+        [Tooltip("玩家普通攻击1状态")] public PlayerNormalAttacking_01_1_State NormalAttacking_01_1_State { get; }
+        [Tooltip("玩家普通攻击2状态")] public PlayerNormalAttacking_01_2_State NormalAttacking_01_2_State { get; }
+        [Tooltip("玩家普通攻击3状态")] public PlayerNormalAttacking_01_3_State NormalAttacking_01_3_State { get; }
 
         //TODO: 重构状态为字典类型
         public PlayerMovementStateMachine(Player player)
@@ -55,9 +55,9 @@ namespace JWOAGameSystem
             JumpingState = new PlayerJumpingState(this);
             FallingState = new PlayerFallingState(this);
 
-            NormalAttacking_1_State = new PlayerNormalAttacking_1_State(this);
-            NormalAttacking_2_State = new PlayerNormalAttacking_2_State(this);
-            NormalAttacking_3_State = new PlayerNormalAttacking_3_State(this);
+            NormalAttacking_01_1_State = new PlayerNormalAttacking_01_1_State(this);
+            NormalAttacking_01_2_State = new PlayerNormalAttacking_01_2_State(this);
+            NormalAttacking_01_3_State = new PlayerNormalAttacking_01_3_State(this);
         }
 
     }

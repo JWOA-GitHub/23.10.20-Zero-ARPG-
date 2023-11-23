@@ -68,7 +68,7 @@ namespace JWOAGameSystem
         #region IState Mathods
         public virtual void Enter()
         {
-            // Debug.Log("State: " + GetType().Name);
+            Debug.Log("State: " + GetType().Name);
 
             AddInputActionsCallbacks();
         }
@@ -156,11 +156,13 @@ namespace JWOAGameSystem
             stateMachine.Player.Animator.SetBool(animationHash, false);
         }
 
+
+        //TODO： 是否需要蓄力攻击
         /// <summary> 判断LeftButton是否被按住
         /// </summary>
         private void ReadAttackInput()
         {
-            stateMachine.ReusableData.LightAttackInput = stateMachine.Player.Input.PlayerActions.Attack.IsPressed();
+            stateMachine.ReusableData.LightAttackInput = stateMachine.Player.Input.PlayerActions.LAttack.IsPressed();
         }
 
         private void ReadMovementInput()
@@ -286,7 +288,6 @@ namespace JWOAGameSystem
             stateMachine.Player.Input.PlayerActions.WalkeToggle.started += OnWalkToggleStarted;
 
             stateMachine.Player.Input.PlayerActions.Look.started += OnMouseMovementStarted;
-            stateMachine.Player.Input.PlayerActions.Attack.started += OnAttackComboStarted;
 
             stateMachine.Player.Input.PlayerActions.Movement.performed += OnMovementPerformed;
             stateMachine.Player.Input.PlayerActions.Movement.canceled += OnMovementCanceled;
@@ -301,7 +302,6 @@ namespace JWOAGameSystem
             stateMachine.Player.Input.PlayerActions.WalkeToggle.started -= OnWalkToggleStarted;
 
             stateMachine.Player.Input.PlayerActions.Look.started -= OnMouseMovementStarted;
-            stateMachine.Player.Input.PlayerActions.Attack.started += OnAttackComboStarted;
 
             stateMachine.Player.Input.PlayerActions.Movement.performed -= OnMovementPerformed;
             stateMachine.Player.Input.PlayerActions.Movement.canceled -= OnMovementCanceled;
@@ -616,11 +616,6 @@ namespace JWOAGameSystem
             UpdateCameraRecenteringState(context.ReadValue<Vector2>());
         }
 
-
-        protected virtual void OnAttackComboStarted(InputAction.CallbackContext context)
-        {
-            stateMachine.ChangeState(stateMachine.NormalAttacking_1_State);
-        }
         #endregion
     }
 }

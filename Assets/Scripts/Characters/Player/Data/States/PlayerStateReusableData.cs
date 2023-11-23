@@ -7,6 +7,7 @@ namespace JWOAGameSystem
     public class PlayerStateReusableData
     {
         public Vector2 MovementInput { get; set; }
+        // TODO: 是否需要攻击输入？
         public bool LightAttackInput { get; set; }
 
         public float MovementSpeedModifier { get; set; } = 1f;
@@ -36,7 +37,12 @@ namespace JWOAGameSystem
         public bool ShouldSprint { get; set; }
         /// <summary> 判断是否轻刀连招
         /// </summary>
-        public bool ShouldLightCombo { get; set; }
+        public bool shouldLightCombo;
+        // MARKER: Debug!!
+        // public bool ShouldLightCombo { get { return shouldLightCombo; } set { if (value == true) { Debug.LogError(111111111111111); } } }
+        public bool ShouldLightCombo;
+
+        public bool isComboing { get; set; }
 
         // MARKER： 创建Vector3 是因为在后面的“滑动系统”中，需要“x”和“z”轴的值！！！！
         /// <summary>当前旋转目标角度

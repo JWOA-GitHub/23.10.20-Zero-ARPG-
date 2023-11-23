@@ -24,7 +24,11 @@ namespace JWOAGameSystem
 
             stateMachine.ReusableData.MovementSpeedModifier = 0f;
 
+            stateMachine.ReusableData.isComboing = true;
+
             ResetVelocity();
+
+            ResetCombo();
         }
         public override void Exit()
         {
@@ -32,19 +36,15 @@ namespace JWOAGameSystem
 
             StopAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
 
-            // ResetCombo();
-            // StopAnimation(stateMachine.Player.AnimationData.NormalAttack_1_ParameterHash);
+            ResetCombo();
         }
 
-
-        public override void OnAnimationTransitionEvent()
+        public override void PhysicsUpdate()
         {
-            base.OnAnimationTransitionEvent();
-        }
+            base.PhysicsUpdate();
 
-        public override void OnAnimationExitEvent()
-        {
-            base.OnAnimationExitEvent();
+            // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
+            RotateTowardsTargetRotation();
         }
         #endregion
 
@@ -53,23 +53,34 @@ namespace JWOAGameSystem
         {
             stateMachine.ReusableData.ShouldLightCombo = false;
         }
-        // protected override void AddInputActionsCallbacks()
-        // {
-        //     base.AddInputActionsCallbacks();
-        // }
 
-        // protected override void RemoveInputActionsCallbacks()
-        // {
-        //     base.RemoveInputActionsCallbacks();
-        // }
+        protected override void AddInputActionsCallbacks()
+        {
+            base.AddInputActionsCallbacks();
+
+            stateMachine.Player.Input.PlayerActions.Movement.started += OnMovementStarted;
+        }
+
+        protected override void RemoveInputActionsCallbacks()
+        {
+            base.RemoveInputActionsCallbacks();
+
+            stateMachine.Player.Input.PlayerActions.Movement.started -= OnMovementStarted;
+        }
         #endregion
 
         #region Input Methods
-        protected override void OnAttackComboStarted(InputAction.CallbackContext context)
-        {
-            base.OnAttackComboStarted(context);
+        // protected override void OnAttackComboStarted(InputAction.CallbackContext context)
+        // {
+        //     base.OnAttackComboStarted(context);
 
-            stateMachine.ReusableData.ShouldLightCombo = true;
+        //     // stateMachine.ReusableData.ShouldLightCombo = true;
+        //     // OnAttack();
+        // }
+        private void OnMovementStarted(InputAction.CallbackContext context)
+        {
+            // 负责切换到移动状态
+            OnMove();
         }
         #endregion
     }

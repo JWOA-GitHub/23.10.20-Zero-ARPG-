@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
+public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
 {
     public InputActionAsset asset { get; }
     public @PlayerInputActions()
@@ -91,9 +91,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""LAttack"",
                     ""type"": ""Button"",
                     ""id"": ""fd67b834-3dab-4bb4-8e2f-03da974735c9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""448220f3-3212-404f-ac53-d4aaf748800a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -251,7 +260,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""LAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b3112f4-2ea1-4644-b722-e6d95e0791f4"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -269,7 +289,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+        m_Player_LAttack = m_Player.FindAction("LAttack", throwIfNotFound: true);
+        m_Player_RAttack = m_Player.FindAction("RAttack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -338,7 +359,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Attack;
+    private readonly InputAction m_Player_LAttack;
+    private readonly InputAction m_Player_RAttack;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -350,7 +372,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Attack => m_Wrapper.m_Player_Attack;
+        public InputAction @LAttack => m_Wrapper.m_Player_LAttack;
+        public InputAction @RAttack => m_Wrapper.m_Player_RAttack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -381,9 +404,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
+            @LAttack.started += instance.OnLAttack;
+            @LAttack.performed += instance.OnLAttack;
+            @LAttack.canceled += instance.OnLAttack;
+            @RAttack.started += instance.OnRAttack;
+            @RAttack.performed += instance.OnRAttack;
+            @RAttack.canceled += instance.OnRAttack;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -409,9 +435,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
+            @LAttack.started -= instance.OnLAttack;
+            @LAttack.performed -= instance.OnLAttack;
+            @LAttack.canceled -= instance.OnLAttack;
+            @RAttack.started -= instance.OnRAttack;
+            @RAttack.performed -= instance.OnRAttack;
+            @RAttack.canceled -= instance.OnRAttack;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -438,6 +467,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
+        void OnLAttack(InputAction.CallbackContext context);
+        void OnRAttack(InputAction.CallbackContext context);
     }
 }

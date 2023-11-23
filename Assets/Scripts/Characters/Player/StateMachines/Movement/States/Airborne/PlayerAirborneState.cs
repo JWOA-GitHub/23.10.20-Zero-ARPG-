@@ -18,7 +18,8 @@ namespace JWOAGameSystem
             StartAnimation(stateMachine.Player.AnimationData.AirborneParameterHash);
 
             // TODO: 跳跃是否能攻击
-            // stateMachine.Player.Input.PlayerActions.Attack.Disable();
+            stateMachine.Player.Input.PlayerActions.LAttack.Disable();
+            stateMachine.Player.Input.PlayerActions.RAttack.Disable();
 
             // 每次进入“空中”状态时，ShouldSprint都重置为false
             ResetSprintState();
@@ -30,7 +31,8 @@ namespace JWOAGameSystem
 
             StopAnimation(stateMachine.Player.AnimationData.AirborneParameterHash);
 
-            // stateMachine.Player.Input.PlayerActions.Attack.Enable();
+            stateMachine.Player.Input.PlayerActions.LAttack.Enable();
+            stateMachine.Player.Input.PlayerActions.RAttack.Enable();
         }
         #endregion
 

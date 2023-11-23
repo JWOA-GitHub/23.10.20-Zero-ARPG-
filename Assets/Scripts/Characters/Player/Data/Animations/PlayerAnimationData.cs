@@ -29,9 +29,15 @@ namespace JWOAGameSystem
         [SerializeField] private string fallParameterName = "isFalling";
 
         [Header("AttackCombo Parameter Names")]
-        [SerializeField] private string normalAttack_1_ParameterName = "isLeftButton";
-        [SerializeField] private string normalAttack_2_ParameterName = "isNormalAttacking_01_2";
-        [SerializeField] private string normalAttack_3_ParameterName = "isNormalAttacking_01_3";
+        [SerializeField] private string normalAttack_01_1_ParameterName = "isNormalAttacking_01_1";
+        [SerializeField] private string normalAttack_01_2_ParameterName = "isNormalAttacking_01_2";
+        [SerializeField] private string normalAttack_01_3_ParameterName = "isNormalAttacking_01_3";
+        [SerializeField] private string normalAttack_02_1_ParameterName = "isNormalAttacking_02_1";
+        [SerializeField] private string normalAttack_02_2_ParameterName = "isNormalAttacking_02_2";
+        [SerializeField] private string normalAttack_02_3_ParameterName = "isNormalAttacking_02_3";
+        [SerializeField] private string normalAttack_02_4_ParameterName = "isNormalAttacking_02_4";
+        [SerializeField] private string normalAttack_02_5_ParameterName = "isNormalAttacking_02_5";
+
 
         [Header("Animation Clip Name")]
         [SerializeField] private PlayerNormalAttack_AnimationData normalAttack_AnimationData;
@@ -60,9 +66,14 @@ namespace JWOAGameSystem
 
         public int FallParameterHash { get; private set; }
 
-        public int NormalAttack_1_ParameterHash { get; private set; }
-        public int NormalAttack_2_ParameterHash { get; private set; }
-        public int NormalAttack_3_ParameterHash { get; private set; }
+        public int NormalAttack_01_1_ParameterHash { get; private set; }
+        public int NormalAttack_01_2_ParameterHash { get; private set; }
+        public int NormalAttack_01_3_ParameterHash { get; private set; }
+        public int NormalAttack_02_1_ParameterHash { get; private set; }
+        public int NormalAttack_02_2_ParameterHash { get; private set; }
+        public int NormalAttack_02_3_ParameterHash { get; private set; }
+        public int NormalAttack_02_4_ParameterHash { get; private set; }
+        public int NormalAttack_02_5_ParameterHash { get; private set; }
 
         public void Initialize()
         {
@@ -85,9 +96,15 @@ namespace JWOAGameSystem
 
             FallParameterHash = Animator.StringToHash(fallParameterName);
 
-            NormalAttack_1_ParameterHash = Animator.StringToHash(normalAttack_1_ParameterName);
-            NormalAttack_2_ParameterHash = Animator.StringToHash(normalAttack_2_ParameterName);
-            NormalAttack_3_ParameterHash = Animator.StringToHash(normalAttack_3_ParameterName);
+            NormalAttack_01_1_ParameterHash = Animator.StringToHash(normalAttack_01_1_ParameterName);
+            NormalAttack_01_2_ParameterHash = Animator.StringToHash(normalAttack_01_2_ParameterName);
+            NormalAttack_01_3_ParameterHash = Animator.StringToHash(normalAttack_01_3_ParameterName);
+
+            NormalAttack_02_1_ParameterHash = Animator.StringToHash(normalAttack_02_1_ParameterName);
+            NormalAttack_02_2_ParameterHash = Animator.StringToHash(normalAttack_02_2_ParameterName);
+            NormalAttack_02_3_ParameterHash = Animator.StringToHash(normalAttack_02_3_ParameterName);
+            NormalAttack_02_4_ParameterHash = Animator.StringToHash(normalAttack_02_4_ParameterName);
+            NormalAttack_02_5_ParameterHash = Animator.StringToHash(normalAttack_02_5_ParameterName);
         }
 
 

@@ -59,14 +59,14 @@ namespace JWOAGameSystem
         {
             base.AddInputActionsCallbacks();
 
-            stateMachine.Player.Input.PlayerActions.Movement.started += ONMovementStarted;
+            stateMachine.Player.Input.PlayerActions.Movement.started += OnMovementStarted;
         }
 
         protected override void RemoveInputActionsCallbacks()
         {
             base.RemoveInputActionsCallbacks();
 
-            stateMachine.Player.Input.PlayerActions.Movement.started -= ONMovementStarted;
+            stateMachine.Player.Input.PlayerActions.Movement.started -= OnMovementStarted;
         }
 
 
@@ -79,7 +79,7 @@ namespace JWOAGameSystem
 
         // }
 
-        private void ONMovementStarted(InputAction.CallbackContext context)
+        private void OnMovementStarted(InputAction.CallbackContext context)
         {
             // 负责切换到移动状态
             OnMove();

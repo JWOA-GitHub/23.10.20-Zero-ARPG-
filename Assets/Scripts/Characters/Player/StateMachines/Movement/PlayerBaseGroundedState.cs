@@ -19,6 +19,8 @@ namespace JWOAGameSystem
 
             // StartAnimation(stateMachine.Player.AnimationData.GroundedParameterHash);
 
+            stateMachine.ReusableData.isComboing = false;
+
             UpdateShouldSprintState();
 
             // MARKER: 更改状态时，不会更新相机水平居中重新定位时间，因此每次切换状态都更新！ 计算基础移动速度时，还需计算当前状态的速度修改器！！ 因此需要将每个状态更新的速度修改器  在 base.Enter前调用！！！
@@ -145,6 +147,9 @@ namespace JWOAGameSystem
 
             stateMachine.Player.Input.PlayerActions.Dash.started += OnDashStarted;
 
+            stateMachine.Player.Input.PlayerActions.LAttack.started += OnLAttackComboStarted;
+            stateMachine.Player.Input.PlayerActions.RAttack.started += OnRAttackComboStarted;
+
             // 每个接地状态都可切换到跳跃状态！！
             stateMachine.Player.Input.PlayerActions.Jump.started += OnJumpStarted;
         }
@@ -157,7 +162,21 @@ namespace JWOAGameSystem
 
             stateMachine.Player.Input.PlayerActions.Dash.started -= OnDashStarted;
 
+            stateMachine.Player.Input.PlayerActions.LAttack.started -= OnLAttackComboStarted;
+            stateMachine.Player.Input.PlayerActions.RAttack.started -= OnRAttackComboStarted;
+
             stateMachine.Player.Input.PlayerActions.Jump.started -= OnJumpStarted;
+        }
+
+        /// <summary> 判断是否切换到攻击状态，默认切换到combo1
+        /// </summary>
+        protected virtual void OnAttack()
+        {
+            // 正在攻击状态则跳过
+            // if (stateMachine.ReusableData.isComboing)
+            // {
+            //     return;
+            // }
         }
 
         protected virtual void OnMove()
@@ -229,6 +248,26 @@ namespace JWOAGameSystem
         protected virtual void OnJumpStarted(InputAction.CallbackContext context)
         {
             stateMachine.ChangeState(stateMachine.JumpingState);
+        }
+
+        protected virtual void OnLAttackComboStarted(InputAction.CallbackContext context)
+        {
+            if (stateMachine.ReusableData.isComboing)
+            {
+                return;
+            }
+
+            stateMachine.ChangeState(stateMachine.NormalAttacking_01_1_State);
+        }
+
+        protected virtual void OnRAttackComboStarted(InputAction.CallbackContext context)
+        {
+            if (stateMachine.ReusableData.isComboing)
+            {
+                return;
+            }
+
+            // stateMachine.ChangeState(stateMachine.NormalAttacking_02_1_State);
         }
         #endregion
     }
