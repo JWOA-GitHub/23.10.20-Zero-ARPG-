@@ -37,10 +37,13 @@ namespace JWOAGameSystem
         public bool ShouldSprint { get; set; }
         /// <summary> 判断是否轻刀连招
         /// </summary>
-        public bool shouldLightCombo;
+        // public bool shouldLightCombo;
         // MARKER: Debug!!
         // public bool ShouldLightCombo { get { return shouldLightCombo; } set { if (value == true) { Debug.LogError(111111111111111); } } }
         public bool ShouldLightCombo;
+        /// <summary> 判断是否重刀连招？
+        /// </summary>
+        public bool ShouldHeavyCombo;
 
         public bool isComboing { get; set; }
 

@@ -1,68 +1,52 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace JWOAGameSystem
 {
-    public class PlayerNormalAttacking_01_3_State : PlayerAttackState
+    public class PlayerNormalAttacking_02_1_State : PlayerAttackState
     {
-        public PlayerNormalAttacking_01_3_State(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
+        public PlayerNormalAttacking_02_1_State(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
 
         #region IState Methods
         public override void Enter()
         {
-            // stateMachine.Player.AnimationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
-
-            // stateName = stateMachine.Player.AnimationData.NormalAttack_AnimationData.NormalAttack_3_StateName;
-
             base.Enter();
-            // stateMachine.Player.Animator.Play(stateName);
-            StartAnimation(stateMachine.Player.AnimationData.NormalAttack_01_3_ParameterHash);
 
-            stateMachine.Player.Input.PlayerActions.LAttack.Disable();
+            StartAnimation(stateMachine.Player.AnimationData.NormalAttack_02_1_ParameterHash);
         }
 
         public override void Exit()
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.NormalAttack_01_3_ParameterHash);
+            StopAnimation(stateMachine.Player.AnimationData.NormalAttack_02_1_ParameterHash);
 
-            stateMachine.Player.Input.PlayerActions.LAttack.Enable();
-
+            ResetCombo();
         }
 
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-
         }
 
         public override void OnAnimationTransitionEvent()
         {
-            stateMachine.Player.Input.PlayerActions.LAttack.Enable();
-
-            // base.OnAnimationTransitionEvent();
-            Debug.Log("3                    ");
+            base.OnAnimationTransitionEvent();
             if (stateMachine.ReusableData.ShouldLightCombo)
             {
-                // stateMachine.ChangeState(stateMachine.NormalAttacking_1_State);
-                Debug.Log("             攻击3  combo1  ");
                 OnLAttack();
                 return;
             }
 
             if (stateMachine.ReusableData.ShouldHeavyCombo)
             {
-                Debug.Log("             攻击3  combo2  ");
                 OnRAttack();
                 return;
             }
-            Debug.Log("      33333333");
+            // TODO：在非攻击状态 设置
             stateMachine.ReusableData.isComboing = false;
             stateMachine.ChangeState(stateMachine.IdingState);
         }
@@ -70,11 +54,8 @@ namespace JWOAGameSystem
         public override void OnAnimationExitEvent()
         {
             base.OnAnimationExitEvent();
-            // if (stateMachine.ReusableData.ShouldLightCombo)
-            // {
+
             stateMachine.ChangeState(stateMachine.IdingState);
-            //     stateMachine.ChangeState(stateMachine.NormalAttacking_1_State);
-            // }
         }
         #endregion
 
@@ -86,7 +67,7 @@ namespace JWOAGameSystem
 
         protected override void OnRAttack()
         {
-            stateMachine.ChangeState(stateMachine.NormalAttacking_02_1_State);
+            stateMachine.ChangeState(stateMachine.NormalAttacking_02_2_State);
         }
         #endregion
 

@@ -52,6 +52,7 @@ namespace JWOAGameSystem
         protected void ResetCombo()
         {
             stateMachine.ReusableData.ShouldLightCombo = false;
+            stateMachine.ReusableData.ShouldHeavyCombo = false;
         }
 
         protected override void AddInputActionsCallbacks()
@@ -81,6 +82,16 @@ namespace JWOAGameSystem
         {
             // 负责切换到移动状态
             OnMove();
+        }
+
+        protected override void OnLAttackComboStarted(InputAction.CallbackContext context)
+        {
+            stateMachine.ReusableData.ShouldLightCombo = true;
+        }
+
+        protected override void OnRAttackComboStarted(InputAction.CallbackContext context)
+        {
+            stateMachine.ReusableData.ShouldHeavyCombo = true;
         }
         #endregion
     }

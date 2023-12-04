@@ -29,7 +29,7 @@ namespace JWOAGameSystem
 
             StopAnimation(stateMachine.Player.AnimationData.NormalAttack_01_1_ParameterHash);
 
-            ResetCombo();
+            // ResetCombo();
         }
 
         // public override void LogicUpdate()
@@ -53,12 +53,15 @@ namespace JWOAGameSystem
 
             if (stateMachine.ReusableData.ShouldLightCombo)
             {
-
-                OnAttack();
+                OnLAttack();
                 return;
             }
 
-            Debug.Log("             11133333");
+            if (stateMachine.ReusableData.ShouldHeavyCombo)
+            {
+                OnRAttack();
+                return;
+            }
             // TODO：在非攻击状态 设置
             stateMachine.ReusableData.isComboing = false;
             stateMachine.ChangeState(stateMachine.IdingState);
@@ -69,18 +72,25 @@ namespace JWOAGameSystem
             base.OnAnimationExitEvent();
             // if (stateMachine.ReusableData.ShouldLightCombo)
             // {
-            ResetCombo();
             Debug.Log("                             攻击1 Exit");
+            stateMachine.ChangeState(stateMachine.IdingState);
             //     stateMachine.ChangeState(stateMachine.NormalAttacking_2_State);
             // }
         }
         #endregion
 
         #region Reusable Methods
-        protected override void OnAttack()
+        protected override void OnLAttack()
         {
             // base.OnAttack();
             stateMachine.ChangeState(stateMachine.NormalAttacking_01_2_State);
+
+        }
+
+        protected override void OnRAttack()
+        {
+            // base.OnAttack();
+            stateMachine.ChangeState(stateMachine.NormalAttacking_02_1_State);
 
         }
         #endregion
@@ -88,8 +98,8 @@ namespace JWOAGameSystem
         #region Input Methods
         protected override void OnLAttackComboStarted(InputAction.CallbackContext context)
         {
-            stateMachine.ReusableData.ShouldLightCombo = true;
-            // base.OnAttackComboStarted(context);
+            // stateMachine.ReusableData.ShouldLightCombo = true;
+            base.OnLAttackComboStarted(context);
             // Debug.Log("attack  1111111");
             // if (stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.7f)
             // Debug.Log(stateMachine.Player.AnimationData.animatorStateInfo.IsTag("combo_01_1") && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.5f);
@@ -103,6 +113,11 @@ namespace JWOAGameSystem
 
             //     return;
             // }
+        }
+
+        protected override void OnRAttackComboStarted(InputAction.CallbackContext context)
+        {
+            base.OnRAttackComboStarted(context);
         }
         #endregion
 

@@ -58,9 +58,13 @@ namespace JWOAGameSystem
             if (stateMachine.ReusableData.ShouldLightCombo)
             {
                 // stateMachine.ChangeState(stateMachine.NormalAttacking_3_State);
-                OnAttack();
-                Debug.Log(22);
+                OnLAttack();
                 return;
+            }
+
+            if (stateMachine.ReusableData.ShouldHeavyCombo)
+            {
+                OnRAttack();
             }
 
             stateMachine.ReusableData.isComboing = false;
@@ -70,21 +74,26 @@ namespace JWOAGameSystem
         public override void OnAnimationExitEvent()
         {
             base.OnAnimationExitEvent();
-
+            
             // if (stateMachine.ReusableData.ShouldLightCombo)
             // {
-            ResetCombo();
             //     stateMachine.ChangeState(stateMachine.NormalAttacking_3_State);
             // }
         }
         #endregion
 
         #region Reusable Methods
-        protected override void OnAttack()
+        protected override void OnLAttack()
         {
             // base.OnAttack();
             // if (stateMachine.ReusableData.shouldLightCombo)
             stateMachine.ChangeState(stateMachine.NormalAttacking_01_3_State);
+        }
+
+        protected override void OnRAttack()
+        {
+            // base.OnAttack();
+            stateMachine.ChangeState(stateMachine.NormalAttacking_02_1_State);
 
         }
         #endregion
@@ -92,7 +101,13 @@ namespace JWOAGameSystem
         #region Input Methods
         protected override void OnLAttackComboStarted(InputAction.CallbackContext context)
         {
-            stateMachine.ReusableData.ShouldLightCombo = true;
+            base.OnLAttackComboStarted(context);
+            // stateMachine.ReusableData.ShouldLightCombo = true;
+        }
+
+        protected override void OnRAttackComboStarted(InputAction.CallbackContext context)
+        {
+            base.OnRAttackComboStarted(context);
         }
         #endregion
 

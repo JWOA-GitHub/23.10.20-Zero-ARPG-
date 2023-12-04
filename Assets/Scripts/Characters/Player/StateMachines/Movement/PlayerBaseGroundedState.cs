@@ -168,15 +168,18 @@ namespace JWOAGameSystem
             stateMachine.Player.Input.PlayerActions.Jump.started -= OnJumpStarted;
         }
 
-        /// <summary> 判断是否切换到攻击状态，默认切换到combo1
+        /// <summary> 判断是否切换到左键攻击状态，默认切换到combo1
         /// </summary>
-        protected virtual void OnAttack()
+        protected virtual void OnLAttack()
         {
-            // 正在攻击状态则跳过
-            // if (stateMachine.ReusableData.isComboing)
-            // {
-            //     return;
-            // }
+
+        }
+
+        /// <summary> 判断是否切换到右键攻击状态，默认切换到combo1
+        /// </summary>
+        protected virtual void OnRAttack()
+        {
+
         }
 
         protected virtual void OnMove()
@@ -267,7 +270,7 @@ namespace JWOAGameSystem
                 return;
             }
 
-            // stateMachine.ChangeState(stateMachine.NormalAttacking_02_1_State);
+            stateMachine.ChangeState(stateMachine.NormalAttacking_02_1_State);
         }
         #endregion
     }
