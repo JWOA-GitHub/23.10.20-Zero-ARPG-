@@ -47,11 +47,9 @@ namespace JWOAGameSystem
             stateMachine.Player.Input.PlayerActions.LAttack.Enable();
 
             // base.OnAnimationTransitionEvent();
-            Debug.Log("3                    ");
             if (stateMachine.ReusableData.ShouldLightCombo)
             {
                 // stateMachine.ChangeState(stateMachine.NormalAttacking_1_State);
-                Debug.Log("             攻击3  combo1  ");
                 OnLAttack();
                 return;
             }
