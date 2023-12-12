@@ -271,24 +271,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2511564d2905c484587b8d1a3bcbc48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Data>k__BackingField: {fileID: 11400000, guid: 08013d0580e1e704aab767418890360b, type: 2}
+  <Data>k__BackingField: {fileID: 0}
   <ColliderUtility>k__BackingField:
     <DefaultColliderData>k__BackingField:
-      <Height>k__BackingField: 2.48
-      <CenterY>k__BackingField: 1.24
-      <Radius>k__BackingField: 0.3
+      <Height>k__BackingField: 1.5
+      <CenterY>k__BackingField: 0.77
+      <Radius>k__BackingField: 0.15
     <SlopeData>k__BackingField:
       <StepHeightPercentage>k__BackingField: 0.25
-      <FloatRayDistance>k__BackingField: 2
+      <FloatRayDistance>k__BackingField: 0.8
       <StepReachForce>k__BackingField: 50
     <TriggerColliderData>k__BackingField:
-      <GroundCheckCollider>k__BackingField: {fileID: 2074731682}
+      <GroundCheckCollider>k__BackingField: {fileID: 0}
   <LayerData>k__BackingField:
     <GroundLayer>k__BackingField:
       serializedVersion: 2
-      m_Bits: 64
+      m_Bits: 0
   <CameraUtility>k__BackingField:
-    <virtualCamera>k__BackingField: {fileID: 1631828134}
+    <virtualCamera>k__BackingField: {fileID: 0}
     <DefaultHorizontalWaitTime>k__BackingField: 0
     <DefaultHorizontalRecenteringTime>k__BackingField: 4
   <AnimationData>k__BackingField:
@@ -307,15 +307,14 @@ MonoBehaviour:
     hardStopParameterName: isHardStopping
     rollParameterName: isRolling
     hardLandParameterName: isHardLanding
-    fallParameterName: isIdling
+    fallParameterName: isFalling
     normalAttack_01_1_ParameterName: isNormalAttacking_01_1
     normalAttack_01_2_ParameterName: isNormalAttacking_01_2
     normalAttack_01_3_ParameterName: isNormalAttacking_01_3
+    normalAttack_01_4_ParameterName: isNormalAttacking_01_4
     normalAttack_02_1_ParameterName: isNormalAttacking_02_1
     normalAttack_02_2_ParameterName: isNormalAttacking_02_2
     normalAttack_02_3_ParameterName: isNormalAttacking_02_3
-    normalAttack_02_4_ParameterName: isNormalAttacking_02_4
-    normalAttack_02_5_ParameterName: isNormalAttacking_02_5
     normalAttack_AnimationData:
       NormalAttack_1_StateName: combo_01_1
       NormalAttack_2_StateName: combo_01_2
@@ -346,10 +345,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: b7861aed3bc06ac4fb232cc56a0224ba, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 1.86
+  m_Radius: 0.15
+  m_Height: 1.125
   m_Direction: 1
-  m_Center: {x: 0, y: 1.55, z: 0}
+  m_Center: {x: 0, y: 0.9575, z: 0}
 --- !u!4 &42516720
 Transform:
   m_ObjectHideFlags: 0
@@ -2973,24 +2972,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2511564d2905c484587b8d1a3bcbc48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Data>k__BackingField: {fileID: 11400000, guid: 08013d0580e1e704aab767418890360b, type: 2}
+  <Data>k__BackingField: {fileID: 0}
   <ColliderUtility>k__BackingField:
     <DefaultColliderData>k__BackingField:
-      <Height>k__BackingField: 1.8
-      <CenterY>k__BackingField: 0.9
-      <Radius>k__BackingField: 0.145
+      <Height>k__BackingField: 1.5
+      <CenterY>k__BackingField: 0.77
+      <Radius>k__BackingField: 0.15
     <SlopeData>k__BackingField:
       <StepHeightPercentage>k__BackingField: 0.25
-      <FloatRayDistance>k__BackingField: 2
-      <StepReachForce>k__BackingField: 25
+      <FloatRayDistance>k__BackingField: 0.8
+      <StepReachForce>k__BackingField: 50
     <TriggerColliderData>k__BackingField:
-      <GroundCheckCollider>k__BackingField: {fileID: 1515411919}
+      <GroundCheckCollider>k__BackingField: {fileID: 0}
   <LayerData>k__BackingField:
     <GroundLayer>k__BackingField:
       serializedVersion: 2
-      m_Bits: 64
+      m_Bits: 0
   <CameraUtility>k__BackingField:
-    <virtualCamera>k__BackingField: {fileID: 1631828134}
+    <virtualCamera>k__BackingField: {fileID: 0}
     <DefaultHorizontalWaitTime>k__BackingField: 0
     <DefaultHorizontalRecenteringTime>k__BackingField: 4
   <AnimationData>k__BackingField:
@@ -3013,11 +3012,10 @@ MonoBehaviour:
     normalAttack_01_1_ParameterName: isNormalAttacking_01_1
     normalAttack_01_2_ParameterName: isNormalAttacking_01_2
     normalAttack_01_3_ParameterName: isNormalAttacking_01_3
+    normalAttack_01_4_ParameterName: isNormalAttacking_01_4
     normalAttack_02_1_ParameterName: isNormalAttacking_02_1
     normalAttack_02_2_ParameterName: isNormalAttacking_02_2
     normalAttack_02_3_ParameterName: isNormalAttacking_02_3
-    normalAttack_02_4_ParameterName: isNormalAttacking_02_4
-    normalAttack_02_5_ParameterName: isNormalAttacking_02_5
     normalAttack_AnimationData:
       NormalAttack_1_StateName: combo_01_1
       NormalAttack_2_StateName: combo_01_2
@@ -3060,10 +3058,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: b7861aed3bc06ac4fb232cc56a0224ba, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.145
-  m_Height: 1.3499999
+  m_Radius: 0.15
+  m_Height: 1.3
   m_Direction: 1
-  m_Center: {x: 0, y: 1.125, z: 0}
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

@@ -371,7 +371,7 @@ namespace JWOAGameSystem
                 return;
             }
 
-            float smoothedYAngle = Mathf.SmoothDamp(currentYAngle, stateMachine.ReusableData.CurrentTargetRotation.y,
+            float smoothedYAngle = Mathf.SmoothDampAngle(currentYAngle, stateMachine.ReusableData.CurrentTargetRotation.y,
             ref stateMachine.ReusableData.DampedTargetRotationCurrentVelocity.y, stateMachine.ReusableData.TimeToReachTargetRotation.y - stateMachine.ReusableData.DampedTargetRotationPassedTime.y);
 
             // MARKER： 因此此方法是在FixedUpdate方法中调用的，所以使用 Time.deltaTime 变量时，unity会自动返回 fixedDeltaTime
