@@ -52,7 +52,7 @@ namespace JWOAGameSystem
                     //下面做击中后的一些判断和处理
                     //比如扣血之类的,
                     //需要注意:在同一帧会多次击中一个对象
-                    Debug.Log(item.collider.name);
+                    Debug.Log("<color=#ff0000ff>" + " 击中 " + "</color>" + item.collider.name);
                     if (particle)
                     {
                         var go = Instantiate(particle, item.point, Quaternion.identity);

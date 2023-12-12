@@ -67,7 +67,7 @@ namespace JWOAGameSystem
 
         protected override void OnRAttack()
         {
-            stateMachine.ChangeState(stateMachine.NormalAttacking_02_4_State);
+            stateMachine.ChangeState(stateMachine.NormalAttacking_02_1_State);
         }
         #endregion
 

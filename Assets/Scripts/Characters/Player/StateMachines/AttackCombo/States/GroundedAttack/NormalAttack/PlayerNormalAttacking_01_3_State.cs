@@ -56,11 +56,11 @@ namespace JWOAGameSystem
 
             if (stateMachine.ReusableData.ShouldHeavyCombo)
             {
-                Debug.Log("             攻击3  combo2  ");
+                // Debug.Log("             攻击3  combo2  ");
                 OnRAttack();
                 return;
             }
-            Debug.Log("      33333333");
+            // Debug.Log("      33333333");
             stateMachine.ReusableData.isComboing = false;
             stateMachine.ChangeState(stateMachine.IdingState);
         }
@@ -79,7 +79,7 @@ namespace JWOAGameSystem
         #region Reusable Methods
         protected override void OnLAttack()
         {
-            stateMachine.ChangeState(stateMachine.NormalAttacking_01_1_State);
+            stateMachine.ChangeState(stateMachine.NormalAttacking_01_4_State);
         }
 
         protected override void OnRAttack()

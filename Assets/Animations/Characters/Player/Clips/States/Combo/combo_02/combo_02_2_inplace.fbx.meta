@@ -492,14 +492,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.47642934
+      - time: 0.58952457
         functionName: TriggerOnMovementStateAnimationTranstionEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.7207207
+      - time: 0.77726835
         functionName: TriggerOnMovementStateAnimationExitEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
