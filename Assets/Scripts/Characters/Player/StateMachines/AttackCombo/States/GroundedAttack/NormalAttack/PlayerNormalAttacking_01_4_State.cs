@@ -23,7 +23,8 @@ namespace JWOAGameSystem
             // stateMachine.Player.Animator.Play(stateName);
             StartAnimation(stateMachine.Player.AnimationData.NormalAttack_01_4_ParameterHash);
 
-            stateMachine.Player.Input.PlayerActions.LAttack.Disable();
+            // stateMachine.Player.Input.PlayerActions.LAttack.Disable();
+            stateMachine.Player.Input.PlayerActions.Movement.Disable();
         }
 
         public override void Exit()
@@ -32,8 +33,8 @@ namespace JWOAGameSystem
 
             StopAnimation(stateMachine.Player.AnimationData.NormalAttack_01_4_ParameterHash);
 
-            stateMachine.Player.Input.PlayerActions.LAttack.Enable();
-
+            // stateMachine.Player.Input.PlayerActions.LAttack.Enable();
+            stateMachine.Player.Input.PlayerActions.Movement.Enable();
         }
 
         public override void PhysicsUpdate()

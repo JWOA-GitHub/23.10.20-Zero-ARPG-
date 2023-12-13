@@ -16,6 +16,8 @@ namespace JWOAGameSystem
             base.Enter();
 
             StartAnimation(stateMachine.Player.AnimationData.NormalAttack_02_2_ParameterHash);
+
+            stateMachine.Player.Input.PlayerActions.Movement.Disable();
         }
 
         public override void Exit()
@@ -23,6 +25,8 @@ namespace JWOAGameSystem
             base.Exit();
 
             StopAnimation(stateMachine.Player.AnimationData.NormalAttack_02_2_ParameterHash);
+
+            stateMachine.Player.Input.PlayerActions.Movement.Enable();
 
             ResetCombo();
         }

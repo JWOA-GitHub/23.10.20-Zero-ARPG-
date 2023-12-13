@@ -23,7 +23,7 @@ namespace JWOAGameSystem
             // stateMachine.Player.Animator.Play(stateName);
             StartAnimation(stateMachine.Player.AnimationData.NormalAttack_01_3_ParameterHash);
 
-            stateMachine.Player.Input.PlayerActions.LAttack.Disable();
+            // stateMachine.Player.Input.PlayerActions.LAttack.Disable();
         }
 
         public override void Exit()
@@ -32,7 +32,7 @@ namespace JWOAGameSystem
 
             StopAnimation(stateMachine.Player.AnimationData.NormalAttack_01_3_ParameterHash);
 
-            stateMachine.Player.Input.PlayerActions.LAttack.Enable();
+            // stateMachine.Player.Input.PlayerActions.LAttack.Enable();
 
         }
 
@@ -45,10 +45,11 @@ namespace JWOAGameSystem
         public override void OnAnimationTransitionEvent()
         {
             stateMachine.Player.Input.PlayerActions.LAttack.Enable();
-
+            Debug.Log("<color= #ffff1111> trans前   </color>" + stateMachine.ReusableData.ShouldLightCombo);
             // base.OnAnimationTransitionEvent();
             if (stateMachine.ReusableData.ShouldLightCombo)
             {
+                Debug.Log("<color= #ffff1111>  轻击   </color>");
                 // stateMachine.ChangeState(stateMachine.NormalAttacking_1_State);
                 OnLAttack();
                 return;
@@ -79,6 +80,7 @@ namespace JWOAGameSystem
         #region Reusable Methods
         protected override void OnLAttack()
         {
+            Debug.Log("                                                 111111111111111111");
             stateMachine.ChangeState(stateMachine.NormalAttacking_01_4_State);
         }
 
