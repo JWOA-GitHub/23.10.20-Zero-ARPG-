@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JWOAGameSystem
 {
-    /// <summary> 选择器，相当于一个 “或” 逻辑门
+    /// <summary> 选择器，相当于一个 “或” 逻辑门（当且仅当全部失败时返回失败 （OR
     /// </summary>
     public class Selector : Node
     {

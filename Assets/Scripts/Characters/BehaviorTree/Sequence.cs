@@ -5,7 +5,7 @@ using UnityEngine;
 namespace JWOAGameSystem
 {   
     /// <summary>
-    /// 序列是一个复合结点，只有所有结点成功时才像结束逻辑门一样工作，相当于一个“与”逻辑门
+    /// 序列是一个复合结点，只有所有结点成功时才像结束逻辑门一样工作，相当于一个“与”逻辑门(当且仅当全部成功时返回成功，碰到一个失败的结点则返回，不判断后面的结点)
     /// </summary>
     public class Sequence : Node
     {

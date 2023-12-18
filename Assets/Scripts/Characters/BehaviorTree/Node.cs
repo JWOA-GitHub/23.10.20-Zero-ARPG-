@@ -15,7 +15,8 @@ namespace JWOAGameSystem
         protected NodeState state;
 
         public Node parent;
-        protected List<Node> children = new List<Node>();
+        // protected List<Node> children = new List<Node>();
+        protected List<Node> children = new();
 
         private Dictionary<string, object> _dataContext = new Dictionary<string, object>();
 
@@ -29,7 +30,7 @@ namespace JWOAGameSystem
             foreach (Node child in children)
                 _Attach(child);
         }
-        
+
         /// <summary> 连接子结点
         /// </summary>
         /// <param name="node">子结点</param>
