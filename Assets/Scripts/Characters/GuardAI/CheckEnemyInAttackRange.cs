@@ -6,7 +6,7 @@ namespace JWOAGameSystem
 {
     public class CheckEnemyInAttackRange : Node
     {
-        private static int _enemyLayerMask = 1 << 6;
+        private static int _enemyLayerMask = 1 << 9;
 
         private Transform _transform;
         private Animator _animator;
@@ -16,8 +16,6 @@ namespace JWOAGameSystem
             _transform = transform;
             // _animator = transform.GetComponent<Animator>();
         }
-
-        public static float speed = 2f;
 
         public override NodeState Evaluate()
         {
@@ -29,10 +27,12 @@ namespace JWOAGameSystem
             }
 
             Transform target = (Transform)t;
+            Debug.Log("检查攻击距离  CheckEnemyInAttackRange" + Vector3.Distance(_transform.position, target.position) + " 攻击与否 " + (Vector3.Distance(_transform.position, target.position) <= GuardBT.attackRange));
             if (Vector3.Distance(_transform.position, target.position) <= GuardBT.attackRange)
             {
-                _animator.SetBool("Attacking", true);
-                _animator.SetBool("Walking", false);
+                Debug.Log("             攻击                        ···");
+                // _animator.SetBool("Attacking", true);
+                // _animator.SetBool("Walking", false);
 
                 state = NodeState.SUCCESS;
                 return state;

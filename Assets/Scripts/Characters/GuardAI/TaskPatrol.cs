@@ -19,12 +19,20 @@ namespace JWOAGameSystem
         public TaskPatrol(Transform transform, Transform[] waypoints)
         {
             _transform = transform;
-            _animator = transform.GetComponent<Animator>();
+            // _animator = transform.GetComponent<Animator>();
             _waypoints = waypoints;
         }
 
         public override NodeState Evaluate()
         {
+            // 巡逻过程中判断敌人是否进入视野范围
+            // Transform target = (Transform)GetData("target");
+            // if (Vector3.Distance(_transform.position, target.position) <= GuardBT.fovRange)
+            // {
+            //     state = NodeState.FAILURE;
+            //     return state;
+            // }
+
             if (_waiting)
             {
                 _waitCounter += Time.deltaTime;

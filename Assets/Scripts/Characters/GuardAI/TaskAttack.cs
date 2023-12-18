@@ -9,7 +9,8 @@ namespace JWOAGameSystem
         private Animator _animator;
 
         private Transform _lastTarget;
-        private EnemyManager _enemyManager;
+        // private EnemyManager _enemyManager;
+        private PlayerHealth _playerHealth;
 
         private float _attackTime = 1f;
         private float _attackCounter = 0f;
@@ -24,7 +25,8 @@ namespace JWOAGameSystem
             Transform target = (Transform)GetData("target");
             if (target != _lastTarget)
             {
-                _enemyManager = target.GetComponent<EnemyManager>();
+                // _enemyManager = target.GetComponent<EnemyManager>();
+                _playerHealth = target.GetComponent<PlayerHealth>();
                 _lastTarget = target;
             }
 
@@ -32,12 +34,12 @@ namespace JWOAGameSystem
             if (_attackCounter >= _attackTime)
             {
                 // TODO: 敌人受到伤害
-                bool enemyIsDead = _enemyManager.TakeHit();
+                bool enemyIsDead = _playerHealth.TakeDamage(GuardBT.attackPower);
                 if (enemyIsDead)
                 {
                     ClearData("target");
-                    _animator.SetBool("Attacking", false);
-                    _animator.SetBool("Walking", true);
+                    // _animator.SetBool("Attacking", false);
+                    // _animator.SetBool("Walking", true);
                 }
                 else
                 {

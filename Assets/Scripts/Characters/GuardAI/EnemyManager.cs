@@ -16,6 +16,7 @@ namespace JWOAGameSystem
         public bool TakeHit()
         {
             _healthPoints -= 10;
+            Debug.Log(gameObject.name + "          受伤了   -10");
             bool isDead = _healthPoints <= 0;
             if (isDead)
                 Die();

@@ -6,7 +6,7 @@ namespace JWOAGameSystem
 {
     public class CheckEnemyInFOVRange : Node
     {
-        private static int _enemyLayerMask = 1 << 6;
+        private static int _enemyLayerMask = 1 << 9;
 
         private Transform _transform;
         private Animator _animator;
@@ -17,13 +17,13 @@ namespace JWOAGameSystem
             // _animator = transform.GetComponent<Animator>();
         }
 
-        public static float speed = 2f;
-
         public override NodeState Evaluate()
         {
             object t = GetData("target");
+            Debug.Log("<color=red>检查巡逻范围 CheckEnemyInFOVRange       t.GetType().Name</color>");
             if (t == null)
             {
+                Debug.Log("<color=yellow> 检查范围中 搜索target</color>");
                 Collider[] colliders = Physics.OverlapSphere(_transform.position, GuardBT.fovRange, _enemyLayerMask);
 
                 if (colliders.Length > 0)

@@ -45,11 +45,11 @@ namespace JWOAGameSystem
         public override void OnAnimationTransitionEvent()
         {
             stateMachine.Player.Input.PlayerActions.LAttack.Enable();
-            Debug.Log("<color= #ffff1111> trans前   </color>" + stateMachine.ReusableData.ShouldLightCombo);
+            // Debug.Log("<color= #ffff1111> trans前   </color>" + stateMachine.ReusableData.ShouldLightCombo);
             // base.OnAnimationTransitionEvent();
             if (stateMachine.ReusableData.ShouldLightCombo)
             {
-                Debug.Log("<color= #ffff1111>  轻击   </color>");
+                // Debug.Log("<color= #ffff1111>  轻击   </color>");
                 // stateMachine.ChangeState(stateMachine.NormalAttacking_1_State);
                 OnLAttack();
                 return;

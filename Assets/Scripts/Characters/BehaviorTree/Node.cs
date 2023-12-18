@@ -6,9 +6,10 @@ namespace JWOAGameSystem
 {
     public enum NodeState
     {
+        FAILURE = 0,
         RUNNING,
-        SUCCESS,
-        FAILURE
+        SUCCESS
+
     }
     public class Node
     {
