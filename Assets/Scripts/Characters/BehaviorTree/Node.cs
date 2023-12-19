@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,19 +8,24 @@ namespace JWOAGameSystem
     public enum NodeState
     {
         FAILURE = 0,
-        RUNNING,
-        SUCCESS
-
+        SUCCESS,
+        RUNNING
     }
-    public class Node
+    public abstract class Node
     {
-        protected NodeState state;
+        private NodeState state;
 
-        public Node parent;
+        public NodeState State
+        {
+            get => state;
+            protected set => state = value;
+        }
+
+        protected Node parent;
         // protected List<Node> children = new List<Node>();
         protected List<Node> children = new();
 
-        private Dictionary<string, object> _dataContext = new Dictionary<string, object>();
+        // private Dictionary<string, object> _dataContext = new Dictionary<string, object>();
 
         public Node()
         {
@@ -41,62 +47,78 @@ namespace JWOAGameSystem
             children.Add(node);
         }
 
+
         /// <summary> 判断当前结点状态（默认为FAILURE）
         /// </summary>
         /// <returns></returns>
-        public virtual NodeState Evaluate() => NodeState.FAILURE;
-
-        /// <summary> 设置字典的一个键，命名变量与任何类型的字符串的映射
-        /// </summary>
-        /// <param name="key"> 命名变量key </param>
-        /// <param name="value"> 任何类型的字符串object</param>
-        public void SetData(string key, object value)
+        // public virtual NodeState Evaluate() => NodeState.FAILURE;
+        public NodeState Evaluate(Transform agent, Blackboard blackboard)
         {
-            _dataContext[key] = value;
+            Debug.Log($"{GetType().Name} - Entered...");
+            state = OnEvaluate(agent, blackboard);
+            Debug.Log($"{GetType().Name} - {state}");
+            Debug.Log($"{GetType().Name} - Exited...");
+
+            return State;
         }
 
-        /// <summary> 获取 该key字符串对应的 键
-        /// </summary>
-        /// <param name="key">字符串key</param>
-        /// <returns>返回字典中所对应的键</returns>
-        public object GetData(string key)
-        {
-            object value = null;
-            if (_dataContext.TryGetValue(key, out value))
-                return value;
+        protected virtual NodeState OnEvaluate(Transform agent, Blackboard blackboard) => NodeState.FAILURE;
 
-            Node node = parent;
-            while (node != null)
-            {
-                value = node.GetData(key);
-                if (value != null)
-                    return value;
-                node = node.parent;
-            }
-            return null;
-        }
+        // #region  OLD  
+        // /// <summary> 设置字典的一个键，命名变量与任何类型的字符串的映射
+        // /// </summary>
+        // /// <param name="key"> 命名变量key </param>
+        // /// <param name="value"> 任何类型的字符串object</param>
+        // public void SetData(string key, object value)
+        // {
+        //     _dataContext[key] = value;
+        // }
 
-        /// <summary> 删除对应key字符串的 键
-        /// </summary>
-        /// <param name="key">字符串key</param>
-        /// <returns>递归搜索达到根结点，判断是否清除成功，成功true，否则false</returns>
-        public bool ClearData(string key)
-        {
-            if (_dataContext.ContainsKey(key))
-            {
-                _dataContext.Remove(key);
-                return true;
-            }
+        // /// <summary> 获取 该key字符串对应的 键
+        // /// </summary>
+        // /// <param name="key">字符串key</param>
+        // /// <returns>返回字典中所对应的键</returns>
+        // public object GetData(string key)
+        // {
+        //     object value = null;
+        //     if (_dataContext.TryGetValue(key, out value))
+        //         return value;
 
-            Node node = parent;
-            while (node != null)
-            {
-                bool cleared = node.ClearData(key);
-                if (cleared)
-                    return true;
-                node = node.parent;
-            }
-            return false;
-        }
+        //     Node node = parent;
+        //     while (node != null)
+        //     {
+        //         value = node.GetData(key);
+        //         if (value != null)
+        //             return value;
+        //         node = node.parent;
+        //     }
+        //     return null;
+        // }
+
+        // /// <summary> 删除对应key字符串的 键
+        // /// </summary>
+        // /// <param name="key">字符串key</param>
+        // /// <returns>递归搜索达到根结点，判断是否清除成功，成功true，否则false</returns>
+        // public bool ClearData(string key)
+        // {
+        //     if (_dataContext.ContainsKey(key))
+        //     {
+        //         _dataContext.Remove(key);
+        //         return true;
+        //     }
+
+        //     Node node = parent;
+        //     while (node != null)
+        //     {
+        //         bool cleared = node.ClearData(key);
+        //         if (cleared)
+        //             return true;
+        //         node = node.parent;
+        //     }
+        //     return false;
+        // }
+
+        // #endregion
+
     }
 }

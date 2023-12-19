@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JWOAGameSystem
 {
-    public class TaskPatrol : Node
+    public class TaskPatrol : Task
     {
         private Transform _transform;
         private Animator _animator;
@@ -23,8 +23,9 @@ namespace JWOAGameSystem
             _waypoints = waypoints;
         }
 
-        public override NodeState Evaluate()
+        protected override NodeState OnEvaluate(Transform agent, Blackboard blackboard)
         {
+            Debug.Log("         巡逻··························");
             // 巡逻过程中判断敌人是否进入视野范围
             // Transform target = (Transform)GetData("target");
             // if (Vector3.Distance(_transform.position, target.position) <= GuardBT.fovRange)
@@ -33,6 +34,7 @@ namespace JWOAGameSystem
             //     return state;
             // }
 
+            float speed = 2f;//blackboard.Get<float>("speed");
             if (_waiting)
             {
                 _waitCounter += Time.deltaTime;
@@ -42,9 +44,9 @@ namespace JWOAGameSystem
             else
             {
                 Transform wp = _waypoints[_currentWaypointIndex];
-                if (Vector3.Distance(_transform.position, wp.position) < 0.01f)
+                if (Vector3.Distance(agent.position, wp.position) < 0.01f)
                 {
-                    _transform.position = wp.position;
+                    agent.position = wp.position;
                     _waitCounter = 0f;
                     _waiting = true;
 
@@ -52,13 +54,13 @@ namespace JWOAGameSystem
                 }
                 else
                 {
-                    _transform.position = Vector3.MoveTowards(_transform.position, wp.position, GuardBT.speed * Time.deltaTime);
-                    _transform.LookAt(wp.position);
+                    agent.position = Vector3.MoveTowards(agent.position, wp.position, speed * Time.deltaTime);
+                    agent.LookAt(wp.position);
                 }
             }
 
-            state = NodeState.RUNNING;
-            return state;
+            State = NodeState.RUNNING;
+            return State;
         }
     }
 }

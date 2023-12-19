@@ -4,34 +4,43 @@ using UnityEngine;
 
 namespace JWOAGameSystem
 {
-    public class GuardBT : Tree
+    public class GuardBT : BehaviorTree
     {
-        public Transform[] waypoints;
+        [SerializeField] private Transform[] waypoints;
 
-        public static float speed = 2f;
-        public static float fovRange = 3f;  // 6f
-        public static float attackRange = 1f;
-        public static int attackPower = 10;
+        [SerializeField] private float speed = 2f;
+        private float fovRange = 3f;  // 6f
+        private float attackRange = 1f;
+        private int attackPower = 10;
 
-        protected override Node SetupTree()
+        protected override Node OnSetupTree()
         {
-            // Node root = new TaskPatrol(transform, waypoints);
-            Node root = new Selector(new List<Node>
-            {
-                new Sequence(new List<Node>
-                {
-                    new CheckEnemyInAttackRange(transform),
-                    new TaskAttack(transform),
-                }),
-                new Sequence(new List<Node>
-                {
-                    new CheckEnemyInFOVRange(transform),
-                    new TaskGoToTarget(transform),
-                }),
-                new TaskPatrol(transform,waypoints),
-            });
+            // Blackboard.Set<float>("speed", speed);
+            Debug.Log("setup");
+            Node Root = new TaskPatrol(transform, waypoints);
+            return Root;
 
-            return root;
+            #region OLD
+            // Node root = new TaskPatrol(transform, waypoints);
+
+            // Node root = new Selector(new List<Node>
+            // {
+            //     new Sequence(new List<Node>
+            //     {
+            //         new CheckEnemyInAttackRange(transform),
+            //         new TaskAttack(transform),
+            //     }),
+            //     new Sequence(new List<Node>
+            //     {
+            //         new CheckEnemyInFOVRange(transform),
+            //         new TaskGoToTarget(transform),
+            //     }),
+            //     new TaskPatrol(transform,waypoints),
+            // });
+
+            // return root;
+
+            #endregion
         }
     }
 }

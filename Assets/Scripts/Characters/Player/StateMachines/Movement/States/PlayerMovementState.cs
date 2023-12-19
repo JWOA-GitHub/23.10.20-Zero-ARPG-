@@ -68,7 +68,7 @@ namespace JWOAGameSystem
         #region IState Mathods
         public virtual void Enter()
         {
-            Debug.Log("<color=#ff00ffff>" + "当前状态" + "</color>" + "State: " + GetType().Name);
+            // Debug.Log("<color=#ff00ffff>" + "当前状态" + "</color>" + "State: " + GetType().Name);
 
             AddInputActionsCallbacks();
         }
