@@ -14,7 +14,7 @@ namespace JWOAGameSystem
             return default;
         }
 
-        public void Set<T>(string key, T value)
+        public void Add<T>(string key, T value)
         {
             _dataContext[key] = value;
         }

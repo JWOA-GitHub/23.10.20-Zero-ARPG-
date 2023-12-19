@@ -15,9 +15,23 @@ namespace JWOAGameSystem
 
         protected override Node OnSetupTree()
         {
-            // Blackboard.Set<float>("speed", speed);
+            Blackboard.Add<float>("speed", speed);
+            Blackboard.Add<float>("fovRange", fovRange);
+            Blackboard.Add<float>("attackRange", attackRange);
+            Blackboard.Add<int>("attackPower", attackPower);
+
             Debug.Log("setup");
-            Node Root = new TaskPatrol(transform, waypoints);
+            Node Root = new Selector(new List<Node>{
+                new Sequence(new List<Node>{
+                    new CheckEnemyInAttackRange(transform),
+                    new TaskAttack(transform),
+                }),
+                new Sequence(new List<Node>{
+                    new CheckEnemyInFOVRange(transform),
+                    new TaskGoToTarget(transform),
+                }),
+                new TaskPatrol(transform, waypoints),
+            });
             return Root;
 
             #region OLD
