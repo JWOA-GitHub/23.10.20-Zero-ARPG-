@@ -27,7 +27,7 @@ namespace JWOAGameSystem
             }
 
             Transform target = (Transform)t;
-            Debug.Log("检查攻击距离  CheckEnemyInAttackRange" + Vector3.Distance(_transform.position, target.position) + " 攻击与否 " + (Vector3.Distance(_transform.position, target.position) <= GuardBT.attackRange));
+            // Debug.Log("检查攻击距离  CheckEnemyInAttackRange" + Vector3.Distance(_transform.position, target.position) + " 攻击与否 " + (Vector3.Distance(_transform.position, target.position) <= GuardBT.attackRange));
             if (Vector3.Distance(_transform.position, target.position) <= GuardBT.attackRange)
             {
                 Debug.Log("             攻击                        ···");

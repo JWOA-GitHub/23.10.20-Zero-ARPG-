@@ -46,6 +46,13 @@ namespace JWOAGameSystem
             // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
             RotateTowardsTargetRotation();
         }
+
+        public override void OnAnimationEnterEvent()
+        {
+            base.OnAnimationEnterEvent();
+
+            
+        }
         #endregion
 
         #region Reusable Methods
