@@ -20,7 +20,6 @@ namespace JWOAGameSystem
             Blackboard.Add<float>("attackRange", attackRange);
             Blackboard.Add<int>("attackPower", attackPower);
 
-            Debug.Log("setup");
             Node Root = new Selector(new List<Node>{
                 new Sequence(new List<Node>{
                     new CheckEnemyInAttackRange(transform),

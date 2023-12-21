@@ -3,7 +3,7 @@ using UnityEngine;
 namespace JWOAGameSystem
 {
     [RequireComponent(typeof(PlayerInput))]
-    public class Player : MonoBehaviour
+    public class Player : CharactersBase
     {
         [field: Header("References")]
         [field: SerializeField] public PlayerSO Data { get; set; }
@@ -28,11 +28,16 @@ namespace JWOAGameSystem
 
         [Tooltip("玩家移动状态机")] private PlayerMovementStateMachine movementStateMachine;
 
+        public Player(string name, int startingLevel) : base(name, startingLevel)
+        {
+            Debug.Log("${ name +     + startingLevel}");
+        }
+
         private void Awake()
         {
             HideCursor();
 
-            // TODO：character
+            // TODO：character?
             Rigidbody = GetComponent<Rigidbody>();
             Animator = GetComponentInChildren<Animator>();
             Input = GetComponent<PlayerInput>();

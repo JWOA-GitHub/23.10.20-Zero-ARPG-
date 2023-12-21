@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JWOAGameSystem
 {
-    public class TaskGoToTarget : Node
+    public class TaskGoToTarget : Action
     {
         private Transform _transform;
 

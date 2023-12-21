@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JWOAGameSystem
 {
-    public class CheckEnemyInAttackRange : Node
+    public class CheckEnemyInAttackRange : Condition
     {
         private static int _enemyLayerMask = 1 << 9;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JWOAGameSystem
 {
-    public class TaskPatrol : Task
+    public class TaskPatrol : Action
     {
         private Transform _transform;
         private Animator _animator;
@@ -25,7 +25,7 @@ namespace JWOAGameSystem
 
         protected override NodeState OnEvaluate(Transform agent, Blackboard blackboard)
         {
-            Debug.Log("         巡逻··························");
+            // Debug.Log("         巡逻··························");
             // 巡逻过程中判断敌人是否进入视野范围
             // Transform target = (Transform)GetData("target");
             // if (Vector3.Distance(_transform.position, target.position) <= GuardBT.fovRange)

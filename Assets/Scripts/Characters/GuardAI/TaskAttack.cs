@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace JWOAGameSystem
 {
-    public class TaskAttack : Node
+    public class TaskAttack : Action
     {
         private Animator _animator;
 
         private Transform _lastTarget;
         // private EnemyManager _enemyManager;
-        private PlayerHealth _playerHealth;
+        private Health _playerHealth;
 
         private float _attackTime = 1f;
         private float _attackCounter = 0f;
@@ -26,7 +26,7 @@ namespace JWOAGameSystem
             if (target != _lastTarget)
             {
                 // _enemyManager = target.GetComponent<EnemyManager>();
-                _playerHealth = target.GetComponent<PlayerHealth>();
+                _playerHealth = target.GetComponent<Health>();
                 _lastTarget = target;
             }
 
