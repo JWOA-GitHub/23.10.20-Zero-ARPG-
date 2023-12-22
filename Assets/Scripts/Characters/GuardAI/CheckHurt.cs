@@ -11,50 +11,80 @@ namespace JWOAGameSystem
         private EnemyAnimatorController _animatorController;
         private NavMeshAgent _navMeshAgent;
 
-        private Health _health;
-        private bool isHurting;
-        private float _hurtTime;
+        private CharactersBase charactersBase;
+        private float _hurtTime = 2f;
         private float _hurtCounter = 0;
+
+        private bool _isWaitingForAnimation = false;    // 判断是否需要等待动画播放完毕
+        private bool _hasHurtedDone = false;      // 判断是否已受击完毕
 
         public CheckHurt(Transform transform)
         {
             _transform = transform;
             _animatorController = transform.GetComponent<EnemyAnimatorController>();
             _navMeshAgent = transform.GetComponent<NavMeshAgent>();
-            
-            // 禁用 NavMeshAgent 组件
-            _navMeshAgent.enabled = false;
-
-            // _health = transform.GetComponent<Health>();
-            // _animationHash = Animator.StringToHash(_animationName);
-            // _animator.CrossFade(_animationHash, _transitionDuration);
+            charactersBase = transform.GetComponent<CharactersBase>();
         }
 
         protected override NodeState OnEvaluate(Transform agent, Blackboard blackboard)
         {
-            bool isDead = _health.HealthPoints <= 0;
-            if (isDead)
+            Debug.Log("     判断是否受伤    <color=yellow>" + charactersBase.IsHurting + "</color>");
+            // bool isDead = charactersBase.Hp <= 0;
+            if (charactersBase.IsDead)
             {
                 State = NodeState.FAILURE;
                 return State;
             }
 
-            if (isHurting)
+            if (charactersBase.IsHurting && !_isWaitingForAnimation)
             {
-                // _animator.SetBool("");
-                _hurtCounter += Time.deltaTime;
-                if (_hurtCounter >= _hurtTime)
-                {
-                    isHurting = false;
-                    _hurtCounter = 0;
-                }
-                State = NodeState.SUCCESS;
-            }
-            else
-            {
-                State = NodeState.FAILURE;
-            }
+                _navMeshAgent.ResetPath();
 
+                _isWaitingForAnimation = true;
+                // _animator.SetBool("");
+                Debug.Log("     受伤" + Time.time);
+                _animatorController.EnemyState = EnemyState.GetHit;
+
+                // _hurtCounter += Time.deltaTime;
+                // if (_hurtCounter >= _hurtTime)
+                // {
+                //     charactersBase.IsHurting = false;
+                //     Debug.Log("<color=yellow> 受伤停止  {Time.time} </color>");
+                //     _hurtCounter = 0;
+                // }
+                State = NodeState.SUCCESS;
+                return State;
+            }
+            // else
+            // {
+            //     State = NodeState.FAILURE;
+            // }
+
+            if (_isWaitingForAnimation)
+            {
+                // 获取当前动画状态信息
+                AnimatorStateInfo stateInfo = _animatorController._animator.GetCurrentAnimatorStateInfo(0);
+                // Debug.Log("            等待搜索动画播放完毕");
+                // 如果当前动画播放时间大于等于动画长度（normalizedTime 大于等于 1），表示动画播放完毕
+
+                if (stateInfo.IsName(_animatorController._stateToAnimationState[_animatorController.EnemyState].animationName) && stateInfo.normalizedTime >= 0.7f)
+                {
+                    _isWaitingForAnimation = false;
+                    charactersBase.IsHurting = false;
+                    Debug.Log("            退出 受伤123！" + charactersBase.IsHurting);
+                    State = NodeState.FAILURE;
+                    return State;
+                }
+                else
+                {
+                    // Debug.Log("还没退出受伤  进度：" + stateInfo.normalizedTime);
+                    State = NodeState.SUCCESS;
+                    return State;
+                }
+
+            }
+            Debug.Log("         受伤最后，，，");
+            State = NodeState.FAILURE;
             return State;
         }
     }

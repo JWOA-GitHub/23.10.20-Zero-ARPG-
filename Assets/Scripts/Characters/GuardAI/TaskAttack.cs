@@ -44,7 +44,9 @@ namespace JWOAGameSystem
             if (_attackCounter >= _attackTime)
             {
                 // 禁用 NavMeshAgent 组件
-                _navMeshAgent.enabled = false;
+                _navMeshAgent.ResetPath();
+
+                // _navMeshAgent.enabled = false;
 
                 _animatorController.EnemyState = EnemyState.Attack;
 

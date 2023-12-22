@@ -27,7 +27,7 @@ namespace JWOAGameSystem
 
         public AnimationState[] animationStates; // 存储状态和对应的动画名称
 
-        [HideInInspector] public Animator _animator;
+        public Animator _animator;
         private EnemyState _currentState = EnemyState.Idle;
 
         // private int[] _animationHashes;
@@ -47,7 +47,7 @@ namespace JWOAGameSystem
             }
         }
 
-        private void Start()
+        private void Awake()
         {
             _animator = GetComponent<Animator>();
             foreach (var state in animationStates)
@@ -74,7 +74,8 @@ namespace JWOAGameSystem
             float transitionDuration = GetTransitionDurationForState(_currentState);
             int animationHash = GetAnimationHashForState(_currentState);
 
-            _animator.CrossFade(animationHash, transitionDuration); // 使用动态的动画哈希值和过渡时间
+            _animator.Play(animationHash, (int)transitionDuration, 0f); // 使用动态的动画哈希值和过渡时间
+            // _animator.CrossFade(animationHash, transitionDuration); // 使用动态的动画哈希值和过渡时间
 
             // // 在animationStates数组中找到对应状态的动画名称并播放动画
             // foreach (var state in animationStates)
@@ -111,5 +112,7 @@ namespace JWOAGameSystem
             }
             return 0;
         }
+
+
     }
 }

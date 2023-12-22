@@ -37,7 +37,7 @@ namespace JWOAGameSystem
 
         protected override NodeState OnEvaluate(Transform agent, Blackboard blackboard)
         {
-            Debug.Log("         巡逻··························");
+            // Debug.Log("         巡逻··························");
             _animatorController.EnemyState = EnemyState.Patrol;
             // 巡逻过程中判断敌人是否进入视野范围
             // Transform target = (Transform)GetData("target");
@@ -56,7 +56,7 @@ namespace JWOAGameSystem
             }
             else
             {
-                _navMeshAgent.enabled = true;
+                // _navMeshAgent.enabled = true;
                 Transform wp = _waypoints[_currentWaypointIndex];
                 // if (Vector3.Distance(agent.position, wp.position) < 0.01f)
                 // {

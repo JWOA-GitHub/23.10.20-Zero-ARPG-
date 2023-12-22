@@ -12,22 +12,22 @@ namespace JWOAGameSystem
         public string CharacterName
         {
             get => characterName;
-            set => value = characterName;
+            set => characterName = value;
         }
 
         [SerializeField] private int startingLevel = 1;
-        private int level = 0;
+        private int level = 1;
         public int Level
         {
             get => level;
-            set => value = level;
+            set => level = value;
         }
 
         private int experience;
         public int Exp
         {
             get => experience;
-            set => value = experience;
+            set => experience = value;
         }
 
         private int hp;
@@ -43,25 +43,37 @@ namespace JWOAGameSystem
         /// </summary>
         public int maxMp = 100;
 
-        private int attackDamage;
+        [SerializeField] private int attackDamage = 10;
         public int AttackDamage
         {
             get => attackDamage;
-            set => value = attackDamage;
+            set => attackDamage = value;
         }
 
         private int defense;
         public int Defense
         {
             get => defense;
-            set => value = defense;
+            set => defense = value;
         }
 
         private float movementSpeed;
         public float MovementSpeed
         {
             get => movementSpeed;
-            set => value = movementSpeed;
+            set => movementSpeed = value;
+        }
+
+        private bool isHurting = false;
+        public bool IsHurting
+        {
+            get
+            {
+                // if (isHurting)
+                // Debug.Log(gameObject.name + "受伤了");
+                return isHurting;
+            }
+            set => isHurting = value;
         }
 
         private bool isDead = false;
@@ -69,10 +81,11 @@ namespace JWOAGameSystem
         {
             get
             {
-                Debug.Log("血量  见底： " + (Hp <= 0));
+                if (hp <= 0)
+                    Debug.LogError(gameObject.name + "血量  见底： " + (Hp <= 0));
                 return hp <= 0;
             }
-            protected set => value = isDead;
+            protected set => isDead = value;
         }
 
         #endregion
@@ -138,7 +151,7 @@ namespace JWOAGameSystem
         /// </summary>
         protected virtual void OnHpUpdate()
         {
-            Debug.Log("<color=green>" + $"剩余血量  {Hp} </color>");
+            Debug.Log("<color=green>" + $"{gameObject.name}剩余血量  {Hp} </color>");
         }
 
         protected virtual void Dead()
@@ -149,7 +162,8 @@ namespace JWOAGameSystem
         public virtual void TakeDamage(int damage)
         {
             Hp -= damage;
-            Debug.Log(gameObject.name + " 受伤了");
+            isHurting = true;
+            Debug.Log(gameObject.name + " 受伤了，扣了" + damage);
         }
 
     }

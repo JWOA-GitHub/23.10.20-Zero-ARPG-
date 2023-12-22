@@ -10,17 +10,17 @@ namespace JWOAGameSystem
         public Node Root
         {
             get => _root;
-            protected set => value = _root;
+            protected set => _root = value;
         }
 
         private Blackboard _blackboard;
         public Blackboard Blackboard
         {
             get => _blackboard;
-            set => value = _blackboard;
+            set => _blackboard = value;
         }
 
-        private void Start()
+        private void Awake()
         {
             // _root = SetupTree();
 

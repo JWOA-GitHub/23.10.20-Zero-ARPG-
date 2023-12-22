@@ -10,11 +10,10 @@ namespace JWOAGameSystem
         [SerializeField] private Transform[] waypoints;
 
         [SerializeField] private float speed = 2f;
-        [SerializeField] private float fovRange = 3f;  // 6f
-        [SerializeField] private float attackRange = 1f;
+        [SerializeField] private float fovRange = 6f;  // 6f
+        [SerializeField] private float attackRange = 1.5f;
         [SerializeField] private int attackDamage = 10;
         [SerializeField] private LayerMask enemyLayerMask;
-
 
         protected override Node OnSetupTree()
         {
@@ -26,6 +25,7 @@ namespace JWOAGameSystem
             Blackboard.Add<int>("enemyLayerMask", enemyLayerMask);
 
             Node Root = new Selector(new List<Node>{
+                new CheckHurt(transform),
                 new Sequence(new List<Node>{
                     new CheckEnemyInAttackRange(transform),
                     new TaskAttack(transform),
