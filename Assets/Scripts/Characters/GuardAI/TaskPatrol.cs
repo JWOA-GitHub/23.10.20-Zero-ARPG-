@@ -28,9 +28,11 @@ namespace JWOAGameSystem
             _waypoints = waypoints;
 
             // 设置巡逻起始点
-            _navMeshAgent.SetDestination(_waypoints[_currentWaypointIndex].position);
+            // _navMeshAgent.SetDestination(_waypoints[_currentWaypointIndex].position);
             // _animationHash = Animator.StringToHash(_animationName);
             // _animator.CrossFade(_animationHash, _transitionDuration);
+            // _navMeshAgent.enabled = true;
+
         }
 
         protected override NodeState OnEvaluate(Transform agent, Blackboard blackboard)
@@ -54,6 +56,7 @@ namespace JWOAGameSystem
             }
             else
             {
+                _navMeshAgent.enabled = true;
                 Transform wp = _waypoints[_currentWaypointIndex];
                 // if (Vector3.Distance(agent.position, wp.position) < 0.01f)
                 // {

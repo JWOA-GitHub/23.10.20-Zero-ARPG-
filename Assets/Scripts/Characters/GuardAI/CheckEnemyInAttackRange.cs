@@ -19,8 +19,9 @@ namespace JWOAGameSystem
             _navMeshAgent = transform.GetComponent<NavMeshAgent>();
             _animatorController = transform.GetComponent<EnemyAnimatorController>();
             // 禁用 NavMeshAgent 组件
+            // _navMeshAgent.SetDestination(transform.position);
             _navMeshAgent.enabled = false;
-            _navMeshAgent.SetDestination(transform.position);
+
         }
 
         protected override NodeState OnEvaluate(Transform agent, Blackboard blackboard)
@@ -39,6 +40,7 @@ namespace JWOAGameSystem
 
 
                 Debug.Log("             找到攻击目标                        ···");
+                _navMeshAgent.enabled = false;
                 // _animator.SetBool("Attacking", true);
                 // _animator.SetBool("Walking", false);
 

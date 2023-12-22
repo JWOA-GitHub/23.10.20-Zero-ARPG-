@@ -25,8 +25,7 @@ namespace JWOAGameSystem
             _animatorController = transform.GetComponent<EnemyAnimatorController>();
             _navMeshAgent = transform.GetComponent<NavMeshAgent>();
 
-            // 禁用 NavMeshAgent 组件
-            _navMeshAgent.enabled = false;
+
         }
 
         protected override NodeState OnEvaluate(Transform agent, Blackboard blackboard)
@@ -44,12 +43,17 @@ namespace JWOAGameSystem
             _attackCounter += Time.deltaTime;
             if (_attackCounter >= _attackTime)
             {
+                // 禁用 NavMeshAgent 组件
+                _navMeshAgent.enabled = false;
+
+                _animatorController.EnemyState = EnemyState.Attack;
+
                 // TODO: 敌人受到伤害
                 _player.TakeDamage(blackboard.Get<int>("attackDamage"));
                 Debug.Log("      <color=red>   正在攻击了</color>" + Vector3.Distance(_transform.position, target.position));
                 if (_player.IsDead)
                 {
-                    Debug.Log("      <color=red>             移除了攻击目标</color>");
+                    Debug.Log("      <color=red>            死亡 移除了攻击目标</color>");
                     blackboard.Remove("target");
                     // _animator.SetBool("Attacking", false);
                     // _animator.SetBool("Walking", true);

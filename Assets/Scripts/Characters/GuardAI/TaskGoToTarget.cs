@@ -18,7 +18,7 @@ namespace JWOAGameSystem
             _animatorController = transform.GetComponent<EnemyAnimatorController>();
             _navMeshAgent = transform.GetComponent<NavMeshAgent>();
 
-            _navMeshAgent.enabled = true;
+
         }
 
         // public static float speed = 2f;
@@ -32,11 +32,14 @@ namespace JWOAGameSystem
                 return State;
             }
 
-            Debug.Log("<color=pink>         在追踪？  </color>");
+            Debug.Log("<color=pink>         在gotoTarget 追踪？  </color>");
             if (Vector3.Distance(_transform.position, _target.position) > 0.01f)
             {
                 Debug.Log("<color=green> goto Target </color>");
                 _animatorController.EnemyState = EnemyState.Chase;
+
+                // Agent开启  设置追踪目标
+                _navMeshAgent.enabled = true;
                 _navMeshAgent.SetDestination(_target.position);
                 _navMeshAgent.speed = blackboard.Get<float>("speed");
                 // _transform.position = Vector3.MoveTowards(_transform.position, _target.position, blackboard.Get<float>("speed") * Time.deltaTime);
