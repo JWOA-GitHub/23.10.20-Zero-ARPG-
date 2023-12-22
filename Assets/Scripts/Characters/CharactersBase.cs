@@ -7,6 +7,7 @@ namespace JWOAGameSystem
 {
     public class CharactersBase : MonoBehaviour
     {
+        #region 角色属性
         private string characterName = "JWOA";
         public string CharacterName
         {
@@ -14,6 +15,7 @@ namespace JWOAGameSystem
             set => value = characterName;
         }
 
+        [SerializeField] private int startingLevel = 1;
         private int level = 0;
         public int Level
         {
@@ -40,8 +42,6 @@ namespace JWOAGameSystem
         /// <see cref = "maxMp" />
         /// </summary>
         public int maxMp = 100;
-        [SerializeField] private AudioSource audioSource;
-        [SerializeField] private List<AudioClip> audioClips;
 
         private int attackDamage;
         public int AttackDamage
@@ -63,6 +63,22 @@ namespace JWOAGameSystem
             get => movementSpeed;
             set => value = movementSpeed;
         }
+
+        private bool isDead = false;
+        public bool IsDead
+        {
+            get
+            {
+                Debug.Log("血量  见底： " + (Hp <= 0));
+                return hp <= 0;
+            }
+            protected set => value = isDead;
+        }
+
+        #endregion
+
+        // [SerializeField] private AudioSource audioSource;
+        // [SerializeField] private List<AudioClip> audioClips;
 
         // public List<Skill> skills;
         // public List<Equipment> equipments;
@@ -91,6 +107,16 @@ namespace JWOAGameSystem
 
         public CharactersBase(string name, int startingLevel)
         {
+
+        }
+
+        protected void Awake()
+        {
+            InitializeProperty();
+        }
+
+        public void InitializeProperty()
+        {
             // 初始化属性...
             Hp = maxHp;
             Mp = maxMp;
@@ -100,19 +126,19 @@ namespace JWOAGameSystem
             experience = 0;
         }
 
-        /// <summary> 播放音效
-        /// </summary>
-        /// <param name="index"></param>
-        public void PlayAudio(int index)
-        {
-            audioSource.PlayOneShot(audioClips[index]);
-        }
+        // /// <summary> 播放音效
+        // /// </summary>
+        // /// <param name="index"></param>
+        // public void PlayAudio(int index)
+        // {
+        //     audioSource.PlayOneShot(audioClips[index]);
+        // }
 
         /// <summary> 当HP变化时自动调用
         /// </summary>
         protected virtual void OnHpUpdate()
         {
-
+            Debug.Log("<color=green>" + $"剩余血量  {Hp} </color>");
         }
 
         protected virtual void Dead()
@@ -120,7 +146,7 @@ namespace JWOAGameSystem
 
         }
 
-        public virtual void Hurt(int damage)
+        public virtual void TakeDamage(int damage)
         {
             Hp -= damage;
             Debug.Log(gameObject.name + " 受伤了");

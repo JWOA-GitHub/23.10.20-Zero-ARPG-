@@ -80,7 +80,7 @@ namespace JWOAGameSystem
         #region Reusable Methods
         protected override void OnLAttack()
         {
-            Debug.Log("                                                 111111111111111111");
+            Debug.Log("                                                 NormalAttacking_01_3_State  TO   NormalAttacking_01_4_State");
             stateMachine.ChangeState(stateMachine.NormalAttacking_01_4_State);
         }
 

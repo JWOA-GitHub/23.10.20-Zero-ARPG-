@@ -27,9 +27,20 @@ namespace JWOAGameSystem
 
         // private Dictionary<string, object> _dataContext = new Dictionary<string, object>();
 
+        #region OLD
+        // protected Transform _transform;
+        // protected int _animationHash;
+        // protected string _animationName;
+        // protected Animator _animator;
+        // protected float _transitionDuration;
+        #endregion
+
         public Node()
         {
             parent = null;
+
+            // _animationHash = Animator.StringToHash(_animationName);
+            // _animator.CrossFade(_animationHash, _transitionDuration);
         }
 
         public Node(List<Node> children)
@@ -54,10 +65,10 @@ namespace JWOAGameSystem
         // public virtual NodeState Evaluate() => NodeState.FAILURE;
         public NodeState Evaluate(Transform agent, Blackboard blackboard)
         {
-            Debug.Log($"{GetType().Name} - Entered...");
+            // Debug.Log("<color=green>" + $"{GetType().Name} - Entered..." + "</color>");
             state = OnEvaluate(agent, blackboard);
-            Debug.Log($"{GetType().Name} - {state}");
-            Debug.Log($"{GetType().Name} - Exited...");
+            // Debug.Log("<color=yellow>" + $"{GetType().Name} - {state}" + "</color>");
+            // Debug.Log("<color=white>" + $"{GetType().Name} - Exited..." + "</color>");
 
             return State;
         }

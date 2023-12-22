@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace JWOAGameSystem
 {
     public class CheckHurt : Condition
     {
         private Transform _transform;
-        private Animator _animator;
+        private EnemyAnimatorController _animatorController;
+        private NavMeshAgent _navMeshAgent;
+
         private Health _health;
         private bool isHurting;
         private float _hurtTime;
@@ -16,8 +19,15 @@ namespace JWOAGameSystem
         public CheckHurt(Transform transform)
         {
             _transform = transform;
+            _animatorController = transform.GetComponent<EnemyAnimatorController>();
+            _navMeshAgent = transform.GetComponent<NavMeshAgent>();
+            
+            // 禁用 NavMeshAgent 组件
+            _navMeshAgent.enabled = false;
 
-            _health = transform.GetComponent<Health>();
+            // _health = transform.GetComponent<Health>();
+            // _animationHash = Animator.StringToHash(_animationName);
+            // _animator.CrossFade(_animationHash, _transitionDuration);
         }
 
         protected override NodeState OnEvaluate(Transform agent, Blackboard blackboard)

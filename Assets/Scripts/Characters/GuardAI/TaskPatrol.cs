@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace JWOAGameSystem
 {
     public class TaskPatrol : Action
     {
         private Transform _transform;
-        private Animator _animator;
+        private EnemyAnimatorController _animatorController;
+        private NavMeshAgent _navMeshAgent;
         private Transform[] _waypoints;
 
         private int _currentWaypointIndex = 0;
@@ -19,13 +21,22 @@ namespace JWOAGameSystem
         public TaskPatrol(Transform transform, Transform[] waypoints)
         {
             _transform = transform;
+            _animatorController = transform.GetComponent<EnemyAnimatorController>();
             // _animator = transform.GetComponent<Animator>();
+            _navMeshAgent = transform.GetComponent<NavMeshAgent>();
+
             _waypoints = waypoints;
+
+            // 设置巡逻起始点
+            _navMeshAgent.SetDestination(_waypoints[_currentWaypointIndex].position);
+            // _animationHash = Animator.StringToHash(_animationName);
+            // _animator.CrossFade(_animationHash, _transitionDuration);
         }
 
         protected override NodeState OnEvaluate(Transform agent, Blackboard blackboard)
         {
-            // Debug.Log("         巡逻··························");
+            Debug.Log("         巡逻··························");
+            _animatorController.EnemyState = EnemyState.Patrol;
             // 巡逻过程中判断敌人是否进入视野范围
             // Transform target = (Transform)GetData("target");
             // if (Vector3.Distance(_transform.position, target.position) <= GuardBT.fovRange)
@@ -34,7 +45,7 @@ namespace JWOAGameSystem
             //     return state;
             // }
 
-            float speed = 2f;//blackboard.Get<float>("speed");
+            float speed = blackboard.Get<float>("speed");
             if (_waiting)
             {
                 _waitCounter += Time.deltaTime;
@@ -44,18 +55,23 @@ namespace JWOAGameSystem
             else
             {
                 Transform wp = _waypoints[_currentWaypointIndex];
-                if (Vector3.Distance(agent.position, wp.position) < 0.01f)
-                {
-                    agent.position = wp.position;
-                    _waitCounter = 0f;
-                    _waiting = true;
+                // if (Vector3.Distance(agent.position, wp.position) < 0.01f)
+                // {
+                //     agent.position = wp.position;
+                //     _waitCounter = 0f;
+                //     _waiting = true;
 
-                    _currentWaypointIndex = (_currentWaypointIndex + 1) % _waypoints.Length;
-                }
-                else
+                //     _currentWaypointIndex = (_currentWaypointIndex + 1) % _waypoints.Length;
+                // }
+                // else
+                // {
+                //     agent.position = Vector3.MoveTowards(agent.position, wp.position, speed * Time.deltaTime);
+                //     agent.LookAt(wp.position);
+                // }
+                if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
                 {
-                    agent.position = Vector3.MoveTowards(agent.position, wp.position, speed * Time.deltaTime);
-                    agent.LookAt(wp.position);
+                    _currentWaypointIndex = (_currentWaypointIndex + 1) % _waypoints.Length;
+                    _navMeshAgent.SetDestination(_waypoints[_currentWaypointIndex].position);
                 }
             }
 

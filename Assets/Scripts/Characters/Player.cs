@@ -33,8 +33,10 @@ namespace JWOAGameSystem
             Debug.Log("${ name +     + startingLevel}");
         }
 
-        private void Awake()
+        private new void Awake()
         {
+            base.Awake();
+
             HideCursor();
 
             // TODO：character?

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace JWOAGameSystem
@@ -9,27 +10,31 @@ namespace JWOAGameSystem
         [SerializeField] private Transform[] waypoints;
 
         [SerializeField] private float speed = 2f;
-        private float fovRange = 3f;  // 6f
-        private float attackRange = 1f;
-        private int attackPower = 10;
+        [SerializeField] private float fovRange = 3f;  // 6f
+        [SerializeField] private float attackRange = 1f;
+        [SerializeField] private int attackDamage = 10;
+        [SerializeField] private LayerMask enemyLayerMask;
+
 
         protected override Node OnSetupTree()
         {
+            // Debug.Log((int)enemyLayerMask);
             Blackboard.Add<float>("speed", speed);
             Blackboard.Add<float>("fovRange", fovRange);
             Blackboard.Add<float>("attackRange", attackRange);
-            Blackboard.Add<int>("attackPower", attackPower);
+            Blackboard.Add<int>("attackDamage", attackDamage);
+            Blackboard.Add<int>("enemyLayerMask", enemyLayerMask);
 
             Node Root = new Selector(new List<Node>{
-                new Sequence(new List<Node>{
-                    new CheckEnemyInAttackRange(transform),
-                    new TaskAttack(transform),
-                }),
-                new Sequence(new List<Node>{
+                // new Sequence(new List<Node>{
+                //     new CheckEnemyInAttackRange(transform),
+                //     new TaskAttack(transform),
+                // }),
+                // new Sequence(new List<Node>{
                     new CheckEnemyInFOVRange(transform),
                     new TaskGoToTarget(transform),
-                }),
-                new TaskPatrol(transform, waypoints),
+                // }),
+                // new TaskPatrol(transform, waypoints),
             });
             return Root;
 

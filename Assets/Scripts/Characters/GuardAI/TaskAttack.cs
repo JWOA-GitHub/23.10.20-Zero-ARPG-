@@ -1,23 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace JWOAGameSystem
 {
     public class TaskAttack : Action
     {
-        private Animator _animator;
-
+        private Transform _transform;
         private Transform _lastTarget;
+        private EnemyAnimatorController _animatorController;
+        private NavMeshAgent _navMeshAgent;
+
+
         // private EnemyManager _enemyManager;
-        private Health _playerHealth;
+        private CharactersBase _player;
 
         private float _attackTime = 1f;
         private float _attackCounter = 0f;
 
         public TaskAttack(Transform transform)
         {
-            // _animator = transform.GetComponent<Animator>();
+            _transform = transform;
+            _animatorController = transform.GetComponent<EnemyAnimatorController>();
+            _navMeshAgent = transform.GetComponent<NavMeshAgent>();
+
+            // 禁用 NavMeshAgent 组件
+            _navMeshAgent.enabled = false;
         }
 
         protected override NodeState OnEvaluate(Transform agent, Blackboard blackboard)
@@ -26,17 +35,21 @@ namespace JWOAGameSystem
             if (target != _lastTarget)
             {
                 // _enemyManager = target.GetComponent<EnemyManager>();
-                _playerHealth = target.GetComponent<Health>();
+                _player = target.GetComponent<CharactersBase>();
                 _lastTarget = target;
-            }
 
+                Debug.Log("         更换了攻击目标");
+            }
+            // Debug.Log(" _attackCounter      " + _attackCounter);
             _attackCounter += Time.deltaTime;
             if (_attackCounter >= _attackTime)
             {
                 // TODO: 敌人受到伤害
-                bool enemyIsDead = _playerHealth.TakeDamage(blackboard.Get<int>("attackPower"));
-                if (enemyIsDead)
+                _player.TakeDamage(blackboard.Get<int>("attackDamage"));
+                Debug.Log("      <color=red>   正在攻击了</color>" + Vector3.Distance(_transform.position, target.position));
+                if (_player.IsDead)
                 {
+                    Debug.Log("      <color=red>             移除了攻击目标</color>");
                     blackboard.Remove("target");
                     // _animator.SetBool("Attacking", false);
                     // _animator.SetBool("Walking", true);

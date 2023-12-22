@@ -12,7 +12,7 @@ namespace JWOAGameSystem
         {
             _healthPoints = 30;
         }
-
+    
         public bool TakeHit()
         {
             _healthPoints -= 10;
