@@ -11,7 +11,8 @@ namespace JWOAGameSystem
 
         [SerializeField] private float speed = 2f;
         [SerializeField] private float fovRange = 6f;  // 6f
-        [SerializeField] private float attackRange = 1.5f;
+        [SerializeField] private float shortAttackRange = 1.3f;
+        [SerializeField] private float longAttackRange = 4f;
         [SerializeField] private int attackDamage = 10;
         [SerializeField] private LayerMask enemyLayerMask;
 
@@ -20,14 +21,16 @@ namespace JWOAGameSystem
             // Debug.Log((int)enemyLayerMask);
             Blackboard.Add<float>("speed", speed);
             Blackboard.Add<float>("fovRange", fovRange);
-            Blackboard.Add<float>("attackRange", attackRange);
+            Blackboard.Add<float>("shortAttackRange", shortAttackRange);
+            Blackboard.Add<float>("longAttackRange", longAttackRange);
             Blackboard.Add<int>("attackDamage", attackDamage);
             Blackboard.Add<int>("enemyLayerMask", enemyLayerMask);
 
             Node Root = new Selector(new List<Node>{
+                new CheckDeath(transform),
                 new CheckHurt(transform),
                 new Sequence(new List<Node>{
-                    new CheckEnemyInAttackRange(transform),
+                    new CheckEnemyInShortAttackRange(transform),
                     new TaskAttack(transform),
                 }),
                 new Sequence(new List<Node>{

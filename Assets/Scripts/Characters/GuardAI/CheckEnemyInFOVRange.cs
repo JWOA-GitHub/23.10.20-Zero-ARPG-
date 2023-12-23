@@ -53,8 +53,7 @@ namespace JWOAGameSystem
                     blackboard.Add<Transform>("target", colliders[0].transform);
                     // _animator.SetBool("Walking",true); 
                     _animatorController.EnemyState = EnemyState.Search;
-                    // agent.GetComponent<MonoBehaviour>().StartCoroutine(DelayedSuccess());
-                    // _navMeshAgent.enabled = false;
+
                     _navMeshAgent.ResetPath();
                     _hasSearchedOnce = true; // 设置标志以表明已进行了一次搜索
                                              // 设置标志以等待动画播放完毕
@@ -104,12 +103,5 @@ namespace JWOAGameSystem
             // State = NodeState.SUCCESS;
             // return State;
         }
-
-        // IEnumerator DelayedSuccess()
-        // {
-        //     yield return new WaitForSeconds(3f);
-
-        //     State = NodeState.SUCCESS;
-        // }
     }
 }

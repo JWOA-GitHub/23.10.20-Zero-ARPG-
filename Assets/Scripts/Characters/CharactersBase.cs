@@ -5,6 +5,57 @@ using UnityEngine;
 
 namespace JWOAGameSystem
 {
+    [System.Serializable]
+    public class Skill
+    {
+        public string skillName;
+        public int mpCost;
+        public int damage;
+        public float cooldownTime; // 冷却时间
+        private float cooldownTimer = 0f; // 计时器
+
+        public bool IsOnCooldown()
+        {
+            return cooldownTimer > 0f;
+        }
+
+        public void UseSkill(CharactersBase character)
+        {
+            if (!IsOnCooldown() && character.Mp >= mpCost)
+            {
+                character.Mp -= mpCost;
+                // TODO: 造成伤害值
+                character.TakeDamage(damage);
+                cooldownTimer = cooldownTime; // 启动冷却计时器
+                                              // 其他技能效果的逻辑
+            }
+            else
+            {
+                if (IsOnCooldown())
+                {
+                    Debug.Log(skillName + "    Skill is on cooldown!");
+                }
+                else
+                {
+                    Debug.Log("Not enough MP to use this skill!");
+                }
+                // 其他处理
+            }
+        }
+
+        public void UpdateCooldown()
+        {
+            if (cooldownTimer > 0f)
+            {
+                cooldownTimer -= Time.deltaTime;
+                if (cooldownTimer < 0f)
+                {
+                    cooldownTimer = 0f;
+                }
+            }
+        }
+    }
+
     public class CharactersBase : MonoBehaviour
     {
         #region 角色属性
@@ -81,8 +132,8 @@ namespace JWOAGameSystem
         {
             get
             {
-                if (hp <= 0)
-                    Debug.LogError(gameObject.name + "血量  见底： " + (Hp <= 0));
+                // if (hp <= 0)
+                //     Debug.LogError(gameObject.name + "血量  见底： " + (Hp <= 0));
                 return hp <= 0;
             }
             protected set => isDead = value;
@@ -93,7 +144,7 @@ namespace JWOAGameSystem
         // [SerializeField] private AudioSource audioSource;
         // [SerializeField] private List<AudioClip> audioClips;
 
-        // public List<Skill> skills;
+        public List<Skill> skills;
         // public List<Equipment> equipments;
         // public List<StatusEffect> statusEffects;
 
@@ -128,6 +179,11 @@ namespace JWOAGameSystem
             InitializeProperty();
         }
 
+        private void Update()
+        {
+            UpdateSkillCooldowns();
+        }
+
         public void InitializeProperty()
         {
             // 初始化属性...
@@ -159,12 +215,35 @@ namespace JWOAGameSystem
 
         }
 
+
+        #region Main Methods
         public virtual void TakeDamage(int damage)
         {
             Hp -= damage;
             isHurting = true;
             Debug.Log(gameObject.name + " 受伤了，扣了" + damage);
         }
+
+        private void UpdateSkillCooldowns()
+        {
+            foreach (Skill skill in skills)
+            {
+                skill.UpdateCooldown();
+            }
+        }
+
+        public void UseSkill(int skillIndex)
+        {
+            if (skillIndex >= 0 && skillIndex < skills.Count)
+            {
+                skills[skillIndex].UseSkill(this);
+            }
+            else
+            {
+                Debug.Log(" Invalid skill index!");
+            }
+        }
+        #endregion
 
     }
 }
