@@ -28,7 +28,7 @@ namespace JWOAGameSystem
 
         protected override NodeState OnEvaluate(Transform agent, Blackboard blackboard)
         {
-            Debug.Log("     判断是否受伤    <color=yellow>" + charactersBase.IsHurting + "</color>");
+            // Debug.Log("     判断是否受伤    <color=yellow>" + charactersBase.IsHurting + "</color>");
             // bool isDead = charactersBase.Hp <= 0;
             if (charactersBase.IsDead)
             {
@@ -83,7 +83,7 @@ namespace JWOAGameSystem
                 }
 
             }
-            Debug.Log("         受伤最后，，，");
+            // Debug.Log("         受伤默认failre，，，");
             State = NodeState.FAILURE;
             return State;
         }

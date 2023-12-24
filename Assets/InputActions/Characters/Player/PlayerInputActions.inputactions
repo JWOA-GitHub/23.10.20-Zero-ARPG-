@@ -85,6 +85,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "KillAttack1",
+                    "type": "Button",
+                    "id": "aaf51753-e3ec-4e27-b156-ea8063ef3300",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "KillAttack2",
+                    "type": "Button",
+                    "id": "94b26afa-596a-4679-8870-6134f56133a7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "KillAttack3",
+                    "type": "Button",
+                    "id": "9ed7a1cd-6f57-4aef-9487-71c61c1da62a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "KillAttack4",
+                    "type": "Button",
+                    "id": "36afcdbf-a9f3-417f-9ac2-ea32ca97578e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -239,6 +275,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "RAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9e6753a0-38b9-4df2-a7f9-4bb8a9ce5f70",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KillAttack1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ed5226d5-214d-478a-ade7-10267154dca9",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KillAttack3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ab05d66c-deda-441e-83d0-2cd99aec6891",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KillAttack2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3f4f238-5793-42c0-93c4-8898dd7aa7f4",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KillAttack4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

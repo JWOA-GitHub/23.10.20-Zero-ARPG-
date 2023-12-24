@@ -107,6 +107,42 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""KillAttack1"",
+                    ""type"": ""Button"",
+                    ""id"": ""aaf51753-e3ec-4e27-b156-ea8063ef3300"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""KillAttack2"",
+                    ""type"": ""Button"",
+                    ""id"": ""94b26afa-596a-4679-8870-6134f56133a7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""KillAttack3"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ed7a1cd-6f57-4aef-9487-71c61c1da62a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""KillAttack4"",
+                    ""type"": ""Button"",
+                    ""id"": ""36afcdbf-a9f3-417f-9ac2-ea32ca97578e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -263,6 +299,50 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""RAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9e6753a0-38b9-4df2-a7f9-4bb8a9ce5f70"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KillAttack1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ed5226d5-214d-478a-ade7-10267154dca9"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KillAttack3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab05d66c-deda-441e-83d0-2cd99aec6891"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KillAttack2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3f4f238-5793-42c0-93c4-8898dd7aa7f4"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KillAttack4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -280,6 +360,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_LAttack = m_Player.FindAction("LAttack", throwIfNotFound: true);
         m_Player_RAttack = m_Player.FindAction("RAttack", throwIfNotFound: true);
+        m_Player_KillAttack1 = m_Player.FindAction("KillAttack1", throwIfNotFound: true);
+        m_Player_KillAttack2 = m_Player.FindAction("KillAttack2", throwIfNotFound: true);
+        m_Player_KillAttack3 = m_Player.FindAction("KillAttack3", throwIfNotFound: true);
+        m_Player_KillAttack4 = m_Player.FindAction("KillAttack4", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -350,6 +434,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_LAttack;
     private readonly InputAction m_Player_RAttack;
+    private readonly InputAction m_Player_KillAttack1;
+    private readonly InputAction m_Player_KillAttack2;
+    private readonly InputAction m_Player_KillAttack3;
+    private readonly InputAction m_Player_KillAttack4;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -363,6 +451,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @LAttack => m_Wrapper.m_Player_LAttack;
         public InputAction @RAttack => m_Wrapper.m_Player_RAttack;
+        public InputAction @KillAttack1 => m_Wrapper.m_Player_KillAttack1;
+        public InputAction @KillAttack2 => m_Wrapper.m_Player_KillAttack2;
+        public InputAction @KillAttack3 => m_Wrapper.m_Player_KillAttack3;
+        public InputAction @KillAttack4 => m_Wrapper.m_Player_KillAttack4;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -399,6 +491,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @RAttack.started += instance.OnRAttack;
             @RAttack.performed += instance.OnRAttack;
             @RAttack.canceled += instance.OnRAttack;
+            @KillAttack1.started += instance.OnKillAttack1;
+            @KillAttack1.performed += instance.OnKillAttack1;
+            @KillAttack1.canceled += instance.OnKillAttack1;
+            @KillAttack2.started += instance.OnKillAttack2;
+            @KillAttack2.performed += instance.OnKillAttack2;
+            @KillAttack2.canceled += instance.OnKillAttack2;
+            @KillAttack3.started += instance.OnKillAttack3;
+            @KillAttack3.performed += instance.OnKillAttack3;
+            @KillAttack3.canceled += instance.OnKillAttack3;
+            @KillAttack4.started += instance.OnKillAttack4;
+            @KillAttack4.performed += instance.OnKillAttack4;
+            @KillAttack4.canceled += instance.OnKillAttack4;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -430,6 +534,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @RAttack.started -= instance.OnRAttack;
             @RAttack.performed -= instance.OnRAttack;
             @RAttack.canceled -= instance.OnRAttack;
+            @KillAttack1.started -= instance.OnKillAttack1;
+            @KillAttack1.performed -= instance.OnKillAttack1;
+            @KillAttack1.canceled -= instance.OnKillAttack1;
+            @KillAttack2.started -= instance.OnKillAttack2;
+            @KillAttack2.performed -= instance.OnKillAttack2;
+            @KillAttack2.canceled -= instance.OnKillAttack2;
+            @KillAttack3.started -= instance.OnKillAttack3;
+            @KillAttack3.performed -= instance.OnKillAttack3;
+            @KillAttack3.canceled -= instance.OnKillAttack3;
+            @KillAttack4.started -= instance.OnKillAttack4;
+            @KillAttack4.performed -= instance.OnKillAttack4;
+            @KillAttack4.canceled -= instance.OnKillAttack4;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -458,5 +574,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnLAttack(InputAction.CallbackContext context);
         void OnRAttack(InputAction.CallbackContext context);
+        void OnKillAttack1(InputAction.CallbackContext context);
+        void OnKillAttack2(InputAction.CallbackContext context);
+        void OnKillAttack3(InputAction.CallbackContext context);
+        void OnKillAttack4(InputAction.CallbackContext context);
     }
 }

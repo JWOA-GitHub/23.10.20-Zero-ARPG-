@@ -17,7 +17,10 @@ ModelImporter:
     removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'calf_l'
+      : position error = 1.474269 mm\n\t'calf_r' : position error = 3.013397 mm\n\t'foot_r'
+      : position error = 1.728475 mm\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'GhostSamurai_APose_Attack01_ALL_Inplace' has
       import animation warnings that might lower retargeting quality:\nNote: Activate
@@ -44,9 +47,10 @@ ModelImporter:
       be discarded.\n\t'hand_r' has translation animation that will be discarded.\n\t'head'
       has translation animation that will be discarded.\n\t'calf_l' has translation
       animation that will be discarded.\n\t'foot_l' has translation animation that
-      will be discarded.\n\t'calf_r' has translation animation that will be discarded.\n\t'foot_r'
-      has translation animation that will be discarded.\n\t'ball_r' has translation
-      animation that will be discarded.\n"
+      will be discarded.\n\t'ball_l' has translation animation that will be discarded.\n\t'calf_r'
+      has translation animation that will be discarded.\n\t'foot_r' has translation
+      animation that will be discarded.\n\t'ball_r' has translation animation that
+      will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -77,9 +81,9 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
-      heightFromFeet: 1
+      heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -91,7 +95,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.76699036
+      - time: 0.8485506
         functionName: TriggerOnMovementStateAnimationExitEvent
         data: 
         objectReferenceParameter: {instanceID: 0}

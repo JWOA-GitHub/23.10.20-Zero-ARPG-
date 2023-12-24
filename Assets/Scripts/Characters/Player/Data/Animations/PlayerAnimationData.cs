@@ -44,7 +44,7 @@ namespace JWOAGameSystem
         [Header("Animation Clip Name")]
         [SerializeField] private PlayerNormalAttack_AnimationData normalAttack_AnimationData;
 
-
+        public Animator animator;
         public AnimatorStateInfo animatorStateInfo;
 
         public PlayerNormalAttack_AnimationData NormalAttack_AnimationData { get => normalAttack_AnimationData; }

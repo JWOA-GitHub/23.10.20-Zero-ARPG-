@@ -15,7 +15,12 @@ namespace JWOAGameSystem
         #region IState Methods
         public override void Enter()
         {
+
             base.Enter();
+
+            // Attack中获取当前正在播放的动画状态信息 设置当前状态对应AnimationName
+            stateName = stateMachine.Player.AnimationData.NormalAttack_AnimationData.NormalAttack_01_1_StateName;
+
             // Debug.LogError(stateMachine.ReusableData.ShouldLightCombo);
             // stateMachine.Player.Animator.Play(stateName);
             StartAnimation(stateMachine.Player.AnimationData.NormalAttack_01_1_ParameterHash);
@@ -100,8 +105,38 @@ namespace JWOAGameSystem
         {
             // stateMachine.ReusableData.ShouldLightCombo = true;
             base.OnLAttackComboStarted(context);
-            // Debug.Log("attack  1111111");
-            // if (stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.7f)
+            Debug.Log("attack  1111111");
+            // 获取当前正在播放的动画状态信息
+            AnimatorStateInfo stateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
+
+            // 获取当前正在播放的动画状态信息
+            // AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+            // 要比较的动画名称
+            // string animationToCheck = stateMachine.Player.AnimationData.NormalAttack_AnimationData.NormalAttack_1_StateName;
+
+            // // 检查当前播放的动画是否与指定的动画名称匹配
+            // if (stateInfo.IsName(animationToCheck))
+            // {
+            //     Debug.Log("当前播放的动画是：" + animationToCheck);
+            //     // 在这里执行你想要的操作
+            // }
+            // else
+            // {
+            //     Debug.Log("当前没有播放指定的动画：" + animationToCheck);
+            // }
+
+            // // 获取当前播放动画的名称
+            // string currentAnimationName = stateInfo.IsName(stateMachine.Player.AnimationData.NormalAttack_AnimationData.NormalAttack_1_StateName) ? "YourAnimationNameHere" : "Not Playing";
+            // // string currentAnimationName = stateMachine.Player.AnimationData.NormalAttack_AnimationData.NormalAttack_1_StateName;
+            // Debug.Log("当前播放的动画名称：" + currentAnimationName);
+            if (stateMachine.Player.AnimationData.animatorStateInfo.IsName(stateName) && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.1f)
+            {
+                Debug.Log("<color=yellow>  连击22222222222222222</color>");
+                OnLAttack();
+                return;
+            }
+
             // Debug.Log(stateMachine.Player.AnimationData.animatorStateInfo.IsTag("combo_01_1") && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.5f);
             // if (stateMachine.Player.AnimationData.animatorStateInfo.IsTag("combo_01_1") && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.5f)
             // // {
@@ -118,6 +153,13 @@ namespace JWOAGameSystem
         protected override void OnRAttackComboStarted(InputAction.CallbackContext context)
         {
             base.OnRAttackComboStarted(context);
+
+            if (stateMachine.Player.AnimationData.animatorStateInfo.IsName(stateName) && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.1f)
+            {
+                Debug.Log("<color=green>  轻连击1111 回 重·1111111</color>");
+                OnRAttack();
+                return;
+            }
         }
         #endregion
 

@@ -13,6 +13,9 @@ namespace JWOAGameSystem
         #region IState Methods
         public override void Enter()
         {
+            // 获取当前正在播放的动画状态信息
+            stateMachine.Player.AnimationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
+
             base.Enter();
 
             StartAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
@@ -51,7 +54,7 @@ namespace JWOAGameSystem
         {
             base.OnAnimationEnterEvent();
 
-            
+
         }
         #endregion
 

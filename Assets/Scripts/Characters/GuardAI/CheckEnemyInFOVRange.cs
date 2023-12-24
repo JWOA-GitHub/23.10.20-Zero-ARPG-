@@ -43,10 +43,11 @@ namespace JWOAGameSystem
                 // Debug.Log("<color=yellow> 检查范围中 搜索target 范围" + blackboard.Get<float>("fovRange") + " 搜索layermash " + blackboard.Get<int>("enemyLayerMask") + " </color>");
                 Collider[] colliders = Physics.OverlapSphere(_transform.position, blackboard.Get<float>("fovRange"), blackboard.Get<int>("enemyLayerMask"));
 
-                Debug.Log("<color=yellow>检测到几个  " + colliders.Length + "</color>");
+                // Debug.Log("<color=yellow>检测到几个  " + colliders.Length + "</color>");
 
                 if (colliders.Length > 0)
                 {
+                    Debug.Log("<color=yellow>检测到几个  " + colliders.Length + "</color>");
 
                     // 根目录 root 结点 比 它 高两层
                     // parent.parent.SetData("target", colliders[0].transform);

@@ -15,11 +15,14 @@ namespace JWOAGameSystem
         #region IState Methods
         public override void Enter()
         {
+            // // 获取当前正在播放的动画状态信息
             // stateMachine.Player.AnimationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
 
-            // stateName = stateMachine.Player.AnimationData.NormalAttack_AnimationData.NormalAttack_3_StateName;
-
             base.Enter();
+
+            // Attack中获取当前正在播放的动画状态信息 设置当前状态对应AnimationName
+            stateName = stateMachine.Player.AnimationData.NormalAttack_AnimationData.NormalAttack_01_3_StateName;
+
             // stateMachine.Player.Animator.Play(stateName);
             StartAnimation(stateMachine.Player.AnimationData.NormalAttack_01_3_ParameterHash);
 
@@ -94,12 +97,25 @@ namespace JWOAGameSystem
         protected override void OnLAttackComboStarted(InputAction.CallbackContext context)
         {
             base.OnLAttackComboStarted(context);
-            // stateMachine.ReusableData.ShouldLightCombo = true;
+
+            if (stateMachine.Player.AnimationData.animatorStateInfo.IsName(stateName) && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.1f)
+            {
+                Debug.Log("<color=yellow>  连击444444</color>");
+                OnLAttack();
+                return;
+            }
         }
 
         protected override void OnRAttackComboStarted(InputAction.CallbackContext context)
         {
             base.OnRAttackComboStarted(context);
+
+            if (stateMachine.Player.AnimationData.animatorStateInfo.IsName(stateName) && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.1f)
+            {
+                Debug.Log("<color=green>  轻连击333333333 回 重·1111111</color>");
+                OnRAttack();
+                return;
+            }
         }
         #endregion
 
