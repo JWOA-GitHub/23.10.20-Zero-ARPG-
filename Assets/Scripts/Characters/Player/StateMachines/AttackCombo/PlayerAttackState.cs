@@ -6,6 +6,8 @@ namespace JWOAGameSystem
     public class PlayerAttackState : PlayerBaseGroundedState
     {
         [SerializeField] protected string stateName = "combo_01_1";
+        protected bool isLightComboCache = false;
+        protected bool isHeavyComboCache = false;
         public PlayerAttackState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
@@ -54,7 +56,14 @@ namespace JWOAGameSystem
         {
             base.OnAnimationEnterEvent();
 
+        }
 
+        public override void OnAnimationExitEvent()
+        {
+            base.OnAnimationExitEvent();
+
+            if (isLightComboCache || isHeavyComboCache)
+                return;
         }
         #endregion
 
@@ -63,6 +72,9 @@ namespace JWOAGameSystem
         {
             stateMachine.ReusableData.ShouldLightCombo = false;
             stateMachine.ReusableData.ShouldHeavyCombo = false;
+
+            isLightComboCache = false;
+            isHeavyComboCache = false;
         }
 
         protected override void AddInputActionsCallbacks()
@@ -97,11 +109,16 @@ namespace JWOAGameSystem
         protected override void OnLAttackComboStarted(InputAction.CallbackContext context)
         {
             stateMachine.ReusableData.ShouldLightCombo = true;
+
+            isLightComboCache = true;
+
         }
 
         protected override void OnRAttackComboStarted(InputAction.CallbackContext context)
         {
             stateMachine.ReusableData.ShouldHeavyCombo = true;
+
+            isHeavyComboCache = true;
         }
         #endregion
     }
