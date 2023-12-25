@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace JWOAGameSystem
 {
-    public class PlayerNormalAttacking_01_3_State : PlayerAttackState
+    public class PlayerNormalAttacking_01_3_State : PlayerAttackComboState
     {
         public PlayerNormalAttacking_01_3_State(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {

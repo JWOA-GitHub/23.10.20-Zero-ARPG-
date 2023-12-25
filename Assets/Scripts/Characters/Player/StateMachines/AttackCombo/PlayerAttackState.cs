@@ -20,7 +20,7 @@ namespace JWOAGameSystem
 
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
+            StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
 
             // StopAnimation(stateMachine.Player.AnimationData.NormalAttack_1_ParameterHash);
 
@@ -39,7 +39,7 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
+            StopAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
 
             ResetCombo();
         }

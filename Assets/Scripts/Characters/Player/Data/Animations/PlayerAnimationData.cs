@@ -12,7 +12,9 @@ namespace JWOAGameSystem
         [SerializeField] private string stoppingParameterName = "Stopping";
         [SerializeField] private string landingParameterName = "Landing";
         [SerializeField] private string airborneParameterName = "Airborne";
+        [SerializeField] private string attackParameterName = "Attack";
         [SerializeField] private string attackComboParameterName = "AttackCombo";
+        [SerializeField] private string attackSkillsParameterName = "AttackSkills";
 
         [Header("Grounded Parameter Names")] // 默认为run
         [SerializeField] private string idleParameterName = "isIdling";
@@ -40,6 +42,12 @@ namespace JWOAGameSystem
         // [SerializeField] private string normalAttack_02_4_ParameterName = "isNormalAttacking_02_4";
         // [SerializeField] private string normalAttack_02_5_ParameterName = "isNormalAttacking_02_5";
 
+        [Header("Skills Parameter Names")]
+        [SerializeField] private string skillsAttack_1_ParameterName = "isSkillsAttacking_1";
+        [SerializeField] private string skillsAttack_2_ParameterName = "isSkillsAttacking_2";
+        [SerializeField] private string skillsAttack_3_ParameterName = "isSkillsAttacking_2";
+        [SerializeField] private string skillsAttack_4_ParameterName = "isSkillsAttacking_4";
+
 
         [Header("Animation Clip Name")]
         [SerializeField] private PlayerNormalAttack_AnimationData normalAttack_AnimationData;
@@ -54,7 +62,9 @@ namespace JWOAGameSystem
         public int StoppingParameterHash { get; private set; }
         public int LandingParameterHash { get; private set; }
         public int AirborneParameterHash { get; private set; }
+        public int AttackParameterHash { get; private set; }
         public int AttackComboParameterHash { get; private set; }
+        public int AttackSkillsParameterHash { get; private set; }
 
         public int IdleParameterHash { get; private set; }
         public int DashParameterHash { get; private set; }
@@ -77,6 +87,10 @@ namespace JWOAGameSystem
         public int NormalAttack_02_3_ParameterHash { get; private set; }
         // public int NormalAttack_02_4_ParameterHash { get; private set; }
         // public int NormalAttack_02_5_ParameterHash { get; private set; }
+        public int SkillsAttack_1_ParameterHash { get; private set; }
+        public int SkillsAttack_2_ParameterHash { get; private set; }
+        public int SkillsAttack_3_ParameterHash { get; private set; }
+        public int SkillsAttack_4_ParameterHash { get; private set; }
 
         public void Initialize()
         {
@@ -85,6 +99,8 @@ namespace JWOAGameSystem
             StoppingParameterHash = Animator.StringToHash(stoppingParameterName);
             LandingParameterHash = Animator.StringToHash(landingParameterName);
             AirborneParameterHash = Animator.StringToHash(airborneParameterName);
+
+            AttackParameterHash = Animator.StringToHash(attackParameterName);
             AttackComboParameterHash = Animator.StringToHash(attackComboParameterName);
 
             IdleParameterHash = Animator.StringToHash(idleParameterName);
@@ -109,6 +125,12 @@ namespace JWOAGameSystem
             NormalAttack_02_3_ParameterHash = Animator.StringToHash(normalAttack_02_3_ParameterName);
             // NormalAttack_02_4_ParameterHash = Animator.StringToHash(normalAttack_02_4_ParameterName);
             // NormalAttack_02_5_ParameterHash = Animator.StringToHash(normalAttack_02_5_ParameterName);
+
+            SkillsAttack_1_ParameterHash = Animator.StringToHash(skillsAttack_1_ParameterName);
+            SkillsAttack_2_ParameterHash = Animator.StringToHash(skillsAttack_2_ParameterName);
+            SkillsAttack_3_ParameterHash = Animator.StringToHash(skillsAttack_3_ParameterName);
+            SkillsAttack_4_ParameterHash = Animator.StringToHash(skillsAttack_4_ParameterName);
+
         }
 
 
