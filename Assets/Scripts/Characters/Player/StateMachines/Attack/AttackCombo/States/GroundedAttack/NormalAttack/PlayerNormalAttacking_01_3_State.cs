@@ -65,8 +65,6 @@ namespace JWOAGameSystem
                 return;
             }
             // Debug.Log("      33333333");
-            stateMachine.ReusableData.isComboing = false;
-            stateMachine.ChangeState(stateMachine.IdingState);
         }
 
         public override void OnAnimationExitEvent()
@@ -74,6 +72,7 @@ namespace JWOAGameSystem
             base.OnAnimationExitEvent();
             // if (stateMachine.ReusableData.ShouldLightCombo)
             // {
+            stateMachine.ReusableData.isComboing = false;
             stateMachine.ChangeState(stateMachine.IdingState);
             //     stateMachine.ChangeState(stateMachine.NormalAttacking_1_State);
             // }

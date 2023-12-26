@@ -69,14 +69,15 @@ namespace JWOAGameSystem
                 OnRAttack();
             }
 
-            stateMachine.ReusableData.isComboing = false;
-            stateMachine.ChangeState(stateMachine.IdingState);
+
         }
 
         public override void OnAnimationExitEvent()
         {
             base.OnAnimationExitEvent();
 
+            stateMachine.ReusableData.isComboing = false;
+            stateMachine.ChangeState(stateMachine.IdingState);
             // if (stateMachine.ReusableData.ShouldLightCombo)
             // {
             //     stateMachine.ChangeState(stateMachine.NormalAttacking_3_State);

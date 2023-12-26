@@ -45,6 +45,9 @@ namespace JWOAGameSystem
         /// </summary>
         public bool ShouldHeavyCombo;
 
+        public bool isLightComboCache;
+        public bool isHeavyComboCache;
+
         public bool isComboing { get; set; }
 
         // MARKER： 创建Vector3 是因为在后面的“滑动系统”中，需要“x”和“z”轴的值！！！！

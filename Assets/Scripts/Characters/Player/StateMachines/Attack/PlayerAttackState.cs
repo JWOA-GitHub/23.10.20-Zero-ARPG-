@@ -6,8 +6,6 @@ namespace JWOAGameSystem
     public class PlayerAttackState : PlayerBaseGroundedState
     {
         [SerializeField] protected string stateName = "combo_01_1";
-        protected bool isLightComboCache = false;
-        protected bool isHeavyComboCache = false;
         public PlayerAttackState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
@@ -61,9 +59,14 @@ namespace JWOAGameSystem
         public override void OnAnimationExitEvent()
         {
             base.OnAnimationExitEvent();
+            string scriptName = GetType().Name;
 
-            if (isLightComboCache || isHeavyComboCache)
+            Debug.Log("<color=yellow>  Exit  return前        Script name: " + scriptName + "</color>");
+
+            if (stateMachine.ReusableData.isLightComboCache || stateMachine.ReusableData.isHeavyComboCache)
                 return;
+
+            Debug.Log("<color=red>  Exit  Return   后         Script name: " + scriptName + "</color>");
         }
         #endregion
 
@@ -73,8 +76,8 @@ namespace JWOAGameSystem
             stateMachine.ReusableData.ShouldLightCombo = false;
             stateMachine.ReusableData.ShouldHeavyCombo = false;
 
-            isLightComboCache = false;
-            isHeavyComboCache = false;
+            stateMachine.ReusableData.isLightComboCache = false;
+            stateMachine.ReusableData.isHeavyComboCache = false;
         }
 
         protected override void AddInputActionsCallbacks()
@@ -110,14 +113,14 @@ namespace JWOAGameSystem
         {
             stateMachine.ReusableData.ShouldLightCombo = true;
 
-            isLightComboCache = true;
+            stateMachine.ReusableData.isLightComboCache = true;
         }
 
         protected override void OnRAttackComboStarted(InputAction.CallbackContext context)
         {
             stateMachine.ReusableData.ShouldHeavyCombo = true;
 
-            isHeavyComboCache = true;
+            stateMachine.ReusableData.isHeavyComboCache = true;
         }
         #endregion
     }

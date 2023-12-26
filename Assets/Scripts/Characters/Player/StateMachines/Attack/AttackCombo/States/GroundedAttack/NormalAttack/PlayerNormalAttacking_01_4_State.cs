@@ -26,6 +26,7 @@ namespace JWOAGameSystem
             StartAnimation(stateMachine.Player.AnimationData.NormalAttack_01_4_ParameterHash);
 
             // stateMachine.Player.Input.PlayerActions.LAttack.Disable();
+            // 最后一击的僵直  无法移动！
             stateMachine.Player.Input.PlayerActions.Movement.Disable();
         }
 
@@ -64,8 +65,6 @@ namespace JWOAGameSystem
                 return;
             }
             // Debug.Log("      33333333");
-            stateMachine.ReusableData.isComboing = false;
-            stateMachine.ChangeState(stateMachine.IdingState);
         }
 
         public override void OnAnimationExitEvent()
@@ -73,6 +72,7 @@ namespace JWOAGameSystem
             base.OnAnimationExitEvent();
             // if (stateMachine.ReusableData.ShouldLightCombo)
             // {
+            stateMachine.ReusableData.isComboing = false;
             stateMachine.ChangeState(stateMachine.IdingState);
             //     stateMachine.ChangeState(stateMachine.NormalAttacking_1_State);
             // }

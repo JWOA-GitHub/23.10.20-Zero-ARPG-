@@ -55,15 +55,14 @@ namespace JWOAGameSystem
                 return;
             }
 
-            // TODO：在非攻击状态 设置
-            stateMachine.ReusableData.isComboing = false;
-            stateMachine.ChangeState(stateMachine.IdingState);
         }
 
         public override void OnAnimationExitEvent()
         {
             base.OnAnimationExitEvent();
 
+            // TODO：在非攻击状态 设置
+            stateMachine.ReusableData.isComboing = false;
             stateMachine.ChangeState(stateMachine.IdingState);
         }
         #endregion
