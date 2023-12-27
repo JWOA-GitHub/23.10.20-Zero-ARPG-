@@ -59,14 +59,9 @@ namespace JWOAGameSystem
         public override void OnAnimationExitEvent()
         {
             base.OnAnimationExitEvent();
-            string scriptName = GetType().Name;
-
-            Debug.Log("<color=yellow>  Exit  return前        Script name: " + scriptName + "</color>");
 
             if (stateMachine.ReusableData.isLightComboCache || stateMachine.ReusableData.isHeavyComboCache)
                 return;
-
-            Debug.Log("<color=red>  Exit  Return   后         Script name: " + scriptName + "</color>");
         }
         #endregion
 
@@ -121,6 +116,26 @@ namespace JWOAGameSystem
             stateMachine.ReusableData.ShouldHeavyCombo = true;
 
             stateMachine.ReusableData.isHeavyComboCache = true;
+        }
+
+        protected override void OnSkillAttack1Started(InputAction.CallbackContext context)
+        {
+            base.OnSkillAttack1Started(context);
+        }
+
+        protected override void OnSkillAttack2Started(InputAction.CallbackContext context)
+        {
+            base.OnSkillAttack2Started(context);
+        }
+
+        protected override void OnSkillAttack3Started(InputAction.CallbackContext context)
+        {
+            base.OnSkillAttack3Started(context);
+        }
+
+        protected override void OnSkillAttack4Started(InputAction.CallbackContext context)
+        {
+            base.OnSkillAttack4Started(context);
         }
         #endregion
     }

@@ -72,6 +72,8 @@ namespace JWOAGameSystem
         #endregion
 
         #region Reusable Methods
+        
+
         // protected void ResetCombo()
         // {   
         //     stateMachine.ReusableData.ShouldLightCombo = false;
@@ -81,36 +83,36 @@ namespace JWOAGameSystem
         //     isHeavyComboCache = false;
         // }
 
-        // protected override void AddInputActionsCallbacks()
+        // protected override void AddActionsCallbacks()
         // {
-        //     base.AddInputActionsCallbacks();
+        //     base.AddActionsCallbacks();
 
-        //     stateMachine.Player.Input.PlayerActions.Movement.started += OnMovementStarted;
+        //     stateMachine.Player..PlayerActions.Movement.started += OnMovementStarted;
         // }
 
-        // protected override void RemoveInputActionsCallbacks()
+        // protected override void RemoveActionsCallbacks()
         // {
-        //     base.RemoveInputActionsCallbacks();
+        //     base.RemoveActionsCallbacks();
 
-        //     stateMachine.Player.Input.PlayerActions.Movement.started -= OnMovementStarted;
+        //     stateMachine.Player..PlayerActions.Movement.started -= OnMovementStarted;
         // }
         // #endregion
 
-        // #region Input Methods
-        // // protected override void OnAttackComboStarted(InputAction.CallbackContext context)
+        // #region  Methods
+        // // protected override void OnAttackComboStarted(Action.CallbackContext context)
         // // {
         // //     base.OnAttackComboStarted(context);
 
         // //     // stateMachine.ReusableData.ShouldLightCombo = true;
         // //     // OnAttack();
         // // }
-        // private void OnMovementStarted(InputAction.CallbackContext context)
+        // private void OnMovementStarted(Action.CallbackContext context)
         // {
         //     // 负责切换到移动状态
         //     OnMove();
         // }
 
-        // protected override void OnLAttackComboStarted(InputAction.CallbackContext context)
+        // protected override void OnLAttackComboStarted(Action.CallbackContext context)
         // {
         //     stateMachine.ReusableData.ShouldLightCombo = true;
 
@@ -118,7 +120,7 @@ namespace JWOAGameSystem
 
         // }
 
-        // protected override void OnRAttackComboStarted(InputAction.CallbackContext context)
+        // protected override void OnRAttackComboStarted(Action.CallbackContext context)
         // {
         //     stateMachine.ReusableData.ShouldHeavyCombo = true;
 

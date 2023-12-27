@@ -30,11 +30,14 @@ namespace JWOAGameSystem
 
         public Player(string name, int startingLevel) : base(name, startingLevel)
         {
-            Debug.Log("${ name +     + startingLevel}");
+            Debug.Log($"player:  {name}     {startingLevel}");
         }
 
         private new void Awake()
         {
+            // Data.weapon = GameObject.FindGameObjectWithTag("MoonSword");
+            GameObject wea = Instantiate(Data.weapon, transform.position, Quaternion.identity);
+            Debug.LogError("   " + Data.weapon.activeInHierarchy + "    " + wea.name);
             base.Awake();
 
             HideCursor();

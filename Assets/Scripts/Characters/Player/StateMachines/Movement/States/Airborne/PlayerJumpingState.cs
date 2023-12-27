@@ -145,6 +145,7 @@ namespace JWOAGameSystem
             // 跳跃前移除速度，防止影响“跳跃”力
             ResetVelocity();
 
+            // TODO:character
             stateMachine.Player.Rigidbody.AddForce(jumpForce, ForceMode.VelocityChange); // 与时间质量无关
         }
         #endregion

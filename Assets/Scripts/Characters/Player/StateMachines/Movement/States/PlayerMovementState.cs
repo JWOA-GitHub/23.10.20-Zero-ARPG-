@@ -120,6 +120,8 @@ namespace JWOAGameSystem
         {
             if (stateMachine.Player.LayerData.IsGroundLayer(collider.gameObject.layer))
             {
+                Debug.Log("             qqqqqq  "+collider.gameObject.layer);
+
                 OnContactWithGround(collider);
 
                 return;
@@ -128,6 +130,7 @@ namespace JWOAGameSystem
 
         public virtual void OnTriggerExit(Collider collider)
         {
+            Debug.Log("             eeeeee  "+collider.gameObject.layer);
             if (stateMachine.Player.LayerData.IsGroundLayer(collider.gameObject.layer))
             {
                 OnContactWithGroundExited(collider);

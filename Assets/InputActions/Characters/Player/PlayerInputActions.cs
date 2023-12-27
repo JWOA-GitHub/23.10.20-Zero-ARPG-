@@ -109,7 +109,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""KillAttack1"",
+                    ""name"": ""SkillAttack1"",
                     ""type"": ""Button"",
                     ""id"": ""aaf51753-e3ec-4e27-b156-ea8063ef3300"",
                     ""expectedControlType"": ""Button"",
@@ -118,7 +118,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""KillAttack2"",
+                    ""name"": ""SkillAttack2"",
                     ""type"": ""Button"",
                     ""id"": ""94b26afa-596a-4679-8870-6134f56133a7"",
                     ""expectedControlType"": ""Button"",
@@ -127,7 +127,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""KillAttack3"",
+                    ""name"": ""SkillAttack3"",
                     ""type"": ""Button"",
                     ""id"": ""9ed7a1cd-6f57-4aef-9487-71c61c1da62a"",
                     ""expectedControlType"": ""Button"",
@@ -136,7 +136,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""KillAttack4"",
+                    ""name"": ""SkillAttack4"",
                     ""type"": ""Button"",
                     ""id"": ""36afcdbf-a9f3-417f-9ac2-ea32ca97578e"",
                     ""expectedControlType"": ""Button"",
@@ -307,7 +307,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""KillAttack1"",
+                    ""action"": ""SkillAttack1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -318,7 +318,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""KillAttack3"",
+                    ""action"": ""SkillAttack3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -329,7 +329,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""KillAttack2"",
+                    ""action"": ""SkillAttack2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -340,7 +340,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""KillAttack4"",
+                    ""action"": ""SkillAttack4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -360,10 +360,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_LAttack = m_Player.FindAction("LAttack", throwIfNotFound: true);
         m_Player_RAttack = m_Player.FindAction("RAttack", throwIfNotFound: true);
-        m_Player_KillAttack1 = m_Player.FindAction("KillAttack1", throwIfNotFound: true);
-        m_Player_KillAttack2 = m_Player.FindAction("KillAttack2", throwIfNotFound: true);
-        m_Player_KillAttack3 = m_Player.FindAction("KillAttack3", throwIfNotFound: true);
-        m_Player_KillAttack4 = m_Player.FindAction("KillAttack4", throwIfNotFound: true);
+        m_Player_SkillAttack1 = m_Player.FindAction("SkillAttack1", throwIfNotFound: true);
+        m_Player_SkillAttack2 = m_Player.FindAction("SkillAttack2", throwIfNotFound: true);
+        m_Player_SkillAttack3 = m_Player.FindAction("SkillAttack3", throwIfNotFound: true);
+        m_Player_SkillAttack4 = m_Player.FindAction("SkillAttack4", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -434,10 +434,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_LAttack;
     private readonly InputAction m_Player_RAttack;
-    private readonly InputAction m_Player_KillAttack1;
-    private readonly InputAction m_Player_KillAttack2;
-    private readonly InputAction m_Player_KillAttack3;
-    private readonly InputAction m_Player_KillAttack4;
+    private readonly InputAction m_Player_SkillAttack1;
+    private readonly InputAction m_Player_SkillAttack2;
+    private readonly InputAction m_Player_SkillAttack3;
+    private readonly InputAction m_Player_SkillAttack4;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -451,10 +451,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @LAttack => m_Wrapper.m_Player_LAttack;
         public InputAction @RAttack => m_Wrapper.m_Player_RAttack;
-        public InputAction @KillAttack1 => m_Wrapper.m_Player_KillAttack1;
-        public InputAction @KillAttack2 => m_Wrapper.m_Player_KillAttack2;
-        public InputAction @KillAttack3 => m_Wrapper.m_Player_KillAttack3;
-        public InputAction @KillAttack4 => m_Wrapper.m_Player_KillAttack4;
+        public InputAction @SkillAttack1 => m_Wrapper.m_Player_SkillAttack1;
+        public InputAction @SkillAttack2 => m_Wrapper.m_Player_SkillAttack2;
+        public InputAction @SkillAttack3 => m_Wrapper.m_Player_SkillAttack3;
+        public InputAction @SkillAttack4 => m_Wrapper.m_Player_SkillAttack4;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -491,18 +491,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @RAttack.started += instance.OnRAttack;
             @RAttack.performed += instance.OnRAttack;
             @RAttack.canceled += instance.OnRAttack;
-            @KillAttack1.started += instance.OnKillAttack1;
-            @KillAttack1.performed += instance.OnKillAttack1;
-            @KillAttack1.canceled += instance.OnKillAttack1;
-            @KillAttack2.started += instance.OnKillAttack2;
-            @KillAttack2.performed += instance.OnKillAttack2;
-            @KillAttack2.canceled += instance.OnKillAttack2;
-            @KillAttack3.started += instance.OnKillAttack3;
-            @KillAttack3.performed += instance.OnKillAttack3;
-            @KillAttack3.canceled += instance.OnKillAttack3;
-            @KillAttack4.started += instance.OnKillAttack4;
-            @KillAttack4.performed += instance.OnKillAttack4;
-            @KillAttack4.canceled += instance.OnKillAttack4;
+            @SkillAttack1.started += instance.OnSkillAttack1;
+            @SkillAttack1.performed += instance.OnSkillAttack1;
+            @SkillAttack1.canceled += instance.OnSkillAttack1;
+            @SkillAttack2.started += instance.OnSkillAttack2;
+            @SkillAttack2.performed += instance.OnSkillAttack2;
+            @SkillAttack2.canceled += instance.OnSkillAttack2;
+            @SkillAttack3.started += instance.OnSkillAttack3;
+            @SkillAttack3.performed += instance.OnSkillAttack3;
+            @SkillAttack3.canceled += instance.OnSkillAttack3;
+            @SkillAttack4.started += instance.OnSkillAttack4;
+            @SkillAttack4.performed += instance.OnSkillAttack4;
+            @SkillAttack4.canceled += instance.OnSkillAttack4;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -534,18 +534,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @RAttack.started -= instance.OnRAttack;
             @RAttack.performed -= instance.OnRAttack;
             @RAttack.canceled -= instance.OnRAttack;
-            @KillAttack1.started -= instance.OnKillAttack1;
-            @KillAttack1.performed -= instance.OnKillAttack1;
-            @KillAttack1.canceled -= instance.OnKillAttack1;
-            @KillAttack2.started -= instance.OnKillAttack2;
-            @KillAttack2.performed -= instance.OnKillAttack2;
-            @KillAttack2.canceled -= instance.OnKillAttack2;
-            @KillAttack3.started -= instance.OnKillAttack3;
-            @KillAttack3.performed -= instance.OnKillAttack3;
-            @KillAttack3.canceled -= instance.OnKillAttack3;
-            @KillAttack4.started -= instance.OnKillAttack4;
-            @KillAttack4.performed -= instance.OnKillAttack4;
-            @KillAttack4.canceled -= instance.OnKillAttack4;
+            @SkillAttack1.started -= instance.OnSkillAttack1;
+            @SkillAttack1.performed -= instance.OnSkillAttack1;
+            @SkillAttack1.canceled -= instance.OnSkillAttack1;
+            @SkillAttack2.started -= instance.OnSkillAttack2;
+            @SkillAttack2.performed -= instance.OnSkillAttack2;
+            @SkillAttack2.canceled -= instance.OnSkillAttack2;
+            @SkillAttack3.started -= instance.OnSkillAttack3;
+            @SkillAttack3.performed -= instance.OnSkillAttack3;
+            @SkillAttack3.canceled -= instance.OnSkillAttack3;
+            @SkillAttack4.started -= instance.OnSkillAttack4;
+            @SkillAttack4.performed -= instance.OnSkillAttack4;
+            @SkillAttack4.canceled -= instance.OnSkillAttack4;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -574,9 +574,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnLAttack(InputAction.CallbackContext context);
         void OnRAttack(InputAction.CallbackContext context);
-        void OnKillAttack1(InputAction.CallbackContext context);
-        void OnKillAttack2(InputAction.CallbackContext context);
-        void OnKillAttack3(InputAction.CallbackContext context);
-        void OnKillAttack4(InputAction.CallbackContext context);
+        void OnSkillAttack1(InputAction.CallbackContext context);
+        void OnSkillAttack2(InputAction.CallbackContext context);
+        void OnSkillAttack3(InputAction.CallbackContext context);
+        void OnSkillAttack4(InputAction.CallbackContext context);
     }
 }

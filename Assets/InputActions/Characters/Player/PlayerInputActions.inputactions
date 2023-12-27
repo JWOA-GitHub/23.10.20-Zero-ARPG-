@@ -87,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "KillAttack1",
+                    "name": "SkillAttack1",
                     "type": "Button",
                     "id": "aaf51753-e3ec-4e27-b156-ea8063ef3300",
                     "expectedControlType": "Button",
@@ -96,7 +96,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "KillAttack2",
+                    "name": "SkillAttack2",
                     "type": "Button",
                     "id": "94b26afa-596a-4679-8870-6134f56133a7",
                     "expectedControlType": "Button",
@@ -105,7 +105,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "KillAttack3",
+                    "name": "SkillAttack3",
                     "type": "Button",
                     "id": "9ed7a1cd-6f57-4aef-9487-71c61c1da62a",
                     "expectedControlType": "Button",
@@ -114,7 +114,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "KillAttack4",
+                    "name": "SkillAttack4",
                     "type": "Button",
                     "id": "36afcdbf-a9f3-417f-9ac2-ea32ca97578e",
                     "expectedControlType": "Button",
@@ -285,7 +285,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "KillAttack1",
+                    "action": "SkillAttack1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -296,7 +296,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "KillAttack3",
+                    "action": "SkillAttack3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -307,7 +307,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "KillAttack2",
+                    "action": "SkillAttack2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -318,7 +318,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "KillAttack4",
+                    "action": "SkillAttack4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

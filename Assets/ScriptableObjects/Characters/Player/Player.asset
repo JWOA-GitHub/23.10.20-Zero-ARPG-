@@ -230,5 +230,6 @@ MonoBehaviour:
       <FallSpeedLimit>k__BackingField: 15
       <MinimumDisatanceToBeConsideredHardFall>k__BackingField: 3
   <AttackData>k__BackingField:
-    PlayerWeapon: {fileID: 919132149155446097, guid: f8075b39be36ad34fbe66d2e0d6b204b, type: 3}
     PlayerWeaponTag: MoonSword
+  weapon: {fileID: 8694943018831287373, guid: 523607d74500f59438ef678ce1d0b29d, type: 3}
+  sceneGameObjectName: Sword Slash 15

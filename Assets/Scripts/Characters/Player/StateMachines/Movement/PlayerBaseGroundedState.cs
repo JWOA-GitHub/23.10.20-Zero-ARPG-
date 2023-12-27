@@ -150,7 +150,14 @@ namespace JWOAGameSystem
             stateMachine.Player.Input.PlayerActions.LAttack.started += OnLAttackComboStarted;
             stateMachine.Player.Input.PlayerActions.RAttack.started += OnRAttackComboStarted;
 
-            // 每个接地状态都可切换到跳跃状态！！
+            // 技能按键
+            stateMachine.Player.Input.PlayerActions.SkillAttack1.started += OnSkillAttack1Started;
+            stateMachine.Player.Input.PlayerActions.SkillAttack2.started += OnSkillAttack2Started;
+            stateMachine.Player.Input.PlayerActions.SkillAttack3.started += OnSkillAttack3Started;
+            stateMachine.Player.Input.PlayerActions.SkillAttack4.started += OnSkillAttack4Started;
+
+
+            // 每个接地状态都可切换到跳跃状态！！SkillAttack1
             stateMachine.Player.Input.PlayerActions.Jump.started += OnJumpStarted;
         }
 
@@ -164,6 +171,11 @@ namespace JWOAGameSystem
 
             stateMachine.Player.Input.PlayerActions.LAttack.started -= OnLAttackComboStarted;
             stateMachine.Player.Input.PlayerActions.RAttack.started -= OnRAttackComboStarted;
+
+            stateMachine.Player.Input.PlayerActions.SkillAttack1.started -= OnSkillAttack1Started;
+            stateMachine.Player.Input.PlayerActions.SkillAttack2.started -= OnSkillAttack2Started;
+            stateMachine.Player.Input.PlayerActions.SkillAttack3.started -= OnSkillAttack3Started;
+            stateMachine.Player.Input.PlayerActions.SkillAttack4.started -= OnSkillAttack4Started;
 
             stateMachine.Player.Input.PlayerActions.Jump.started -= OnJumpStarted;
         }
@@ -271,6 +283,31 @@ namespace JWOAGameSystem
             }
 
             stateMachine.ChangeState(stateMachine.NormalAttacking_02_1_State);
+        }
+
+        protected virtual void OnSkillAttack1Started(InputAction.CallbackContext context)
+        {
+            if (stateMachine.ReusableData.isSkilling)
+            {
+                return;
+            }
+
+            stateMachine.ChangeState(stateMachine.NormalAttacking_02_1_State);
+        }
+
+        protected virtual void OnSkillAttack2Started(InputAction.CallbackContext context)
+        {
+
+        }
+
+        protected virtual void OnSkillAttack3Started(InputAction.CallbackContext context)
+        {
+
+        }
+
+        protected virtual void OnSkillAttack4Started(InputAction.CallbackContext context)
+        {
+
         }
         #endregion
     }

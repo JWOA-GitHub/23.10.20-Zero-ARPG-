@@ -38,6 +38,10 @@ namespace JWOAGameSystem
         // [Tooltip("玩家攻击4状态")] public PlayerNormalAttacking_02_4_State NormalAttacking_02_4_State { get; }
         // [Tooltip("玩家攻击5状态")] public PlayerNormalAttacking_02_5_State NormalAttacking_02_5_State { get; }
 
+        [Tooltip("玩家技能1状态")] public PlayerAttackSkills_01_State AttackSkills_01_State { get; }
+        [Tooltip("玩家技能2状态")] public PlayerAttackSkills_02_State AttackSkills_02_State { get; }
+        [Tooltip("玩家技能3状态")] public PlayerAttackSkills_03_State AttackSkills_03_State { get; }
+
         //TODO: 重构状态为字典类型
         public PlayerMovementStateMachine(Player player)
         {
@@ -72,6 +76,10 @@ namespace JWOAGameSystem
             NormalAttacking_02_3_State = new PlayerNormalAttacking_02_3_State(this);
             // NormalAttacking_02_4_State = new PlayerNormalAttacking_02_4_State(this);
             // NormalAttacking_02_5_State = new PlayerNormalAttacking_02_5_State(this);
+
+            AttackSkills_01_State = new PlayerAttackSkills_01_State(this);
+            AttackSkills_02_State = new PlayerAttackSkills_02_State(this);
+            AttackSkills_03_State = new PlayerAttackSkills_03_State(this);
         }
 
     }

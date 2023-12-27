@@ -12,7 +12,7 @@ namespace JWOAGameSystem
         public void SetUp()
         {
             PlayerWeapon = GameObject.FindGameObjectWithTag(PlayerWeaponTag);
-            Debug.Log("               " + PlayerWeapon.transform.name);
+            Debug.Log("<color=red>               " + PlayerWeapon.transform.name + "</color>");
         }
     }
 }

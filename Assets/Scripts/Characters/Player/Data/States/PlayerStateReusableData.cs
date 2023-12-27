@@ -49,6 +49,7 @@ namespace JWOAGameSystem
         public bool isHeavyComboCache;
 
         public bool isComboing { get; set; }
+        public bool isSkilling { get; set; }
 
         // MARKER： 创建Vector3 是因为在后面的“滑动系统”中，需要“x”和“z”轴的值！！！！
         /// <summary>当前旋转目标角度

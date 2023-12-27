@@ -25,7 +25,8 @@ namespace JWOAGameSystem
             {
                 character.Mp -= mpCost;
                 // TODO: 造成伤害值
-                character.TakeDamage(damage);
+                Debug.Log(character.name + " <color=red>    使用了技能  </color>");
+                // character.TakeDamage(damage);
                 cooldownTimer = cooldownTime; // 启动冷却计时器
                                               // 其他技能效果的逻辑
             }
