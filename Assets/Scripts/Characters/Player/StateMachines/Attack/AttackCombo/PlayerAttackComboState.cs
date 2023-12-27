@@ -22,6 +22,8 @@ namespace JWOAGameSystem
 
             StartAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
 
+            stateMachine.ReusableData.isComboing = true;
+
             // StartAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
 
             // // StopAnimation(stateMachine.Player.AnimationData.NormalAttack_1_ParameterHash);
@@ -43,6 +45,7 @@ namespace JWOAGameSystem
 
             StopAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
 
+            stateMachine.ReusableData.isComboing = false;
             // StopAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
 
             // ResetCombo();

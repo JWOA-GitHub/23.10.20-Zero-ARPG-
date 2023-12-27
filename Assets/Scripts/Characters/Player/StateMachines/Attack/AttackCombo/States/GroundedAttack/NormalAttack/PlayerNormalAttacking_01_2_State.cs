@@ -67,6 +67,7 @@ namespace JWOAGameSystem
             if (stateMachine.ReusableData.ShouldHeavyCombo)
             {
                 OnRAttack();
+                return;
             }
 
 
@@ -76,7 +77,7 @@ namespace JWOAGameSystem
         {
             base.OnAnimationExitEvent();
 
-            stateMachine.ReusableData.isComboing = false;
+            // stateMachine.ReusableData.isComboing = false;
             stateMachine.ChangeState(stateMachine.IdingState);
             // if (stateMachine.ReusableData.ShouldLightCombo)
             // {

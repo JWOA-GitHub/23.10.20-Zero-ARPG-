@@ -8,6 +8,7 @@ namespace JWOAGameSystem
         // [SerializeField] protected string stateName = "combo_01_1";
         // protected bool isLightComboCache = false;
         // protected bool isHeavyComboCache = false;
+        protected int currentSkillsIndex = 0;
         public PlayerAttackSkillsState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
@@ -22,20 +23,9 @@ namespace JWOAGameSystem
 
             StartAnimation(stateMachine.Player.AnimationData.AttackSkillsParameterHash);
 
-            // StartAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
+            stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
 
-            // // StopAnimation(stateMachine.Player.AnimationData.NormalAttack_1_ParameterHash);
-
-            // // stateMachine.Player.Animator.Play(stateName);
-            // // Debug.Log(stateName);
-
-            // stateMachine.ReusableData.MovementSpeedModifier = 0f;
-
-            // stateMachine.ReusableData.isComboing = true;
-
-            // ResetVelocity();
-
-            // ResetCombo();
+            stateMachine.ReusableData.isSkilling = true;
         }
         public override void Exit()
         {
@@ -43,6 +33,9 @@ namespace JWOAGameSystem
 
             StopAnimation(stateMachine.Player.AnimationData.AttackSkillsParameterHash);
 
+            stateMachine.ReusableData.isSkilling = false;
+
+            stateMachine.ChangeState(stateMachine.IdingState);
             // StopAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
 
             // ResetCombo();
@@ -56,23 +49,23 @@ namespace JWOAGameSystem
         //     // RotateTowardsTargetRotation();
         // }
 
-        public override void OnAnimationEnterEvent()
-        {
-            base.OnAnimationEnterEvent();
+        // public override void OnAnimationEnterEvent()
+        // {
+        //     base.OnAnimationEnterEvent();
 
-        }
+        // }
 
-        public override void OnAnimationExitEvent()
-        {
-            base.OnAnimationExitEvent();
+        // public override void OnAnimationExitEvent()
+        // {
+        //     base.OnAnimationExitEvent();
 
-            // if (isLightComboCache || isHeavyComboCache)
-            //     return;
-        }
+        //     // if (isLightComboCache || isHeavyComboCache)
+        //     //     return;
+        // }
         #endregion
 
         #region Reusable Methods
-        
+
 
         // protected void ResetCombo()
         // {   

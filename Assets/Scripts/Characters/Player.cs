@@ -36,8 +36,8 @@ namespace JWOAGameSystem
         private new void Awake()
         {
             // Data.weapon = GameObject.FindGameObjectWithTag("MoonSword");
-            GameObject wea = Instantiate(Data.weapon, transform.position, Quaternion.identity);
-            Debug.LogError("   " + Data.weapon.activeInHierarchy + "    " + wea.name);
+            // GameObject wea = Instantiate(Data.weapon, transform.position, Quaternion.identity);
+            // Debug.LogError("   " + Data.weapon.activeInHierarchy + "    " + wea.name);
             base.Awake();
 
             HideCursor();

@@ -43,10 +43,10 @@ namespace JWOAGameSystem
         // [SerializeField] private string normalAttack_02_5_ParameterName = "isNormalAttacking_02_5";
 
         [Header("Skills Parameter Names")]
-        [SerializeField] private string skillsAttack_1_ParameterName = "isSkillsAttacking_1";
-        [SerializeField] private string skillsAttack_2_ParameterName = "isSkillsAttacking_2";
-        [SerializeField] private string skillsAttack_3_ParameterName = "isSkillsAttacking_2";
-        [SerializeField] private string skillsAttack_4_ParameterName = "isSkillsAttacking_4";
+        [SerializeField] private string skillsAttack_01_ParameterName = "isSkillsAttacking_1";
+        [SerializeField] private string skillsAttack_02_ParameterName = "isSkillsAttacking_2";
+        [SerializeField] private string skillsAttack_03_ParameterName = "isSkillsAttacking_2";
+        [SerializeField] private string skillsAttack_04_ParameterName = "isSkillsAttacking_4";
 
 
         [Header("Animation Clip Name")]
@@ -87,10 +87,10 @@ namespace JWOAGameSystem
         public int NormalAttack_02_3_ParameterHash { get; private set; }
         // public int NormalAttack_02_4_ParameterHash { get; private set; }
         // public int NormalAttack_02_5_ParameterHash { get; private set; }
-        public int SkillsAttack_1_ParameterHash { get; private set; }
-        public int SkillsAttack_2_ParameterHash { get; private set; }
-        public int SkillsAttack_3_ParameterHash { get; private set; }
-        public int SkillsAttack_4_ParameterHash { get; private set; }
+        public int SkillsAttack_01_ParameterHash { get; private set; }
+        public int SkillsAttack_02_ParameterHash { get; private set; }
+        public int SkillsAttack_03_ParameterHash { get; private set; }
+        public int SkillsAttack_04_ParameterHash { get; private set; }
 
         public void Initialize()
         {
@@ -126,10 +126,10 @@ namespace JWOAGameSystem
             // NormalAttack_02_4_ParameterHash = Animator.StringToHash(normalAttack_02_4_ParameterName);
             // NormalAttack_02_5_ParameterHash = Animator.StringToHash(normalAttack_02_5_ParameterName);
 
-            SkillsAttack_1_ParameterHash = Animator.StringToHash(skillsAttack_1_ParameterName);
-            SkillsAttack_2_ParameterHash = Animator.StringToHash(skillsAttack_2_ParameterName);
-            SkillsAttack_3_ParameterHash = Animator.StringToHash(skillsAttack_3_ParameterName);
-            SkillsAttack_4_ParameterHash = Animator.StringToHash(skillsAttack_4_ParameterName);
+            SkillsAttack_01_ParameterHash = Animator.StringToHash(skillsAttack_01_ParameterName);
+            SkillsAttack_02_ParameterHash = Animator.StringToHash(skillsAttack_02_ParameterName);
+            SkillsAttack_03_ParameterHash = Animator.StringToHash(skillsAttack_03_ParameterName);
+            SkillsAttack_04_ParameterHash = Animator.StringToHash(skillsAttack_04_ParameterName);
 
         }
 

@@ -72,7 +72,7 @@ namespace JWOAGameSystem
             base.OnAnimationExitEvent();
             // if (stateMachine.ReusableData.ShouldLightCombo)
             // {
-            stateMachine.ReusableData.isComboing = false;
+            // stateMachine.ReusableData.isComboing = false;
             stateMachine.ChangeState(stateMachine.IdingState);
             //     stateMachine.ChangeState(stateMachine.NormalAttacking_1_State);
             // }

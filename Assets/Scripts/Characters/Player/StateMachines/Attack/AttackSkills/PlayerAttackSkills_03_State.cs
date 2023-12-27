@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace JWOAGameSystem
 {
-    public class PlayerAttackSkills_03_State : PlayerAttackState
+    public class PlayerAttackSkills_03_State : PlayerAttackSkillsState
     {
         public PlayerAttackSkills_03_State(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
@@ -15,34 +15,18 @@ namespace JWOAGameSystem
             // // 获取当前正在播放的动画状态信息
             // stateMachine.Player.AnimationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
 
+            // 设置技能下标 PlayerAttackSkillsState使用技能！
+            currentSkillsIndex = 2;
+
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.AttackSkillsParameterHash);
-
-            // StartAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
-
-            // // StopAnimation(stateMachine.Player.AnimationData.NormalAttack_1_ParameterHash);
-
-            // // stateMachine.Player.Animator.Play(stateName);
-            // // Debug.Log(stateName);
-
-            // stateMachine.ReusableData.MovementSpeedModifier = 0f;
-
-            // stateMachine.ReusableData.isComboing = true;
-
-            // ResetVelocity();
-
-            // ResetCombo();
+            StartAnimation(stateMachine.Player.AnimationData.SkillsAttack_03_ParameterHash);
         }
         public override void Exit()
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.AttackSkillsParameterHash);
-
-            // StopAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
-
-            // ResetCombo();
+            StopAnimation(stateMachine.Player.AnimationData.SkillsAttack_03_ParameterHash);
         }
 
         // public override void PhysicsUpdate()

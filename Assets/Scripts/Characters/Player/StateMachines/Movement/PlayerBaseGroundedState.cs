@@ -292,22 +292,37 @@ namespace JWOAGameSystem
                 return;
             }
 
-            stateMachine.ChangeState(stateMachine.NormalAttacking_02_1_State);
+            stateMachine.ChangeState(stateMachine.AttackSkills_01_State);
         }
 
         protected virtual void OnSkillAttack2Started(InputAction.CallbackContext context)
         {
+            if (stateMachine.ReusableData.isSkilling)
+            {
+                return;
+            }
 
+            stateMachine.ChangeState(stateMachine.AttackSkills_02_State);
         }
 
         protected virtual void OnSkillAttack3Started(InputAction.CallbackContext context)
         {
+            if (stateMachine.ReusableData.isSkilling)
+            {
+                return;
+            }
 
+            stateMachine.ChangeState(stateMachine.AttackSkills_03_State);
         }
 
         protected virtual void OnSkillAttack4Started(InputAction.CallbackContext context)
         {
+            if (stateMachine.ReusableData.isSkilling)
+            {
+                return;
+            }
 
+            stateMachine.ChangeState(stateMachine.AttackSkills_04_State);
         }
         #endregion
     }

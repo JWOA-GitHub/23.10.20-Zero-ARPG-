@@ -72,7 +72,7 @@ namespace JWOAGameSystem
             base.OnAnimationExitEvent();
             // if (stateMachine.ReusableData.ShouldLightCombo)
             // {
-            stateMachine.ReusableData.isComboing = false;
+            // stateMachine.ReusableData.isComboing = false;
             stateMachine.ChangeState(stateMachine.IdingState);
             //     stateMachine.ChangeState(stateMachine.NormalAttacking_1_State);
             // }
@@ -82,7 +82,6 @@ namespace JWOAGameSystem
         #region Reusable Methods
         protected override void OnLAttack()
         {
-            Debug.Log("                                                 NormalAttacking_01_3_State  TO   NormalAttacking_01_4_State");
             stateMachine.ChangeState(stateMachine.NormalAttacking_01_4_State);
         }
 

@@ -9,10 +9,17 @@ namespace JWOAGameSystem
     public class Skill
     {
         public string skillName;
+        public GameObject skillEffect;
         public int mpCost;
         public int damage;
         public float cooldownTime; // 冷却时间
         private float cooldownTimer = 0f; // 计时器
+        ParticleSystem particleSystem;
+        // public Skill()
+        // {
+        // if (skillEffect.GetComponent<ParticleSystem>() != null)
+        // particleSystem = skillEffect.GetComponent<ParticleSystem>();
+        // }
 
         public bool IsOnCooldown()
         {
@@ -24,6 +31,17 @@ namespace JWOAGameSystem
             if (!IsOnCooldown() && character.Mp >= mpCost)
             {
                 character.Mp -= mpCost;
+
+                if (!skillEffect.activeInHierarchy)
+                    skillEffect.SetActive(true);
+                particleSystem = skillEffect.GetComponent<ParticleSystem>();
+
+                // 确保粒子系统存在并且未在播放
+                if (particleSystem != null && !particleSystem.isPlaying)
+                {
+                    // 播放特效
+                    particleSystem.Play();
+                }
                 // TODO: 造成伤害值
                 Debug.Log(character.name + " <color=red>    使用了技能  </color>");
                 // character.TakeDamage(damage);
@@ -43,6 +61,7 @@ namespace JWOAGameSystem
                 // 其他处理
             }
         }
+
 
         public void UpdateCooldown()
         {

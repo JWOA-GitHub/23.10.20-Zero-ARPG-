@@ -6,6 +6,7 @@ namespace JWOAGameSystem
     public class PlayerAttackState : PlayerBaseGroundedState
     {
         [SerializeField] protected string stateName = "combo_01_1";
+
         public PlayerAttackState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
@@ -20,14 +21,8 @@ namespace JWOAGameSystem
 
             StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
 
-            // StopAnimation(stateMachine.Player.AnimationData.NormalAttack_1_ParameterHash);
-
-            // stateMachine.Player.Animator.Play(stateName);
-            // Debug.Log(stateName);
-
             stateMachine.ReusableData.MovementSpeedModifier = 0f;
 
-            stateMachine.ReusableData.isComboing = true;
 
             ResetVelocity();
 

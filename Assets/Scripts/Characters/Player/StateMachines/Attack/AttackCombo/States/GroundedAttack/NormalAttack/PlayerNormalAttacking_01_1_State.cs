@@ -54,10 +54,8 @@ namespace JWOAGameSystem
 
         public override void OnAnimationTransitionEvent()
         {
-            Debug.LogError("攻击1     transition前");
             base.OnAnimationTransitionEvent();
 
-            Debug.LogError("攻击1     transition后");
             if (stateMachine.ReusableData.ShouldLightCombo)
             {
                 OnLAttack();
@@ -69,18 +67,16 @@ namespace JWOAGameSystem
                 OnRAttack();
                 return;
             }
-           
+
         }
 
         public override void OnAnimationExitEvent()
         {
-            Debug.LogError("攻击1     exit前");
             base.OnAnimationExitEvent();
             // if (stateMachine.ReusableData.ShouldLightCombo)
             // {
-            Debug.Log("                             攻击1 Exit");
             // TODO：在非攻击状态 设置
-            stateMachine.ReusableData.isComboing = false;
+
             stateMachine.ChangeState(stateMachine.IdingState);
             //     stateMachine.ChangeState(stateMachine.NormalAttacking_2_State);
             // }

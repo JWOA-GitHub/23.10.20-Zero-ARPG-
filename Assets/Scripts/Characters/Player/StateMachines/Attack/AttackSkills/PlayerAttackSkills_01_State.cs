@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace JWOAGameSystem
 {
-    public class PlayerAttackSkills_01_State : PlayerAttackState
+    public class PlayerAttackSkills_01_State : PlayerAttackSkillsState
     {
         public PlayerAttackSkills_01_State(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
@@ -15,34 +15,20 @@ namespace JWOAGameSystem
             // // 获取当前正在播放的动画状态信息
             // stateMachine.Player.AnimationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
 
+            // 设置技能下标 PlayerAttackSkillsState使用技能！
+            currentSkillsIndex = 0;
+
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.AttackSkillsParameterHash);
+            StartAnimation(stateMachine.Player.AnimationData.SkillsAttack_01_ParameterHash);
 
-            // StartAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
-
-            // // StopAnimation(stateMachine.Player.AnimationData.NormalAttack_1_ParameterHash);
-
-            // // stateMachine.Player.Animator.Play(stateName);
-            // // Debug.Log(stateName);
-
-            // stateMachine.ReusableData.MovementSpeedModifier = 0f;
-
-            // stateMachine.ReusableData.isComboing = true;
-
-            // ResetVelocity();
-
-            // ResetCombo();
         }
         public override void Exit()
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.AttackSkillsParameterHash);
+            StopAnimation(stateMachine.Player.AnimationData.SkillsAttack_01_ParameterHash);
 
-            // StopAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
-
-            // ResetCombo();
         }
 
         // public override void PhysicsUpdate()
@@ -56,21 +42,28 @@ namespace JWOAGameSystem
         public override void OnAnimationEnterEvent()
         {
             base.OnAnimationEnterEvent();
+            Debug.Log("     enter");
 
+        }
+
+        public override void OnAnimationTransitionEvent()
+        {
+            base.OnAnimationTransitionEvent();
+            Debug.Log("     transition");
         }
 
         public override void OnAnimationExitEvent()
         {
             base.OnAnimationExitEvent();
+            Debug.Log("     EXIT ");
 
             // if (isLightComboCache || isHeavyComboCache)
             //     return;
+            // stateMachine.ReusableData.isSkilling = false;
         }
         #endregion
 
         #region Reusable Methods
-
-
         // protected void ResetCombo()
         // {   
         //     stateMachine.ReusableData.ShouldLightCombo = false;
@@ -93,9 +86,9 @@ namespace JWOAGameSystem
 
         //     stateMachine.Player..PlayerActions.Movement.started -= OnMovementStarted;
         // }
-        // #endregion
+        #endregion
 
-        // #region  Methods
+        #region  Methods
         // // protected override void OnAttackComboStarted(Action.CallbackContext context)
         // // {
         // //     base.OnAttackComboStarted(context);
