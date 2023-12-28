@@ -23,8 +23,6 @@ namespace JWOAGameSystem
 
             StartAnimation(stateMachine.Player.AnimationData.AttackSkillsParameterHash);
 
-            stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
-
             stateMachine.ReusableData.isSkilling = true;
         }
         public override void Exit()
@@ -41,13 +39,13 @@ namespace JWOAGameSystem
             // ResetCombo();
         }
 
-        // public override void PhysicsUpdate()
-        // {
-        //     base.PhysicsUpdate();
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
 
-        //     // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
-        //     // RotateTowardsTargetRotation();
-        // }
+            // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
+            // RotateTowardsTargetRotation();
+        }
 
         // public override void OnAnimationEnterEvent()
         // {
@@ -55,13 +53,20 @@ namespace JWOAGameSystem
 
         // }
 
-        // public override void OnAnimationExitEvent()
-        // {
-        //     base.OnAnimationExitEvent();
+        public override void OnAnimationTransitionEvent()
+        {
+            base.OnAnimationTransitionEvent();
 
-        //     // if (isLightComboCache || isHeavyComboCache)
-        //     //     return;
-        // }
+
+        }
+
+        public override void OnAnimationExitEvent()
+        {
+            base.OnAnimationExitEvent();
+
+            // if (isLightComboCache || isHeavyComboCache)
+            //     return;
+        }
         #endregion
 
         #region Reusable Methods
@@ -76,49 +81,41 @@ namespace JWOAGameSystem
         //     isHeavyComboCache = false;
         // }
 
-        // protected override void AddActionsCallbacks()
-        // {
-        //     base.AddActionsCallbacks();
+        protected override void OnLAttack()
+        {
+            stateMachine.ChangeState(stateMachine.NormalAttacking_01_1_State);
+        }
 
-        //     stateMachine.Player..PlayerActions.Movement.started += OnMovementStarted;
-        // }
+        protected override void OnRAttack()
+        {
+            stateMachine.ChangeState(stateMachine.NormalAttacking_02_1_State);
+        }
+        #endregion
 
-        // protected override void RemoveActionsCallbacks()
-        // {
-        //     base.RemoveActionsCallbacks();
+        #region Input Methods
+        protected override void OnLAttackComboStarted(InputAction.CallbackContext context)
+        {
+            base.OnLAttackComboStarted(context);
 
-        //     stateMachine.Player..PlayerActions.Movement.started -= OnMovementStarted;
-        // }
-        // #endregion
+            if (stateMachine.Player.AnimationData.animatorStateInfo.IsName(stateName) && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.7f)
+            {
+                Debug.Log("<color=yellow>  技能 连击回 1111</color>");
+                OnLAttack();
+                return;
+            }
+        }
 
-        // #region  Methods
-        // // protected override void OnAttackComboStarted(Action.CallbackContext context)
-        // // {
-        // //     base.OnAttackComboStarted(context);
+        protected override void OnRAttackComboStarted(InputAction.CallbackContext context)
+        {
+            base.OnRAttackComboStarted(context);
 
-        // //     // stateMachine.ReusableData.ShouldLightCombo = true;
-        // //     // OnAttack();
-        // // }
-        // private void OnMovementStarted(Action.CallbackContext context)
-        // {
-        //     // 负责切换到移动状态
-        //     OnMove();
-        // }
-
-        // protected override void OnLAttackComboStarted(Action.CallbackContext context)
-        // {
-        //     stateMachine.ReusableData.ShouldLightCombo = true;
-
-        //     isLightComboCache = true;
-
-        // }
-
-        // protected override void OnRAttackComboStarted(Action.CallbackContext context)
-        // {
-        //     stateMachine.ReusableData.ShouldHeavyCombo = true;
-
-        //     isHeavyComboCache = true;
-        // }
+            if (stateMachine.Player.AnimationData.animatorStateInfo.IsName(stateName) && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.7f)
+            {
+                Debug.Log("<color=green>  技能 连击4444444 回 重·1111111</color>");
+                OnRAttack();
+                return;
+            }
+        }
         #endregion
     }
 }

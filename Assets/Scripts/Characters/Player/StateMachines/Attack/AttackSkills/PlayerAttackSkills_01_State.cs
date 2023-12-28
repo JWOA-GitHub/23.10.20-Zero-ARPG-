@@ -20,7 +20,11 @@ namespace JWOAGameSystem
 
             base.Enter();
 
+            stateName = stateMachine.Player.AnimationData.SkillsAttack_AnimationData.SkillsAttack_01_StateName;
+
             StartAnimation(stateMachine.Player.AnimationData.SkillsAttack_01_ParameterHash);
+
+            stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
 
         }
         public override void Exit()
@@ -31,13 +35,13 @@ namespace JWOAGameSystem
 
         }
 
-        // public override void PhysicsUpdate()
-        // {
-        //     base.PhysicsUpdate();
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
 
-        //     // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
-        //     // RotateTowardsTargetRotation();
-        // }
+            // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
+            // RotateTowardsTargetRotation();
+        }
 
         public override void OnAnimationEnterEvent()
         {

@@ -45,17 +45,19 @@ namespace JWOAGameSystem
         [Header("Skills Parameter Names")]
         [SerializeField] private string skillsAttack_01_ParameterName = "isSkillsAttacking_1";
         [SerializeField] private string skillsAttack_02_ParameterName = "isSkillsAttacking_2";
-        [SerializeField] private string skillsAttack_03_ParameterName = "isSkillsAttacking_2";
+        [SerializeField] private string skillsAttack_03_ParameterName = "isSkillsAttacking_3";
         [SerializeField] private string skillsAttack_04_ParameterName = "isSkillsAttacking_4";
 
 
         [Header("Animation Clip Name")]
         [SerializeField] private PlayerNormalAttack_AnimationData normalAttack_AnimationData;
+        [SerializeField] private PlayerSkillsAttack_AnimationData skillsAttack_AnimationData;
 
         public Animator animator;
         public AnimatorStateInfo animatorStateInfo;
 
         public PlayerNormalAttack_AnimationData NormalAttack_AnimationData { get => normalAttack_AnimationData; }
+        public PlayerSkillsAttack_AnimationData SkillsAttack_AnimationData { get => skillsAttack_AnimationData; }
 
         public int GroundedParameterHash { get; private set; }
         public int MovingParameterHash { get; private set; }
@@ -102,6 +104,7 @@ namespace JWOAGameSystem
 
             AttackParameterHash = Animator.StringToHash(attackParameterName);
             AttackComboParameterHash = Animator.StringToHash(attackComboParameterName);
+            AttackSkillsParameterHash = Animator.StringToHash(attackSkillsParameterName);
 
             IdleParameterHash = Animator.StringToHash(idleParameterName);
             DashParameterHash = Animator.StringToHash(dashParameterName);

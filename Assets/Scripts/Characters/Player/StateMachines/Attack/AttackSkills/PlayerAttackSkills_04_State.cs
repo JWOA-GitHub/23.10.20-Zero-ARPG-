@@ -20,7 +20,11 @@ namespace JWOAGameSystem
 
             base.Enter();
 
+            stateName = stateMachine.Player.AnimationData.SkillsAttack_AnimationData.SkillsAttack_04_StateName;
+
             StartAnimation(stateMachine.Player.AnimationData.SkillsAttack_04_ParameterHash);
+
+            stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
 
         }
         public override void Exit()

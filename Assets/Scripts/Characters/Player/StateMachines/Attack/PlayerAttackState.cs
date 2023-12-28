@@ -23,7 +23,6 @@ namespace JWOAGameSystem
 
             stateMachine.ReusableData.MovementSpeedModifier = 0f;
 
-
             ResetVelocity();
 
             ResetCombo();
