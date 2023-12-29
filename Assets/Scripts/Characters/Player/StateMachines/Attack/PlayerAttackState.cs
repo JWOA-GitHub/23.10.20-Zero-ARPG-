@@ -54,7 +54,7 @@ namespace JWOAGameSystem
         {
             base.OnAnimationExitEvent();
 
-            if (stateMachine.ReusableData.isLightComboCache || stateMachine.ReusableData.isHeavyComboCache)
+            if (stateMachine.ReusableData.isLightComboCache || stateMachine.ReusableData.isHeavyComboCache || stateMachine.ReusableData.isSkillingCache)
                 return;
         }
         #endregion

@@ -47,6 +47,7 @@ namespace JWOAGameSystem
 
         public bool isLightComboCache;
         public bool isHeavyComboCache;
+        public bool isSkillingCache;
 
         public bool isComboing { get; set; }
         public bool isSkilling { get; set; }

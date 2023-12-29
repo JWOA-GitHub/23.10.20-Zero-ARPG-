@@ -24,7 +24,7 @@ namespace JWOAGameSystem
 
             StartAnimation(stateMachine.Player.AnimationData.SkillsAttack_03_ParameterHash);
 
-            stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
+            // stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
         }
         public override void Exit()
         {

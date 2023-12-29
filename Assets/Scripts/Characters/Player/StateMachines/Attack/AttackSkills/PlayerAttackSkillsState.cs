@@ -21,6 +21,12 @@ namespace JWOAGameSystem
 
             base.Enter();
 
+            if (!stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player))
+            {
+                // stateMachine.ChangeState(stateMachine.IdingState);
+                return;
+            }
+
             StartAnimation(stateMachine.Player.AnimationData.AttackSkillsParameterHash);
 
             stateMachine.ReusableData.isSkilling = true;
@@ -33,7 +39,6 @@ namespace JWOAGameSystem
 
             stateMachine.ReusableData.isSkilling = false;
 
-            stateMachine.ChangeState(stateMachine.IdingState);
             // StopAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
 
             // ResetCombo();
@@ -64,6 +69,9 @@ namespace JWOAGameSystem
         {
             base.OnAnimationExitEvent();
 
+            // 在没有攻击和技能cache的时候 默认返回idle
+            stateMachine.ChangeState(stateMachine.IdingState);
+            return;
             // if (isLightComboCache || isHeavyComboCache)
             //     return;
         }

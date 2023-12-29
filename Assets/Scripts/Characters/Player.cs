@@ -78,8 +78,9 @@ namespace JWOAGameSystem
             movementStateMachine.OnTriggerExit(collider);
         }
 
-        private void Update()
+        private new void Update()
         {
+            base.Update();
             movementStateMachine.HandleInput();
 
             movementStateMachine.LogicUpdate();

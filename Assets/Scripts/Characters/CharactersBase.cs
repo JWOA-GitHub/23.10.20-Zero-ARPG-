@@ -26,7 +26,7 @@ namespace JWOAGameSystem
             return cooldownTimer > 0f;
         }
 
-        public void UseSkill(CharactersBase character)
+        public bool UseSkill(CharactersBase character)
         {
             if (!IsOnCooldown() && character.Mp >= mpCost)
             {
@@ -47,6 +47,7 @@ namespace JWOAGameSystem
                 // character.TakeDamage(damage);
                 cooldownTimer = cooldownTime; // 启动冷却计时器
                                               // 其他技能效果的逻辑
+                return true;
             }
             else
             {
@@ -59,6 +60,7 @@ namespace JWOAGameSystem
                     Debug.Log("Not enough MP to use this skill!");
                 }
                 // 其他处理
+                return false;
             }
         }
 
@@ -67,6 +69,7 @@ namespace JWOAGameSystem
         {
             if (cooldownTimer > 0f)
             {
+                Debug.Log($"<color=green>{skillName} cool     {cooldownTimer}</color>");
                 cooldownTimer -= Time.deltaTime;
                 if (cooldownTimer < 0f)
                 {
@@ -199,7 +202,7 @@ namespace JWOAGameSystem
             InitializeProperty();
         }
 
-        private void Update()
+        protected void Update()
         {
             UpdateSkillCooldowns();
         }
