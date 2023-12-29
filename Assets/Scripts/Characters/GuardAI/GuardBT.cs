@@ -9,7 +9,8 @@ namespace JWOAGameSystem
     {
         [SerializeField] private Transform[] waypoints;
 
-        [SerializeField] private float speed = 2f;
+        [SerializeField] private float speed = 1.5f;
+        [SerializeField] private float chaseSpeed = 4f;
         [SerializeField] private float fovRange = 6f;  // 6f
         [SerializeField] private float shortAttackRange = 1.3f;
         [SerializeField] private float longAttackRange = 4f;
@@ -20,6 +21,7 @@ namespace JWOAGameSystem
         {
             // Debug.Log((int)enemyLayerMask);
             Blackboard.Add<float>("speed", speed);
+            Blackboard.Add<float>("chaseSpeed", chaseSpeed);
             Blackboard.Add<float>("fovRange", fovRange);
             Blackboard.Add<float>("shortAttackRange", shortAttackRange);
             Blackboard.Add<float>("longAttackRange", longAttackRange);

@@ -68,6 +68,13 @@ namespace JWOAGameSystem
                 return State;
             }
 
+            Transform target = (Transform)t;
+            if(Vector3.Distance(_transform.position, target.position) > blackboard.Get<float>("fovRange") && t!= null)
+            {
+                blackboard.Remove("target");
+                _hasSearchedOnce = false;
+            }
+
             // 如果正在等待动画播放完毕
             if (_isWaitingForAnimation)
             {
@@ -85,6 +92,7 @@ namespace JWOAGameSystem
                 }
                 else
                 {
+                    agent.LookAt(target);
                     // Debug.Log("还没退出搜索");
                     State = NodeState.RUNNING;
                     return State;
@@ -93,6 +101,7 @@ namespace JWOAGameSystem
             else if (_hasSearchedOnce && !_isWaitingForAnimation)
             {
                 // Debug.Log("           已经有过目标了");
+                agent.LookAt(target);
                 State = NodeState.SUCCESS;
                 return State;
             }

@@ -40,7 +40,7 @@ namespace JWOAGameSystem
                 // Agent开启  设置追踪目标
                 // _navMeshAgent.enabled = true;
                 _navMeshAgent.SetDestination(_target.position);
-                _navMeshAgent.speed = blackboard.Get<float>("speed");
+                _navMeshAgent.speed = blackboard.Get<float>("chaseSpeed");
                 // _transform.position = Vector3.MoveTowards(_transform.position, _target.position, blackboard.Get<float>("speed") * Time.deltaTime);
                 // _transform.LookAt(_target.position);
             }
