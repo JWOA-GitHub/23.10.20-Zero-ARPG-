@@ -55,13 +55,13 @@ namespace JWOAGameSystem
                     Debug.Log("<color=#ff0000ff>" + " 武器击中 " + "</color>" + item.collider.name);
 
                     if (item.collider.GetComponent<CharactersBase>() != null)
-                        item.collider.GetComponent<CharactersBase>().TakeDamage(GetComponentInParent<CharactersBase>().AttackDamage);
+                        // item.collider.GetComponent<CharactersBase>().GetDamage(GetComponentInParent<CharactersBase>().AttackDamage, );
 
-                    if (particle)
-                    {
-                        var go = Instantiate(particle, item.point, Quaternion.identity);
-                        Destroy(go, 3f);
-                    }
+                        if (particle)
+                        {
+                            var go = Instantiate(particle, item.point, Quaternion.identity);
+                            Destroy(go, 3f);
+                        }
                     hitCount++;
                     break;
                 }

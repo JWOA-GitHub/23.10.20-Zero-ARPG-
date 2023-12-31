@@ -60,6 +60,20 @@ namespace JWOAGameSystem
         #endregion
 
         #region Reusable Methods
+        /// <summary> 开启攻击检测
+        /// </summary>
+        public void EnableDetection()
+        {
+            
+        }
+
+        /// <summary> 关闭攻击检测
+        /// </summary>
+        public void DisableDetection()
+        {
+
+        }
+
         protected void ResetCombo()
         {
             stateMachine.ReusableData.ShouldLightCombo = false;

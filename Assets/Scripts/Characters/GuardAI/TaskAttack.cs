@@ -51,7 +51,8 @@ namespace JWOAGameSystem
                 _animatorController.EnemyState = EnemyState.Attack;
 
                 // TODO: 敌人受到伤害
-                _player.TakeDamage(blackboard.Get<int>("attackDamage"));
+                // _player.TakeDamage(blackboard.Get<int>("attackDamage"));
+                // _player.GetDamage(blackboard.Get<int>("attackDamage"),);
                 Debug.Log("      <color=red>   正在攻击了</color>" + Vector3.Distance(_transform.position, target.position));
                 if (_player.IsDead)
                 {

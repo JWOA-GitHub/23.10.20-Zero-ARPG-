@@ -11,10 +11,12 @@ namespace JWOAGameSystem
         public string skillName;
         public GameObject skillEffect;
         public int mpCost;
-        public int damage;
+        public float damage;
         public float cooldownTime; // 冷却时间
         private float cooldownTimer = 0f; // 计时器
         ParticleSystem particleSystem;
+        float duration;
+        bool isUsing = false;
         // public Skill()
         // {
         // if (skillEffect.GetComponent<ParticleSystem>() != null)
@@ -35,12 +37,15 @@ namespace JWOAGameSystem
                 if (!skillEffect.activeInHierarchy)
                     skillEffect.SetActive(true);
                 particleSystem = skillEffect.GetComponent<ParticleSystem>();
+                // 获取到粒子系统的持续时间
+                duration = particleSystem.main.duration;
 
                 // 确保粒子系统存在并且未在播放
                 if (particleSystem != null && !particleSystem.isPlaying)
                 {
                     // 播放特效
                     particleSystem.Play();
+                    isUsing = true;
                 }
                 // TODO: 造成伤害值
                 Debug.Log(character.name + " <color=red>    使用了技能  </color>");
@@ -64,6 +69,15 @@ namespace JWOAGameSystem
             }
         }
 
+        public void UpdateSkillTime()
+        {
+            if (isUsing && skillEffect.activeInHierarchy)
+            {
+                duration -= Time.deltaTime;
+                if (duration <= 0)
+                    skillEffect.SetActive(false);
+            }
+        }
 
         public void UpdateCooldown()
         {
@@ -76,10 +90,12 @@ namespace JWOAGameSystem
                     cooldownTimer = 0f;
                 }
             }
+
+            UpdateSkillTime();
         }
     }
 
-    public class CharactersBase : MonoBehaviour
+    public class CharactersBase : MonoBehaviour, IAgent
     {
         #region 角色属性
         private string characterName = "JWOA";
@@ -104,7 +120,7 @@ namespace JWOAGameSystem
             set => experience = value;
         }
 
-        private int hp;
+        private float hp;
         public int maxHp = 100;
 
         /// <summary> 玩家能量条，释放技能用
@@ -117,15 +133,15 @@ namespace JWOAGameSystem
         /// </summary>
         public int maxMp = 100;
 
-        [SerializeField] private int attackDamage = 10;
-        public int AttackDamage
+        [SerializeField] private float attackDamage = 10;
+        public float AttackDamage
         {
             get => attackDamage;
             set => attackDamage = value;
         }
 
-        private int defense;
-        public int Defense
+        private float defense;
+        public float Defense
         {
             get => defense;
             set => defense = value;
@@ -171,7 +187,7 @@ namespace JWOAGameSystem
         // public List<Equipment> equipments;
         // public List<StatusEffect> statusEffects;
 
-        public int Hp
+        public float Hp
         {
             get => hp;
             set
@@ -240,7 +256,7 @@ namespace JWOAGameSystem
 
 
         #region Main Methods
-        public virtual void TakeDamage(int damage)
+        public virtual void GetDamage(float damage, Vector3 pos)
         {
             Hp -= damage;
             isHurting = true;
@@ -266,6 +282,7 @@ namespace JWOAGameSystem
                 Debug.Log(" Invalid skill index!");
             }
         }
+
         #endregion
 
     }

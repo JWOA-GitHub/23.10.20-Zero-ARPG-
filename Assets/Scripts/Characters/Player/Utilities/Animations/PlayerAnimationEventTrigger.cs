@@ -8,6 +8,7 @@ namespace JWOAGameSystem
     {
         private Player player;
 
+
         private void Awake()
         {
             player = transform.parent.GetComponent<Player>();

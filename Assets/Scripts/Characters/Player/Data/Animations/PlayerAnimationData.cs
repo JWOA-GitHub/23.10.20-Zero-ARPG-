@@ -27,8 +27,15 @@ namespace JWOAGameSystem
         [SerializeField] private string rollParameterName = "isRolling";
         [SerializeField] private string hardLandParameterName = "isHardLanding";
 
+        [SerializeField] private string HurtParameterName = "isHurting";
+        [SerializeField] private string DeathParameterName = "isDeathing";
+
+
+
         [Header("Airborne Parameter Names")] // 默认为Jump
         [SerializeField] private string fallParameterName = "isFalling";
+
+
 
         [Header("AttackCombo Parameter Names")]
         [SerializeField] private string normalAttack_01_1_ParameterName = "isNormalAttacking_01_1";
@@ -78,6 +85,9 @@ namespace JWOAGameSystem
         public int RollParameterHash { get; private set; }
         public int HardLandParameterHash { get; private set; }
 
+        public int HurtParameterHash { get; private set; }
+        public int DeathParameterHash { get; private set; }
+
         public int FallParameterHash { get; private set; }
 
         public int NormalAttack_01_1_ParameterHash { get; private set; }
@@ -115,6 +125,9 @@ namespace JWOAGameSystem
             HardStopParameterHash = Animator.StringToHash(hardStopParameterName);
             RollParameterHash = Animator.StringToHash(rollParameterName);
             HardLandParameterHash = Animator.StringToHash(hardLandParameterName);
+
+            HurtParameterHash = Animator.StringToHash(HurtParameterName);
+            DeathParameterHash = Animator.StringToHash(DeathParameterName);
 
             FallParameterHash = Animator.StringToHash(fallParameterName);
 

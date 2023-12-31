@@ -41,17 +41,10 @@ namespace JWOAGameSystem
                 _navMeshAgent.ResetPath();
 
                 _isWaitingForAnimation = true;
-                // _animator.SetBool("");
+
                 Debug.Log("     受伤" + Time.time);
                 _animatorController.EnemyState = EnemyState.GetHit;
 
-                // _hurtCounter += Time.deltaTime;
-                // if (_hurtCounter >= _hurtTime)
-                // {
-                //     charactersBase.IsHurting = false;
-                //     Debug.Log("<color=yellow> 受伤停止  {Time.time} </color>");
-                //     _hurtCounter = 0;
-                // }
                 State = NodeState.SUCCESS;
                 return State;
             }

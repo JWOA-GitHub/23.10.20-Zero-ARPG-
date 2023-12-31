@@ -55,6 +55,13 @@ namespace JWOAGameSystem
             MainCameraTransform = Camera.main.transform;
 
             movementStateMachine = new PlayerMovementStateMachine(this);
+
+            Init();
+        }
+
+        private void Init()
+        {
+
         }
 
         private void OnValidate()
@@ -104,6 +111,30 @@ namespace JWOAGameSystem
         public void OnMovementStateAnimationTransitionEvent()
         {
             movementStateMachine.OnAnimationTransitionEvent();
+        }
+
+
+
+        protected override void OnHpUpdate()
+        {
+            base.OnHpUpdate();
+            Debug.Log("        OnUpdate 玩家血量" + Hp);
+        }
+
+        public override void GetDamage(float damage, Vector3 pos)
+        {
+            base.GetDamage(damage, pos);
+
+            Debug.Log($"<color=yellow> {gameObject.name}  受伤了- {damage}  </color>");
+            if (Hp > 0)
+                movementStateMachine.ChangeState(movementStateMachine.HurtingState);
+        }
+
+        protected override void Dead()
+        {
+            base.Dead();
+
+            // movementStateMachine.ChangeState(movementStateMachine.GetDeathState);
         }
 
         /// <summary> 在需要隐藏鼠标光标的地方调用此函数

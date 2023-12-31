@@ -31,7 +31,7 @@ namespace JWOAGameSystem
                 return State;
             }
 
-            Debug.Log("<color=pink>         在gotoTarget 追踪？   ${)} </color>" + Vector3.Distance(_transform.position, _target.position));
+            // Debug.Log("<color=pink>         在gotoTarget 追踪？   ${)} </color>" + Vector3.Distance(_transform.position, _target.position));
             if (Vector3.Distance(_transform.position, _target.position) > blackboard.Get<float>("attackRange"))
             {
                 Debug.Log("<color=green> goto Target </color>");

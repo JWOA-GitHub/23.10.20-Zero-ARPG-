@@ -24,6 +24,9 @@ namespace JWOAGameSystem
         [Tooltip("玩家滚动状态（中着陆")] public PlayerRollingState RollingState { get; }
         [Tooltip("玩家硬着陆状态")] public PlayerHardLandingState HardLandingState { get; }
 
+        [Tooltip("玩家受伤状态")] public PlayerHurtingState HurtingState { get; }
+        [Tooltip("玩家死亡状态")] public PlayerDeathingState DeathingState { get; }
+
         [Tooltip("玩家跳跃状态")] public PlayerJumpingState JumpingState { get; }
         [Tooltip("玩家坠落状态")] public PlayerFallingState FallingState { get; }
 
@@ -63,6 +66,9 @@ namespace JWOAGameSystem
             LightLandingState = new PlayerLightLandingState(this);
             RollingState = new PlayerRollingState(this);
             HardLandingState = new PlayerHardLandingState(this);
+
+            HurtingState = new PlayerHurtingState(this);
+            DeathingState = new PlayerDeathingState(this);
 
             JumpingState = new PlayerJumpingState(this);
             FallingState = new PlayerFallingState(this);
