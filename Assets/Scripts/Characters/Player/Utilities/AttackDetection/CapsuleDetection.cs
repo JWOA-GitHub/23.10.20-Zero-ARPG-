@@ -56,7 +56,7 @@ namespace JWOAGameSystem
                 AgentHitBox hitBox;
                 if (item.TryGetComponent(out hitBox) && hitBox.agent && targetTags.Contains(hitBox.agent.tag) && !wasHit.Contains(hitBox.agent))
                 {
-                    Debug.Log($"<color=yellow>{gameObject.name}   击中了 {hitBox.gameObject.name}</color>");
+                    Debug.Log($"<color=yellow>{gameObject.name}  Detection 击中了 {hitBox.gameObject.name}</color>");
                     wasHit.Add(hitBox.agent);
                     result.Add(item);
                 }

@@ -39,7 +39,7 @@ namespace JWOAGameSystem
             {
                 _navMeshAgent.ResetPath();
 
-                Debug.Log("             找到攻击目标                        ···");
+                // Debug.Log("             找到攻击目标                        ···");
                 // _navMeshAgent.enabled = false;
                 // _animator.SetBool("Attacking", true);
                 // _animator.SetBool("Walking", false);

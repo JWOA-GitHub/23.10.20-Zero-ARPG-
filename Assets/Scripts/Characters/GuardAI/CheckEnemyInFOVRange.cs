@@ -48,7 +48,10 @@ namespace JWOAGameSystem
                 if (colliders.Length > 0)
                 {
                     Debug.Log("<color=yellow>检测到几个  " + colliders.Length + "</color>");
-
+                    foreach (var i in colliders)
+                    {
+                        Debug.Log("<color=greeen>检测到de  " + i.name + "</color>");
+                    }
                     // 根目录 root 结点 比 它 高两层
                     // parent.parent.SetData("target", colliders[0].transform);
                     blackboard.Add<Transform>("target", colliders[0].transform);
