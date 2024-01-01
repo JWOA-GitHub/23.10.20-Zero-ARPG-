@@ -46,20 +46,16 @@ namespace JWOAGameSystem
         public override void OnAnimationEnterEvent()
         {
             base.OnAnimationEnterEvent();
-            Debug.Log("     enter");
-
         }
 
         public override void OnAnimationTransitionEvent()
         {
             base.OnAnimationTransitionEvent();
-            Debug.Log("     transition");
         }
 
         public override void OnAnimationExitEvent()
         {
             base.OnAnimationExitEvent();
-            Debug.Log("     EXIT ");
 
             // if (isLightComboCache || isHeavyComboCache)
             //     return;

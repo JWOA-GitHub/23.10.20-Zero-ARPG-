@@ -48,7 +48,7 @@ namespace JWOAGameSystem
                     isUsing = true;
                 }
                 // TODO: 造成伤害值
-                Debug.Log(character.name + " <color=red>    使用了技能  </color>");
+                Debug.Log($"{character.name} <color=red>    使用了技能  {skillName}</color>");
                 // character.TakeDamage(damage);
                 cooldownTimer = cooldownTime; // 启动冷却计时器
                                               // 其他技能效果的逻辑
@@ -83,7 +83,7 @@ namespace JWOAGameSystem
         {
             if (cooldownTimer > 0f)
             {
-                Debug.Log($"<color=green>{skillName} cool     {cooldownTimer}</color>");
+                // Debug.Log($"<color=green>{skillName} cool     {cooldownTimer}</color>");
                 cooldownTimer -= Time.deltaTime;
                 if (cooldownTimer < 0f)
                 {
@@ -180,7 +180,7 @@ namespace JWOAGameSystem
 
         #endregion
 
-       
+
         // [SerializeField] private AudioSource audioSource;
         // [SerializeField] private List<AudioClip> audioClips;
 
@@ -284,7 +284,7 @@ namespace JWOAGameSystem
             }
         }
 
-        
+
         #endregion
 
     }
