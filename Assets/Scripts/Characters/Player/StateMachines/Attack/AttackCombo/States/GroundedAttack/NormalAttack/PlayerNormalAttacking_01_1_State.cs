@@ -50,6 +50,8 @@ namespace JWOAGameSystem
             // if (stateMachine.Player.AnimationData.animatorStateInfo.IsTag("combo_01_1"))
             //     stateName = stateMachine.Player.AnimationData.NormalAttack_AnimationData.NormalAttack_1_StateName;
             base.PhysicsUpdate();
+
+            
         }
 
         public override void OnAnimationTransitionEvent()

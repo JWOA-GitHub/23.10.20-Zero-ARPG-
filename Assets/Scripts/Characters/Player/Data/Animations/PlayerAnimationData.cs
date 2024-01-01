@@ -62,6 +62,7 @@ namespace JWOAGameSystem
 
         public Animator animator;
         public AnimatorStateInfo animatorStateInfo;
+        [HideInInspector] public int animationMoveID;
 
         public PlayerNormalAttack_AnimationData NormalAttack_AnimationData { get => normalAttack_AnimationData; }
         public PlayerSkillsAttack_AnimationData SkillsAttack_AnimationData { get => skillsAttack_AnimationData; }
@@ -147,8 +148,12 @@ namespace JWOAGameSystem
             SkillsAttack_03_ParameterHash = Animator.StringToHash(skillsAttack_03_ParameterName);
             SkillsAttack_04_ParameterHash = Animator.StringToHash(skillsAttack_04_ParameterName);
 
+
+            animationMoveID = Animator.StringToHash("AnimationMove");
+            Debug.Log("  animationMoveID       " + animationMoveID);
         }
-
-
     }
+
+
 }
+

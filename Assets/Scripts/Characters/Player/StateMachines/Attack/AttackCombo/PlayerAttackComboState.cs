@@ -51,13 +51,16 @@ namespace JWOAGameSystem
             // ResetCombo();
         }
 
-        // public override void PhysicsUpdate()
-        // {
-        //     base.PhysicsUpdate();
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
 
-        //     // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
-        //     // RotateTowardsTargetRotation();
-        // }
+            Debug.Log($"<color=red>   ID:   {stateMachine.Player.Animator.GetFloat(stateMachine.Player.AnimationData.animationMoveID)}</color>");
+            stateMachine.Player.CharacterMoveInterface(stateMachine.Player.transform.forward, stateMachine.Player.Animator.GetFloat(stateMachine.Player.AnimationData.animationMoveID));
+
+            // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
+            RotateTowardsTargetRotation();
+        }
 
         public override void OnAnimationEnterEvent()
         {

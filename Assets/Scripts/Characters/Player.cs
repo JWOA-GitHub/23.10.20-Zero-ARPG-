@@ -22,6 +22,9 @@ namespace JWOAGameSystem
         // TODO：character
         public Rigidbody Rigidbody { get; private set; }
         public Animator Animator { get; private set; }
+
+        // [HideInInspector] public int animationMoveID;//
+
         [Tooltip("玩家输入动作表管理")] public PlayerInput Input { get; private set; }
 
         public Transform MainCameraTransform { get; private set; }
@@ -39,8 +42,6 @@ namespace JWOAGameSystem
             // GameObject wea = Instantiate(Data.weapon, transform.position, Quaternion.identity);
             // Debug.LogError("   " + Data.weapon.activeInHierarchy + "    " + wea.name);
             base.Awake();
-
-
 
             Init();
         }
@@ -141,6 +142,8 @@ namespace JWOAGameSystem
             return;
         }
 
+
+        #region  Methods
         /// <summary> 在需要隐藏鼠标光标的地方调用此函数
         /// </summary>
         public void HideCursor()
@@ -156,5 +159,41 @@ namespace JWOAGameSystem
             Cursor.visible = true; // 显示鼠标光标
             Cursor.lockState = CursorLockMode.None; // 解锁鼠标
         }
+
+
+        /// <summary>
+        /// 检测移动方向是否有碰撞
+        /// </summary>
+        /// <param name="dir"></param>
+        /// <returns></returns>
+        protected bool CanAnimationMotion(Vector3 dir)
+        {
+            return Physics.Raycast(transform.position + transform.up * .5f, dir.normalized * Animator.GetFloat(AnimationData.animationMoveID), out var hit, 1f, LayerData.GroundLayer);
+        }
+
+        /// <summary>
+        /// Animation动作位移
+        /// </summary>
+        /// <param name="moveDirection"></param>
+        /// <param name="moveSpeed"></param>
+        public void CharacterMoveInterface(Vector3 moveDirection, float moveSpeed)
+        {
+            if (!CanAnimationMotion(moveDirection))
+            {
+                Vector3 movementDirection = moveDirection.normalized;
+
+                // 获取玩家当前水平速度
+                Vector3 playerHorizontalVelocity = Rigidbody.velocity;
+                playerHorizontalVelocity.y = 0f;
+                Vector3 currentPlayerHorizontalVelocity = playerHorizontalVelocity;
+
+                Rigidbody.MovePosition(Rigidbody.position + moveSpeed * Time.deltaTime
+                    * movementDirection.normalized - currentPlayerHorizontalVelocity);
+
+                Debug.Log("         力度  " + (moveSpeed * Time.deltaTime
+                * movementDirection.normalized - currentPlayerHorizontalVelocity));
+            }
+        }
+        #endregion
     }
 }

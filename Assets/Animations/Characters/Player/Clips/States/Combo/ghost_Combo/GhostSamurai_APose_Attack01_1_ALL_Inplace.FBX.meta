@@ -17,10 +17,7 @@ ModelImporter:
     removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
-      copied configuration does not match position in animation file:\n\t'calf_l'
-      : position error = 1.247982 mm\n\t'foot_l' : position error = 1.249781 mm\n\t'calf_r'
-      : position error = 1.628458 mm\n\t'foot_r' : position error = 3.337458 mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: "\nClip 'GhostSamurai_APose_Attack01_ALL_Inplace' has
       import animation warnings that might lower retargeting quality:\nNote: Activate
@@ -85,7 +82,68 @@ ModelImporter:
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
+      curves:
+      - name: AnimationMove
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.094647855
+            value: 2
+            inSlope: Infinity
+            outSlope: 0
+            tangentMode: 7
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.25071695
+            value: 0
+            inSlope: Infinity
+            outSlope: 0
+            tangentMode: 7
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.6861625
+            value: 1
+            inSlope: Infinity
+            outSlope: 0
+            tangentMode: 7
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.884613
+            value: 0
+            inSlope: Infinity
+            outSlope: 0
+            tangentMode: 7
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 4
       events:
       - time: 0.68870187
         functionName: TriggerOnMovementStateAnimationTranstionEvent
