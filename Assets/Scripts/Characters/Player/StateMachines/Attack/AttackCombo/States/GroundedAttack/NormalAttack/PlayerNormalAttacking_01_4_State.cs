@@ -74,6 +74,7 @@ namespace JWOAGameSystem
             // {
             // stateMachine.ReusableData.isComboing = false;
             stateMachine.ChangeState(stateMachine.IdingState);
+            return;
             //     stateMachine.ChangeState(stateMachine.NormalAttacking_1_State);
             // }
         }

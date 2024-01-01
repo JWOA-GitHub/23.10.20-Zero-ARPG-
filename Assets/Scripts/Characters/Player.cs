@@ -40,6 +40,13 @@ namespace JWOAGameSystem
             // Debug.LogError("   " + Data.weapon.activeInHierarchy + "    " + wea.name);
             base.Awake();
 
+
+
+            Init();
+        }
+
+        private void Init()
+        {
             HideCursor();
 
             // TODO：character?
@@ -55,13 +62,6 @@ namespace JWOAGameSystem
             MainCameraTransform = Camera.main.transform;
 
             movementStateMachine = new PlayerMovementStateMachine(this);
-
-            Init();
-        }
-
-        private void Init()
-        {
-
         }
 
         private void OnValidate()
@@ -127,14 +127,20 @@ namespace JWOAGameSystem
 
             Debug.Log($"<color=yellow> {gameObject.name}  受伤了- {damage}  </color>");
             if (Hp > 0)
-                movementStateMachine.ChangeState(movementStateMachine.HurtingState);
+            {
+                Debug.Log("         切换到受伤状态！！！");
+                Animator.CrossFade("GetHit", 0.1f);
+                // movementStateMachine.ChangeState(movementStateMachine.HurtingState);
+                return;
+            }
         }
 
         protected override void Dead()
         {
             base.Dead();
 
-            // movementStateMachine.ChangeState(movementStateMachine.GetDeathState);
+            movementStateMachine.ChangeState(movementStateMachine.DeathingState);
+            return;
         }
 
         /// <summary> 在需要隐藏鼠标光标的地方调用此函数

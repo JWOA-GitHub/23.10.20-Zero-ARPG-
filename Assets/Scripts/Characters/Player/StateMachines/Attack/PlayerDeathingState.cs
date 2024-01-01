@@ -53,6 +53,7 @@ namespace JWOAGameSystem
         public override void OnAnimationTransitionEvent()
         {
             stateMachine.ChangeState(stateMachine.IdingState);
+            return;
         }
         #endregion
 
@@ -81,6 +82,7 @@ namespace JWOAGameSystem
             }
 
             stateMachine.ChangeState(stateMachine.RunningState);
+            return;
         }
         #endregion
 

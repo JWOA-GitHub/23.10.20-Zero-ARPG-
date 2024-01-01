@@ -70,12 +70,12 @@ namespace JWOAGameSystem
             base.OnAnimationExitEvent();
             string scriptName = GetType().Name;
 
-            Debug.Log("<color=yellow>  Exit  return前        Script name: " + scriptName + "</color>");
+            // Debug.Log("<color=yellow>  Exit  return前        Script name: " + scriptName + "</color>");
 
             if (stateMachine.ReusableData.isLightComboCache || stateMachine.ReusableData.isHeavyComboCache)
                 return;
 
-            Debug.Log("<color=yellow>  Exit  Return   后         Script name: " + scriptName + "</color>");
+            // Debug.Log("<color=yellow>  Exit  Return   后         Script name: " + scriptName + "</color>");
             // if (isLightComboCache || isHeavyComboCache)
             //     return;
         }

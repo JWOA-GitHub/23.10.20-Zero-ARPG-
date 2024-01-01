@@ -15,30 +15,33 @@ namespace JWOAGameSystem
 
         private void OnDrawGizmos()
         {
-            Vector3 direction = endPoint.position - startPoint.position;
-            float length = direction.magnitude;
-            direction.Normalize();
-
-            if (length > 0)
+            if (debug && startPoint != null && endPoint != null)
             {
-                Gizmos.color = Color.yellow;
+                Vector3 direction = endPoint.position - startPoint.position;
+                float length = direction.magnitude;
+                direction.Normalize();
 
-                // 绘制两个圆
-                Gizmos.DrawWireSphere(startPoint.position, radius);
-                Gizmos.DrawWireSphere(endPoint.position, radius);
+                if (length > 0)
+                {
+                    Gizmos.color = Color.yellow;
 
-                // 获取四根线段 
-                // 用于获取垂直于坐标系y轴和direction的方向向量
-                Vector3 perpendicular = Vector3.Cross(direction, Vector3.up).normalized;
+                    // 绘制两个圆
+                    Gizmos.DrawWireSphere(startPoint.position, radius);
+                    Gizmos.DrawWireSphere(endPoint.position, radius);
 
-                Gizmos.DrawLine(startPoint.position + perpendicular * radius, endPoint.position + perpendicular * radius);
-                Gizmos.DrawLine(startPoint.position - perpendicular * radius, endPoint.position - perpendicular * radius);
+                    // 获取四根线段 
+                    // 用于获取垂直于坐标系y轴和direction的方向向量
+                    Vector3 perpendicular = Vector3.Cross(direction, Vector3.up).normalized;
 
-                // 绘制于垂直轴平行的字段
-                perpendicular = Vector3.Cross(perpendicular, direction).normalized;
+                    Gizmos.DrawLine(startPoint.position + perpendicular * radius, endPoint.position + perpendicular * radius);
+                    Gizmos.DrawLine(startPoint.position - perpendicular * radius, endPoint.position - perpendicular * radius);
 
-                Gizmos.DrawLine(startPoint.position + perpendicular * radius, endPoint.position + perpendicular * radius);
-                Gizmos.DrawLine(startPoint.position - perpendicular * radius, endPoint.position - perpendicular * radius);
+                    // 绘制于垂直轴平行的字段
+                    perpendicular = Vector3.Cross(perpendicular, direction).normalized;
+
+                    Gizmos.DrawLine(startPoint.position + perpendicular * radius, endPoint.position + perpendicular * radius);
+                    Gizmos.DrawLine(startPoint.position - perpendicular * radius, endPoint.position - perpendicular * radius);
+                }
             }
         }
 
@@ -53,6 +56,7 @@ namespace JWOAGameSystem
                 AgentHitBox hitBox;
                 if (item.TryGetComponent(out hitBox) && hitBox.agent && targetTags.Contains(hitBox.agent.tag) && !wasHit.Contains(hitBox.agent))
                 {
+                    Debug.Log($"<color=yellow>{gameObject.name}   击中了 {hitBox.gameObject.name}</color>");
                     wasHit.Add(hitBox.agent);
                     result.Add(item);
                 }

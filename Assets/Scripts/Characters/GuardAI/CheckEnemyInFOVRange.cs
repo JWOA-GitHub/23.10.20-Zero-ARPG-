@@ -69,10 +69,12 @@ namespace JWOAGameSystem
             }
 
             Transform target = (Transform)t;
-            if(Vector3.Distance(_transform.position, target.position) > blackboard.Get<float>("fovRange") && t!= null)
+            if (Vector3.Distance(_transform.position, target.position) > blackboard.Get<float>("fovRange") && t != null)
             {
                 blackboard.Remove("target");
                 _hasSearchedOnce = false;
+                State = NodeState.FAILURE;
+                return State;
             }
 
             // 如果正在等待动画播放完毕
@@ -101,7 +103,12 @@ namespace JWOAGameSystem
             else if (_hasSearchedOnce && !_isWaitingForAnimation)
             {
                 // Debug.Log("           已经有过目标了");
-                agent.LookAt(target);
+
+                Vector3 lookPos = target.position - agent.position;
+                lookPos.y = 0; // 如果希望物体只在水平方向上看向目标，可以将y分量设置为0
+                Quaternion rotation = Quaternion.LookRotation(lookPos);
+                agent.rotation = rotation;
+
                 State = NodeState.SUCCESS;
                 return State;
             }

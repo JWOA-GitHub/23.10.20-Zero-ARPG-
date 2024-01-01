@@ -17,7 +17,6 @@ namespace JWOAGameSystem
         /// </summary>
         public bool isOnDetection;
 
-        // git 
 
         private void Update()
         {
@@ -33,7 +32,7 @@ namespace JWOAGameSystem
                     foreach (var hit in item.GetDetection())
                     {
                         hit.GetComponent<AgentHitBox>().GetDamage(10, transform.position);
-                        Debug.Log(hit.name + "        受伤了！！！！！！！");
+                        Debug.Log(hit.name + "      被武器攻击到  受伤了！！！！！！！");
                     }
                 }
             }

@@ -7,7 +7,7 @@ namespace JWOAGameSystem
 {
     public class CheckEnemyInShortAttackRange : Condition
     {
-        private static int _enemyLayerMask = 1 << 9;
+        // private static int _enemyLayerMask = 1 << 9;
 
         private Transform _transform;
         private NavMeshAgent _navMeshAgent;

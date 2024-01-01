@@ -78,6 +78,7 @@ namespace JWOAGameSystem
             // TODO：在非攻击状态 设置
 
             stateMachine.ChangeState(stateMachine.IdingState);
+            return;
             //     stateMachine.ChangeState(stateMachine.NormalAttacking_2_State);
             // }
         }

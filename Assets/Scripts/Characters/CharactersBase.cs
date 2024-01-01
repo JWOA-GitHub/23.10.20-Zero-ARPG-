@@ -159,8 +159,8 @@ namespace JWOAGameSystem
         {
             get
             {
-                // if (isHurting)
-                // Debug.Log(gameObject.name + "受伤了");
+                if (isHurting)
+                    Debug.Log($"<color=yellow>{gameObject.name}   受伤了</color>");
                 return isHurting;
             }
             set => isHurting = value;
@@ -260,7 +260,7 @@ namespace JWOAGameSystem
         {
             Hp -= damage;
             isHurting = true;
-            Debug.Log(gameObject.name + " 受伤了，扣了" + damage);
+            Debug.Log(gameObject.name + " 虚函数受伤了，扣了" + damage);
         }
 
         private void UpdateSkillCooldowns()

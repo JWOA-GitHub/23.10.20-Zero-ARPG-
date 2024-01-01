@@ -12,11 +12,11 @@ namespace JWOAGameSystem
         private NavMeshAgent _navMeshAgent;
 
         private CharactersBase charactersBase;
-        private float _hurtTime = 2f;
-        private float _hurtCounter = 0;
+        // private float _hurtTime = 2f;
+        // private float _hurtCounter = 0;
 
         private bool _isWaitingForAnimation = false;    // 判断是否需要等待动画播放完毕
-        private bool _hasHurtedDone = false;      // 判断是否已受击完毕
+        // private bool _hasHurtedDone = false;      // 判断是否已受击完毕
 
         public CheckHurt(Transform transform)
         {
@@ -42,7 +42,7 @@ namespace JWOAGameSystem
 
                 _isWaitingForAnimation = true;
 
-                Debug.Log("     受伤" + Time.time);
+                // Debug.Log("     受伤" + Time.time);
                 _animatorController.EnemyState = EnemyState.GetHit;
 
                 State = NodeState.SUCCESS;
@@ -64,7 +64,7 @@ namespace JWOAGameSystem
                 {
                     _isWaitingForAnimation = false;
                     charactersBase.IsHurting = false;
-                    Debug.Log("            退出 受伤123！" + charactersBase.IsHurting);
+                    // Debug.Log("            退出 受伤123！" + charactersBase.IsHurting);
                     State = NodeState.FAILURE;
                     return State;
                 }
