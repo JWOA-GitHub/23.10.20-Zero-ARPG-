@@ -15,7 +15,7 @@ namespace JWOAGameSystem
         {
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.MediumStopParameterHash);
+            StartAnimation(animationData.MediumStopParameterHash);
 
             stateMachine.ReusableData.MovementDecelerationForce = movementData.StopData.MediumDecelerationForce;
 
@@ -25,7 +25,7 @@ namespace JWOAGameSystem
         public override void Exit()
         {
             base.Exit();
-            StopAnimation(stateMachine.Player.AnimationData.MediumStopParameterHash);
+            StopAnimation(animationData.MediumStopParameterHash);
         }
         #endregion
     }

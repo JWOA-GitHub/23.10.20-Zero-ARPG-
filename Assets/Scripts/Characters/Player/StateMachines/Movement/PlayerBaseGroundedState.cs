@@ -17,7 +17,7 @@ namespace JWOAGameSystem
         {
             base.Enter();
 
-            // StartAnimation(stateMachine.Player.AnimationData.GroundedParameterHash);
+            // StartAnimation(animationData.GroundedParameterHash);
 
             stateMachine.ReusableData.isComboing = false;
 
@@ -31,7 +31,7 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            // StopAnimation(stateMachine.Player.AnimationData.GroundedParameterHash);
+            // StopAnimation(animationData.GroundedParameterHash);
         }
 
         public override void PhysicsUpdate()

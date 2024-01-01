@@ -16,17 +16,17 @@ namespace JWOAGameSystem
         public override void Enter()
         {
             // // 获取当前正在播放的动画状态信息
-            // stateMachine.Player.AnimationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
+            // animationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
 
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
+            StartAnimation(animationData.AttackComboParameterHash);
 
             stateMachine.ReusableData.isComboing = true;
 
-            // StartAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
+            // StartAnimation(animationData.AttackComboParameterHash);
 
-            // // StopAnimation(stateMachine.Player.AnimationData.NormalAttack_1_ParameterHash);
+            // // StopAnimation(animationData.NormalAttack_1_ParameterHash);
 
             // // stateMachine.Player.Animator.Play(stateName);
             // // Debug.Log(stateName);
@@ -43,10 +43,10 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
+            StopAnimation(animationData.AttackComboParameterHash);
 
             stateMachine.ReusableData.isComboing = false;
-            // StopAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
+            // StopAnimation(animationData.AttackComboParameterHash);
 
             // ResetCombo();
         }
@@ -55,8 +55,8 @@ namespace JWOAGameSystem
         {
             base.PhysicsUpdate();
 
-            Debug.Log($"<color=red>   ID:   {stateMachine.Player.Animator.GetFloat(stateMachine.Player.AnimationData.animationMoveID)}</color>");
-            stateMachine.Player.CharacterMoveInterface(stateMachine.Player.transform.forward, stateMachine.Player.Animator.GetFloat(stateMachine.Player.AnimationData.animationMoveID));
+            // Debug.Log($"<color=red>   ID:   {stateMachine.Player.Animator.GetFloat(animationData.animationMoveID)}</color>");
+            // stateMachine.Player.CharacterMoveInterface(stateMachine.Player.transform.forward, stateMachine.Player.Animator.GetFloat(animationData.animationMoveID));
 
             // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
             RotateTowardsTargetRotation();

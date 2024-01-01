@@ -60,9 +60,10 @@ namespace JWOAGameSystem
         [SerializeField] private PlayerNormalAttack_AnimationData normalAttack_AnimationData;
         [SerializeField] private PlayerSkillsAttack_AnimationData skillsAttack_AnimationData;
 
-        public Animator animator;
         public AnimatorStateInfo animatorStateInfo;
         [HideInInspector] public int animationMoveID;
+        [HideInInspector] public Vector3 animationMoveDir = Vector3.zero;
+        [HideInInspector] public float animationMoveSpeedModifier = 1f;
 
         public PlayerNormalAttack_AnimationData NormalAttack_AnimationData { get => normalAttack_AnimationData; }
         public PlayerSkillsAttack_AnimationData SkillsAttack_AnimationData { get => skillsAttack_AnimationData; }

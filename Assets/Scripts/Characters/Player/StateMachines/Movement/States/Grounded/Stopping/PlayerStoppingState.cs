@@ -21,14 +21,14 @@ namespace JWOAGameSystem
 
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.StoppingParameterHash);
+            StartAnimation(animationData.StoppingParameterHash);
         }
 
         public override void Exit()
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.StoppingParameterHash);
+            StopAnimation(animationData.StoppingParameterHash);
         }
 
         public override void PhysicsUpdate()

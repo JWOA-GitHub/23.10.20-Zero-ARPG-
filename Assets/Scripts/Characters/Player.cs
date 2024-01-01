@@ -16,8 +16,7 @@ namespace JWOAGameSystem
         [field: Header("Cameras")]
         [field: SerializeField] public PlayerCameraUtility CameraUtility { get; private set; }
 
-        [field: Header("Animations")]
-        [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
+
 
         // TODO：character
         public Rigidbody Rigidbody { get; private set; }
@@ -58,7 +57,7 @@ namespace JWOAGameSystem
             ColliderUtility.Initialize(gameObject);
             ColliderUtility.CalculateCapsuleColliderDimensions();
             CameraUtility.Initialize();
-            AnimationData.Initialize();
+            Data.AnimationData.Initialize();
 
             MainCameraTransform = Camera.main.transform;
 
@@ -168,7 +167,7 @@ namespace JWOAGameSystem
         /// <returns></returns>
         protected bool CanAnimationMotion(Vector3 dir)
         {
-            return Physics.Raycast(transform.position + transform.up * .5f, dir.normalized * Animator.GetFloat(AnimationData.animationMoveID), out var hit, 1f, LayerData.GroundLayer);
+            return Physics.Raycast(transform.position + transform.up * .5f, dir.normalized * Animator.GetFloat(Data.AnimationData.animationMoveID), out var hit, 1f, LayerData.GroundLayer);
         }
 
         /// <summary>
@@ -183,15 +182,14 @@ namespace JWOAGameSystem
                 Vector3 movementDirection = moveDirection.normalized;
 
                 // 获取玩家当前水平速度
-                Vector3 playerHorizontalVelocity = Rigidbody.velocity;
-                playerHorizontalVelocity.y = 0f;
-                Vector3 currentPlayerHorizontalVelocity = playerHorizontalVelocity;
+                // Vector3 playerHorizontalVelocity = Rigidbody.velocity;
+                // playerHorizontalVelocity.y = 0f;
+                // Vector3 currentPlayerHorizontalVelocity = playerHorizontalVelocity;
 
                 Rigidbody.MovePosition(Rigidbody.position + moveSpeed * Time.deltaTime
-                    * movementDirection.normalized - currentPlayerHorizontalVelocity);
+                    * movementDirection.normalized);
 
-                Debug.Log("         力度  " + (moveSpeed * Time.deltaTime
-                * movementDirection.normalized - currentPlayerHorizontalVelocity));
+                // Debug.Log("         力度  " + (moveSpeed * Time.deltaTime * movementDirection.normalized - currentPlayerHorizontalVelocity));
             }
         }
         #endregion

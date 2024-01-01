@@ -15,7 +15,7 @@ namespace JWOAGameSystem
         {
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.AirborneParameterHash);
+            StartAnimation(animationData.AirborneParameterHash);
 
             // TODO: 跳跃是否能攻击
             stateMachine.Player.Input.PlayerActions.LAttack.Disable();
@@ -29,7 +29,7 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.AirborneParameterHash);
+            StopAnimation(animationData.AirborneParameterHash);
 
             stateMachine.Player.Input.PlayerActions.LAttack.Enable();
             stateMachine.Player.Input.PlayerActions.RAttack.Enable();

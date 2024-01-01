@@ -15,14 +15,14 @@
 //         {
 //             base.Enter();
 
-//             StartAnimation(stateMachine.Player.AnimationData.NormalAttack_02_4_ParameterHash);
+//             StartAnimation(animationData.NormalAttack_02_4_ParameterHash);
 //         }
 
 //         public override void Exit()
 //         {
 //             base.Exit();
 
-//             StopAnimation(stateMachine.Player.AnimationData.NormalAttack_02_4_ParameterHash);
+//             StopAnimation(animationData.NormalAttack_02_4_ParameterHash);
 
 //             ResetCombo();
 //         }

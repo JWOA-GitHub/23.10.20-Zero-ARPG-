@@ -34,7 +34,7 @@ namespace JWOAGameSystem
 
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.DashParameterHash);
+            StartAnimation(animationData.DashParameterHash);
 
             stateMachine.ReusableData.CurrentJumpForce = airborneData.JumpData.StrongForce;
 
@@ -55,7 +55,7 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.DashParameterHash);
+            StopAnimation(animationData.DashParameterHash);
 
             SetBaseRotationData();
         }

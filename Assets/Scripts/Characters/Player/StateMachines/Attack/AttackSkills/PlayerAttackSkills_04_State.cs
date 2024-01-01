@@ -13,16 +13,16 @@ namespace JWOAGameSystem
         public override void Enter()
         {
             // // 获取当前正在播放的动画状态信息
-            // stateMachine.Player.AnimationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
+            // animationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
 
             // 设置技能下标 PlayerAttackSkillsState使用技能！
             currentSkillsIndex = 3;
 
             base.Enter();
 
-            stateName = stateMachine.Player.AnimationData.SkillsAttack_AnimationData.SkillsAttack_04_StateName;
+            stateName = animationData.SkillsAttack_AnimationData.SkillsAttack_04_StateName;
 
-            StartAnimation(stateMachine.Player.AnimationData.SkillsAttack_04_ParameterHash);
+            StartAnimation(animationData.SkillsAttack_04_ParameterHash);
 
             // stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
 
@@ -31,9 +31,9 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.SkillsAttack_04_ParameterHash);
+            StopAnimation(animationData.SkillsAttack_04_ParameterHash);
 
-            // StopAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
+            // StopAnimation(animationData.AttackComboParameterHash);
 
             // ResetCombo();
         }

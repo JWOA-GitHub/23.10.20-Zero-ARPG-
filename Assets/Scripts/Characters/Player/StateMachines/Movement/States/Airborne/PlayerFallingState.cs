@@ -24,7 +24,7 @@ namespace JWOAGameSystem
         {
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.FallParameterHash);
+            StartAnimation(animationData.FallParameterHash);
 
             playerPositionOnEnter = stateMachine.Player.transform.position;
 
@@ -37,7 +37,7 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.FallParameterHash);
+            StopAnimation(animationData.FallParameterHash);
         }
 
         public override void PhysicsUpdate()

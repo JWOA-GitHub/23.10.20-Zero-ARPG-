@@ -21,7 +21,7 @@ namespace JWOAGameSystem
 
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.WalkParameterHash);
+            StartAnimation(animationData.WalkParameterHash);
 
             stateMachine.ReusableData.CurrentJumpForce = airborneData.JumpData.WeakForce;
         }
@@ -30,7 +30,7 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.WalkParameterHash);
+            StopAnimation(animationData.WalkParameterHash);
 
             SetBaseCameraRecenteringData();
         }

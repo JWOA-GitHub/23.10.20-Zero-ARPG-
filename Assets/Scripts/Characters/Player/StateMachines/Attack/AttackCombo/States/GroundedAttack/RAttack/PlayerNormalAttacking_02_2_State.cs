@@ -16,9 +16,9 @@ namespace JWOAGameSystem
             base.Enter();
 
             // Attack中获取当前正在播放的动画状态信息 设置当前状态对应AnimationName
-            stateName = stateMachine.Player.AnimationData.NormalAttack_AnimationData.NormalAttack_02_2_StateName;
+            stateName = animationData.NormalAttack_AnimationData.NormalAttack_02_2_StateName;
 
-            StartAnimation(stateMachine.Player.AnimationData.NormalAttack_02_2_ParameterHash);
+            StartAnimation(animationData.NormalAttack_02_2_ParameterHash);
 
             stateMachine.Player.Input.PlayerActions.Movement.Disable();
         }
@@ -27,7 +27,7 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.NormalAttack_02_2_ParameterHash);
+            StopAnimation(animationData.NormalAttack_02_2_ParameterHash);
 
             stateMachine.Player.Input.PlayerActions.Movement.Enable();
 
@@ -85,7 +85,7 @@ namespace JWOAGameSystem
         {
             base.OnLAttackComboStarted(context);
 
-            if (stateMachine.Player.AnimationData.animatorStateInfo.IsName(stateName) && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.1f)
+            if (animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.1f)
             {
                 Debug.Log("<color=green>  重连击222222回 ·1111111</color>");
                 OnLAttack();
@@ -97,7 +97,7 @@ namespace JWOAGameSystem
         {
             base.OnRAttackComboStarted(context);
 
-            if (stateMachine.Player.AnimationData.animatorStateInfo.IsName(stateName) && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.3f)
+            if (animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.3f)
             {
                 Debug.Log("<color=green>  重连击22222222 连·重33333333</color>");
                 OnRAttack();

@@ -593,7 +593,7 @@ ModelImporter:
             outWeight: 0
           - serializedVersion: 3
             time: 0.13748492
-            value: 5
+            value: 1
             inSlope: Infinity
             outSlope: 0
             tangentMode: 7

@@ -10,10 +10,9 @@ namespace JWOAGameSystem
         [field: SerializeField] public PlayerGroundedData GroundedData { get; private set; }
         [field: SerializeField] public PlayerAirborneData AirborneData { get; private set; }
         [field: SerializeField] public PlayerAttackData AttackData { get; private set; }
-        [field: SerializeField] public GameObject weapon;
+        [field: Header("Animations")]
+        [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
 
-        // 存储场景中 GameObject 的名称
-        public string sceneGameObjectName = "Sword Slash 15";
 
     }
 }

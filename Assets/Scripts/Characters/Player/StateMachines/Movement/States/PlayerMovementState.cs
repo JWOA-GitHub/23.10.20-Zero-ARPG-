@@ -12,6 +12,8 @@ namespace JWOAGameSystem
 
         protected PlayerGroundedData movementData;
         protected PlayerAirborneData airborneData;
+
+        protected PlayerAnimationData animationData;
         #region Old
         // // /// <summary> Vector2 按键输入！！！
         // // /// <see cref="movementInput"/>
@@ -49,8 +51,10 @@ namespace JWOAGameSystem
         {
             stateMachine = playerMovementStateMachine;
 
+            //MARKER:  数据Data  
             movementData = stateMachine.Player.Data.GroundedData;
             airborneData = stateMachine.Player.Data.AirborneData;
+            animationData = stateMachine.Player.Data.AnimationData; ;
 
             SetBaseCameraRecenteringData();
 
@@ -96,7 +100,7 @@ namespace JWOAGameSystem
         {
             Move();
 
-            stateMachine.Player.AnimationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
+            animationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
 
             // 传参movementInput为Vector2！！ 旋转已加在Move中
             // Rotate(movementInput);

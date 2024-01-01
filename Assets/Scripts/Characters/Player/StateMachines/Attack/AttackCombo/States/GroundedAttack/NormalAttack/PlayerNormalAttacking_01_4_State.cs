@@ -15,15 +15,16 @@ namespace JWOAGameSystem
         #region IState Methods
         public override void Enter()
         {
-            // stateMachine.Player.AnimationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
+            // animationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
 
             base.Enter();
 
             // Attack中获取当前正在播放的动画状态信息 设置当前状态对应AnimationName
-            stateName = stateMachine.Player.AnimationData.NormalAttack_AnimationData.NormalAttack_01_4_StateName;
+            stateName = animationData.NormalAttack_AnimationData.NormalAttack_01_4_StateName;
 
-            // stateMachine.Player.Animator.Play(stateName);
-            StartAnimation(stateMachine.Player.AnimationData.NormalAttack_01_4_ParameterHash);
+            SetAnimationMoveBase(stateMachine.Player.transform.forward, 1);
+
+            StartAnimation(animationData.NormalAttack_01_4_ParameterHash);
 
             // stateMachine.Player.Input.PlayerActions.LAttack.Disable();
             // 最后一击的僵直  无法移动！
@@ -34,7 +35,7 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.NormalAttack_01_4_ParameterHash);
+            StopAnimation(animationData.NormalAttack_01_4_ParameterHash);
 
             // stateMachine.Player.Input.PlayerActions.LAttack.Enable();
             stateMachine.Player.Input.PlayerActions.Movement.Enable();
@@ -97,7 +98,7 @@ namespace JWOAGameSystem
         {
             base.OnLAttackComboStarted(context);
 
-            if (stateMachine.Player.AnimationData.animatorStateInfo.IsName(stateName) && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.3f)
+            if (animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.3f)
             {
                 Debug.Log("<color=yellow>  连击回 1111</color>");
                 OnLAttack();
@@ -109,7 +110,7 @@ namespace JWOAGameSystem
         {
             base.OnRAttackComboStarted(context);
 
-            if (stateMachine.Player.AnimationData.animatorStateInfo.IsName(stateName) && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.3f)
+            if (animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.3f)
             {
                 Debug.Log("<color=green>  轻连击4444444 回 重·1111111</color>");
                 OnRAttack();

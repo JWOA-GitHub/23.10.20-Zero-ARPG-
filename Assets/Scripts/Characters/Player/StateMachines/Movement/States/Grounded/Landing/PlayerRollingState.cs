@@ -21,7 +21,7 @@ namespace JWOAGameSystem
 
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.RollParameterHash);
+            StartAnimation(animationData.RollParameterHash);
 
             // 防止进入滚动状态后继续冲刺
             stateMachine.ReusableData.ShouldSprint = false;
@@ -31,7 +31,7 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.RollParameterHash);
+            StopAnimation(animationData.RollParameterHash);
         }
 
         public override void PhysicsUpdate()

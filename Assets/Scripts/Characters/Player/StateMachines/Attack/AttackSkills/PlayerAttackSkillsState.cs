@@ -17,7 +17,7 @@ namespace JWOAGameSystem
         public override void Enter()
         {
             // // 获取当前正在播放的动画状态信息
-            // stateMachine.Player.AnimationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
+            // animationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
 
             base.Enter();
 
@@ -27,7 +27,7 @@ namespace JWOAGameSystem
                 return;
             }
 
-            StartAnimation(stateMachine.Player.AnimationData.AttackSkillsParameterHash);
+            StartAnimation(animationData.AttackSkillsParameterHash);
 
             stateMachine.ReusableData.isSkilling = true;
         }
@@ -35,11 +35,11 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.AttackSkillsParameterHash);
+            StopAnimation(animationData.AttackSkillsParameterHash);
 
             stateMachine.ReusableData.isSkilling = false;
 
-            // StopAnimation(stateMachine.Player.AnimationData.AttackComboParameterHash);
+            // StopAnimation(animationData.AttackComboParameterHash);
 
             // ResetCombo();
         }
@@ -105,7 +105,7 @@ namespace JWOAGameSystem
         {
             base.OnLAttackComboStarted(context);
 
-            if (stateMachine.Player.AnimationData.animatorStateInfo.IsName(stateName) && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.7f)
+            if (animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.7f)
             {
                 Debug.Log("<color=yellow>  技能 连击回 1111</color>");
                 OnLAttack();
@@ -117,7 +117,7 @@ namespace JWOAGameSystem
         {
             base.OnRAttackComboStarted(context);
 
-            if (stateMachine.Player.AnimationData.animatorStateInfo.IsName(stateName) && stateMachine.Player.AnimationData.animatorStateInfo.normalizedTime >= 0.7f)
+            if (animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.7f)
             {
                 Debug.Log("<color=green>  技能 连击4444444 回 重·1111111</color>");
                 OnRAttack();

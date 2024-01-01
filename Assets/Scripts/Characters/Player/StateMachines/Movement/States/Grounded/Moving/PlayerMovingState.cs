@@ -12,14 +12,14 @@ namespace JWOAGameSystem
         {
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.MovingParameterHash);
+            StartAnimation(animationData.MovingParameterHash);
         }
 
         public override void Exit()
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.MovingParameterHash);
+            StopAnimation(animationData.MovingParameterHash);
         }
         #endregion
     }

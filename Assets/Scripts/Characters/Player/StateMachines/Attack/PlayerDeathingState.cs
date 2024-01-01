@@ -15,7 +15,7 @@ namespace JWOAGameSystem
 
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.DeathParameterHash);
+            StartAnimation(animationData.DeathParameterHash);
 
             // 禁用“移动”按键输入！！ 在特定帧或结束时开启！
             stateMachine.Player.Input.PlayerActions.Movement.Disable();
@@ -27,7 +27,7 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.DeathParameterHash);
+            StopAnimation(animationData.DeathParameterHash);
 
             stateMachine.Player.Input.PlayerActions.Movement.Enable();
         }

@@ -33,7 +33,7 @@ namespace JWOAGameSystem
 
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.SprintParameterHash);
+            StartAnimation(animationData.SprintParameterHash);
 
             stateMachine.ReusableData.CurrentJumpForce = airborneData.JumpData.StrongForce;
 
@@ -46,7 +46,7 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.SprintParameterHash);
+            StopAnimation(animationData.SprintParameterHash);
 
             // 若不重置“疾跑”状态，则一旦“着陆”就开始“疾跑”
             if (shouldResetSprintState)

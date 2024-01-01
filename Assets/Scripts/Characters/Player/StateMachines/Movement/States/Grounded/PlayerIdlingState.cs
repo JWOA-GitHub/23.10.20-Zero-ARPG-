@@ -19,7 +19,7 @@ namespace JWOAGameSystem
 
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
+            StartAnimation(animationData.IdleParameterHash);
 
             stateMachine.ReusableData.CurrentJumpForce = airborneData.JumpData.StationaryForce;
 
@@ -30,7 +30,7 @@ namespace JWOAGameSystem
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
+            StopAnimation(animationData.IdleParameterHash);
         }
 
         public override void LogicUpdate()

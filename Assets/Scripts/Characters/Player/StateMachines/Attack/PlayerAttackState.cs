@@ -6,7 +6,6 @@ namespace JWOAGameSystem
     public class PlayerAttackState : PlayerBaseGroundedState
     {
         [SerializeField] protected string stateName = "combo_01_1";
-
         public PlayerAttackState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
@@ -15,23 +14,25 @@ namespace JWOAGameSystem
         public override void Enter()
         {
             // 获取当前正在播放的动画状态信息
-            stateMachine.Player.AnimationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
+            animationData.animatorStateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
 
             base.Enter();
 
-            StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
+            StartAnimation(animationData.AttackParameterHash);
 
             stateMachine.ReusableData.MovementSpeedModifier = 0f;
 
             ResetVelocity();
 
             ResetCombo();
+
+            SetAnimationMoveBase(Vector3.zero, 1);
         }
         public override void Exit()
         {
             base.Exit();
 
-            StopAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
+            StopAnimation(animationData.AttackParameterHash);
 
             ResetCombo();
         }
@@ -39,6 +40,9 @@ namespace JWOAGameSystem
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
+
+            // 动画中的Curve曲线 决定动画的移动位置！
+            stateMachine.Player.CharacterMoveInterface(animationData.animationMoveDir, stateMachine.Player.Animator.GetFloat(animationData.animationMoveID) * animationData.animationMoveSpeedModifier);
 
             // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
             RotateTowardsTargetRotation();
@@ -60,11 +64,12 @@ namespace JWOAGameSystem
         #endregion
 
         #region Reusable Methods
+
         /// <summary> 开启攻击检测
         /// </summary>
         public void EnableDetection()
         {
-            
+
         }
 
         /// <summary> 关闭攻击检测
@@ -72,6 +77,12 @@ namespace JWOAGameSystem
         public void DisableDetection()
         {
 
+        }
+
+        protected void SetAnimationMoveBase(Vector3 moveDir, float moveSpeedModeifier)
+        {
+            animationData.animationMoveDir = moveDir;
+            animationData.animationMoveSpeedModifier = moveSpeedModeifier;
         }
 
         protected void ResetCombo()
