@@ -34,7 +34,7 @@ namespace JWOAGameSystem
                 // _enemyManager = target.GetComponent<EnemyManager>();
                 _player = target.GetComponent<CharactersBase>();
                 _lastTarget = target;
-                // Debug.LogWarning(_player.name + "                获取成功？");
+                Debug.LogWarning(_player.name + "                获取成功？");
                 Debug.Log("         更换了攻击目标");
             }
             // Debug.Log(" _attackCounter      " + _attackCounter);
