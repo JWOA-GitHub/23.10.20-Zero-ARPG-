@@ -12,27 +12,22 @@ namespace JWOAGameSystem
         #region Input Methods
         public override void Enter()
         {
-            Debug.Log("<color=red>          受伤状态</color>");
             stateMachine.ReusableData.MovementSpeedModifier = 0f;
-            stateMachine.Player.IsHurting = true;
+            // stateMachine.Player.IsHurting = true;
 
             base.Enter();
 
             StartAnimation(stateMachine.Player.AnimationData.HurtParameterHash);
-            // stateMachine.Player.Animator.Play("GetHit");
-            Debug.Log("     播放受伤动画");
+
             // 禁用“移动”按键输入！！ 在特定帧或结束时开启！
             stateMachine.Player.Input.PlayerActions.Disable();
-            Debug.Log("关闭按键输入");
 
             ResetVelocity();
-            Debug.Log("停止移动");
         }
 
         public override void Exit()
         {
-            Debug.Log("<color=red>          退出    受伤状态</color>");
-            stateMachine.Player.IsHurting = false;
+            // stateMachine.Player.IsHurting = false;
 
             base.Exit();
 

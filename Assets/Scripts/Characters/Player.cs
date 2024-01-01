@@ -126,10 +126,8 @@ namespace JWOAGameSystem
             base.GetDamage(damage, pos);
 
             Debug.Log($"<color=yellow> {gameObject.name}  受伤了- {damage}  +是否在受伤状态-- {IsHurting}</color>");
-            if (Hp > 0 && !IsHurting)
+            if (Hp > 0)
             {
-                Debug.Log("         切换到受伤状态！！！");
-                Animator.CrossFade("GetHit", 0.1f);
                 movementStateMachine.ChangeState(movementStateMachine.HurtingState);
                 return;
             }

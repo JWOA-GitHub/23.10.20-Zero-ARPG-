@@ -2,7 +2,7 @@ using UnityEngine.InputSystem;
 
 namespace JWOAGameSystem
 {
-    public class PlayerDeathingState : PlayerGroundedState
+    public class PlayerDeathingState : PlayerStoppingState
     {
         public PlayerDeathingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
