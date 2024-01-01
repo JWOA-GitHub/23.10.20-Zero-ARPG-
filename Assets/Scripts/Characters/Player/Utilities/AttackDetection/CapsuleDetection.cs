@@ -7,11 +7,11 @@ namespace JWOAGameSystem
 {
     public class CapsuleDetection : Detection
     {
-        public Transform startPoint;
-        public Transform endPoint;
-        public float radius;
+        [SerializeField] private Transform startPoint;
+        [SerializeField] private Transform endPoint;
+        [SerializeField] private float radius;
 
-        public bool debug;
+        [SerializeField] private bool debug = true;
 
         private void OnDrawGizmos()
         {
