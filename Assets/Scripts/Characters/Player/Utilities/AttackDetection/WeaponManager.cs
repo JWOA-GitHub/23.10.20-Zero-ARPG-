@@ -18,6 +18,10 @@ namespace JWOAGameSystem
         public bool isOnDetection;
 
 
+        private void Start()
+        {
+            ToggleDetection(true);
+        }
         private void Update()
         {
             HandleDetection();

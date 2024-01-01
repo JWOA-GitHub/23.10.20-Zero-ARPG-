@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace JWOAGameSystem
 {
-    public class PlayerHurtingState : PlayerGroundedState
+    public class PlayerHurtingState : PlayerStoppingState
     {
         public PlayerHurtingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
@@ -14,20 +14,26 @@ namespace JWOAGameSystem
         {
             Debug.Log("<color=red>          受伤状态</color>");
             stateMachine.ReusableData.MovementSpeedModifier = 0f;
+            stateMachine.Player.IsHurting = true;
 
             base.Enter();
 
             StartAnimation(stateMachine.Player.AnimationData.HurtParameterHash);
-
+            // stateMachine.Player.Animator.Play("GetHit");
+            Debug.Log("     播放受伤动画");
             // 禁用“移动”按键输入！！ 在特定帧或结束时开启！
             stateMachine.Player.Input.PlayerActions.Disable();
+            Debug.Log("关闭按键输入");
 
             ResetVelocity();
+            Debug.Log("停止移动");
         }
 
         public override void Exit()
         {
             Debug.Log("<color=red>          退出    受伤状态</color>");
+            stateMachine.Player.IsHurting = false;
+
             base.Exit();
 
             StopAnimation(stateMachine.Player.AnimationData.HurtParameterHash);
@@ -35,23 +41,23 @@ namespace JWOAGameSystem
             stateMachine.Player.Input.PlayerActions.Enable();
         }
 
-        public override void PhysicsUpdate()
-        {
-            base.PhysicsUpdate();
-            Debug.Log("             正在受伤Update");
-            if (!IsMovingHorizontally())
-            {
-                return;
-            }
+        // public override void PhysicsUpdate()
+        // {
+        //     base.PhysicsUpdate();
+        //     Debug.Log("             正在受伤Update");
+        //     if (!IsMovingHorizontally())
+        //     {
+        //         return;
+        //     }
 
-            // 正在移动则移除速度，防止滑行
-            ResetVelocity();
-        }
+        //     // 正在移动则移除速度，防止滑行
+        //     ResetVelocity();
+        // }
 
-        public override void OnAnimationExitEvent()
-        {
-            stateMachine.Player.Input.PlayerActions.Movement.Enable();
-        }
+        // public override void OnAnimationExitEvent()
+        // {
+        //     stateMachine.Player.Input.PlayerActions.Movement.Enable();
+        // }
 
         public override void OnAnimationTransitionEvent()
         {

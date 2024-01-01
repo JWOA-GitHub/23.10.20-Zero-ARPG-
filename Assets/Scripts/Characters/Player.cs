@@ -118,19 +118,19 @@ namespace JWOAGameSystem
         protected override void OnHpUpdate()
         {
             base.OnHpUpdate();
-            Debug.Log("        OnUpdate 玩家血量" + Hp);
+            // Debug.Log("        OnUpdate 玩家血量" + Hp);
         }
 
         public override void GetDamage(float damage, Vector3 pos)
         {
             base.GetDamage(damage, pos);
 
-            Debug.Log($"<color=yellow> {gameObject.name}  受伤了- {damage}  </color>");
-            if (Hp > 0)
+            Debug.Log($"<color=yellow> {gameObject.name}  受伤了- {damage}  +是否在受伤状态-- {IsHurting}</color>");
+            if (Hp > 0 && !IsHurting)
             {
                 Debug.Log("         切换到受伤状态！！！");
                 Animator.CrossFade("GetHit", 0.1f);
-                // movementStateMachine.ChangeState(movementStateMachine.HurtingState);
+                movementStateMachine.ChangeState(movementStateMachine.HurtingState);
                 return;
             }
         }

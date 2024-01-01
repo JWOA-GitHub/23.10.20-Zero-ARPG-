@@ -259,7 +259,7 @@ namespace JWOAGameSystem
         public virtual void GetDamage(float damage, Vector3 pos)
         {
             Hp -= damage;
-            isHurting = true;
+            // isHurting = true;
             Debug.Log(gameObject.name + " 虚函数受伤了，扣了" + damage);
         }
 

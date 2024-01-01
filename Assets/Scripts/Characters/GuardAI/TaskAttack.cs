@@ -52,7 +52,6 @@ namespace JWOAGameSystem
                 // _player.TakeDamage(blackboard.Get<int>("attackDamage"));
                 // _player.GetDamage(blackboard.Get<int>("attackDamage"),);
                 Debug.Log($"      <color=red>  {agent.gameObject.name} 正在攻击了</color>" + Vector3.Distance(_transform.position, target.position));
-                Debug.Log(_player.name);
                 if (_player.IsDead)
                 {
                     Debug.Log("      <color=red>            死亡 移除了攻击目标</color>");
