@@ -18,6 +18,8 @@ namespace JWOAGameSystem
             // Attack中获取当前正在播放的动画状态信息 设置当前状态对应AnimationName
             stateName = animationData.NormalAttack_AnimationData.NormalAttack_02_3_StateName;
 
+            SetAnimationMoveBase(stateMachine.Player.transform.forward, 2);
+
             StartAnimation(animationData.NormalAttack_02_3_ParameterHash);
 
             stateMachine.Player.Input.PlayerActions.Movement.Disable();
