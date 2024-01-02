@@ -161,7 +161,7 @@ namespace JWOAGameSystem
 
 
             animationMoveID = Animator.StringToHash("AnimationMove");
-            Debug.Log("  animationMoveID       " + animationMoveID);
+            // Debug.Log("  animationMoveID       " + animationMoveID);
         }
     }
 

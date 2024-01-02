@@ -181,13 +181,20 @@ namespace JWOAGameSystem
         /// <summary> 是否处于无敌帧时间 
         /// <see cref="InvincibleFrame"/>
         /// </summary>
-        public bool invincibleFrame = false;
+        private bool invincibleFrame = false;
         public bool InvincibleFrame
         {
             get => invincibleFrame;
             set => invincibleFrame = value;
         }
 
+        private bool isAnimationMoveing = false;
+        [HideInInspector]
+        public bool IsAnimationMoveing
+        {
+            get => isAnimationMoveing;
+            set => isAnimationMoveing = value;
+        }
         #endregion
 
 
