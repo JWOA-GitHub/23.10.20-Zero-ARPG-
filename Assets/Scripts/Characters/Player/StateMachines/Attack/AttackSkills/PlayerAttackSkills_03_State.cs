@@ -20,6 +20,8 @@ namespace JWOAGameSystem
 
             base.Enter();
 
+            stateMachine.Player.InvincibleFrame = true;
+
             stateName = animationData.SkillsAttack_AnimationData.SkillsAttack_03_StateName;
 
             StartAnimation(animationData.SkillsAttack_03_ParameterHash);
@@ -31,6 +33,8 @@ namespace JWOAGameSystem
             base.Exit();
 
             StopAnimation(animationData.SkillsAttack_03_ParameterHash);
+
+            stateMachine.Player.InvincibleFrame = false;
         }
 
         // public override void PhysicsUpdate()

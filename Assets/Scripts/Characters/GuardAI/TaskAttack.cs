@@ -34,7 +34,6 @@ namespace JWOAGameSystem
                 // _enemyManager = target.GetComponent<EnemyManager>();
                 _player = target.GetComponent<CharactersBase>();
                 _lastTarget = target;
-                Debug.LogWarning(_player.name + "                获取成功？");
                 Debug.Log("         更换了攻击目标");
             }
             // Debug.Log(" _attackCounter      " + _attackCounter);
@@ -51,7 +50,7 @@ namespace JWOAGameSystem
 
                 // _player.TakeDamage(blackboard.Get<int>("attackDamage"));
                 // _player.GetDamage(blackboard.Get<int>("attackDamage"),);
-                Debug.Log($"      <color=red>  {agent.gameObject.name} 正在攻击了</color>" + Vector3.Distance(_transform.position, target.position));
+                // Debug.Log($"      <color=red>  {agent.gameObject.name} 正在攻击了</color>" + Vector3.Distance(_transform.position, target.position));
                 if (_player.IsDead)
                 {
                     Debug.Log("      <color=red>            死亡 移除了攻击目标</color>");

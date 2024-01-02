@@ -123,6 +123,13 @@ namespace JWOAGameSystem
 
         public override void GetDamage(float damage, Vector3 pos)
         {
+            if (InvincibleFrame)
+            {
+                Debug.Log($"<color=red>   {gameObject.name}处于无敌帧时间    </color>");
+                movementStateMachine.ChangeState(movementStateMachine.AttackParryUpingState);
+                return;
+            }
+
             base.GetDamage(damage, pos);
 
             Debug.Log($"<color=yellow> {gameObject.name}  受伤了- {damage}  +是否在受伤状态-- {IsHurting}</color>");

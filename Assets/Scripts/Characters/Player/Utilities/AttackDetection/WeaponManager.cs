@@ -17,6 +17,8 @@ namespace JWOAGameSystem
         /// </summary>
         public bool isOnDetection;
 
+        [SerializeField] private CharactersBase charactersBase;
+
         private void Update()
         {
             HandleDetection();
@@ -30,8 +32,8 @@ namespace JWOAGameSystem
                 {
                     foreach (var hit in item.GetDetection())
                     {
-                        hit.GetComponent<AgentHitBox>().GetDamage(10, transform.position);
-                        Debug.Log(hit.name + "      被武器攻击到  受伤了！！！！！！！");
+                        hit.GetComponent<AgentHitBox>().GetDamage(charactersBase.AttackDamage, transform.position);
+                        Debug.Log($"{hit.name} +      被攻击到  GetDamage  了伤害  {charactersBase.AttackDamage}！！！！！！！");
                     }
                 }
             }

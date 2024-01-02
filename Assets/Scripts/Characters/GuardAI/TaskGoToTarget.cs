@@ -34,7 +34,7 @@ namespace JWOAGameSystem
             // Debug.Log("<color=pink>         在gotoTarget 追踪？   ${)} </color>" + Vector3.Distance(_transform.position, _target.position));
             if (Vector3.Distance(_transform.position, _target.position) > blackboard.Get<float>("shortAttackRange"))
             {
-                Debug.Log($"<color=green> goto Target  距离{Vector3.Distance(_transform.position, _target.position)}   需要 {blackboard.Get<float>("shortAttackRange")} </color>");
+                // Debug.Log($"<color=green> goto Target  距离{Vector3.Distance(_transform.position, _target.position)}   需要 {blackboard.Get<float>("shortAttackRange")} </color>");
                 _animatorController.EnemyState = EnemyState.Chase;
 
                 // Agent开启  设置追踪目标

@@ -159,8 +159,8 @@ namespace JWOAGameSystem
         {
             get
             {
-                if (isHurting)
-                    Debug.Log($"<color=yellow>{gameObject.name}   受伤了</color>");
+                // if (isHurting)
+                //     Debug.Log($"<color=yellow>{gameObject.name}   受伤了</color>");
                 return isHurting;
             }
             set => isHurting = value;
@@ -176,6 +176,16 @@ namespace JWOAGameSystem
                 return hp <= 0;
             }
             protected set => isDead = value;
+        }
+
+        /// <summary> 是否处于无敌帧时间 
+        /// <see cref="InvincibleFrame"/>
+        /// </summary>
+        public bool invincibleFrame = false;
+        public bool InvincibleFrame
+        {
+            get => invincibleFrame;
+            set => invincibleFrame = value;
         }
 
         #endregion
@@ -261,7 +271,6 @@ namespace JWOAGameSystem
         {
             Hp -= damage;
             isHurting = true;
-            Debug.Log(gameObject.name + " 虚函数受伤了，扣了" + damage);
         }
 
         private void UpdateSkillCooldowns()
