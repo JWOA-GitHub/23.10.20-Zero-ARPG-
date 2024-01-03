@@ -33,7 +33,6 @@ namespace JWOAGameSystem
                     foreach (var hit in item.GetDetection())
                     {
                         hit.GetComponent<AgentHitBox>().GetDamage(charactersBase.AttackDamage, transform.position);
-                        Debug.Log($"{hit.name} +      被攻击到  GetDamage  了伤害  {charactersBase.AttackDamage}！！！！！！！");
                     }
                 }
             }

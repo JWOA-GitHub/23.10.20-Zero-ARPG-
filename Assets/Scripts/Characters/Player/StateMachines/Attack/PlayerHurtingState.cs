@@ -56,7 +56,6 @@ namespace JWOAGameSystem
 
         public override void OnAnimationTransitionEvent()
         {
-            Debug.Log("         受伤 自动切换到 idle");
             stateMachine.ChangeState(stateMachine.IdingState);
             return;
         }

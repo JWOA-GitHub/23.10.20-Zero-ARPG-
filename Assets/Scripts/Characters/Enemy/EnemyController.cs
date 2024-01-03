@@ -22,5 +22,13 @@ namespace JWOAGameSystem
         {
             gameObject.SetActive(false);
         }
+
+
+        protected new void Update()
+        {
+            base.Update();
+        }
+
+
     }
 }

@@ -21,7 +21,7 @@ namespace JWOAGameSystem
 
 
     }
-    [RequireComponent(typeof(CharacterController))]
+
     public class EnemyAnimatorController : MonoBehaviour
     {
         [System.Serializable]
@@ -60,10 +60,11 @@ namespace JWOAGameSystem
                     switch (_currentState)
                     {
                         case EnemyState.JumpBackwards:
-                            SetAnimationMoveBase(transform.forward, 5);
+                            SetAnimationMoveBase(transform.root.forward, 5);
                             break;
                         case EnemyState.GetHit:
-                            SetAnimationMoveBase(transform.forward, 2);
+                            Debug.Log("forward : " + transform.forward + "root:" + transform.root.forward);
+                            SetAnimationMoveBase(transform.root.forward, 2);
                             break;
                         default:
                             SetAnimationMoveBase(Vector3.zero, 1);
