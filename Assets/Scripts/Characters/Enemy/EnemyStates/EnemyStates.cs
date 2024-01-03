@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace JWOAGameSystem
 {
-    [Serializable]
-    public class EnemyStates : IEnemyState
+    
+    public class EnemyStates : ScriptableObject, IEnemyState
     {
         protected Animator animator;
         protected EnemyStateMachine enemyStateMachine;
@@ -28,8 +28,8 @@ namespace JWOAGameSystem
 
         public virtual void Enter()
         {
-            animator.CrossFade(stateHash, transitionDuration);
-
+            // animator.CrossFade(stateHash, transitionDuration);
+            Debug.Log($"进入 {GetType().Name}  Enter");
         }
 
         public virtual void Exit()

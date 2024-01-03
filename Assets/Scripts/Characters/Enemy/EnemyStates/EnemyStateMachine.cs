@@ -14,14 +14,13 @@ namespace JWOAGameSystem
             animator = GetComponentInChildren<Animator>();
             charactersBase = GetComponentInChildren<CharactersBase>();
 
-            // stateTable = new Dictionary<System.Type, IEnemyState>(enemyStates.Length);
+            stateTable = new Dictionary<System.Type, IEnemyState>(enemyStates.Length);
             foreach (EnemyStates enemyState in enemyStates)
             {
                 enemyState.Initialize(animator, this, charactersBase);
                 stateTable.Add(enemyState.GetType(), enemyState);
-                Debug.Log(enemyState.GetType().Name );
+                Debug.Log(enemyState.GetType().Name);
             }
-
         }
 
         private void Start()
