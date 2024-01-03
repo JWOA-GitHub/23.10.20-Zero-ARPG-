@@ -98,7 +98,7 @@ namespace JWOAGameSystem
 
         private void Update()
         {
-            if (animationMoveID != 0)
+            if (animationMoveID != 0 && animationMoveDir != Vector3.zero)
             {
                 // 动画中的Curve曲线 决定动画的移动位置！
                 CharacterMoveInterface(animationMoveDir,
