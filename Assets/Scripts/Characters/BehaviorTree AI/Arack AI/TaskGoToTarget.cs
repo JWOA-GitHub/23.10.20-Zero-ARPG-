@@ -36,12 +36,8 @@ namespace JWOAGameSystem
                 // Debug.Log($"<color=green> goto Target  距离{Vector3.Distance(_transform.position, _target.position)}   需要 {blackboard.Get<float>("shortAttackRange")} </color>");
                 _animatorController.EnemyState = EnemyState.Chase;
 
-                // Agent开启  设置追踪目标
-                // _navMeshAgent.enabled = true;
                 _navMeshAgent.SetDestination(_target.position);
                 _navMeshAgent.speed = blackboard.Get<float>("chaseSpeed");
-                // _transform.position = Vector3.MoveTowards(_transform.position, _target.position, blackboard.Get<float>("speed") * Time.deltaTime);
-                // _transform.LookAt(_target.position);
             }
 
             State = NodeState.RUNNING;

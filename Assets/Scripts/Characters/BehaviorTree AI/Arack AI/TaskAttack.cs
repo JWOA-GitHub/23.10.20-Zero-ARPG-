@@ -38,10 +38,6 @@ namespace JWOAGameSystem
             _attackCounter += Time.deltaTime;
             if (_attackCounter >= _attackTime)
             {
-                // 禁用 NavMeshAgent 组件
-                // _navMeshAgent.ResetPath();
-
-                // _navMeshAgent.enabled = false;
 
                 Vector3 lookPos = target.position - agent.position;
                 lookPos.y = 0; // 如果希望物体只在水平方向上看向目标，可以将y分量设置为0

@@ -37,7 +37,7 @@ namespace JWOAGameSystem
             // Debug.Log("检查攻击距离  CheckEnemyInAttackRange" + Vector3.Distance(_transform.position, target.position) + " 攻击与否 " + (Vector3.Distance(_transform.position, target.position) <= blackboard.Get<float>("attackRange")));
             if (Vector3.Distance(_transform.position, target.position) <= blackboard.Get<float>("shortAttackRange"))
             {
-                _navMeshAgent.ResetPath();
+                _navMeshAgent.ResetPath();  //取消导航移动
 
                 // Debug.Log("             找到攻击目标                        ···");
                 // _navMeshAgent.enabled = false;

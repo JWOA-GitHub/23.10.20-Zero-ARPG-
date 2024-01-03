@@ -28,9 +28,9 @@ namespace JWOAGameSystem
 
         protected override NodeState OnEvaluate(Transform agent, Blackboard blackboard)
         {
-            // Debug.Log("     判断是否受伤    <color=yellow>" + charactersBase.IsHurting + "</color>");
-            // bool isDead = charactersBase.Hp <= 0;
-            if (_charactersBase.IsDead)
+            Transform target = blackboard.Get<Transform>("target");
+
+            if (_charactersBase.IsDead || target == null)
             {
                 State = NodeState.FAILURE;
                 return State;
@@ -38,11 +38,17 @@ namespace JWOAGameSystem
 
             if (_charactersBase.IsHurting && !_isWaitingForAnimation)
             {
-                _navMeshAgent.ResetPath();
+                _navMeshAgent.ResetPath();  //取消导航移动
 
                 _isWaitingForAnimation = true;
 
                 // Debug.Log("     受伤" + Time.time);
+
+                Vector3 lookPos = target.position - agent.position;
+                lookPos.y = 0; // 如果希望物体只在水平方向上看向目标，可以将y分量设置为0
+                Quaternion rotation = Quaternion.LookRotation(lookPos);
+                agent.rotation = rotation;
+
 
                 _animatorController.EnemyState = EnemyState.GetHit;
 

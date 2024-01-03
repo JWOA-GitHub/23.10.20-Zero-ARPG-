@@ -57,7 +57,7 @@ namespace JWOAGameSystem
                     // _animator.SetBool("Walking",true); 
                     _animatorController.EnemyState = EnemyState.Search;
 
-                    _navMeshAgent.ResetPath();
+                    _navMeshAgent.ResetPath();  //取消导航移动
                     _hasSearchedOnce = true; // 设置标志以表明已进行了一次搜索
                                              // 设置标志以等待动画播放完毕
                     _isWaitingForAnimation = true;

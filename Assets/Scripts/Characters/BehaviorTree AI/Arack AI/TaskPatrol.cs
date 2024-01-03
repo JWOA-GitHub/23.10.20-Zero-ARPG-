@@ -22,7 +22,6 @@ namespace JWOAGameSystem
         {
             _transform = transform;
             _animatorController = transform.GetComponent<EnemyAnimatorController>();
-            // _animator = transform.GetComponent<Animator>();
             _navMeshAgent = transform.GetComponent<NavMeshAgent>();
 
             _waypoints = waypoints;

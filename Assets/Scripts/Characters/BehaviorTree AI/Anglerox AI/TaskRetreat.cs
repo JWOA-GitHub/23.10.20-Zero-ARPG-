@@ -35,12 +35,21 @@ namespace JWOAGameSystem
                 return State;
             }
 
-            if (!_isWaitingForAnimation)
+            bool needToRetreat = Vector3.Distance(target.position, agent.position) <= blackboard.Get<float>("retreatRange");
+
+            if (needToRetreat && !_isWaitingForAnimation)
             {
-                // 禁用 NavMeshAgent 组件
-                _navMeshAgent.ResetPath();
+                //  (通过动画位移 移动)
+                _navMeshAgent.ResetPath();  //取消导航移动
 
                 _isWaitingForAnimation = true;
+
+                // 后撤前 先调整方向
+                Vector3 lookPos = target.position - agent.position;
+                lookPos.y = 0; // 如果希望物体只在水平方向上看向目标，可以将y分量设置为0
+                Quaternion rotation = Quaternion.LookRotation(lookPos);
+                agent.rotation = rotation;
+
 
                 _animatorController.EnemyState = EnemyState.JumpBackwards;
 
@@ -52,8 +61,7 @@ namespace JWOAGameSystem
             {
                 // 获取当前动画状态信息
                 AnimatorStateInfo stateInfo = _animatorController._animator.GetCurrentAnimatorStateInfo(0);
-                // Debug.Log("            等待后退动画播放完毕");
-                // 如果当前动画播放时间大于等于动画长度（normalizedTime 大于等于 1），表示动画播放完毕
+                // Debug.Log("            等待后退动   画播放完毕");
 
                 if (stateInfo.IsName(_animatorController._stateToAnimationState[_animatorController.EnemyState].animationName) && stateInfo.normalizedTime >= 0.9f)
                 {
