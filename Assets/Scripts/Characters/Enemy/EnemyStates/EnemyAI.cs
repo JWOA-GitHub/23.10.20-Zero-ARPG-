@@ -6,6 +6,8 @@ namespace JWOAGameSystem
 {
     public class EnemyAI : CharactersBase
     {
+        public EnemyStateMachine enemyStateMachine;
+
         public EnemyAI(string name, int startingLevel) : base(name, startingLevel)
         {
             name = "Boss";
@@ -13,6 +15,9 @@ namespace JWOAGameSystem
             Debug.LogError("Boss:   " + gameObject.name);
         }
 
-
+        private void Start()
+        {
+            enemyStateMachine = GetComponent<EnemyStateMachine>();
+        }
     }
 }

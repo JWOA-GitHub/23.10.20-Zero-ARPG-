@@ -10,19 +10,19 @@ namespace JWOAGameSystem
             base.Enter();
         }
 
-        public override void Exit()
-        {
+        // public override void Exit()
+        // {
 
-        }
+        // }
 
-        public override void LogicUpdate()
-        {
+        // public override void LogicUpdate()
+        // {
 
-        }
+        // }
 
-        public override void PhysicsUpdate()
-        {
-
-        }
+        // public override void PhysicsUpdate()
+        // {
+        //     enemyStateMachine.ChangeState(typeof(WalkForwardState));
+        // }
     }
 }

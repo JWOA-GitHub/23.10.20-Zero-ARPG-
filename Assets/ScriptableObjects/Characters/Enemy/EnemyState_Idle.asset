@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ec3d6fde30c63439e0e4b2d25a59ff, type: 3}
   m_Name: EnemyState_Idle
   m_EditorClassIdentifier: 
-  stateName: 
+  stateName: 2HitComboAttack
   transitionDuration: 0.1

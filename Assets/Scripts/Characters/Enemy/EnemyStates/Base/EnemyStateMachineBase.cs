@@ -31,7 +31,7 @@ namespace JWOAGameSystem
             currentState.Enter();
         }
 
-        protected void ChangeState(IEnemyState newEnemyState)
+        public void ChangeState(IEnemyState newEnemyState)
         {
             currentState.Exit();
             SetState(newEnemyState);
