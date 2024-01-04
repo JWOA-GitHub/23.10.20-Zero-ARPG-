@@ -7,7 +7,8 @@ namespace JWOAGameSystem
     public class EnemyAI : CharactersBase
     {
         public EnemyStateMachine enemyStateMachine;
-
+        public bool isTwoHitComboAttacking = false;
+        public bool _isWaitingForAnimation = false;
         public EnemyAI(string name, int startingLevel) : base(name, startingLevel)
         {
             name = "Boss";
@@ -18,7 +19,7 @@ namespace JWOAGameSystem
         private void Start()
         {
             enemyStateMachine = GetComponent<EnemyStateMachine>();
-            
+
         }
     }
 }

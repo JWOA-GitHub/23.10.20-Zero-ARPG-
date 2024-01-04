@@ -96,6 +96,7 @@ namespace JWOAGameSystem
             }
         }
 
+        #region AnimationMove部分
         private void Update()
         {
             if (animationMoveID != 0 && animationMoveDir != Vector3.zero)
@@ -140,6 +141,7 @@ namespace JWOAGameSystem
             }
         }
 
+        #endregion
 
         private void UpdateAnimationState()
         {

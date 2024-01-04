@@ -35,7 +35,7 @@ namespace JWOAGameSystem
                 }),
                 new Sequence(new List<Node>{
                     new CheckEnemyInFOVRange_State(transform),
-                    // new TaskGoToTarget_State(transform),
+                    new TaskGoToTarget_State(transform),
                 }),
                 new TaskPatrol_State(transform, waypoints),
             });

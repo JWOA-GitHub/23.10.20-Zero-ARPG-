@@ -9,5 +9,15 @@ namespace JWOAGameSystem
         {
             base.Enter();
         }
+
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+
+            if (IsAnimationFinished)
+            {
+                enemyStateMachine.EnemyAI.isTwoHitComboAttacking = false;
+            }
+        }
     }
 }

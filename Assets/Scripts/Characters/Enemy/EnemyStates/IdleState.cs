@@ -20,10 +20,10 @@ namespace JWOAGameSystem
 
         // }
 
-        public override void PhysicsUpdate()
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-                enemyStateMachine.ChangeState(typeof(WalkForwardState));
-        }
+        // public override void PhysicsUpdate()
+        // {
+        //     if (Input.GetKeyDown(KeyCode.Q))
+        //         enemyStateMachine.ChangeState(typeof(WalkForwardState));
+        // }
     }
 }

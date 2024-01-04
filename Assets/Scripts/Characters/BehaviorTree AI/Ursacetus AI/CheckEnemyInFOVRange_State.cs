@@ -41,8 +41,6 @@ namespace JWOAGameSystem
                 // Debug.Log("<color=yellow> 检查范围中 搜索target 范围" + blackboard.Get<float>("fovRange") + " 搜索layermash " + blackboard.Get<int>("enemyLayerMask") + " </color>");
                 Collider[] colliders = Physics.OverlapSphere(_transform.position, blackboard.Get<float>("fovRange"), blackboard.Get<int>("enemyLayerMask"));
 
-                // Debug.Log("<color=yellow>检测到几个  " + colliders.Length + "</color>");
-
                 if (colliders.Length > 0)
                 {
                     Debug.Log("<color=yellow>检测到几个  " + colliders.Length + "</color>");
@@ -51,7 +49,7 @@ namespace JWOAGameSystem
                         Debug.Log("<color=greeen>检测到de  " + i.name + "</color>");
                     }
                     blackboard.Add<Transform>("target", colliders[0].transform);
-                    _enemyStateMachine.ChangeState(typeof(TwoHandsSmashAttackState));
+                    _enemyStateMachine.ChangeState(typeof(Roar1State));
 
                     _navMeshAgent.ResetPath();  //取消导航移动
                     _hasSearchedOnce = true; // 设置标志以表明已进行了一次搜索

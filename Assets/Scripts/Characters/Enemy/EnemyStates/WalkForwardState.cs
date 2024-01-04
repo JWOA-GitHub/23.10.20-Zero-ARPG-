@@ -8,6 +8,7 @@ namespace JWOAGameSystem
         public override void Enter()
         {
             base.Enter();
+            Debug.Log("     Walk  ENter");
         }
 
         // public override void Exit()
@@ -20,8 +21,9 @@ namespace JWOAGameSystem
 
         // }
 
-        // public override void PhysicsUpdate()
-        // {
-        // }
+        public override void PhysicsUpdate()
+        {
+            Debug.Log("     Walk  update");
+        }
     }
 }

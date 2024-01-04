@@ -19,6 +19,8 @@ namespace JWOAGameSystem
         private float _attackTime = 1f;
         private float _attackCounter = 0f;
 
+        private bool _isWaitingForAnimation = false;    // 判断是否需要等待动画播放完毕
+
         public TaskShortRangeAttack_State(Transform transform)
         {
             _transform = transform;
@@ -36,27 +38,56 @@ namespace JWOAGameSystem
                 _lastTarget = target;
                 Debug.Log("         更换了攻击目标为" + _lastTarget.name);
             }
+            _isWaitingForAnimation = false;
 
-            _attackCounter += Time.deltaTime;
-            if (_attackCounter >= _attackTime)
+            // _attackCounter += Time.deltaTime;
+            if (!_isWaitingForAnimation)
             {
+                _navMeshAgent.ResetPath();  //取消导航移动
 
                 Vector3 lookPos = target.position - agent.position;
                 lookPos.y = 0; // 如果希望物体只在水平方向上看向目标，可以将y分量设置为0
                 Quaternion rotation = Quaternion.LookRotation(lookPos);
                 agent.rotation = rotation;
+
                 // TODO: 敌人在动画事件中开启攻击检测
-                _navMeshAgent.ResetPath();  //取消导航移动
-                _enemyStateMachine.ChangeState(typeof(TwoHandsSmashAttackState));
-                // Debug.Log($"      <color=red>  {agent.gameObject.name} 正在攻击了</color>" + Vector3.Distance(_transform.position, target.position));
+                _enemyStateMachine.ChangeState(typeof(TwoHitComboAttackState));
+
+                _isWaitingForAnimation = true;
+
                 if (_player.IsDead)
                 {
                     Debug.Log("      <color=red>            死亡 移除了攻击目标</color>");
                     blackboard.Remove("target");
+
+                    State = NodeState.FAILURE;
+                    return State;
+                }
+                // else
+                // {
+                //     _attackCounter = 0f;
+                // }
+            }
+
+            // 如果正在等待动画播放完毕
+            if (_isWaitingForAnimation)
+            {
+                // 获取当前动画状态信息
+                AnimatorStateInfo stateInfo = _enemyStateMachine.Animator.GetCurrentAnimatorStateInfo(0);
+                // Debug.Log("            等待搜索动画播放完毕");
+
+                if (stateInfo.IsName(_enemyStateMachine.GetEnemeyStatesFromIEnemyState(_enemyStateMachine.GetCurrentState()).StateName) && stateInfo.normalizedTime >= 0.9f)
+                {
+                    _isWaitingForAnimation = false;
+                    // Debug.Log("            退出 搜索");
+                    State = NodeState.SUCCESS;
+                    return State;
                 }
                 else
                 {
-                    _attackCounter = 0f;
+                    // Debug.Log("还没退出搜索");
+                    State = NodeState.RUNNING;
+                    return State;
                 }
             }
 

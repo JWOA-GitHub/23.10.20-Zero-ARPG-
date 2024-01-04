@@ -29,16 +29,16 @@ namespace JWOAGameSystem
             Blackboard.Add<int>("enemyLayerMask", enemyLayerMask);
 
             Node Root = new Selector(new List<Node>{
-                // new CheckDeath(transform),
-                // new CheckHurt(transform),
-                // new Sequence(new List<Node>{
-                //     new CheckEnemyInShortAttackRange(transform),
-                //     new TaskAttack(transform),
-                // }),
-                // new Sequence(new List<Node>{
-                //     new CheckEnemyInFOVRange(transform),
-                //     new TaskGoToTarget(transform),
-                // }),
+                new CheckDeath(transform),
+                new CheckHurt(transform),
+                new Sequence(new List<Node>{
+                    new CheckEnemyInShortAttackRange(transform),
+                    new TaskAttack(transform),
+                }),
+                new Sequence(new List<Node>{
+                    new CheckEnemyInFOVRange(transform),
+                    new TaskGoToTarget(transform),
+                }),
                 new TaskPatrol(transform, waypoints),
             });
             return Root;

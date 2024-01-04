@@ -28,7 +28,7 @@ namespace JWOAGameSystem
             }
 
             Transform target = (Transform)t;
-            Debug.Log("检查攻击距离  CheckEnemyInAttackRange" + Vector3.Distance(_transform.position, target.position) + " 攻击与否 " + (Vector3.Distance(_transform.position, target.position) <= blackboard.Get<float>("attackRange")));
+            Debug.Log("检查攻击距离  CheckEnemyInAttackRange当前距离" + Vector3.Distance(_transform.position, target.position) + " 攻击与否 " + (Vector3.Distance(_transform.position, target.position) <= blackboard.Get<float>("shortAttackRange")));
             if (Vector3.Distance(_transform.position, target.position) <= blackboard.Get<float>("shortAttackRange"))
             {
                 _navMeshAgent.ResetPath();  //取消导航移动

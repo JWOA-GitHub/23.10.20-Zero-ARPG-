@@ -6,7 +6,7 @@ namespace JWOAGameSystem
 {
     public class AnimationEvent : MonoBehaviour
     {
-        [SerializeField] private WeaponManager weaponManager;
+        [SerializeField] private WeaponManager[] weaponManagers;
 
         // private void Start()
         // {
@@ -17,12 +17,14 @@ namespace JWOAGameSystem
         private void EnableDetection()
         {
             // Debug.Log($"<color=red>   {weaponManager.gameObject.gameObject.name} 开启攻击检测！！</color>");
-            weaponManager.ToggleDetection(true);
+            foreach (WeaponManager weaponManager in weaponManagers)
+                weaponManager.ToggleDetection(true);
         }
 
         private void DisableDetection()
         {
-            weaponManager.ToggleDetection(false);
+            foreach (WeaponManager weaponManager in weaponManagers)
+                weaponManager.ToggleDetection(false);
             // Debug.Log($"<color=green>   {weaponManager.gameObject.name} 关闭攻击检测！！</color>");
         }
         #endregion

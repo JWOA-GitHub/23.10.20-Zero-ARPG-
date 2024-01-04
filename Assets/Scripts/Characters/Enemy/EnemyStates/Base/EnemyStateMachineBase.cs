@@ -16,11 +16,6 @@ namespace JWOAGameSystem
         {
             get => stateTable;
         }
-        // protected Dictionary<IEnemyState, System.Type> stateTypeTable;
-        // public Dictionary<IEnemyState, System.Type> StateTypeTable
-        // {
-        //     get => stateTypeTable;
-        // }
 
         #region StateMachine Methods
         private void Update()
