@@ -26,12 +26,9 @@ namespace JWOAGameSystem
 
             _waypoints = waypoints;
 
-            // 设置巡逻起始点
+            // // 设置巡逻起始点
             // _navMeshAgent.SetDestination(_waypoints[_currentWaypointIndex].position);
-            // _animationHash = Animator.StringToHash(_animationName);
-            // _animator.CrossFade(_animationHash, _transitionDuration);
             // _navMeshAgent.enabled = true;
-
         }
 
         protected override NodeState OnEvaluate(Transform agent, Blackboard blackboard)
@@ -73,6 +70,7 @@ namespace JWOAGameSystem
                 if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
                 {
                     _currentWaypointIndex = (_currentWaypointIndex + 1) % _waypoints.Length;
+                    _navMeshAgent.speed = speed;
                     _navMeshAgent.SetDestination(_waypoints[_currentWaypointIndex].position);
                 }
             }

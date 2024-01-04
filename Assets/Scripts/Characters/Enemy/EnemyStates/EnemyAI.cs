@@ -18,6 +18,7 @@ namespace JWOAGameSystem
         private void Start()
         {
             enemyStateMachine = GetComponent<EnemyStateMachine>();
+            
         }
     }
 }

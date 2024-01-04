@@ -16,7 +16,16 @@ namespace JWOAGameSystem
             _mainModule = _particleSystem.main;
             _mainModule.loop = false;
             _mainModule.stopAction = ParticleSystemStopAction.Callback;
+
+
+            Invoke(nameof(HideEffect), 3f);
         }
+
+        private void HideEffect()
+        {
+            gameObject.SetActive(false);
+        }
+
         private void OnParticleSystemStopped()
         {
             Debug.Log("     粒子" + gameObject.name);

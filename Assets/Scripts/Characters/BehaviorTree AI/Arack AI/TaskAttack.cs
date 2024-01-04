@@ -44,6 +44,7 @@ namespace JWOAGameSystem
                 Quaternion rotation = Quaternion.LookRotation(lookPos);
                 agent.rotation = rotation;
                 // TODO: 敌人在动画事件中开启攻击检测
+                _navMeshAgent.ResetPath();  //取消导航移动
                 _animatorController.EnemyState = EnemyState.Attack;
 
                 // _player.TakeDamage(blackboard.Get<int>("attackDamage"));

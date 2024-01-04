@@ -6,20 +6,26 @@ namespace JWOAGameSystem
     public class EnemyStateMachine : EnemyStateMachineBase
     {
         [SerializeField] private EnemyStates[] enemyStates;
-        Animator animator;
-        CharactersBase charactersBase;
+        private Animator _animator;
+        public Animator Animator
+        {
+            get => _animator;
+        }
+        CharactersBase _charactersBase;
 
         private void Awake()
         {
-            animator = GetComponentInChildren<Animator>();
-            charactersBase = GetComponentInChildren<CharactersBase>();
+            _animator = GetComponentInChildren<Animator>();
+            _charactersBase = GetComponentInChildren<CharactersBase>();
 
             stateTable = new Dictionary<System.Type, IEnemyState>(enemyStates.Length);
+
             foreach (EnemyStates enemyState in enemyStates)
             {
-                enemyState.Initialize(animator, this, charactersBase);
+                enemyState.Initialize(_animator, this, _charactersBase);
                 stateTable.Add(enemyState.GetType(), enemyState);
-                Debug.Log(enemyState.GetType().Name);
+
+                // stateTypeTable.Add(enemyState, enemyState.GetType());
             }
         }
 
