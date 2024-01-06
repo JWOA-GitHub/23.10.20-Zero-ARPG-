@@ -9,7 +9,7 @@ namespace JWOAGameSystem
     public class Skill
     {
         public string skillName;
-        public GameObject skillEffect;
+        public Transform spawnPos;
         public int mpCost;
         public float damage;
         public float cooldownTime; // 冷却时间
@@ -34,19 +34,20 @@ namespace JWOAGameSystem
             {
                 character.Mp -= mpCost;
 
-                if (!skillEffect.activeInHierarchy)
-                    skillEffect.SetActive(true);
-                particleSystem = skillEffect.GetComponent<ParticleSystem>();
-                // 获取到粒子系统的持续时间
-                duration = particleSystem.main.duration;
+                // skillEffect; 
+                EffectManager.Instance.SpawnEffect(skillName, spawnPos.position);
 
-                // 确保粒子系统存在并且未在播放
-                if (particleSystem != null && !particleSystem.isPlaying)
-                {
-                    // 播放特效
-                    particleSystem.Play();
-                    isUsing = true;
-                }
+                // particleSystem = skillEffect.GetComponent<ParticleSystem>();
+                // // 获取到粒子系统的持续时间
+                // duration = particleSystem.main.duration;
+
+                // // 确保粒子系统存在并且未在播放
+                // if (particleSystem != null && !particleSystem.isPlaying)
+                // {
+                //     // 播放特效
+                //     // particleSystem.Play();
+                //     isUsing = true;
+                // }
                 // TODO: 造成伤害值
                 Debug.Log($"{character.name} <color=red>    使用了技能  {skillName}</color>");
                 // character.TakeDamage(damage);
@@ -69,16 +70,6 @@ namespace JWOAGameSystem
             }
         }
 
-        public void UpdateSkillTime()
-        {
-            if (isUsing && skillEffect.activeInHierarchy)
-            {
-                duration -= Time.deltaTime;
-                if (duration <= 0)
-                    skillEffect.SetActive(false);
-            }
-        }
-
         public void UpdateCooldown()
         {
             if (cooldownTimer > 0f)
@@ -90,8 +81,6 @@ namespace JWOAGameSystem
                     cooldownTimer = 0f;
                 }
             }
-
-            UpdateSkillTime();
         }
     }
 
