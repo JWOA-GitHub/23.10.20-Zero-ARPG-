@@ -7,6 +7,8 @@ namespace JWOAGameSystem
     {
         public override void Enter()
         {
+            EnemyAI.isAttacking = true;
+            EnemyAI.isTwoHitComboAttacking = true;
             base.Enter();
         }
 
@@ -14,10 +16,11 @@ namespace JWOAGameSystem
         {
             base.PhysicsUpdate();
 
-            if (IsAnimationFinished)
-            {
-                enemyStateMachine.EnemyAI.isTwoHitComboAttacking = false;
-            }
+            // if (IsAnimationFinished)
+            // {
+            //     EnemyAI.isAttacking = false;
+            //     EnemyAI.isTwoHitComboAttacking = false;
+            // }
         }
     }
 }

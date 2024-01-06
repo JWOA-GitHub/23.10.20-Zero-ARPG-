@@ -33,15 +33,12 @@ namespace JWOAGameSystem
             Transform target = blackboard.Get<Transform>("target");
             if (target != _lastTarget)
             {
-                // _enemyManager = target.GetComponent<EnemyManager>();
                 _player = target.GetComponent<CharactersBase>();
                 _lastTarget = target;
                 Debug.Log("         更换了攻击目标为" + _lastTarget.name);
             }
-            _isWaitingForAnimation = false;
 
-            // _attackCounter += Time.deltaTime;
-            if (!_isWaitingForAnimation)
+            if (!EnemyAI.isTwoHitComboAttacking)
             {
                 _navMeshAgent.ResetPath();  //取消导航移动
 
@@ -50,10 +47,10 @@ namespace JWOAGameSystem
                 Quaternion rotation = Quaternion.LookRotation(lookPos);
                 agent.rotation = rotation;
 
-                // TODO: 敌人在动画事件中开启攻击检测
+                // MARKER: 敌人在动画事件中开启攻击检测
                 _enemyStateMachine.ChangeState(typeof(TwoHitComboAttackState));
 
-                _isWaitingForAnimation = true;
+                EnemyAI.isTwoHitComboAttacking = true;
 
                 if (_player.IsDead)
                 {
@@ -63,14 +60,10 @@ namespace JWOAGameSystem
                     State = NodeState.FAILURE;
                     return State;
                 }
-                // else
-                // {
-                //     _attackCounter = 0f;
-                // }
             }
 
             // 如果正在等待动画播放完毕
-            if (_isWaitingForAnimation)
+            if (EnemyAI.isTwoHitComboAttacking)
             {
                 // 获取当前动画状态信息
                 AnimatorStateInfo stateInfo = _enemyStateMachine.Animator.GetCurrentAnimatorStateInfo(0);
@@ -78,7 +71,8 @@ namespace JWOAGameSystem
 
                 if (stateInfo.IsName(_enemyStateMachine.GetEnemeyStatesFromIEnemyState(_enemyStateMachine.GetCurrentState()).StateName) && stateInfo.normalizedTime >= 0.9f)
                 {
-                    _isWaitingForAnimation = false;
+                    EnemyAI.isTwoHitComboAttacking = false;
+                    EnemyAI.isAttacking = false;
                     // Debug.Log("            退出 搜索");
                     State = NodeState.SUCCESS;
                     return State;
