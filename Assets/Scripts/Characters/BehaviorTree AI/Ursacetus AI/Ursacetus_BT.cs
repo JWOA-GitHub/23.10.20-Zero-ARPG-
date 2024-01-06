@@ -11,8 +11,8 @@ namespace JWOAGameSystem
         [SerializeField] private float speed = 1.5f;
         [SerializeField] private float chaseSpeed = 3f;
         [SerializeField] private float fovRange = 6f;  // 6f
-        [SerializeField] private float shortAttackRange = 5f;
-        [SerializeField] private float longAttackRange = 12f;
+        [SerializeField] private float shortAttackRange = 10f;
+        [SerializeField] private float longAttackRange = 20f;
         [SerializeField] private int attackDamage = 10;
         [SerializeField] private LayerMask enemyLayerMask;
 
@@ -32,6 +32,10 @@ namespace JWOAGameSystem
                 new Sequence(new List<Node>{
                     new CheckEnemyInShortAttackRange_State(transform),
                     new TaskShortRangeAttack_State(transform),
+                }),
+                new Sequence(new List<Node>{
+                    new CheckEnemyInLongAttackRange_State(transform),
+                    new TaskLongRangeAttack_State(transform),
                 }),
                 new Sequence(new List<Node>{
                     new CheckEnemyInFOVRange_State(transform),

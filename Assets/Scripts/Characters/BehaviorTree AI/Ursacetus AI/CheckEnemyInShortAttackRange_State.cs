@@ -33,7 +33,7 @@ namespace JWOAGameSystem
             {
                 _navMeshAgent.ResetPath();  //取消导航移动
 
-                Debug.Log("             找到攻击目标                        ···");
+                // Debug.Log("             找到攻击目标                        ···");
                 State = NodeState.SUCCESS;
                 return State;
             }

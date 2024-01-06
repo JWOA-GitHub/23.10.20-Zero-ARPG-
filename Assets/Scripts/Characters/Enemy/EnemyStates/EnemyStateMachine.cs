@@ -19,10 +19,17 @@ namespace JWOAGameSystem
             get => _charactersBase;
         }
 
+        CharacterController _characterController;
+        public CharacterController CharacterController
+        {
+            get => _characterController;
+        }
+
         private void Awake()
         {
-            _animator = GetComponentInChildren<Animator>();
-            _charactersBase = GetComponentInChildren<CharactersBase>();
+            _animator = GetComponent<Animator>();
+            _charactersBase = GetComponent<CharactersBase>();
+            _characterController = GetComponent<CharacterController>();
 
             // enemyAI = GetComponent<EnemyAI>();
 
@@ -41,5 +48,7 @@ namespace JWOAGameSystem
         {
             InitState(stateTable[typeof(IdleState)]);
         }
+
+
     }
 }

@@ -253,7 +253,7 @@ namespace JWOAGameSystem
         /// </summary>
         protected virtual void OnHpUpdate()
         {
-            Debug.Log("<color=green>" + $"{gameObject.name}剩余血量  {Hp} </color>");
+                Debug.Log("<color=green>" + $"{gameObject.name}剩余血量  {Hp} </color>");
         }
 
         protected virtual void Dead()

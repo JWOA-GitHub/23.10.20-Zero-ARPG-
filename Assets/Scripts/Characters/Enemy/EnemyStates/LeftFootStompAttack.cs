@@ -11,5 +11,7 @@ namespace JWOAGameSystem
             EnemyAI.isShortRangeAttacking = true;
             base.Enter();
         }
+
+
     }
 }

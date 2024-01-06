@@ -10,6 +10,8 @@ namespace JWOAGameSystem
             EnemyAI.isAttacking = true;
             EnemyAI.isLongRangeAttacking = true;
             base.Enter();
+
+            SetAnimationMoveBase(enemyStateMachine.transform.forward, 2);
         }
 
     }
