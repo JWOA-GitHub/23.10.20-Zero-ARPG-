@@ -8,8 +8,9 @@ namespace JWOAGameSystem
     {
         public EnemyStateMachine enemyStateMachine;
         public static bool isAttacking = false;
-        public static bool isTwoHitComboAttacking = false;
-        public static bool _isWaitingForAnimation = false;
+        public static bool isShortRangeAttacking = false;
+        public static bool isLongRangeAttacking = false;
+        // public static bool _isWaitingForAnimation = false;
         public EnemyAI(string name, int startingLevel) : base(name, startingLevel)
         {
             name = "Boss";

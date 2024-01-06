@@ -60,11 +60,12 @@ namespace JWOAGameSystem
                     switch (_currentState)
                     {
                         case EnemyState.JumpBackwards:
-                            SetAnimationMoveBase(transform.root.forward, 5);
+                            SetAnimationMoveBase(transform.forward, 7);
+                            // Debug.Log("forward : " + -transform.forward + "root:" + transform.root.forward);
                             break;
                         case EnemyState.GetHit:
-                            Debug.Log("forward : " + transform.forward + "root:" + transform.root.forward);
-                            SetAnimationMoveBase(transform.root.forward, 2);
+                            // Debug.Log("forward : " + transform.forward + "root:" + transform.root.forward);
+                            SetAnimationMoveBase(transform.forward, 3);
                             break;
                         default:
                             SetAnimationMoveBase(Vector3.zero, 1);

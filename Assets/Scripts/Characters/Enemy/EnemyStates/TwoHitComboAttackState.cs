@@ -8,7 +8,7 @@ namespace JWOAGameSystem
         public override void Enter()
         {
             EnemyAI.isAttacking = true;
-            EnemyAI.isTwoHitComboAttacking = true;
+            EnemyAI.isShortRangeAttacking = true;
             base.Enter();
         }
 

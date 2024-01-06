@@ -358,28 +358,28 @@ ModelImporter:
       curves: []
       events:
       - time: 0.16521738
-        functionName: EnableDetection
+        functionName: EnableRightHandDetection
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.33636466
-        functionName: DisableDetection
+        functionName: DisableRightHandDetection
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.43913043
-        functionName: EnableDetection
+        functionName: EnableLeftHandDetection
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.6019958
-        functionName: DisableDetection
+        functionName: DisableLeftHandDetection
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

@@ -50,7 +50,6 @@ namespace JWOAGameSystem
                 Quaternion rotation = Quaternion.LookRotation(lookPos);
                 agent.rotation = rotation;
 
-
                 _animatorController.EnemyState = EnemyState.JumpBackwards;
 
                 State = NodeState.SUCCESS;

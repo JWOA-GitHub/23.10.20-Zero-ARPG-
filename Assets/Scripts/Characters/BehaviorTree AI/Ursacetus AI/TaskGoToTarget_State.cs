@@ -32,7 +32,7 @@ namespace JWOAGameSystem
 
             if (Vector3.Distance(_transform.position, _target.position) > blackboard.Get<float>("shortAttackRange"))
             {
-                Debug.Log($"<color=green> goto Target  距离{Vector3.Distance(_transform.position, _target.position)}   需要 {blackboard.Get<float>("shortAttackRange")} </color>");
+                // Debug.Log($"<color=green> goto Target  距离{Vector3.Distance(_transform.position, _target.position)}   需要 {blackboard.Get<float>("shortAttackRange")} </color>");
 
                 _enemyStateMachine.ChangeState(typeof(WalkForwardState));
 

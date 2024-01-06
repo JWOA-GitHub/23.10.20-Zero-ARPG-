@@ -19,7 +19,7 @@ namespace JWOAGameSystem
         private float _attackTime = 1f;
         private float _attackCounter = 0f;
 
-        private bool _isWaitingForAnimation = false;    // 判断是否需要等待动画播放完毕
+        // private bool _isWaitingForAnimation = false;    // 判断是否需要等待动画播放完毕
 
         public TaskShortRangeAttack_State(Transform transform)
         {
@@ -38,7 +38,7 @@ namespace JWOAGameSystem
                 Debug.Log("         更换了攻击目标为" + _lastTarget.name);
             }
 
-            if (!EnemyAI.isTwoHitComboAttacking)
+            if (!EnemyAI.isShortRangeAttacking)
             {
                 _navMeshAgent.ResetPath();  //取消导航移动
 
@@ -48,9 +48,31 @@ namespace JWOAGameSystem
                 agent.rotation = rotation;
 
                 // MARKER: 敌人在动画事件中开启攻击检测
-                _enemyStateMachine.ChangeState(typeof(TwoHitComboAttackState));
+                int attackWay = Random.Range(0, 5);
+                switch (attackWay)
+                {
+                    case 0:
+                        _enemyStateMachine.ChangeState(typeof(LeftFootStompAttack));
+                        break;
+                    case 1:
+                        _enemyStateMachine.ChangeState(typeof(RightFootStompAttack));
+                        break;
+                    case 2:
+                        _enemyStateMachine.ChangeState(typeof(LeftHandAttackState));
+                        break;
+                    case 3:
+                        _enemyStateMachine.ChangeState(typeof(RightHandAttackState));
+                        break;
+                    case 4:
+                        _enemyStateMachine.ChangeState(typeof(TwoHitComboAttackState));
+                        break;
+                    default:
+                        _enemyStateMachine.ChangeState(typeof(TwoHitComboAttackState));
+                        break;
+                }
 
-                EnemyAI.isTwoHitComboAttacking = true;
+
+                EnemyAI.isShortRangeAttacking = true;
 
                 if (_player.IsDead)
                 {
@@ -63,7 +85,7 @@ namespace JWOAGameSystem
             }
 
             // 如果正在等待动画播放完毕
-            if (EnemyAI.isTwoHitComboAttacking)
+            if (EnemyAI.isShortRangeAttacking)
             {
                 // 获取当前动画状态信息
                 AnimatorStateInfo stateInfo = _enemyStateMachine.Animator.GetCurrentAnimatorStateInfo(0);
@@ -71,7 +93,7 @@ namespace JWOAGameSystem
 
                 if (stateInfo.IsName(_enemyStateMachine.GetEnemeyStatesFromIEnemyState(_enemyStateMachine.GetCurrentState()).StateName) && stateInfo.normalizedTime >= 0.9f)
                 {
-                    EnemyAI.isTwoHitComboAttacking = false;
+                    EnemyAI.isShortRangeAttacking = false;
                     EnemyAI.isAttacking = false;
                     // Debug.Log("            退出 搜索");
                     State = NodeState.SUCCESS;
