@@ -25,6 +25,9 @@ namespace JWOAGameSystem
 
             SetAnimationMoveBase(stateMachine.Player.transform.forward, 1.5f);
 
+            // stateMachine.Player.effectManager.SpawnEffect("Combo3", stateMachine.Player.effectManager.effects[2].prefab.transform);
+
+
             StartAnimation(animationData.NormalAttack_01_3_ParameterHash);
 
         }
@@ -43,6 +46,24 @@ namespace JWOAGameSystem
         {
             base.PhysicsUpdate();
 
+            if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.1f && animationData.animatorStateInfo.normalizedTime <= 0.15f)
+            {
+                stateMachine.Player.effectManager.SpawnEffect("Combo3", stateMachine.Player.effectManager.effects[2].prefab.transform);
+                Debug.Log(33333333333333);
+                isEffecting = false;
+            }
+
+            if (animationData.animatorStateInfo.normalizedTime >= 0.15f && animationData.animatorStateInfo.normalizedTime < 0.16f)
+            {
+                isEffecting = true;
+            }
+
+            if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.15f)
+            {
+                Debug.Log(3333333333333222);
+                stateMachine.Player.effectManager.SpawnEffect("Combo4", stateMachine.Player.effectManager.effects[3].prefab.transform);
+                isEffecting = false;
+            }
         }
 
         public override void OnAnimationTransitionEvent()

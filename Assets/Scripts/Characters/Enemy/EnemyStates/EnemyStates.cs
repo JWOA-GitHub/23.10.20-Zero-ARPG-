@@ -57,7 +57,7 @@ namespace JWOAGameSystem
             // animator.CrossFade(stateHash, 0);
             // animator.Play(stateHash, (int)transitionDuration, 0f); // 使用动态的动画哈希值和过渡时间
             animator.Play(stateHash);
-            Debug.Log($"进入 {GetType().Name}  Enter   +  动画名{stateName}  id {stateHash}");
+            // Debug.Log($"进入 {GetType().Name}  Enter   +  动画名{stateName}  id {stateHash}");
             stateStartTime = Time.time;
 
             SetAnimationMoveBase(Vector3.zero, 0);

@@ -26,7 +26,10 @@ namespace JWOAGameSystem
         private Dictionary<string, List<GameObject>> pools = new Dictionary<string, List<GameObject>>();
         private Dictionary<string, GameObject> prefabs = new Dictionary<string, GameObject>();
         private Transform parentTransform; // 管理所有特效的父对象
-
+        public Transform ParentTransform
+        {
+            get => parentTransform;
+        }
 
         void Awake()
         {
@@ -61,7 +64,7 @@ namespace JWOAGameSystem
             }
         }
 
-        public GameObject GetObjectFromPool(string tag)
+        public GameObject GetObjectFromPool(string tag, Transform _transform)
         {
             if (pools.ContainsKey(tag))
             {
@@ -69,6 +72,8 @@ namespace JWOAGameSystem
                 {
                     if (!obj.activeInHierarchy)
                     {
+                        obj.transform.position = _transform.position;
+                        obj.transform.rotation = _transform.rotation;
                         obj.SetActive(true);
                         obj.transform.SetParent(parentTransform);
                         return obj;
@@ -78,7 +83,8 @@ namespace JWOAGameSystem
                 // 如果池中没有可用对象，则创建一个新对象并添加到池中
                 if (prefabs.ContainsKey(tag))
                 {
-                    GameObject newObj = Instantiate(prefabs[tag], parentTransform);
+                    GameObject newObj = Instantiate(prefabs[tag], _transform.position, _transform.rotation);
+                    newObj.transform.SetParent(parentTransform);
                     newObj.SetActive(true);
                     pools[tag].Add(newObj);
                     return newObj;

@@ -6,6 +6,7 @@ namespace JWOAGameSystem
     public class PlayerAttackState : PlayerBaseGroundedState
     {
         [SerializeField] protected string stateName = "combo_01_1";
+        protected bool isEffecting = false;
         public PlayerAttackState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
@@ -92,6 +93,8 @@ namespace JWOAGameSystem
 
             stateMachine.ReusableData.isLightComboCache = false;
             stateMachine.ReusableData.isHeavyComboCache = false;
+
+            isEffecting = true;
         }
 
         protected override void AddInputActionsCallbacks()

@@ -55,7 +55,7 @@ namespace JWOAGameSystem
             // 根据特效配置文件创建对象池
             foreach (EffectData effect in effects)
             {
-                ObjectPoolManager.Instance.CreatePool(effect.tag, effect.prefab, 10);
+                ObjectPoolManager.Instance.CreatePool(effect.tag, effect.prefab, 1);
             }
 
             // 使用特效
@@ -78,15 +78,31 @@ namespace JWOAGameSystem
             }
         }
 
-        public void SpawnEffect(string tag, Vector3 position)
+        public void SpawnEffect(string tag, Transform transform)
         {
             // 从对象池管理器获取特效
-            GameObject effect = ObjectPoolManager.Instance.GetObjectFromPool(tag);
+            GameObject effect = ObjectPoolManager.Instance.GetObjectFromPool(tag, transform);
 
             // 在指定位置使用特效
-            effect.transform.position = position;
+            // effect.transform.position = position;
             // 可以设置其他特效属性
         }
+
+        // public void SpawnEffect(GameObject effect)
+        // {
+        //     // 从对象池管理器获取特效
+        //     // Debug.LogWarning("   tran  " + transform.position + "     rota   " + transform.rotation.eulerAngles);
+        //     GameObject effectGo = Instantiate(effect, effect.transform.position, effect.transform.rotation);
+        //     Destroy(effectGo, 3f);
+        //     // 在指定位置使用特效
+        //     // effect.transform.position = position;
+        //     // 可以设置其他特效属性
+        // }
+
+        // private void Update()
+        // {
+        //     // Debug.Log("特效0的 " + effects[0].prefab.transform.position + "特效1的 " + effects[1].prefab.transform.position);
+        // }
     }
 
 }

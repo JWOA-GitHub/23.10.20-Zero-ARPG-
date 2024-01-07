@@ -14,9 +14,9 @@ namespace JWOAGameSystem
         public float damage;
         public float cooldownTime; // 冷却时间
         private float cooldownTimer = 0f; // 计时器
-        ParticleSystem particleSystem;
-        float duration;
-        bool isUsing = false;
+        // ParticleSystem particleSystem;
+        // float duration;
+        // bool isUsing = false;
         // public Skill()
         // {
         // if (skillEffect.GetComponent<ParticleSystem>() != null)
@@ -35,7 +35,7 @@ namespace JWOAGameSystem
                 character.Mp -= mpCost;
 
                 // skillEffect; 
-                EffectManager.Instance.SpawnEffect(skillName, spawnPos.position);
+                // EffectManager.Instance.SpawnEffect(skillName, spawnPos);
 
                 // particleSystem = skillEffect.GetComponent<ParticleSystem>();
                 // // 获取到粒子系统的持续时间
@@ -253,7 +253,7 @@ namespace JWOAGameSystem
         /// </summary>
         protected virtual void OnHpUpdate()
         {
-                Debug.Log("<color=green>" + $"{gameObject.name}剩余血量  {Hp} </color>");
+            Debug.Log("<color=green>" + $"{gameObject.name}剩余血量  {Hp} </color>");
         }
 
         protected virtual void Dead()

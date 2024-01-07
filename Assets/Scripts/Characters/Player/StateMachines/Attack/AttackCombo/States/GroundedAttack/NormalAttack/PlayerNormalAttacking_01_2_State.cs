@@ -23,8 +23,11 @@ namespace JWOAGameSystem
             stateName = animationData.NormalAttack_AnimationData.NormalAttack_01_2_StateName;
 
             SetAnimationMoveBase(stateMachine.Player.transform.forward, 1.5f);
-            
+
+            // stateMachine.Player.effectManager.SpawnEffect("Combo2", stateMachine.Player.effectManager.effects[1].prefab.transform);
+
             StartAnimation(animationData.NormalAttack_01_2_ParameterHash);
+
         }
 
         public override void Exit()
@@ -50,6 +53,12 @@ namespace JWOAGameSystem
             // if (animationData.animatorStateInfo.IsTag("combo_01_2"))
             //     stateName = animationData.NormalAttack_AnimationData.NormalAttack_2_StateName;
             base.PhysicsUpdate();
+
+            if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.1f)
+            {
+                stateMachine.Player.effectManager.SpawnEffect("Combo2", stateMachine.Player.effectManager.effects[1].prefab.transform);
+                isEffecting = false;
+            }
         }
 
         public override void OnAnimationTransitionEvent()

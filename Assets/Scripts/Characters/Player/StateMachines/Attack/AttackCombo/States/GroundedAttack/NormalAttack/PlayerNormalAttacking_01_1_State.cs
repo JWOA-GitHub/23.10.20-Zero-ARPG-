@@ -24,6 +24,7 @@ namespace JWOAGameSystem
 
             StartAnimation(animationData.NormalAttack_01_1_ParameterHash);
 
+
             // ResetCombo();
         }
 
@@ -39,6 +40,12 @@ namespace JWOAGameSystem
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
+
+            if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.1f)
+            {
+                stateMachine.Player.effectManager.SpawnEffect("Combo1", stateMachine.Player.effectManager.effects[0].prefab.transform);
+                isEffecting = false;
+            }
         }
 
         public override void OnAnimationTransitionEvent()
@@ -94,8 +101,7 @@ namespace JWOAGameSystem
         {
             // stateMachine.ReusableData.ShouldLightCombo = true;
             base.OnLAttackComboStarted(context);
-            // 获取当前正在播放的动画状态信息
-            AnimatorStateInfo stateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
+
 
             // 获取当前正在播放的动画状态信息
             // AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);

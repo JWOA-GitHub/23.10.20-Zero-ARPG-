@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace JWOAGameSystem
@@ -29,6 +30,9 @@ namespace JWOAGameSystem
         public Transform MainCameraTransform { get; private set; }
 
         [Tooltip("玩家移动状态机")] private PlayerMovementStateMachine movementStateMachine;
+
+        [SerializeField] public List<GameObject> effects;
+        [field: SerializeField] public EffectManager effectManager;
 
         public Player(string name, int startingLevel) : base(name, startingLevel)
         {

@@ -11,7 +11,7 @@ namespace JWOAGameSystem
         private void Start()
         {
 
-            Debug.LogWarning("     粒子start  " + gameObject.name);
+            // Debug.LogWarning("     粒子start  " + gameObject.name);
             _particleSystem = GetComponent<ParticleSystem>();
             _mainModule = _particleSystem.main;
             _mainModule.loop = false;
