@@ -26,7 +26,7 @@ namespace JWOAGameSystem
 
             StartAnimation(animationData.NormalAttack_01_4_ParameterHash);
 
-            stateMachine.Player.effectManager.SpawnEffect("Combo5", stateMachine.Player.effectManager.effects[4].prefab.transform);
+            // stateMachine.Player.effectManager.SpawnEffect("Combo5", stateMachine.Player.effectManager.effects[4].prefab.transform);
             Debug.Log("3333333333   5555555555");
 
             // stateMachine.Player.Input.PlayerActions.LAttack.Disable();
@@ -50,7 +50,7 @@ namespace JWOAGameSystem
 
             if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.1f)
             {
-                // stateMachine.Player.effectManager.SpawnEffect("Combo5", stateMachine.Player.effectManager.effects[4].prefab.transform);
+                stateMachine.Player.effectManager.SpawnEffect("Combo5", stateMachine.Player.effectManager.effects[4].prefab.transform);
                 isEffecting = false;
             }
         }

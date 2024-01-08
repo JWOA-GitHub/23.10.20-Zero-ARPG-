@@ -221,21 +221,14 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      <StationaryForce>k__BackingField: {x: 0, y: 5, z: 0}
-      <WeakForce>k__BackingField: {x: 1, y: 5, z: 1}
-      <MediumForce>k__BackingField: {x: 3.5, y: 5, z: 3}
-      <StrongForce>k__BackingField: {x: 5, y: 5, z: 5}
+      <StationaryForce>k__BackingField: {x: 0, y: 8, z: 0}
+      <WeakForce>k__BackingField: {x: 1, y: 8, z: 1}
+      <MediumForce>k__BackingField: {x: 3.5, y: 8, z: 3}
+      <StrongForce>k__BackingField: {x: 5, y: 8, z: 5}
       <DecelerationForce>k__BackingField: 1.5
     <FallData>k__BackingField:
       <FallSpeedLimit>k__BackingField: 15
       <MinimumDisatanceToBeConsideredHardFall>k__BackingField: 3
-  <AttackData>k__BackingField:
-    animationMoveSpeed: {x: 0, y: 0, z: 0}
-    combo1EffectTra: {fileID: 72363066115260904, guid: c520d0d4a7faad14c99b3603aaafda84, type: 3}
-    combo2EffectTra: {fileID: 4856255656812242881, guid: fb56b24831c0089478d8c1154bec1570, type: 3}
-    combo3EffectTra: {fileID: 5704214851984769074, guid: ceb6e46381aad4b409b1f17816eb5724, type: 3}
-    combo4EffectTra: {fileID: 8324355579752554629, guid: 63ac4fe85fe63734e9c79f0f76bed287, type: 3}
-    combo5EffectTra: {fileID: 2118192184522868179, guid: c0cb7871b3bc46e4eaa5a0165b80a340, type: 3}
   <AnimationData>k__BackingField:
     groundedParameterName: Grounded
     movingParameterName: Moving
@@ -283,5 +276,5 @@ MonoBehaviour:
       SkillsAttack_03_StateName: skills_03
       SkillsAttack_04_StateName: skills_04
     animationMoveID: 1833477765
-    animationMoveDir: {x: 0, y: 0, z: 0}
-    animationMoveSpeedModifier: 1
+    animationMoveDir: {x: -0.021914722, y: 0, z: -0.9997599}
+    animationMoveSpeedModifier: 2
