@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace JWOAGameSystem
 {
@@ -115,7 +116,7 @@ namespace JWOAGameSystem
         /// <summary> 玩家能量条，释放技能用
         /// <see cref = "mp" />
         /// </summary>
-        private int mp;  // 能量值
+        private float mp;  // 能量值
 
         /// <summary> 玩家最大能量条，释放技能用,默认100
         /// <see cref = "maxMp" />
@@ -184,6 +185,8 @@ namespace JWOAGameSystem
             get => isAnimationMoveing;
             set => isAnimationMoveing = value;
         }
+
+        [SerializeField] private UnityEvent onHpUpdateEvent;
         #endregion
 
 
@@ -209,7 +212,7 @@ namespace JWOAGameSystem
             }
         }
 
-        public int Mp
+        public float Mp
         {
             get { return mp; }
             set { mp = value; }
@@ -253,6 +256,7 @@ namespace JWOAGameSystem
         /// </summary>
         protected virtual void OnHpUpdate()
         {
+            onHpUpdateEvent?.Invoke();
             Debug.Log("<color=green>" + $"{gameObject.name}剩余血量  {Hp} </color>");
         }
 

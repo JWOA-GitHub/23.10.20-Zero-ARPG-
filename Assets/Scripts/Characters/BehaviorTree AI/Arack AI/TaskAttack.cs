@@ -54,8 +54,9 @@ namespace JWOAGameSystem
                 {
                     Debug.Log("      <color=red>            死亡 移除了攻击目标</color>");
                     blackboard.Remove("target");
-                    // _animator.SetBool("Attacking", false);
-                    // _animator.SetBool("Walking", true);
+
+                    State = NodeState.FAILURE;
+                    return State;
                 }
                 else
                 {
