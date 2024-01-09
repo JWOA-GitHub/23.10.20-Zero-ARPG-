@@ -8,6 +8,7 @@ namespace JWOAGameSystem
         public override void Enter()
         {
             base.Enter();
+            SoundManger.Instance.PlayAudio(Globals.S_Hurting);
         }
 
         // public override void Exit()

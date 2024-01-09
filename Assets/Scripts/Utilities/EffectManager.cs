@@ -46,7 +46,7 @@ namespace JWOAGameSystem
             else
             {
                 instance = this;
-                DontDestroyOnLoad(gameObject); // 防止切换场景时销毁对象池管理器
+                // DontDestroyOnLoad(gameObject); // 防止切换场景时销毁对象池管理器
             }
         }
 

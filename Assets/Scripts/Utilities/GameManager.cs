@@ -24,7 +24,7 @@ namespace JWOAGameSystem
             else
             {
                 instance = this;
-                DontDestroyOnLoad(gameObject);
+                // DontDestroyOnLoad(gameObject);
             }
         }
 

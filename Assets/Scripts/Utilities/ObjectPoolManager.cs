@@ -41,7 +41,7 @@ namespace JWOAGameSystem
             else
             {
                 instance = this;
-                DontDestroyOnLoad(gameObject); // 防止切换场景时销毁对象池管理器
+                // DontDestroyOnLoad(gameObject); // 防止切换场景时销毁对象池管理器
             }
 
             // 创建一个空对象作为所有特效的父对象

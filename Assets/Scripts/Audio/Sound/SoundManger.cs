@@ -80,7 +80,6 @@ namespace JWOAGameSystem
         /// <param name="volume">音量，默认为1</param>
         public void PlayAudio(string path, float volume = 1.0f)
         {
-            Debug.LogWarning("      zl11111111111111");
             // PlayOneShot支持多个音频文件在同一时刻播放，并且不会相互覆盖
             audioSource.PlayOneShot(LoadAudio(path), volume);
             // audioSource.volume = volume;

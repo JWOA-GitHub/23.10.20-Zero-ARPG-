@@ -112,8 +112,8 @@ namespace JWOAGameSystem
 
                 enemyStateMachine.CharacterController.Move(moveSpeed * Time.deltaTime * movementDirection);
 
-                if (moveSpeed * Time.deltaTime * movementDirection != Vector3.zero)
-                    Debug.Log(enemyStateMachine.gameObject.name + "         动画位移力度  " + moveSpeed + "  " + (moveSpeed * Time.deltaTime * movementDirection));
+                // if (moveSpeed * Time.deltaTime * movementDirection != Vector3.zero)
+                // Debug.Log(enemyStateMachine.gameObject.name + "         动画位移力度  " + moveSpeed + "  " + (moveSpeed * Time.deltaTime * movementDirection));
             }
         }
 

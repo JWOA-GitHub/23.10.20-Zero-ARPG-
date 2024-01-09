@@ -24,6 +24,8 @@ namespace JWOAGameSystem
 
             StartAnimation(animationData.SkillsAttack_02_ParameterHash);
 
+            stateMachine.Player.effectManager.SpawnEffect("Skill2", stateMachine.Player.effectManager.effects[6].prefab.transform);
+
             // stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
         }
         public override void Exit()

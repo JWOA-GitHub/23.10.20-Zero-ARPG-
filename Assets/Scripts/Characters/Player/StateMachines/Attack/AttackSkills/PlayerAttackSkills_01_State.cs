@@ -26,6 +26,9 @@ namespace JWOAGameSystem
 
             // stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
 
+            stateMachine.Player.effectManager.SpawnEffect("Skill1", stateMachine.Player.effectManager.effects[5].prefab.transform);
+            isEffecting = false;
+
         }
         public override void Exit()
         {

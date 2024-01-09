@@ -31,7 +31,7 @@ namespace JWOAGameSystem
 
         [Tooltip("玩家移动状态机")] private PlayerMovementStateMachine movementStateMachine;
 
-        [SerializeField] public List<GameObject> effects;
+        // [SerializeField] public List<GameObject> effects;
         [field: SerializeField] public EffectManager effectManager;
 
         public Player(string name, int startingLevel) : base(name, startingLevel)
@@ -156,7 +156,7 @@ namespace JWOAGameSystem
         #region  Methods
         /// <summary> 在需要隐藏鼠标光标的地方调用此函数
         /// </summary>
-        public void HideCursor()
+        public static void HideCursor()
         {
             Cursor.visible = false; // 隐藏鼠标光标
             Cursor.lockState = CursorLockMode.Locked; // 锁定鼠标在屏幕中心
@@ -164,7 +164,7 @@ namespace JWOAGameSystem
 
         /// <summary> 在需要显示鼠标光标的地方调用此函数
         /// </summary>
-        public void ShowCursor()
+        public static void ShowCursor()
         {
             Cursor.visible = true; // 显示鼠标光标
             Cursor.lockState = CursorLockMode.None; // 解锁鼠标
