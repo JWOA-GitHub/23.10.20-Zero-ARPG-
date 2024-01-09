@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     #region 单例模式
     public static AudioManager Instance; // 静态实例
+
     private void Awake()
     {
         if (Instance == null) // 如果实例为空，表示是第一次创建该类的实例

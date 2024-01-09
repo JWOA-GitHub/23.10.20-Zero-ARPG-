@@ -17,6 +17,7 @@ namespace JWOAGameSystem
 
             base.Enter();
 
+            SoundManger.Instance.PlayAudio(Globals.S_Hurting);
             StartAnimation(animationData.HurtParameterHash);
 
             // 禁用“移动”按键输入！！ 在特定帧或结束时开启！

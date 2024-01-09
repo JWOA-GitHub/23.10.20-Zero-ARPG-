@@ -50,6 +50,8 @@ namespace JWOAGameSystem
 
             if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.1f)
             {
+                // AudioManager.Instance.Play("NormalAttack1");
+                SoundManger.Instance.PlayAudio(Globals.S_Combo01_5);
                 stateMachine.Player.effectManager.SpawnEffect("Combo5", stateMachine.Player.effectManager.effects[4].prefab.transform);
                 isEffecting = false;
             }

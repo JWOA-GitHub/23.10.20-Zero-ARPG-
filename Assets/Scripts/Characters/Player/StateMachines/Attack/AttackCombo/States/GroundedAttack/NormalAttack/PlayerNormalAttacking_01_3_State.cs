@@ -48,6 +48,7 @@ namespace JWOAGameSystem
 
             if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.1f && animationData.animatorStateInfo.normalizedTime <= 0.15f)
             {
+                SoundManger.Instance.PlayAudio(Globals.S_Combo01_3);
                 stateMachine.Player.effectManager.SpawnEffect("Combo3", stateMachine.Player.effectManager.effects[2].prefab.transform);
                 Debug.Log(33333333333333);
                 isEffecting = false;
@@ -61,6 +62,7 @@ namespace JWOAGameSystem
             if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.15f)
             {
                 Debug.Log(3333333333333222);
+                SoundManger.Instance.PlayAudio(Globals.S_Combo01_4);
                 stateMachine.Player.effectManager.SpawnEffect("Combo4", stateMachine.Player.effectManager.effects[3].prefab.transform);
                 isEffecting = false;
             }
@@ -74,7 +76,6 @@ namespace JWOAGameSystem
             if (stateMachine.ReusableData.ShouldLightCombo)
             {
                 // Debug.Log("<color= #ffff1111>  轻击   </color>");
-                // stateMachine.ChangeState(stateMachine.NormalAttacking_1_State);
                 OnLAttack();
                 return;
             }
@@ -118,7 +119,7 @@ namespace JWOAGameSystem
         {
             base.OnLAttackComboStarted(context);
 
-            if (animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.1f)
+            if (animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.3f)
             {
                 Debug.Log("<color=yellow>  连击444444</color>");
                 OnLAttack();
@@ -130,7 +131,7 @@ namespace JWOAGameSystem
         {
             base.OnRAttackComboStarted(context);
 
-            if (animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.1f)
+            if (animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.3f)
             {
                 Debug.Log("<color=green>  轻连击333333333 回 重·1111111</color>");
                 OnRAttack();
