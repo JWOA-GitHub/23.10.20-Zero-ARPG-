@@ -1,0 +1,57 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace JWOAGameSystem
+{
+    public class CharacterBaseHealthBar : MonoBehaviour
+    {
+        public Image healthPointImage;
+        [SerializeField, Header("协程每次递增的速度")] private float increaseBufferSpeed = 0.000003f;
+        [SerializeField, Header("协程递增的时间间隔")] private float increaseSpacing = 0.000005f;
+
+        public Text healthPointText;
+        public Text cahracterNameText;
+
+        [SerializeField] private CharactersBase characterBase;
+
+        private void Start()
+        {
+            cahracterNameText.text = characterBase.name;
+            OnHpUpdate();
+        }
+        private void Update()
+        {
+            // Debug.Log("             Hp  " + characterBase.Hp);
+            if (characterBase.Hp < characterBase.maxHp)
+            {
+                StartCoroutine(UpdateHpCo());
+            }
+        }
+
+        public void OnHpUpdate()
+        {
+            // Debug.Log("     " + characterBase.Hp / characterBase.maxHp);
+            healthPointImage.fillAmount = characterBase.Hp / characterBase.maxHp;
+            healthPointText.text = $"{characterBase.Hp}/{characterBase.maxHp}";
+        }
+
+
+        IEnumerator UpdateHpCo()
+        {
+            OnHpUpdate();
+            while (characterBase.Hp <= characterBase.maxHp)
+            {
+                characterBase.Hp += increaseBufferSpeed;
+                UpdateHpCo();
+                yield return new WaitForSeconds(increaseSpacing);
+                // Debug.Log("C");
+            }
+            if (characterBase.Hp > characterBase.maxHp)
+            {
+                characterBase.Hp = characterBase.maxHp;
+            }
+        }
+
+    }
+}

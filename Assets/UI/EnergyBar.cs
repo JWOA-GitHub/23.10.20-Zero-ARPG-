@@ -26,7 +26,7 @@ namespace JWOAGameSystem
         }
         private void Update()
         {
-            Debug.Log("             mp  " + playerCharacterBase.Mp);
+            // Debug.Log("             mp  " + playerCharacterBase.Mp);
             if (playerCharacterBase.Mp < playerCharacterBase.maxMp)
             {
                 StartCoroutine(UpdateMpCo());

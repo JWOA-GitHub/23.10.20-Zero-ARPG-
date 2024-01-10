@@ -27,6 +27,7 @@ namespace JWOAGameSystem
         protected override NodeState OnEvaluate(Transform agent, Blackboard blackboard)
         {
             object t = blackboard.Get<Transform>("target");
+            Transform healthPoint = blackboard.Get<Transform>("healthPoint");
             if (_charactersBase.IsDead)
             {
                 State = NodeState.FAILURE;
@@ -49,6 +50,7 @@ namespace JWOAGameSystem
                         Debug.Log("<color=greeen>检测到de  " + i.name + "</color>");
                     }
                     blackboard.Add<Transform>("target", colliders[0].transform);
+                    healthPoint.gameObject.SetActive(true);
                     _enemyStateMachine.ChangeState(typeof(Roar1State));
 
                     _navMeshAgent.ResetPath();  //取消导航移动
@@ -68,6 +70,7 @@ namespace JWOAGameSystem
             if (Vector3.Distance(_transform.position, target.position) > blackboard.Get<float>("fovRange") && t != null)
             {
                 blackboard.Remove("target");
+                healthPoint.gameObject.SetActive(false);
                 _hasSearchedOnce = false;
                 State = NodeState.FAILURE;
                 return State;

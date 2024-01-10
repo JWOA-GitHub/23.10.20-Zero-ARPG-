@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     {
         if (Instance == null) // 如果实例为空，表示是第一次创建该类的实例
         {
-            DontDestroyOnLoad(gameObject); // 在场景切换时不销毁该对象
+            // DontDestroyOnLoad(gameObject); // 在场景切换时不销毁该对象
             Instance = this; // 将当前实例赋值给静态实例
         }
         else if (Instance != null) // 如果已经存在实例

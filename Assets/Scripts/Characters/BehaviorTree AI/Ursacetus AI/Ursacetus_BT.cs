@@ -15,6 +15,7 @@ namespace JWOAGameSystem
         [SerializeField] private float longAttackRange = 20f;
         [SerializeField] private int attackDamage = 10;
         [SerializeField] private LayerMask enemyLayerMask;
+        [SerializeField] private Transform healthPoint;
 
         protected override Node OnSetupTree()
         {
@@ -25,6 +26,8 @@ namespace JWOAGameSystem
             Blackboard.Add<float>("longAttackRange", longAttackRange);
             Blackboard.Add<int>("attackDamage", attackDamage);
             Blackboard.Add<int>("enemyLayerMask", enemyLayerMask);
+
+            Blackboard.Add<Transform>("healthPoint", healthPoint);
 
             Root = new Selector(new List<Node>{
                 // new CheckDeath(transform),
