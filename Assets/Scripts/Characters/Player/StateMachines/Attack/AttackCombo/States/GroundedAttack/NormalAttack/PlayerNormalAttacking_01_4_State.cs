@@ -48,7 +48,7 @@ namespace JWOAGameSystem
         {
             base.PhysicsUpdate();
 
-            if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.1f)
+            if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.2f)
             {
                 // AudioManager.Instance.Play("NormalAttack1");
                 SoundManger.Instance.PlayAudio(Globals.S_Combo01_5);
