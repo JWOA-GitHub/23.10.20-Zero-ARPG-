@@ -24,7 +24,7 @@ namespace JWOAGameSystem
 
             StartAnimation(animationData.SkillsAttack_04_ParameterHash);
 
-            stateMachine.Player.effectManager.SpawnEffect("Skill4", stateMachine.Player.effectManager.effects[8].prefab.transform);
+            stateMachine.Player.effectManager.SpawnEffect("Skill4", stateMachine.Player.effectManager.effects[8].prefab.transform.position, stateMachine.Player.effectManager.effects[8].prefab.transform.rotation);
 
             // stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
 

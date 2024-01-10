@@ -78,11 +78,16 @@ namespace JWOAGameSystem
             }
         }
 
-        public void SpawnEffect(string tag, Transform transform)
+        public void SpawnEffect(string tag, Vector3 pos, Quaternion rotation)
         {
             // 从对象池管理器获取特效
-            GameObject effect = ObjectPoolManager.Instance.GetObjectFromPool(tag, transform);
+            GameObject effect = ObjectPoolManager.Instance.GetObjectFromPool(tag, pos, rotation);
 
+            foreach (Transform child in effect.transform)
+            {
+                // 将子对象设置为可见
+                child.gameObject.SetActive(true);
+            }
             // 在指定位置使用特效
             // effect.transform.position = position;
             // 可以设置其他特效属性

@@ -57,7 +57,7 @@ namespace JWOAGameSystem
             if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.1f)
             {
                 SoundManger.Instance.PlayAudio(Globals.S_Combo01_2);
-                stateMachine.Player.effectManager.SpawnEffect("Combo2", stateMachine.Player.effectManager.effects[1].prefab.transform);
+                stateMachine.Player.effectManager.SpawnEffect("Combo2", stateMachine.Player.effectManager.effects[1].prefab.transform.position, stateMachine.Player.effectManager.effects[1].prefab.transform.rotation);
                 isEffecting = false;
             }
         }

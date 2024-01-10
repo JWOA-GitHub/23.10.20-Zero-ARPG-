@@ -64,7 +64,7 @@ namespace JWOAGameSystem
             }
         }
 
-        public GameObject GetObjectFromPool(string tag, Transform _transform)
+        public GameObject GetObjectFromPool(string tag, Vector3 _pos, Quaternion _rotation)
         {
             if (pools.ContainsKey(tag))
             {
@@ -72,8 +72,8 @@ namespace JWOAGameSystem
                 {
                     if (!obj.activeInHierarchy)
                     {
-                        obj.transform.position = _transform.position;
-                        obj.transform.rotation = _transform.rotation;
+                        obj.transform.position = _pos;
+                        obj.transform.rotation = _rotation;
                         obj.SetActive(true);
                         obj.transform.SetParent(parentTransform);
                         return obj;
@@ -83,7 +83,7 @@ namespace JWOAGameSystem
                 // 如果池中没有可用对象，则创建一个新对象并添加到池中
                 if (prefabs.ContainsKey(tag))
                 {
-                    GameObject newObj = Instantiate(prefabs[tag], _transform.position, _transform.rotation);
+                    GameObject newObj = Instantiate(prefabs[tag], _pos, _rotation);
                     newObj.transform.SetParent(parentTransform);
                     newObj.SetActive(true);
                     pools[tag].Add(newObj);

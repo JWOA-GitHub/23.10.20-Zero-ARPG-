@@ -45,7 +45,7 @@ namespace JWOAGameSystem
             {
                 // AudioManager.Instance.Play("NormalAttack1");
                 SoundManger.Instance.PlayAudio(Globals.S_Combo01_1);
-                stateMachine.Player.effectManager.SpawnEffect("Combo1", stateMachine.Player.effectManager.effects[0].prefab.transform);
+                stateMachine.Player.effectManager.SpawnEffect("Combo1", stateMachine.Player.effectManager.effects[0].prefab.transform.position, stateMachine.Player.effectManager.effects[0].prefab.transform.rotation);
                 isEffecting = false;
             }
         }
