@@ -43,6 +43,17 @@ public class Scene : MonoBehaviour
             }
         }
     }
+
+    public void Restart()
+    {
+        transform.gameObject.SetActive(true);
+        gameOverPanel.SetActive(true);
+
+        Time.timeScale = 0;
+        Cursor.visible = true; // 显示鼠标光标
+        Cursor.lockState = CursorLockMode.None; // 解锁鼠标
+    }
+
     public void LoadMainScene()
     {
         SceneManager.LoadScene(1);

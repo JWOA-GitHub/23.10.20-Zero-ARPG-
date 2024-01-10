@@ -187,6 +187,7 @@ namespace JWOAGameSystem
         }
 
         [SerializeField] private UnityEvent onHpUpdateEvent;
+        [SerializeField] private UnityEvent onDeadEvent;
         #endregion
 
 
@@ -262,7 +263,7 @@ namespace JWOAGameSystem
 
         protected virtual void Dead()
         {
-
+            onDeadEvent?.Invoke();
         }
 
 

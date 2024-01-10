@@ -22,9 +22,11 @@ namespace JWOAGameSystem
 
             stateName = animationData.SkillsAttack_AnimationData.SkillsAttack_04_StateName;
 
+            SetAnimationMoveBase(stateMachine.Player.transform.forward, 2);
+
             StartAnimation(animationData.SkillsAttack_04_ParameterHash);
 
-            stateMachine.Player.effectManager.SpawnEffect("Skill4", stateMachine.Player.effectManager.effects[8].prefab.transform.position, stateMachine.Player.effectManager.effects[8].prefab.transform.rotation);
+            // stateMachine.Player.effectManager.SpawnEffect("Skill4", stateMachine.Player.effectManager.effects[8].prefab.transform.position, stateMachine.Player.effectManager.effects[8].prefab.transform.rotation);
 
             // stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
 
@@ -40,13 +42,22 @@ namespace JWOAGameSystem
             // ResetCombo();
         }
 
-        // public override void PhysicsUpdate()
-        // {
-        //     base.PhysicsUpdate();
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
 
-        //     // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
-        //     // RotateTowardsTargetRotation();
-        // }
+            // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
+            // RotateTowardsTargetRotation();
+
+            if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.35f)
+            {
+                // AudioManager.Instance.Play("NormalAttack1");
+                SoundManger.Instance.PlayAudio(Globals.S_Skill1);
+                stateMachine.Player.effectManager.SpawnEffect("Skill4", stateMachine.Player.effectManager.effects[8].prefab.transform.position, stateMachine.Player.effectManager.effects[8].prefab.transform.rotation);
+
+                isEffecting = false;
+            }
+        }
 
         public override void OnAnimationEnterEvent()
         {

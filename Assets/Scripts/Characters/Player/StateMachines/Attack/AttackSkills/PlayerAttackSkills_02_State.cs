@@ -22,9 +22,11 @@ namespace JWOAGameSystem
 
             stateName = animationData.SkillsAttack_AnimationData.SkillsAttack_02_StateName;
 
+            SetAnimationMoveBase(stateMachine.Player.transform.forward, 1);
+
             StartAnimation(animationData.SkillsAttack_02_ParameterHash);
 
-            stateMachine.Player.effectManager.SpawnEffect("Skill2", stateMachine.Player.effectManager.effects[6].prefab.transform.position, stateMachine.Player.effectManager.effects[6].prefab.transform.rotation);
+            // stateMachine.Player.effectManager.SpawnEffect("Skill2", stateMachine.Player.effectManager.effects[6].prefab.transform.position, stateMachine.Player.effectManager.effects[6].prefab.transform.rotation);
 
             // stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
         }
@@ -35,13 +37,22 @@ namespace JWOAGameSystem
             StopAnimation(animationData.SkillsAttack_02_ParameterHash);
         }
 
-        // public override void PhysicsUpdate()
-        // {
-        //     base.PhysicsUpdate();
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
 
-        //     // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
-        //     // RotateTowardsTargetRotation();
-        // }
+            // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
+            // RotateTowardsTargetRotation();
+
+            if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.45f)
+            {
+                // AudioManager.Instance.Play("NormalAttack1");
+                SoundManger.Instance.PlayAudio(Globals.S_Skill1);
+                stateMachine.Player.effectManager.SpawnEffect("Skill2", stateMachine.Player.effectManager.effects[6].prefab.transform.position, stateMachine.Player.effectManager.effects[6].prefab.transform.rotation);
+
+                isEffecting = false;
+            }
+        }
 
         public override void OnAnimationEnterEvent()
         {

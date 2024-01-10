@@ -19,7 +19,11 @@ namespace JWOAGameSystem
 
             SoundManger.Instance.PlayAudio(Globals.S_ParryUp);
 
+            SetAnimationMoveBase(stateMachine.Player.transform.forward, 1);
+
             StartAnimation(animationData.AttackParryUp_ParameterHash);
+
+            stateMachine.Player.effectManager.SpawnEffect("Skill3", stateMachine.Player.effectManager.effects[7].prefab.transform.position, stateMachine.Player.effectManager.effects[7].prefab.transform.rotation);
 
             stateMachine.Player.Input.PlayerActions.Disable();
 

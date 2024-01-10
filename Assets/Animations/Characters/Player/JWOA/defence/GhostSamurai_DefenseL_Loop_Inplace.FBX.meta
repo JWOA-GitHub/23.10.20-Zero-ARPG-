@@ -68,7 +68,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.49623019
-        functionName: OnMovementStateAnimationExitEvent
+        functionName: TriggerOnMovementStateAnimationExitEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
