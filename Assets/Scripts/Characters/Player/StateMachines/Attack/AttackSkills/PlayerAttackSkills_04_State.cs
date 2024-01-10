@@ -22,7 +22,7 @@ namespace JWOAGameSystem
 
             stateName = animationData.SkillsAttack_AnimationData.SkillsAttack_04_StateName;
 
-            SetAnimationMoveBase(stateMachine.Player.transform.forward, 2);
+            SetAnimationMoveBase(stateMachine.Player.transform.forward, 4);
 
             StartAnimation(animationData.SkillsAttack_04_ParameterHash);
 

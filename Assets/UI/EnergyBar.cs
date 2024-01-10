@@ -26,7 +26,7 @@ namespace JWOAGameSystem
         }
         private void Update()
         {
-            // Debug.Log("             mp  " + playerCharacterBase.Mp);
+            // Debug.Log("             mp  " + playerCharacterBase.Mp + "   " + (playerCharacterBase.Mp < playerCharacterBase.maxMp));
             if (playerCharacterBase.Mp < playerCharacterBase.maxMp)
             {
                 StartCoroutine(UpdateMpCo());
@@ -43,11 +43,12 @@ namespace JWOAGameSystem
 
         IEnumerator UpdateMpCo()
         {
-            OnMpUpdate();
+            // OnMpUpdate();
             while (playerCharacterBase.Mp <= playerCharacterBase.maxMp)
             {
                 playerCharacterBase.Mp += increaseBufferSpeed;
-                UpdateMpCo();
+                Debug.Log(" mp " + playerCharacterBase.Mp + "     " + playerCharacterBase.Mp + increaseBufferSpeed);
+                OnMpUpdate();
                 yield return new WaitForSeconds(increaseSpacing);
                 // Debug.Log("B");
             }
