@@ -20,7 +20,7 @@ namespace JWOAGameSystem
             // Attack中获取当前正在播放的动画状态信息 设置当前状态对应AnimationName
             stateName = animationData.NormalAttack_AnimationData.NormalAttack_01_1_StateName;
 
-            SetAnimationMoveBase(stateMachine.Player.transform.forward, 2);
+            SetAnimationMoveBase(stateMachine.Player.transform.forward, 3);
 
             StartAnimation(animationData.NormalAttack_01_1_ParameterHash);
 
@@ -128,7 +128,7 @@ namespace JWOAGameSystem
             // Debug.Log("当前播放的动画名称：" + currentAnimationName);
             if (animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.1f)
             {
-                Debug.Log("<color=yellow>  连击22222222222222222</color>");
+                // Debug.Log("<color=yellow>  连击22222222222222222</color>");
                 OnLAttack();
                 return;
             }

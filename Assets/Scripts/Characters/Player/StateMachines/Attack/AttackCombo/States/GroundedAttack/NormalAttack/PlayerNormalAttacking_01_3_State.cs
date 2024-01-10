@@ -50,7 +50,7 @@ namespace JWOAGameSystem
             {
                 SoundManger.Instance.PlayAudio(Globals.S_Combo01_3);
                 stateMachine.Player.effectManager.SpawnEffect("Combo3", stateMachine.Player.effectManager.effects[2].prefab.transform.position, stateMachine.Player.effectManager.effects[2].prefab.transform.rotation);
-                Debug.Log(33333333333333);
+                // Debug.Log(33333333333333);
                 isEffecting = false;
             }
 
@@ -61,7 +61,7 @@ namespace JWOAGameSystem
 
             if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.15f)
             {
-                Debug.Log(3333333333333222);
+                // Debug.Log(3333333333333222);
                 SoundManger.Instance.PlayAudio(Globals.S_Combo01_4);
                 stateMachine.Player.effectManager.SpawnEffect("Combo4", stateMachine.Player.effectManager.effects[3].prefab.transform.position, stateMachine.Player.effectManager.effects[3].prefab.transform.rotation);
                 isEffecting = false;
@@ -121,7 +121,7 @@ namespace JWOAGameSystem
 
             if (animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.3f)
             {
-                Debug.Log("<color=yellow>  连击444444</color>");
+                // Debug.Log("<color=yellow>  连击444444</color>");
                 OnLAttack();
                 return;
             }
@@ -133,7 +133,7 @@ namespace JWOAGameSystem
 
             if (animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.3f)
             {
-                Debug.Log("<color=green>  轻连击333333333 回 重·1111111</color>");
+                // Debug.Log("<color=green>  轻连击333333333 回 重·1111111</color>");
                 OnRAttack();
                 return;
             }

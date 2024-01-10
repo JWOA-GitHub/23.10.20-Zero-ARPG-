@@ -3018,7 +3018,7 @@ MonoBehaviour:
   wasHit: []
   startPoint: {fileID: 6234979770147682244}
   endPoint: {fileID: 6234979771360850979}
-  radius: 0.33
+  radius: 0.69
   debug: 1
 --- !u!1 &6234979770021686819
 GameObject:
@@ -3043,7 +3043,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6234979770021686819}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.954243, y: 0.07, z: 9.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3229,7 +3229,7 @@ MonoBehaviour:
   wasHit: []
   startPoint: {fileID: 6234979771943266391}
   endPoint: {fileID: 6234979770843288237}
-  radius: 0.33
+  radius: 0.69
   debug: 1
 --- !u!1 &6234979771827905482
 GameObject:
@@ -3429,6 +3429,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3327524102741393990}
     m_Modifications:
+    - target: {fileID: 411189983633428771, guid: 0784a1a674e3fd449a74b3edfdceb316, type: 3}
+      propertyPath: characterBase
+      value: 
+      objectReference: {fileID: 6234979770419805840}
     - target: {fileID: 411189985137657212, guid: 0784a1a674e3fd449a74b3edfdceb316, type: 3}
       propertyPath: m_Name
       value: EnemyBar   Canvas (1)

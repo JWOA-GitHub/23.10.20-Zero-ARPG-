@@ -138,8 +138,8 @@ namespace JWOAGameSystem
 
                 _character.Move(moveSpeed * Time.deltaTime * movementDirection);
 
-                if (moveSpeed * Time.deltaTime * movementDirection != Vector3.zero)
-                    Debug.Log(gameObject.name + "         动画位移力度  " + moveSpeed + "  " + (moveSpeed * Time.deltaTime * movementDirection));
+                // if (moveSpeed * Time.deltaTime * movementDirection != Vector3.zero)
+                // Debug.Log(gameObject.name + "         动画位移力度  " + moveSpeed + "  " + (moveSpeed * Time.deltaTime * movementDirection));
             }
         }
 

@@ -34,6 +34,13 @@ namespace JWOAGameSystem
 
         }
 
+        protected override void Dead()
+        {
+            base.Dead();
+
+            enemyStateMachine.ChangeState(typeof(DeathState));
+        }
+
 
     }
 }

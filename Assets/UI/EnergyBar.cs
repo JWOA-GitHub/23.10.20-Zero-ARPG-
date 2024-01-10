@@ -35,7 +35,7 @@ namespace JWOAGameSystem
 
         public void OnMpUpdate()
         {
-            Debug.Log("     " + playerCharacterBase.Mp / playerCharacterBase.maxMp);
+            // Debug.Log("     " + playerCharacterBase.Mp / playerCharacterBase.maxMp);
             energyPointImage.fillAmount = playerCharacterBase.Mp / playerCharacterBase.maxMp;
             energyPointText.text = $"{playerCharacterBase.Mp}/{playerCharacterBase.maxMp}";
         }

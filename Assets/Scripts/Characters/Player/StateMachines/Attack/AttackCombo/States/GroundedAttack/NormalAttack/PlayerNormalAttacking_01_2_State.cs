@@ -119,7 +119,7 @@ namespace JWOAGameSystem
 
             if (animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.1f)
             {
-                Debug.Log("<color=yellow>  连击33333333</color>");
+                // Debug.Log("<color=yellow>  连击33333333</color>");
                 OnLAttack();
                 return;
             }

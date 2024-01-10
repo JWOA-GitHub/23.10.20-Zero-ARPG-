@@ -12,7 +12,12 @@ namespace JWOAGameSystem
         public const string S_Combo01_4 = "Audio/Sound/挥刀 (4)";
         public const string S_Combo01_5 = "Audio/Sound/挥刀 (7)";
 
+        public const string S_Skill1 = "Audio/Sound/挥刀 (6)";
+
         // 受伤
         public const string S_Hurting = "Audio/Sound/被砍 (2)";
+
+        // 反击
+        public const string S_ParryUp = "Audio/Sound/挥刀 (7)";
     }
 }

@@ -30,7 +30,7 @@ namespace JWOAGameSystem
             Blackboard.Add<Transform>("healthPoint", healthPoint);
 
             Root = new Selector(new List<Node>{
-                // new CheckDeath(transform),
+                new CheckDeath_State(transform),
                 // new CheckHurt(transform),
                 new Sequence(new List<Node>{
                     new CheckEnemyInShortAttackRange_State(transform),

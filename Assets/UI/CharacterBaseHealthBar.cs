@@ -23,7 +23,13 @@ namespace JWOAGameSystem
         private void Update()
         {
             // Debug.Log("             Hp  " + characterBase.Hp);
-            if (characterBase.Hp < characterBase.maxHp)
+            if (characterBase.Hp <= 0)
+            {
+                characterBase.Hp = 0;
+                return;
+            }
+
+            if (characterBase.Hp < characterBase.maxHp && !characterBase.IsDead)
             {
                 StartCoroutine(UpdateHpCo());
             }
@@ -39,11 +45,17 @@ namespace JWOAGameSystem
 
         IEnumerator UpdateHpCo()
         {
-            OnHpUpdate();
             while (characterBase.Hp <= characterBase.maxHp)
             {
+                if (characterBase.Hp <= 0)
+                {
+                    characterBase.Hp = 0;
+                    OnHpUpdate();
+                    break;
+                }
+
                 characterBase.Hp += increaseBufferSpeed;
-                UpdateHpCo();
+                OnHpUpdate();
                 yield return new WaitForSeconds(increaseSpacing);
                 // Debug.Log("C");
             }

@@ -27,7 +27,7 @@ namespace JWOAGameSystem
             StartAnimation(animationData.NormalAttack_01_4_ParameterHash);
 
             // stateMachine.Player.effectManager.SpawnEffect("Combo5", stateMachine.Player.effectManager.effects[4].prefab.transform);
-            Debug.Log("3333333333   5555555555");
+            // Debug.Log("3333333333   5555555555");
 
             // stateMachine.Player.Input.PlayerActions.LAttack.Disable();
             // 最后一击的僵直  无法移动！

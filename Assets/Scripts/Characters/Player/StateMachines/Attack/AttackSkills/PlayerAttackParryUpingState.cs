@@ -17,6 +17,8 @@ namespace JWOAGameSystem
 
             base.Enter();
 
+            SoundManger.Instance.PlayAudio(Globals.S_ParryUp);
+
             StartAnimation(animationData.AttackParryUp_ParameterHash);
 
             stateMachine.Player.Input.PlayerActions.Disable();

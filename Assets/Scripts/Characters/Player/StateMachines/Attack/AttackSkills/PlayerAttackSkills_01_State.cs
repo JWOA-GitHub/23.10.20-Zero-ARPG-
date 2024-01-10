@@ -20,15 +20,16 @@ namespace JWOAGameSystem
 
             base.Enter();
 
+            SetAnimationMoveBase(stateMachine.Player.transform.forward, 2);
+
             stateName = animationData.SkillsAttack_AnimationData.SkillsAttack_01_StateName;
 
             StartAnimation(animationData.SkillsAttack_01_ParameterHash);
 
             // stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
 
-            stateMachine.Player.effectManager.SpawnEffect("Skill1", stateMachine.Player.effectManager.effects[5].prefab.transform.position, stateMachine.Player.effectManager.effects[5].prefab.transform.rotation);
-            isEffecting = false;
-
+            // stateMachine.Player.effectManager.SpawnEffect("Skill1", stateMachine.Player.effectManager.effects[5].prefab.transform.position, stateMachine.Player.effectManager.effects[5].prefab.transform.rotation);
+            // isEffecting = false;
         }
         public override void Exit()
         {
@@ -44,6 +45,14 @@ namespace JWOAGameSystem
 
             // 当进入“停止”状态时，即使没有按下移动键，也会完成自动旋转！！
             // RotateTowardsTargetRotation();
+
+            if (isEffecting && animationData.animatorStateInfo.IsName(stateName) && animationData.animatorStateInfo.normalizedTime >= 0.25f)
+            {
+                // AudioManager.Instance.Play("NormalAttack1");
+                SoundManger.Instance.PlayAudio(Globals.S_Skill1);
+                stateMachine.Player.effectManager.SpawnEffect("Skill1", stateMachine.Player.effectManager.effects[5].prefab.transform.position, stateMachine.Player.effectManager.effects[5].prefab.transform.rotation);
+                isEffecting = false;
+            }
         }
 
         public override void OnAnimationEnterEvent()
@@ -59,7 +68,6 @@ namespace JWOAGameSystem
         public override void OnAnimationExitEvent()
         {
             base.OnAnimationExitEvent();
-
             // if (isLightComboCache || isHeavyComboCache)
             //     return;
             // stateMachine.ReusableData.isSkilling = false;
