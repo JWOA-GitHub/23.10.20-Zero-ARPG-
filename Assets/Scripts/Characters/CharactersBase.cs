@@ -123,11 +123,18 @@ namespace JWOAGameSystem
         /// </summary>
         public int maxMp = 100;
 
-        [SerializeField] private float attackDamage = 10;
+        [SerializeField] private float attackDamage = 30;
         public float AttackDamage
         {
             get => attackDamage;
             set => attackDamage = value;
+        }
+
+         [SerializeField] private float skillDamage = 40;
+        public float SkillDamage
+        {
+            get => skillDamage;
+            set => skillDamage = value;
         }
 
         private float defense;

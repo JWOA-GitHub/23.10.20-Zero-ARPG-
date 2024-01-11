@@ -121,14 +121,14 @@ ModelImporter:
           rotationOrder: 4
       events:
       - time: 0.115549214
-        functionName: EnableDetection
+        functionName: EnableSkill2_Detection
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.41994146
-        functionName: DisableDetection
+        functionName: DisableSkill2_Detection
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

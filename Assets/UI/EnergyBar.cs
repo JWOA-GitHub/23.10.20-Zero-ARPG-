@@ -47,7 +47,6 @@ namespace JWOAGameSystem
             while (playerCharacterBase.Mp <= playerCharacterBase.maxMp)
             {
                 playerCharacterBase.Mp += increaseBufferSpeed;
-                Debug.Log(" mp " + playerCharacterBase.Mp + "     " + playerCharacterBase.Mp + increaseBufferSpeed);
                 OnMpUpdate();
                 yield return new WaitForSeconds(increaseSpacing);
                 // Debug.Log("B");

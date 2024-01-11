@@ -65,7 +65,7 @@ namespace JWOAGameSystem
                             break;
                         case EnemyState.GetHit:
                             // Debug.Log("forward : " + transform.forward + "root:" + transform.root.forward);
-                            SetAnimationMoveBase(transform.forward, 3);
+                            SetAnimationMoveBase(transform.forward, 5);
                             SoundManger.Instance.PlayAudio(Globals.S_Hurting);
                             break;
                         default:

@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace JWOAGameSystem
 {
+    public enum WeaponType
+    {
+        Normal,
+        Skill,
+    }
+
     public class WeaponManager : MonoBehaviour
     {
         // 武器数据
@@ -19,6 +25,10 @@ namespace JWOAGameSystem
 
         [SerializeField] private CharactersBase charactersBase;
 
+        [SerializeField] private WeaponType weaponType= WeaponType.Normal;
+        [SerializeField] private float skillDamageModifier = 2f;
+
+
         private void Update()
         {
             HandleDetection();
@@ -32,7 +42,16 @@ namespace JWOAGameSystem
                 {
                     foreach (var hit in item.GetDetection())
                     {
-                        hit.GetComponent<AgentHitBox>().GetDamage(charactersBase.AttackDamage, transform.position);
+                        if(weaponType == WeaponType.Normal)
+                        {
+                            hit.GetComponent<AgentHitBox>().GetDamage(charactersBase.AttackDamage, transform.position);
+                            Debug.Log( "            attack伤害 "+charactersBase.AttackDamage);
+                        }
+                        else
+                        {
+                            hit.GetComponent<AgentHitBox>().GetDamage(charactersBase.SkillDamage * skillDamageModifier, transform.position);
+                            Debug.Log( "            skill伤害 "+charactersBase.SkillDamage * skillDamageModifier);
+                        }
                     }
                 }
             }

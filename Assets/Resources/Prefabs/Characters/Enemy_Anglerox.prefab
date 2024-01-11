@@ -335,8 +335,11 @@ MonoBehaviour:
   startingLevel: 1
   maxHp: 100
   maxMp: 100
-  attackDamage: 10
+  attackDamage: 8
   onHpUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeadEvent:
     m_PersistentCalls:
       m_Calls: []
   skills:
@@ -364,7 +367,7 @@ MonoBehaviour:
   - {fileID: 6234979771932409425}
   speed: 1.5
   chaseSpeed: 4
-  fovRange: 10
+  fovRange: 20
   shortAttackRange: 4
   longAttackRange: 6
   retreatRange: 1.8
