@@ -292,7 +292,12 @@ namespace JWOAGameSystem
                 return;
             }
 
-            stateMachine.ChangeState(stateMachine.AttackSkills_01_State);
+            //技能准备（判断条件 能量 cd等）
+            SkillData data = stateMachine.Player.SkillManager.PrepareSkill(1001);
+
+            if (data != null)
+                stateMachine.Player.SkillManager.GenerateSkill(data);
+            // stateMachine.ChangeState(stateMachine.AttackSkills_01_State);
         }
 
         protected virtual void OnSkillAttack2Started(InputAction.CallbackContext context)

@@ -34,7 +34,7 @@ public class Scene : MonoBehaviour
                 gameOverPanel.SetActive(true);
                 if (gameOverPanel.activeSelf)
                 {
-                    Debug.Log("         000   ");
+                    // Debug.Log("         000   ");
                     Time.timeScale = 0;
                     Cursor.visible = true; // 显示鼠标光标
                     Cursor.lockState = CursorLockMode.None; // 解锁鼠标
@@ -50,7 +50,7 @@ public class Scene : MonoBehaviour
                 gameOverPanel.SetActive(false);
                 if (!gameOverPanel.activeSelf)
                 {
-                    Debug.Log("         11111111111   ");
+                    // Debug.Log("         11111111111   ");
                     Time.timeScale = 1;
                     Cursor.visible = false; // 隐藏鼠标光标
                     Cursor.lockState = CursorLockMode.Locked; // 锁定鼠标在屏幕中心

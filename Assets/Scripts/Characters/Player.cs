@@ -33,6 +33,7 @@ namespace JWOAGameSystem
 
         // [SerializeField] public List<GameObject> effects;
         [field: SerializeField] public EffectManager effectManager;
+        public OwnerSkillManager SkillManager;
 
         public Player(string name, int startingLevel) : base(name, startingLevel)
         {
@@ -57,6 +58,7 @@ namespace JWOAGameSystem
             Rigidbody = GetComponent<Rigidbody>();
             Animator = GetComponentInChildren<Animator>();
             Input = GetComponent<PlayerInput>();
+            SkillManager = GetComponent<OwnerSkillManager>();
 
             ColliderUtility.Initialize(gameObject);
             ColliderUtility.CalculateCapsuleColliderDimensions();
