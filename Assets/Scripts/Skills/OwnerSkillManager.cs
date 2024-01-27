@@ -27,8 +27,10 @@ namespace JWOAGameSystem
         private void InitSkill(SkillData data)
         {
             // 找到预制件 skillData.prefabName --> skillD   ata.skillPrefab
-            data.SkillPrefab = Resources.Load<GameObject>("Prefabs/Skills/" + data.PrefabName);
-            Debug.Log($"<color=red> {data.SkillPrefab}   名字：  {data.PrefabName}  ");
+            // data.SkillPrefab = Resources.Load<GameObject>("Prefabs/Skills/" + data.PrefabName);
+            // 获取预制件名称   通过资源管理器 加载到相对应的预制件路径
+            data.SkillPrefab = ResourceManager.Load<GameObject>(data.PrefabName);
+            Debug.Log($"<color=red> {data.SkillPrefab}   名字：  {data.PrefabName}  </color>");
             data.Owner = gameObject;
         }
 
