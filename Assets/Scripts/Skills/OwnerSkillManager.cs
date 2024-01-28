@@ -77,10 +77,12 @@ namespace JWOAGameSystem
         public void GenerateSkill(SkillData data)
         {
             // 创建技能预制件
-            GameObject skillGo = Instantiate(data.SkillPrefab, transform.position, transform.rotation);
+            // GameObject skillGo = Instantiate(data.SkillPrefab, transform.position, transform.rotation);
+            GameObject skillGo = GameObjectPool.Instance.CreateObject(data.Name, data.SkillPrefab, transform.position, transform.rotation);
 
             // 销毁技能
-            Destroy(skillGo, data.DurationTime);
+            // Destroy(skillGo, data.DurationTime);
+            GameObjectPool.Instance.CollectObject(skillGo, data.DurationTime);
 
             // 开启技能CD
             StartCoroutine(CoolTimeDown(data));
