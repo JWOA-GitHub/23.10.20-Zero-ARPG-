@@ -29,16 +29,19 @@ namespace JWOAGameSystem
         /// <returns>返回该资源映射表的内容</returns>
         public static string GetConfigFile(string fileName)
         {
+            string url;// = "file://" + Application.dataPath + "/StreamingAssets/" + fileName;
+
+            #region 分平台判断StreamingAssets 路径
             // ResourcesConfig.txt
             // 在大部分安卓平台上
             // string url = "file://"+Application.streamingAssetsPath + "/ConfigMap.txt";
             // string url = "file://"+Application.streamingAssetsPath + "/"+fileName;
-        
-            string url = "file://" + Application.dataPath + "/StreamingAssets/" + fileName;
-            // 如果在编译器下......
+
+            // 如果在编译器 或者 PC 单机中......
             // if(Application.platform == RuntimePlatform.WindowsEditor)    //安卓：RuntimePlatform.Android  IOS：RuntimePlatform.IPhonePlayer
-#if UNITY_EDIOTR
-            url = "file://"+Application.dataPath + "/StreamingAssets/"+fileName;    //JWOA_ConfigMap.txt";        // Application.dataPath 定位到Assets文件夹
+            // Unity 宏标签
+#if UNITY_EDIOTR || UNITY_STANDALONE        // 或 PC上 UNITY_STANDALONE（单机）
+            url = "file://" + Application.dataPath + "/StreamingAssets/" + fileName;    //JWOA_ConfigMap.txt";        // Application.dataPath 定位到Assets文件夹
             // 否则如果在Iphone下.....
 #elif UNITY_IPHONE
             // url = "file://"+Application.dataPath + "/Raw/JWOA_ConfigMap.txt";        
@@ -48,6 +51,8 @@ namespace JWOAGameSystem
 #elif UNITY_ANDROID
             url = "jar:file://"+Application.dataPath + "!/assets/"+fileName;    //JWOA_ConfigMap.txt";  
 #endif
+            #endregion
+
             WWW www = new WWW(url);       //加载本地："file:// www"   加载外网则： "http:// www"
             while (true)
             {
@@ -77,26 +82,30 @@ namespace JWOAGameSystem
             using (StringReader reader = new StringReader(fileContent))
             {
                 Debug.Log(" using   " + reader.ReadLine());
-                // string line;
-                // while ((line = reader.ReadLine()) != null)
-                // {
-                //     // 解析行数据
-                //     string[] keyValue = line.Split('=');
-                //     // 文件名：KeyValue[0]  路径：KeyValue[1]
-                //     configMap.Add(keyValue[0], keyValue[1]);
-                //     Debug.Log($"    键      {keyValue[0]}   值  {keyValue[1]}");
-                //     // line = reader.ReadLine();
-                // }
-
-                string line = reader.ReadLine();
-                while (line != null)
+                string line;
+                // 1.读一行， 满足条件则解析
+                while ((line = reader.ReadLine()) != null)
                 {
+                    // 解析行数据
                     string[] keyValue = line.Split('=');
                     // 文件名：KeyValue[0]  路径：KeyValue[1]
                     configMap.Add(keyValue[0], keyValue[1]);
-
-                    line = reader.ReadLine();
+                    Debug.Log($"    键      {keyValue[0]}   值  {keyValue[1]}");
+                    // line = reader.ReadLine();
                 }
+
+                // 1.先读一行
+                // string line = reader.ReadLine();
+                // 2. 不为空则解析 / 4. 再判断条件
+                // while (line != null)
+                // {
+                //     string[] keyValue = line.Split('=');
+                //     // 文件名：KeyValue[0]  路径：KeyValue[1]
+                //     configMap.Add(keyValue[0], keyValue[1]);
+
+                // 3.再读一行
+                //     line = reader.ReadLine();
+                // }
             }   // 当程序退出using代码块，将自动调用 reader.Dispose()方法  （不管正常或异常退出！！
             #endregion
         }
