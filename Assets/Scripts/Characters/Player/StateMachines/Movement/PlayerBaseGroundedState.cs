@@ -272,7 +272,7 @@ namespace JWOAGameSystem
                 return;
             }
 
-            stateMachine.ChangeState(stateMachine.NormalAttacking_01_1_State);
+            // stateMachine.ChangeState(stateMachine.NormalAttacking_01_1_State);
         }
 
         protected virtual void OnRAttackComboStarted(InputAction.CallbackContext context)

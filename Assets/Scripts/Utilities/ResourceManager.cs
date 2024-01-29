@@ -90,7 +90,7 @@ namespace JWOAGameSystem
                     string[] keyValue = line.Split('=');
                     // 文件名：KeyValue[0]  路径：KeyValue[1]
                     configMap.Add(keyValue[0], keyValue[1]);
-                    Debug.Log($"    键      {keyValue[0]}   值  {keyValue[1]}");
+                    // Debug.Log($"    键      {keyValue[0]}   值  {keyValue[1]}");
                     // line = reader.ReadLine();
                 }
 

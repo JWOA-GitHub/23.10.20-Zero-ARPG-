@@ -78,7 +78,7 @@ namespace JWOAGameSystem
         {
             // 创建技能预制件
             // GameObject skillGo = Instantiate(data.SkillPrefab, transform.position, transform.rotation);
-            GameObject skillGo = GameObjectPool.Instance.CreateObject(data.Name, data.SkillPrefab, transform.position, transform.rotation);
+            GameObject skillGo = GameObjectPool.Instance.CreateObject(data.PrefabName, data.SkillPrefab, transform.position, transform.rotation);
 
             // 销毁技能
             // Destroy(skillGo, data.DurationTime);

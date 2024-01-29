@@ -52,7 +52,7 @@ namespace JWOAGameSystem
 
         private void Init()
         {
-            HideCursor();
+            // HideCursor();
 
             // TODO：character?
             Rigidbody = GetComponent<Rigidbody>();
