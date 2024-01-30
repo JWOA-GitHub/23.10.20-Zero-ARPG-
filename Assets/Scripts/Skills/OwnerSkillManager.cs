@@ -80,6 +80,10 @@ namespace JWOAGameSystem
             // GameObject skillGo = Instantiate(data.SkillPrefab, transform.position, transform.rotation);
             GameObject skillGo = GameObjectPool.Instance.CreateObject(data.PrefabName, data.SkillPrefab, transform.position, transform.rotation);
 
+            // 传递技能数据
+            SkillReleaser releaser = skillGo.GetComponent<SkillReleaser>();
+            releaser.SkillData = data;  // 内部创建算法对象
+
             // 销毁技能
             // Destroy(skillGo, data.DurationTime);
             GameObjectPool.Instance.CollectObject(skillGo, data.DurationTime);
