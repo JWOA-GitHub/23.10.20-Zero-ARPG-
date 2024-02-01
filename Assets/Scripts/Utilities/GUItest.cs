@@ -12,7 +12,7 @@ namespace JWOAGameSystem
         private void Start()
         {
             player = FindObjectOfType<Player>().GetComponent<Player>();
-            Debug.Log("            " + player);
+            // Debug.Log("            " + player);
             // prefab = player.SkillManager.crea
 
         }

@@ -10,19 +10,21 @@ namespace JWOAGameSystem
     /// </summary>
     public class ReleaserConfigFactory
     {
-        public static IAttackSelector CreateAttaackSelector(SkillData data)
+        public static IAttackSelector CreateAttackSelector(SkillData data)
         {
+            // MARKER: 创建选区要注意 命名空间 和 类名 格式！！！！！
             #region 选取对象算法 skillData.SelectorType
             // skillData.SelectorType
             // 选区对象命名规则：
-            // JWOAGameSystem.Skill. + 枚举名+AttackSelector
+            // JWOAGameSystem.Skill. + 枚举名 + AttackSelector
             // 例如扇形选区：JWOAGameSystem.Skill.SectorAttackSelector
-            string classNameSelector = string.Format("JWOAGameSystem.Skill.{0}AttackSelector", data.SelectorType);
+            Debug.Log($"<color=red> classNameSelector          { string.Format("JWOAGameSystem.{0}AttackSelector", data.SelectorType)}</color>");
+            string classNameSelector = string.Format("JWOAGameSystem.{0}AttackSelector", data.SelectorType);
             return CreateObject<IAttackSelector>(classNameSelector);
             #endregion
         }
 
-        public static IImpactEffect[] CreateAttaackImpact(SkillData data)
+        public static IImpactEffect[] CreateAttackImpact(SkillData data)
         {
             #region 影响效果算法 skillData.ImpactType
             IImpactEffect[] impacts = new IImpactEffect[data.ImpactType.Length];
@@ -32,7 +34,7 @@ namespace JWOAGameSystem
             // 例如消耗法力：JWOAGameSystem.Skill.CostSPImpact
             for (int i = 0; i < data.ImpactType.Length; i++)
             {
-                string classNameImpact = string.Format("JWOAGameSystem.Skill.{0}Impact", data.ImpactType[i]);
+                string classNameImpact = string.Format("JWOAGameSystem.{0}Impact", data.ImpactType[i]);
                 impacts[i] = CreateObject<IImpactEffect>(classNameImpact);
             }
 

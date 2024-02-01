@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace JWOAGameSystem
 {
-    public class SkillReleaser : MonoBehaviour
+    public abstract class SkillReleaser : MonoBehaviour
     {
         private SkillData skillData;
         /// <summary>   由技能管理器提供
@@ -36,7 +36,6 @@ namespace JWOAGameSystem
         {
 
             // 创建算法对象
-
 
             #region 选区对象算法 影响算法 已封装到 （释放器配置工厂：提供创建释放器各种算法对象的功能
             // #region 选取对象算法 skillData.SelectorType
@@ -69,10 +68,10 @@ namespace JWOAGameSystem
             #endregion
 
             //选区
-            selector = ReleaserConfigFactory.CreateAttaackSelector(SkillData); // 释放器的配置工厂类
+            selector = ReleaserConfigFactory.CreateAttackSelector(SkillData); // 释放器的配置工厂类
 
             // 影响
-            impactArray = ReleaserConfigFactory.CreateAttaackImpact(SkillData);
+            impactArray = ReleaserConfigFactory.CreateAttackImpact(SkillData);
         }
 
 
@@ -90,7 +89,23 @@ namespace JWOAGameSystem
         #endregion
 
         // 执行算法对象
+        // 选区
+        public void CalculateTargets()
+        {
+            skillData.AttackTargets = selector.SelectTarget(skillData, transform);
+
+            /*******测试********/
+            foreach (var item in skillData.AttackTargets)
+            {
+                print("攻击到了 " + item);
+            }
+        }
+
+        // 影响
+
 
         // 释放方式
+        // 供技能管理器调用，由子类实现，定义具体释放策略
+        public abstract void ReleaserSkill();
     }
 }

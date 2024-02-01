@@ -82,7 +82,9 @@ namespace JWOAGameSystem
 
             // 传递技能数据
             SkillReleaser releaser = skillGo.GetComponent<SkillReleaser>();
+            Debug.Log("       技能释放器  " + releaser.name);
             releaser.SkillData = data;  // 内部创建算法对象
+            releaser.ReleaserSkill();    // 内部执行算法对象
 
             // 销毁技能
             // Destroy(skillGo, data.DurationTime);

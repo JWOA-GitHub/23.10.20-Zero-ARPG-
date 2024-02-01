@@ -4966,6 +4966,7 @@ GameObject:
   - component: {fileID: 199767151382403500}
   - component: {fileID: 5223257611165590370}
   - component: {fileID: 8023976451374145981}
+  - component: {fileID: 5656017870260564934}
   m_Layer: 0
   m_Name: Sword Slash 7
   m_TagString: Untagged
@@ -9892,6 +9893,18 @@ MonoBehaviour:
   endPoint: {fileID: 140749993}
   radius: 3.64
   debug: 1
+--- !u!114 &5656017870260564934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236453127613114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82e3de6479543142a9a231901d3a548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1254109480978580
 GameObject:
   m_ObjectHideFlags: 0
