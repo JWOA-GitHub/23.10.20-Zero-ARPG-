@@ -10,10 +10,13 @@ namespace JWOAGameSystem
     {
         public override void ReleaserSkill()
         {
+            // transform.SetParent(SkillData.Owner.transform);
+
             // 执行选区算法
             CalculateTargets();
 
             // 执行影响算法
+            ImapactTargets();
         }
     }
 }

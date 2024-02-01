@@ -8,6 +8,7 @@ namespace JWOAGameSystem
     /// </summary>
     public interface IImpactEffect
     {
-
+        // 伤害生命 
+        void Execute(SkillReleaser releaser);
     }
 }

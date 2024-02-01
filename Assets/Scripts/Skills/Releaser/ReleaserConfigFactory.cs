@@ -18,7 +18,7 @@ namespace JWOAGameSystem
             // 选区对象命名规则：
             // JWOAGameSystem.Skill. + 枚举名 + AttackSelector
             // 例如扇形选区：JWOAGameSystem.Skill.SectorAttackSelector
-            Debug.Log($"<color=red> classNameSelector          { string.Format("JWOAGameSystem.{0}AttackSelector", data.SelectorType)}</color>");
+            Debug.Log($"<color=red> classNameSelector          {string.Format("JWOAGameSystem.{0}AttackSelector", data.SelectorType)}</color>");
             string classNameSelector = string.Format("JWOAGameSystem.{0}AttackSelector", data.SelectorType);
             return CreateObject<IAttackSelector>(classNameSelector);
             #endregion

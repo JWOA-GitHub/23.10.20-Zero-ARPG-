@@ -102,6 +102,13 @@ namespace JWOAGameSystem
         }
 
         // 影响
+        public void ImapactTargets()
+        {
+            for (int i = 0; i < impactArray.Length; i++)
+            {
+                impactArray[i].Execute(this);
+            }
+        }
 
 
         // 释放方式
