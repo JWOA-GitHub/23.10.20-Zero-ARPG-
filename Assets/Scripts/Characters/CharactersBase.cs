@@ -110,13 +110,13 @@ namespace JWOAGameSystem
             set => experience = value;
         }
 
-        private float hp;
+        [SerializeField] private float hp;
         public int maxHp = 100;
 
         /// <summary> 玩家能量条，释放技能用
         /// <see cref = "mp" />
         /// </summary>
-        private float mp;  // 能量值
+        [SerializeField] private float mp;  // 能量值
 
         /// <summary> 玩家最大能量条，释放技能用,默认100
         /// <see cref = "maxMp" />
@@ -276,6 +276,12 @@ namespace JWOAGameSystem
 
         #region Main Methods
         public virtual void GetDamage(float damage, Vector3 pos)
+        {
+            Hp -= damage;
+            isHurting = true;
+        }
+
+        public virtual void GetDamage(float damage)
         {
             Hp -= damage;
             isHurting = true;
