@@ -292,11 +292,14 @@ namespace JWOAGameSystem
                 return;
             }
 
-            //技能准备（判断条件 能量 cd等）
-            SkillData data = stateMachine.Player.SkillManager.PrepareSkill(1001);
+            // //技能准备（判断条件 能量 cd等）
+            // SkillData data = stateMachine.Player.SkillManager.PrepareSkill(1001);
 
-            if (data != null)
-                stateMachine.Player.SkillManager.GenerateSkill(data);
+            // if (data != null)
+            //     stateMachine.Player.SkillManager.GenerateSkill(data);
+
+            // TODO: 封装为技能系统
+            stateMachine.Player.SkillSystem.AttackUseSkill(1001);
             // stateMachine.ChangeState(stateMachine.AttackSkills_01_State);
         }
 

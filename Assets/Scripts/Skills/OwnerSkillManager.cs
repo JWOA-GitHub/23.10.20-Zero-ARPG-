@@ -61,6 +61,8 @@ namespace JWOAGameSystem
             return null;
         }
 
+        
+
         // private SkillData Find(int id)
         // {
         //     for (int i = 0; i < skills.Length; i++)

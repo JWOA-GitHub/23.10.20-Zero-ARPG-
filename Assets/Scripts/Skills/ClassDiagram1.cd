@@ -58,6 +58,14 @@
       <FileName>Assets\Scripts\Skills\Releaser\ReleaserConfigFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="JWOAGameSystem.DamageImpact" Collapsed="true">
+    <Position X="8.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Skills\ImpactEffects\DamageImpact.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="JWOAGameSystem.IAttackSelector" Collapsed="true">
     <Position X="7" Y="2.75" Width="1.5" />
     <TypeIdentifier>
@@ -65,7 +73,7 @@
       <FileName>Assets\Scripts\Skills\Selectors\IAttackSelector.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="JWOAGameSystem.IImpactEffect" Collapsed="true">
+  <Interface Name="JWOAGameSystem.IImpactEffect">
     <Position X="7" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>

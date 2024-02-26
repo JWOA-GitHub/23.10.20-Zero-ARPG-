@@ -60,6 +60,10 @@ namespace JWOAGameSystem
         public SkillAttackType AttackType;
         ///<summary>技能选择攻击类型 扇形(圆形)，矩形</summary>
         public SelectorType SelectorType;
-
     }
+
+    // public SkillData[] FindAll(Func<SkillData, bool> condition)
+    // {
+
+    // }
 }
