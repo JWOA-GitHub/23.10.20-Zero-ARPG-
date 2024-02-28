@@ -13,6 +13,7 @@ namespace JWOAGameSystem
     {
         private OwnerSkillManager skillManager;
         private Animator animator;
+        private SkillData skill;
         private void Start()
         {
             skillManager = GetComponent<OwnerSkillManager>();
@@ -32,20 +33,48 @@ namespace JWOAGameSystem
         public void AttackUseSkill(int skillID)
         {
             // 准备技能
-            SkillData skill = skillManager.PrepareSkill(skillID);
+            skill = skillManager.PrepareSkill(skillID);
             if (skill == null) return;
             // 播放动画
             // animator.SetBool(skill.AnimationName, true);
             // 生成技能
             ReleaserSkill(skill);
             // 如果单攻
-            // skill.AttackType == SkillAttackType.Single;
+            if (skill.AttackType != SkillAttackType.Single) return;
+            // -- 查找目标
+            Transform targetTF = SelectTarget();
             // -- 朝向目标
-            // transform.LookAt();
+            // TODO：
+            transform.LookAt(targetTF);
+            Debug.Log("     12222222222222" + targetTF);
             // -- 选中目标
             // 1. 选中目标，间隔指定时间后取消选中
             // 2. 选中A目标，在自动取消前，又选中B目标，则需要手动将A取消
+            //   (核心：存储上次选中的物体！)
+            // 先取消上次选中的物体
+            SetSelectedActiveFx(false);
+            selectedTarget = targetTF;
+            // 选中当前物体
+            SetSelectedActiveFx(true);
+            // targetTF.Find("xxx").gameObject.SetActive(true);
 
+        }
+
+        private Transform SelectTarget()
+        {
+            Transform[] target = new SectorAttackSelector().SelectTarget(skill, transform);
+            return target.Length != 0 ? target[0] : null;
+        }
+
+        //选中的目标
+        public Transform selectedTarget;
+
+        private void SetSelectedActiveFx(bool state)
+        {
+            if(selectedTarget == null ) return;
+            var selected = selectedTarget.GetComponent<CharacterSelected>();
+            if (selected)
+                selected.SetSelectedActive(state);
         }
 
         /// <summary>
