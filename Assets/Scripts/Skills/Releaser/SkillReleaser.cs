@@ -97,7 +97,7 @@ namespace JWOAGameSystem
             /*******测试********/
             foreach (var item in skillData.AttackTargets)
             {
-                print("攻击到了 " + item);
+                print("技能选区检测到了 " + item);
             }
         }
 

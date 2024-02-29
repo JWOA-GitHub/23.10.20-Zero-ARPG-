@@ -51,6 +51,8 @@ namespace JWOAGameSystem
                 // AudioManager.Instance.Play("NormalAttack1");
                 SoundManger.Instance.PlayAudio(Globals.S_Skill1);
                 stateMachine.Player.effectManager.SpawnEffect("Skill1", stateMachine.Player.effectManager.effects[5].prefab.transform.position, stateMachine.Player.effectManager.effects[5].prefab.transform.rotation);
+                //stateMachine.Player.SkillSystem.AttackUseSkill(1001,false, stateMachine.Player.transform.position-new Vector3(-2,-2,-2), stateMachine.Player.transform.rotation);
+
                 isEffecting = false;
             }
         }

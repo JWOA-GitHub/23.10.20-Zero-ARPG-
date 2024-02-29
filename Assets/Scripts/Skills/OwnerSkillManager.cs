@@ -60,7 +60,6 @@ namespace JWOAGameSystem
             }
             return null;
         }
-
         
 
         // private SkillData Find(int id)
@@ -76,11 +75,15 @@ namespace JWOAGameSystem
         /// <summary>   生成技能
         /// </summary>
         /// <param name="data"></param>
-        public void GenerateSkill(SkillData data)
+        public void GenerateSkill(SkillData data, Vector3 poisition = default, Quaternion rotation = default)
         {
             // 创建技能预制件
             // GameObject skillGo = Instantiate(data.SkillPrefab, transform.position, transform.rotation);
-            GameObject skillGo = GameObjectPool.Instance.CreateObject(data.PrefabName, data.SkillPrefab, transform.position, transform.rotation);
+
+            Vector3 targetPos = default ? transform.position : poisition;
+            Quaternion targetRotation = default ? transform.rotation : rotation;
+
+            GameObject skillGo = GameObjectPool.Instance.CreateObject(data.PrefabName, data.SkillPrefab, targetPos, targetRotation);
 
             // 传递技能数据
             SkillReleaser releaser = skillGo.GetComponent<SkillReleaser>();

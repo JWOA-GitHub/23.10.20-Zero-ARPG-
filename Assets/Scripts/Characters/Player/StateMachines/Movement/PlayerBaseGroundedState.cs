@@ -272,7 +272,7 @@ namespace JWOAGameSystem
                 return;
             }
 
-            // stateMachine.ChangeState(stateMachine.NormalAttacking_01_1_State);
+            stateMachine.ChangeState(stateMachine.NormalAttacking_01_1_State);
         }
 
         protected virtual void OnRAttackComboStarted(InputAction.CallbackContext context)
@@ -299,8 +299,9 @@ namespace JWOAGameSystem
             //     stateMachine.Player.SkillManager.GenerateSkill(data);
 
             // TODO: 封装为技能系统
-            stateMachine.Player.SkillSystem.AttackUseSkill(1001);
-            // stateMachine.ChangeState(stateMachine.AttackSkills_01_State);
+            //stateMachine.Player.SkillSystem.AttackUseSkill(1001);
+            // 进入技能状态
+            stateMachine.ChangeState(stateMachine.AttackSkills_01_State);
         }
 
         protected virtual void OnSkillAttack2Started(InputAction.CallbackContext context)
@@ -310,6 +311,9 @@ namespace JWOAGameSystem
                 return;
             }
 
+            // TODO: 封装为技能系统
+            stateMachine.Player.SkillSystem.AttackUseSkill(1002);
+            // 进入技能状态
             stateMachine.ChangeState(stateMachine.AttackSkills_02_State);
         }
 

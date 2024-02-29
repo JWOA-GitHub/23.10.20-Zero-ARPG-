@@ -12,7 +12,7 @@ namespace JWOAGameSystem
     public class OwnerSkillSystem : MonoBehaviour
     {
         private OwnerSkillManager skillManager;
-        private Animator animator;
+        //private Animator animator;
         private SkillData skill;
         private void Start()
         {
@@ -21,24 +21,28 @@ namespace JWOAGameSystem
             //GetComponentInChildren<AnimationEventBehaviour>().attackHandler += ReleaserSkill;
         }
 
-        private void ReleaserSkill(SkillData skill)
+        private void ReleaserSkill(SkillData skill, Vector3 position = default, Quaternion rotation = default)
         {
             // 生成技能
-            skillManager.GenerateSkill(skill);
+            skillManager.GenerateSkill(skill, position,rotation);
         }
 
         /// <summary>
         /// 使用技能攻击（为玩家提供
         /// </summary>
-        public void AttackUseSkill(int skillID)
+        public void AttackUseSkill(int skillID,bool isBatter = false, Vector3 position = default, Quaternion rotation = default)
         {
+            // 如果连击，则从上一个释放的技能中获取连击技能编号
+            if (skill != null && isBatter)
+                skillID = skill.NextBatterld; 
+
             // 准备技能
             skill = skillManager.PrepareSkill(skillID);
             if (skill == null) return;
             // 播放动画
             // animator.SetBool(skill.AnimationName, true);
             // 生成技能
-            ReleaserSkill(skill);
+            ReleaserSkill(skill, position, rotation);
             // 如果单攻
             if (skill.AttackType != SkillAttackType.Single) return;
             // -- 查找目标

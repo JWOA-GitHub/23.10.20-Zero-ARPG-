@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="JWOAGameSystem.OwnerSkillManager">
-    <Position X="2.5" Y="1.5" Width="1.5" />
+    <Position X="5.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAABAAACAAAAAAAAAAAAAEAAAICAAAAAAAAAAEAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\OwnerSkillManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="JWOAGameSystem.SkillData" Collapsed="true">
-    <Position X="2.5" Y="0.5" Width="1.5" />
+    <Position X="4" Y="0.5" Width="8.75" />
     <TypeIdentifier>
       <HashCode>IACAADCIAAQkCAAAAgRAAASBAAAAAgABAAAIAIBIEAA=</HashCode>
       <FileName>Assets\Scripts\Skills\Base\SkillData.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JWOAGameSystem.PlayerBaseGroundedState" Collapsed="true">
-    <Position X="0.5" Y="1.5" Width="1.5" />
+  <Class Name="JWOAGameSystem.PlayerBaseGroundedState">
+    <Position X="0.5" Y="0.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AQQALBAAAACQABAAAABAAAAAABQEAQQAIAAACAIgAAA=</HashCode>
       <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\PlayerBaseGroundedState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="JWOAGameSystem.CostMPImpact" Collapsed="true">
-    <Position X="8.75" Y="4" Width="1.5" />
+    <Position X="11.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\ImpactEffects\CostMPImpact.cs</FileName>
@@ -30,51 +30,58 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="JWOAGameSystem.SectorAttackSelector" Collapsed="true">
-    <Position X="8.75" Y="2.75" Width="1.5" />
+    <Position X="11.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAABAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\Selectors\SectorAttackSelector.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="JWOAGameSystem.SkillReleaser" Collapsed="true">
-    <Position X="4.25" Y="2.5" Width="1.5" />
+  <Class Name="JWOAGameSystem.SkillReleaser">
+    <Position X="7.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAACACAAAAAAAIACAAAAAgBAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\Releaser\SkillReleaser.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JWOAGameSystem.MeleeSkillReleaser" Collapsed="true">
-    <Position X="4.25" Y="3.75" Width="1.5" />
+  <Class Name="JWOAGameSystem.MeleeSkillReleaser">
+    <Position X="7.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\Releaser\MeleeSkillReleaser.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JWOAGameSystem.ReleaserConfigFactory" Collapsed="true">
-    <Position X="5.25" Y="1.25" Width="1.5" />
+  <Class Name="JWOAGameSystem.ReleaserConfigFactory">
+    <Position X="9.75" Y="1.25" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAIAAQAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\Releaser\ReleaserConfigFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="JWOAGameSystem.DamageImpact" Collapsed="true">
-    <Position X="8.75" Y="4.75" Width="1.5" />
+    <Position X="11.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\ImpactEffects\DamageImpact.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="JWOAGameSystem.IAttackSelector" Collapsed="true">
-    <Position X="7" Y="2.75" Width="1.5" />
+  <Class Name="JWOAGameSystem.OwnerSkillSystem">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAEABAAACAAABAAAAKAAgAAAAAIAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Skills\Base\OwnerSkillSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="JWOAGameSystem.IAttackSelector">
+    <Position X="9.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\Selectors\IAttackSelector.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="JWOAGameSystem.IImpactEffect">
-    <Position X="7" Y="4" Width="1.5" />
+    <Position X="9.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\ImpactEffects\IImpactEffect.cs</FileName>
