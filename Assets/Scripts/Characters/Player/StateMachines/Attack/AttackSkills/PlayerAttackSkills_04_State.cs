@@ -30,12 +30,18 @@ namespace JWOAGameSystem
 
             // stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
 
+            // 最后一击的僵直  无法移动,无法攻击！
+            stateMachine.Player.Input.PlayerActions.Movement.Disable();
+            stateMachine.Player.Input.PlayerActions.LAttack.Disable();
         }
         public override void Exit()
         {
             base.Exit();
 
             StopAnimation(animationData.SkillsAttack_04_ParameterHash);
+
+            stateMachine.Player.Input.PlayerActions.Movement.Enable();
+            stateMachine.Player.Input.PlayerActions.LAttack.Enable();
 
             // StopAnimation(animationData.AttackComboParameterHash);
 

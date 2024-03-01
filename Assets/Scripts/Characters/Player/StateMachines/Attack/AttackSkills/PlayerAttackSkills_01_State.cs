@@ -30,6 +30,9 @@ namespace JWOAGameSystem
 
             // stateMachine.Player.effectManager.SpawnEffect("Skill1", stateMachine.Player.effectManager.effects[5].prefab.transform.position, stateMachine.Player.effectManager.effects[5].prefab.transform.rotation);
             // isEffecting = false;
+
+            stateMachine.Player.Input.PlayerActions.Movement.Disable();
+            stateMachine.Player.Input.PlayerActions.LAttack.Disable();
         }
         public override void Exit()
         {
@@ -37,6 +40,8 @@ namespace JWOAGameSystem
 
             StopAnimation(animationData.SkillsAttack_01_ParameterHash);
 
+            stateMachine.Player.Input.PlayerActions.Movement.Enable();
+            stateMachine.Player.Input.PlayerActions.LAttack.Enable();
         }
 
         public override void PhysicsUpdate()
