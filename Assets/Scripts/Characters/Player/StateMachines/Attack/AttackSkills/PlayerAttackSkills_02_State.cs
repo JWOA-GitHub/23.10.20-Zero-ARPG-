@@ -29,12 +29,17 @@ namespace JWOAGameSystem
             // stateMachine.Player.effectManager.SpawnEffect("Skill2", stateMachine.Player.effectManager.effects[6].prefab.transform.position, stateMachine.Player.effectManager.effects[6].prefab.transform.rotation);
 
             // stateMachine.Player.skills[currentSkillsIndex].UseSkill(stateMachine.Player);
+            stateMachine.Player.Input.PlayerActions.Movement.Disable();
+            stateMachine.Player.Input.PlayerActions.LAttack.Disable();
         }
         public override void Exit()
         {
             base.Exit();
 
             StopAnimation(animationData.SkillsAttack_02_ParameterHash);
+
+            stateMachine.Player.Input.PlayerActions.Movement.Enable();
+            stateMachine.Player.Input.PlayerActions.LAttack.Enable();
         }
 
         public override void PhysicsUpdate()

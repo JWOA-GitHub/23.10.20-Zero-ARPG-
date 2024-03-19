@@ -140,6 +140,17 @@ namespace JWOAGameSystem
         #endregion
 
         #region Reusable Methods 可复用方法
+        protected virtual void SetCurrentAttackTarget()
+        {
+            int targetCount = Physics.OverlapSphereNonAlloc(stateMachine.Player.transform.position, stateMachine.Player.DetectionRadius, stateMachine.Player.detectionedTarget, stateMachine.Player.TargetLayer);
+            
+            if(targetCount > 0)
+            {
+                //stateMachine.Player.currentTarget;
+
+            }
+        }
+
         protected override void AddInputActionsCallbacks()
         {
             base.AddInputActionsCallbacks();

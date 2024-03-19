@@ -26,6 +26,7 @@ namespace JWOAGameSystem
             if (characterBase.Hp <= 0)
             {
                 characterBase.Hp = 0;
+                OnHpUpdate();
                 return;
             }
 

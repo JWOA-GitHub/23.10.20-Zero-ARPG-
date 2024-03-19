@@ -109,6 +109,7 @@ namespace JWOAGameSystem
             get => experience;
             set => experience = value;
         }
+        public int experienceToNextLevel = 100;
 
         [SerializeField] private float hp;
         public int maxHp = 100;
@@ -144,12 +145,12 @@ namespace JWOAGameSystem
             set => defense = value;
         }
 
-        private float movementSpeed;
-        public float MovementSpeed
-        {
-            get => movementSpeed;
-            set => movementSpeed = value;
-        }
+        //private float movementSpeed;
+        //public float MovementSpeed
+        //{
+        //    get => movementSpeed;
+        //    set => movementSpeed = value;
+        //}
 
         private bool isHurting = false;
         public bool IsHurting
@@ -225,6 +226,9 @@ namespace JWOAGameSystem
             get { return mp; }
             set { mp = value; }
         }
+
+        [field: SerializeField] public LayerMask TargetLayer { get; private set; }
+        [field: SerializeField] public float DetectionRadius { get; private set; }
 
         public CharactersBase(string name, int startingLevel)
         {

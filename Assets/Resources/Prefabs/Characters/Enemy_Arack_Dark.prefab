@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4320829615682126585}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.57, y: 0, z: 1.55}
+  m_LocalPosition: {x: -12.9, y: 0, z: 1.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -86,7 +86,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4320829615999782515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.51, y: 0.72, z: 3.2}
+  m_LocalPosition: {x: 16.7, y: 0.72, z: 6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -181,7 +181,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4320829616200242521}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 26.37, y: -0.23, z: 4.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -340,7 +340,7 @@ MonoBehaviour:
   wasHit: []
   startPoint: {fileID: 4320829615599829862}
   endPoint: {fileID: 4320829617401342335}
-  radius: 0.42
+  radius: 0.61
   debug: 1
 --- !u!114 &4320829617606348543
 MonoBehaviour:
@@ -668,7 +668,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingLevel: 1
+  experienceToNextLevel: 0
+  hp: 0
   maxHp: 100
+  mp: 0
   maxMp: 100
   attackDamage: 6
   skillDamage: 0
@@ -684,7 +687,13 @@ MonoBehaviour:
     mpCost: 0
     damage: 0
     cooldownTime: 0
+  <TargetLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 0
+  <DetectionRadius>k__BackingField: 0
   hideTime: 3
+  exp: 50
+  player: {fileID: 0}
 --- !u!114 &6900377336595847613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1743,6 +1752,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6900377336595847602}
     m_Modifications:
+    - target: {fileID: 411189983633428771, guid: 0784a1a674e3fd449a74b3edfdceb316, type: 3}
+      propertyPath: characterBase
+      value: 
+      objectReference: {fileID: 4320829617105454087}
     - target: {fileID: 411189985137657212, guid: 0784a1a674e3fd449a74b3edfdceb316, type: 3}
       propertyPath: m_Name
       value: EnemyBar   Canvas (1)
@@ -1834,6 +1847,34 @@ PrefabInstance:
     - target: {fileID: 411189985137657215, guid: 0784a1a674e3fd449a74b3edfdceb316, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861240379156717436, guid: 0784a1a674e3fd449a74b3edfdceb316, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 415.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861240379156717436, guid: 0784a1a674e3fd449a74b3edfdceb316, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861240379156717436, guid: 0784a1a674e3fd449a74b3edfdceb316, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861240379156717436, guid: 0784a1a674e3fd449a74b3edfdceb316, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861240379156717436, guid: 0784a1a674e3fd449a74b3edfdceb316, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861240379156717436, guid: 0784a1a674e3fd449a74b3edfdceb316, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861240379156717436, guid: 0784a1a674e3fd449a74b3edfdceb316, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7.39
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0784a1a674e3fd449a74b3edfdceb316, type: 3}

@@ -1,91 +1,1320 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="JWOAGameSystem.OwnerSkillManager">
-    <Position X="5.75" Y="1.75" Width="1.5" />
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="JWOAGameSystem.OwnerSkillManager" Collapsed="true">
+    <Position X="69.5" Y="3.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>EAAAABAAACAAAAAAAAAAAAAEAAAICAAAAAAAAAAEAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\OwnerSkillManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="JWOAGameSystem.SkillData" Collapsed="true">
-    <Position X="4" Y="0.5" Width="8.75" />
+    <Position X="69.5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IACAADCIAAQkCAAAAgRAAASBAAAAAgABAAAIAIBIEAA=</HashCode>
       <FileName>Assets\Scripts\Skills\Base\SkillData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="JWOAGameSystem.PlayerBaseGroundedState">
-    <Position X="0.5" Y="0.5" Width="2.75" />
+    <Position X="29.75" Y="8.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AQQALBAAAACQABAAAABAAAAAABQEAQQAIAAACAIgAAA=</HashCode>
+      <HashCode>AQQALBAAAACQABACAABAAAAAABQEAQQAIAAACAIgAAA=</HashCode>
       <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\PlayerBaseGroundedState.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JWOAGameSystem.CostMPImpact" Collapsed="true">
-    <Position X="11.5" Y="4.5" Width="1.5" />
+  <Class Name="JWOAGameSystem.CostMPImpact" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="66" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\ImpactEffects\CostMPImpact.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="JWOAGameSystem.SectorAttackSelector" Collapsed="true">
-    <Position X="11.5" Y="3.25" Width="1.5" />
+  <Class Name="JWOAGameSystem.SectorAttackSelector" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="64.25" Y="7.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAABAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\Selectors\SectorAttackSelector.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="JWOAGameSystem.SkillReleaser">
-    <Position X="7.75" Y="2" Width="1.5" />
+    <Position X="0.5" Y="16.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAEAACACAAAAAAAIACAAAAAgBAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\Releaser\SkillReleaser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="JWOAGameSystem.MeleeSkillReleaser">
-    <Position X="7.75" Y="5.5" Width="1.5" />
+    <Position X="0.5" Y="20.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\Releaser\MeleeSkillReleaser.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JWOAGameSystem.ReleaserConfigFactory">
-    <Position X="9.75" Y="1.25" Width="2.75" />
+  <Class Name="JWOAGameSystem.ReleaserConfigFactory" Collapsed="true">
+    <Position X="74.75" Y="6.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAIAAQAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\Releaser\ReleaserConfigFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JWOAGameSystem.DamageImpact" Collapsed="true">
-    <Position X="11.5" Y="5.25" Width="1.5" />
+  <Class Name="JWOAGameSystem.DamageImpact" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="69.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\ImpactEffects\DamageImpact.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="JWOAGameSystem.OwnerSkillSystem">
-    <Position X="3.75" Y="1.75" Width="1.5" />
+  <Class Name="JWOAGameSystem.OwnerSkillSystem" Collapsed="true">
+    <Position X="71.25" Y="3.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>BAAEABAAACAAABAAAAKAAgAAAAAIAAgAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAEABAAACAAABAAAAKAAgAAAAAIAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\Base\OwnerSkillSystem.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="JWOAGameSystem.IAttackSelector">
-    <Position X="9.75" Y="3" Width="1.5" />
+  <Class Name="Door" Collapsed="true">
+    <Position X="73" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAACAAACCAAAAAACIAAAAAAAAAAJAAQAAAAAAACAA=</HashCode>
+      <FileName>Assets\Add-Ons\Tokyo_Street\Other\Door.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="@PlayerInputActions" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="64.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ggAGAAASACAAADAAAAAEGhABAAAAAGAEAEAgQEBQAAA=</HashCode>
+      <FileName>Assets\InputActions\Characters\Player\PlayerInputActions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AudioManager" Collapsed="true">
+    <Position X="69.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACAAAAAAAAAEAAAAAAAAAAAA4AAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Audio\AudioManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioType" Collapsed="true">
+    <Position X="71.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAIAgAAAAAAAAAAAAQAAAAAAAAAAAJAIAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\AudioType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MixerVolumeController" Collapsed="true">
+    <Position X="66" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAgACAAAAAAAEQgAkAAAAAEAACABAAgCAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\MixerVolumeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAudio" Collapsed="true">
+    <Position X="67.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\PlayerAudio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Scene" Collapsed="true">
+    <Position X="78.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAEAABABAAAYIAAAAQAAAAABAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Scene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityTemplateProject.SimpleCameraController" Collapsed="true">
+    <Position X="66" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAwgAAAAAAAAAIJAAAAAAAAAAAAAAAAAECAACAA=</HashCode>
+      <FileName>Assets\Add-Ons\Tokyo_Street\Other\SimpleCameraController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Sound" Collapsed="true">
+    <Position X="73" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\Sound\Sound.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.SoundManger" Collapsed="true">
+    <Position X="74.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAUAAAAQAABgEAAAQAAAAAAACEA=</HashCode>
+      <FileName>Assets\Scripts\Audio\Sound\SoundManger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CameraZoom" Collapsed="true">
+    <Position X="74.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAEkAAAAAAAAAAAEAAAAAQQAAAoAFA=</HashCode>
+      <FileName>Assets\Scripts\Camera\CameraZoom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Action" Collapsed="true">
+    <Position X="29.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree\Action.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.BehaviorTree" Collapsed="true">
+    <Position X="11" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAQAAEAAAQACAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree\BehaviorTree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Blackboard" Collapsed="true">
+    <Position X="73" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAABAAAAABAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree\Blackboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Composer" Collapsed="true">
+    <Position X="3.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree\Composer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Condition" Collapsed="true">
+    <Position X="11.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree\Condition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Node" Collapsed="true">
+    <Position X="21.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAARACAAAAgAAAAACAAAEAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree\Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Priority" Collapsed="true">
+    <Position X="73" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree\Priority.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Selector" Collapsed="true">
+    <Position X="2.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree\Selector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Sequence" Collapsed="true">
+    <Position X="4.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree\Sequence.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Anglerox_BT" Collapsed="true">
+    <Position X="8.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAQABAAAAAAACAAAAAEAAAABIAAQAAQAACAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Anglerox AI\Anglerox_BT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.TaskRetreat" Collapsed="true">
+    <Position X="31.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAAAAACQAACAAAAAAACAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Anglerox AI\TaskRetreat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Arack_BT" Collapsed="true">
+    <Position X="11" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAQABAAAAAAACAAAAAEAAAABIAAQAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Arack AI\Arack_BT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CheckDeath" Collapsed="true">
+    <Position X="36" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAAEAACQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Arack AI\CheckDeath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CheckEnemyInFOVRange" Collapsed="true">
+    <Position X="11.25" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAAAAACQAIAAAAAAAACAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Arack AI\CheckEnemyInFOVRange.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CheckEnemyInShortAttackRange" Collapsed="true">
+    <Position X="13.5" Y="6.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAAAAACQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Arack AI\CheckEnemyInShortAttackRange.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CheckHurt" Collapsed="true">
+    <Position X="15.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAAAAACQAAAAAAAAAACAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Arack AI\CheckHurt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.EnemyManager" Collapsed="true">
+    <Position X="66" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAEAAAAAAAAAAAEAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Arack AI\EnemyManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.TaskAttack" Collapsed="true">
+    <Position X="18" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAABAACQIACAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Arack AI\TaskAttack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.TaskGoToTarget" Collapsed="true">
+    <Position X="20.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAAAAACQAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Arack AI\TaskGoToTarget.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.TaskPatrol" Collapsed="true">
+    <Position X="22.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAgAAAADAAAAAACQQCQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Arack AI\TaskPatrol.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CheckDeath_State" Collapsed="true">
+    <Position X="24.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACAAAEAACQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Ursacetus AI\CheckDeath_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CheckEnemyInFOVRange_State" Collapsed="true">
+    <Position X="6.75" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACAAAAAACQAIAAAAAAAACAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Ursacetus AI\CheckEnemyInFOVRange_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CheckEnemyInLongAttackRange_State" Collapsed="true">
+    <Position X="27" Y="6.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACAAAAAACQAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Ursacetus AI\CheckEnemyInLongAttackRange_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CheckEnemyInShortAttackRange_State" Collapsed="true">
+    <Position X="29.25" Y="6.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACAAAAAACQAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Ursacetus AI\CheckEnemyInShortAttackRange_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.TaskGoToTarget_State" Collapsed="true">
+    <Position X="9" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACAAAAAACQAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Ursacetus AI\TaskGoToTarget_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.TaskLongRangeAttack_State" Collapsed="true">
+    <Position X="33.75" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACAAABAACQAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Ursacetus AI\TaskLongRangeAttack_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.TaskPatrol_State" Collapsed="true">
+    <Position X="38.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgACAAAADAAAAAACQQCQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Ursacetus AI\TaskPatrol_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.TaskShortRangeAttack_State" Collapsed="true">
+    <Position X="40.5" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACAAABAACQIACAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Ursacetus AI\TaskShortRangeAttack_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Ursacetus_BT" Collapsed="true">
+    <Position X="13.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAQABAAAAAAECAAAAAEAAAABIAAQAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree AI\Ursacetus AI\Ursacetus_BT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CharacterSelected" Collapsed="true">
+    <Position X="64.25" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEACACAABAAAAAAAAAAAAAAQAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Character\CharacterSelected.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Skill" Collapsed="true">
+    <Position X="67.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAgCAAAAQAEEAAAAEAAAAgAAAAAgAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\CharactersBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CharactersBase">
+    <Position X="3" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAYGAJQAAAokAAgCMAAIEBAAABEABBABAABSGgRARkI=</HashCode>
+      <FileName>Assets\Scripts\Characters\CharactersBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JWOAGameSystem.EnemyAnimatorController" Collapsed="true">
+    <Position X="64.25" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAAAACQEMAAAAgAAAECAQAAAEIAKAAAAAAAAVA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyAnimatorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.EnemyController">
+    <Position X="5.25" Y="7.75" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="JWOAGameSystem.EnemyController.EnemyDeathAction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Characters\Enemy\EnemyController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQBAAAQACAABAAAAAAEAAAAAAAAAAAAAAAACAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.EnemyStateMachineBase" Collapsed="true">
+    <Position X="0.5" Y="13.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AASABAAAEgAABBAAIgAAACAAAAIAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\Base\EnemyStateMachineBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.DeathState" Collapsed="true">
+    <Position X="17.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\DeathState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.EnemyAI" Collapsed="true">
+    <Position X="7" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAACAAAEEIAQAAAAAAAAAIAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\EnemyAI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.EnemyStateMachine" Collapsed="true">
+    <Position X="0.5" Y="15" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAACAAAAAAAAAACAAAAAAACAAAIgAAAAQAAEQ=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\EnemyStateMachine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.EnemyStates" Collapsed="true">
+    <Position X="19" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RQAQBBAAAAAAAQEACAAAAAECAQAEAEKAIgAAAEEBCQA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\EnemyStates.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JWOAGameSystem.FreeState" Collapsed="true">
+    <Position X="29" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\FreeState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.GetHitState" Collapsed="true">
+    <Position X="33.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\GetHitState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.IdleState" Collapsed="true">
+    <Position X="35.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\IdleState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.LeftFootStompAttack" Collapsed="true">
+    <Position X="2" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\LeftFootStompAttack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.LeftHandAttackState" Collapsed="true">
+    <Position X="4.25" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\LeftHandAttackState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.LeftHandSmashAttackState" Collapsed="true">
+    <Position X="6.5" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\LeftHandSmashAttackState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.RightFootStompAttack" Collapsed="true">
+    <Position X="8.75" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\RightFootStompAttack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.RightHandAttackState" Collapsed="true">
+    <Position X="11" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\RightHandAttackState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.RightHandSmashAttackState" Collapsed="true">
+    <Position X="13.25" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\RightHandSmashAttackState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Roar1State" Collapsed="true">
+    <Position X="15.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\Roar1State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Roar2State" Collapsed="true">
+    <Position X="20" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\Roar2State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.TwoHandsSmashAttackState" Collapsed="true">
+    <Position X="22.25" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\TwoHandsSmashAttackState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.TwoHitComboAttackForwardState" Collapsed="true">
+    <Position X="24.5" Y="2" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\TwoHitComboAttackForwardState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.TwoHitComboAttackState" Collapsed="true">
+    <Position X="26.75" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\TwoHitComboAttackState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.WalkForwardState" Collapsed="true">
+    <Position X="31.25" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\WalkForwardState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerAnimationData" Collapsed="true">
+    <Position X="78.25" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IQQpARAJCAAJITMgAIRCAomCAUJgEDYFAKCRQBgBBAI=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\Animations\PlayerAnimationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerNormalAttack_AnimationData" Collapsed="true">
+    <Position X="69.5" Y="5.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAIAAAAAAAAAAAAABAAAABAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\Animations\PlayerNormalAttack_AnimationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerSkillsAttack_AnimationData" Collapsed="true">
+    <Position X="76.5" Y="5.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\Animations\PlayerSkillsAttack_AnimationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerCameraRecenteringData" Collapsed="true">
+    <Position X="69.5" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAEMAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\Cameras\PlayerCameraRecenteringData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerTriggerColliderData" Collapsed="true">
+    <Position X="69.5" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQABAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\Colliders\PlayerTriggerColliderData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerLayerData" Collapsed="true">
+    <Position X="67.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\Layers\PlayerLayerData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerSO" Collapsed="true">
+    <Position X="78.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAABAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\ScriptableObjects\PlayerSO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerAirborneData" Collapsed="true">
+    <Position X="76.5" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\States\Airborne\PlayerAirborneData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerFallData" Collapsed="true">
+    <Position X="74.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\States\Airborne\PlayerFallData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerJumpData" Collapsed="true">
+    <Position X="66" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABQAAAAAAAAAAQACAAAAAYAAAAAAAAAAQAiAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\States\Airborne\PlayerJumpData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerAttackData" Collapsed="true">
+    <Position X="66" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\States\Attack\NormalAttack\PlayerAttackData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerRollData" Collapsed="true">
+    <Position X="71.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\States\Grounded\Landing\PlayerRollData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerRunData" Collapsed="true">
+    <Position X="74.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\States\Grounded\Moving\PlayerRunData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerSprintData" Collapsed="true">
+    <Position X="64.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\States\Grounded\Moving\PlayerSprintData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerWalkData" Collapsed="true">
+    <Position X="71.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\States\Grounded\Moving\PlayerWalkData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerDashData" Collapsed="true">
+    <Position X="73" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAIgAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\States\Grounded\PlayerDashData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerGroundedData" Collapsed="true">
+    <Position X="76.5" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgBAAAAAQEQAQAgIBCABAAAAAAAAAAAAIAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\States\Grounded\PlayerGroundedData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerIdleData" Collapsed="true">
+    <Position X="78.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\States\Grounded\PlayerIdleData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerStopData" Collapsed="true">
+    <Position X="67.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAABAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\States\Grounded\Stopping\PlayerStopData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerRotationData" Collapsed="true">
+    <Position X="73" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\States\PlayerRotationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerStateReusableData" Collapsed="true">
+    <Position X="66" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAgQSMAAGgAQAAhAAAAEEAQAQhAEAAEIAAAgAIgAAQ=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Data\States\PlayerStateReusableData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerAttackComboState" Collapsed="true">
+    <Position X="21.25" Y="16.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAQAAAAAEAAAAIAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\AttackCombo\PlayerAttackComboState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerNormalAttacking_01_1_State" Collapsed="true">
+    <Position X="14.5" Y="18.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAIFAAAAAAAAAAAAAAAQAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\AttackCombo\States\GroundedAttack\NormalAttack\PlayerNormalAttacking_01_1_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerNormalAttacking_01_2_State" Collapsed="true">
+    <Position X="16.75" Y="18.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAIFAAAAAAAAAAAAAAAQAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\AttackCombo\States\GroundedAttack\NormalAttack\PlayerNormalAttacking_01_2_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerNormalAttacking_01_3_State" Collapsed="true">
+    <Position X="19" Y="18.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAIFAAAAAAAAAAAAAAAQAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\AttackCombo\States\GroundedAttack\NormalAttack\PlayerNormalAttacking_01_3_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerNormalAttacking_01_4_State" Collapsed="true">
+    <Position X="21.25" Y="18.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAIFAAAAAAAAAAAAAAAQAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\AttackCombo\States\GroundedAttack\NormalAttack\PlayerNormalAttacking_01_4_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerNormalAttacking_02_1_State" Collapsed="true">
+    <Position X="23.5" Y="18.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAIFAAAAAAAAAAAAAAAQAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\AttackCombo\States\GroundedAttack\RAttack\PlayerNormalAttacking_02_1_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerNormalAttacking_02_2_State" Collapsed="true">
+    <Position X="25.75" Y="18.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAIFAAAAAAAAAAAAAAAQAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\AttackCombo\States\GroundedAttack\RAttack\PlayerNormalAttacking_02_2_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerNormalAttacking_02_3_State" Collapsed="true">
+    <Position X="28" Y="18.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAIFAAAAAAAAAAAAAAAQAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\AttackCombo\States\GroundedAttack\RAttack\PlayerNormalAttacking_02_3_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerAttackParryUpingState" Collapsed="true">
+    <Position X="12.25" Y="18.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAEAAAAIAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\AttackSkills\PlayerAttackParryUpingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerAttackSkills_01_State" Collapsed="true">
+    <Position X="3.25" Y="18.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAFAAAAAAAAAAAAAAAQAAAAAEAAAAIAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\AttackSkills\PlayerAttackSkills_01_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerAttackSkills_02_State" Collapsed="true">
+    <Position X="5.5" Y="18.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAQAAAAAEAAAAIAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\AttackSkills\PlayerAttackSkills_02_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerAttackSkills_03_State" Collapsed="true">
+    <Position X="7.75" Y="18.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAEAAAAIAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\AttackSkills\PlayerAttackSkills_03_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerAttackSkills_04_State" Collapsed="true">
+    <Position X="10" Y="18.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAQAAAAAEAAAAIAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\AttackSkills\PlayerAttackSkills_04_State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerAttackSkillsState" Collapsed="true">
+    <Position X="7.75" Y="16.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAIFAAAAAAAAAAAAAAAQAAABAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\AttackSkills\PlayerAttackSkillsState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerAttackState" Collapsed="true">
+    <Position X="15.75" Y="15.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAKBAAAAAAAFAAAIBAAQAAAQQEAoEAIAAACAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\PlayerAttackState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerDeathingState" Collapsed="true">
+    <Position X="41.5" Y="18.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAFAAAAAAAAAAAAAAAQAAAAQEAYAAIAAACAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\PlayerDeathingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerHurtingState" Collapsed="true">
+    <Position X="43.75" Y="18.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Attack\PlayerHurtingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerMovementStateMachine" Collapsed="true">
+    <Position X="9.5" Y="11.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgACABAQCgAAAAIYAKAAEAAIAAiAAAIABACQAIBQA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\PlayerMovementStateMachine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerAirborneState" Collapsed="true">
+    <Position X="60.75" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAEAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Airborne\PlayerAirborneState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerFallingState" Collapsed="true">
+    <Position X="59.5" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAIAAAAAAAAAAEAAAAAANAAAAIAAAAgAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Airborne\PlayerFallingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerJumpingState" Collapsed="true">
+    <Position X="61.75" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAgQAoAAAAAAAEAAAAAAEAAAAIAAAAAAAEAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Airborne\PlayerJumpingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerHardLandingState" Collapsed="true">
+    <Position X="57.25" Y="18.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAFAAAAAAAAAAAAAAAQAAAAQEAYAAIAAACAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\Landing\PlayerHardLandingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerLandingState" Collapsed="true">
+    <Position X="55" Y="16.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\Landing\PlayerLandingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerLightLandingState" Collapsed="true">
+    <Position X="52.75" Y="18.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAFAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\Landing\PlayerLightLandingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerRollingState" Collapsed="true">
+    <Position X="55" Y="18.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAABFAAAAAAAAAAAAAAAAAAAAAEAQAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\Landing\PlayerRollingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerMovingState" Collapsed="true">
+    <Position X="32.5" Y="16.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\Moving\PlayerMovingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerRunningState" Collapsed="true">
+    <Position X="30.25" Y="18.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAgAABAAAgAAAAAAAEAAAAIAAAAAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\Moving\PlayerRunningState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerSprintingState" Collapsed="true">
+    <Position X="32.5" Y="18.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAEQABBAAAAAgAAAAAAgAAAAAAQEAQYAIAAACAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\Moving\PlayerSprintingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerWalkingState" Collapsed="true">
+    <Position X="34.75" Y="18.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAgAAAAAAAAAAAAAAEAAAAIAAAAAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\Moving\PlayerWalkingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerDashingState" Collapsed="true">
+    <Position X="37" Y="16.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAABFQAAgAAAABAAAAgAwAAAAQEAAAgIAAACAAAAAE=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\PlayerDashingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerGroundedState" Collapsed="true">
+    <Position X="43.75" Y="15.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\PlayerGroundedState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerIdlingState" Collapsed="true">
+    <Position X="39.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAAAACAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\PlayerIdlingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerHardStoppingState" Collapsed="true">
+    <Position X="46" Y="18.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\Stopping\PlayerHardStoppingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerLightStoppingState" Collapsed="true">
+    <Position X="48.25" Y="18.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\Stopping\PlayerLightStoppingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerMediumStoppingState" Collapsed="true">
+    <Position X="50.5" Y="18.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\Stopping\PlayerMediumStoppingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerStoppingState" Collapsed="true">
+    <Position X="46" Y="16.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAFAAAAAAAAAAAAAAAAAAAAQEAIAAIAAACAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\Stopping\PlayerStoppingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerMovementState" Collapsed="true">
+    <Position X="32.5" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>oCAcAFCAQICQhAgBAAAEA4BAEoyEAYRA+AggCQEAQow=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\PlayerMovementState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JWOAGameSystem.AgentHitBox" Collapsed="true">
+    <Position X="66" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAQAAIAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\AgentSystem\AgentHitBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.AnimationEvent" Collapsed="true">
+    <Position X="67.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAgEAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\Animations\AnimationEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.EnemyAI_AnimationEvent" Collapsed="true">
+    <Position X="78.25" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BBgEAAAAgCIAAEQAAAAAgAAIACAAQAAQAIACAIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\Animations\EnemyAI_AnimationEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Player_AnimationEvent" Collapsed="true">
+    <Position X="74.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABQAAAAAAAAAEEAAAIAAAAAIAAAAAgAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\Animations\Player_AnimationEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerAnimationEventTrigger" Collapsed="true">
+    <Position X="64.25" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAQEI=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\Animations\PlayerAnimationEventTrigger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CapsuleDetection" Collapsed="true">
+    <Position X="12.5" Y="12" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAECAACCAAAAAAAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\AttackDetection\CapsuleDetection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Detection" Collapsed="true">
+    <Position X="12.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAIAAAAAAAAAAAAAAAAAAACACAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\AttackDetection\Detection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.WeaponManager" Collapsed="true">
+    <Position X="69.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAICAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\AttackDetection\WeaponManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerCameraUtility" Collapsed="true">
+    <Position X="71.25" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAIAEAAAQAEAAAAAAAAAAgAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\Cameras\PlayerCameraUtility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerCapsuleColliderUtility" Collapsed="true">
+    <Position X="6.75" Y="11.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\Colliders\PlayerCapsuleColliderUtility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Globals" Collapsed="true">
+    <Position X="74.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAAIAAAAAAAAAAAAACAAAgIAABAAAAAAgAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\Globals.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.PlayerInput" Collapsed="true">
+    <Position X="64.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgACAAAAAAAAAAQAAIAAAAAAAAiEA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\Input\PlayerInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.ParticleSystemAutoDisabled" Collapsed="true">
+    <Position X="73" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAgAAAAACAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\ParticleSystemAutoDisabled.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.WeaponRay" Collapsed="true">
+    <Position X="71.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAACAACQAgAAAAAgAIAAAABAAAAAAAACABAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\WeaponRay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.Player">
+    <Position X="5.5" Y="13" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>gAQAAAABAigAQIAFAAEAAABBlBAAJNAAYRCCigRACEA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CapsuleColliderData" Collapsed="true">
+    <Position X="76.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAQAAAAAAAAAAAAAAAAAQAgAACAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Data\Colliders\CapsuleColliderData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.DefaultColliderData" Collapsed="true">
+    <Position X="71.25" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAABAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Data\Colliders\DefaultColliderData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.SlopeData" Collapsed="true">
+    <Position X="71.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Data\Colliders\SlopeData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.EnemyStateData" Collapsed="true">
+    <Position X="67.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAEAAIgAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Data\Enemy(old\EnemyStateData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.StateMachine" Collapsed="true">
+    <Position X="9.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAFCAAAAABAAAIAAAAQAAAAAAAIAAQAgAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\StateMachine\Base\StateMachine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.testCollider" Collapsed="true">
+    <Position X="76.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\testCollider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CapsuleColliderUtility" Collapsed="true">
+    <Position X="6.75" Y="10.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgAAIAQAAAACAQAAAAAAAAAAAAACAAAAAgAAAAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\Utilities\Colliders\CapsuleColliderUtility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.EffectData" Collapsed="true">
+    <Position X="74.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Utilities\EffectManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.EffectManager" Collapsed="true">
+    <Position X="76.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAIAAAAAAAAEAABAAAAAQAgAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Utilities\EffectManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.GameManager" Collapsed="true">
+    <Position X="73" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAACAAAAAAAAAAAAAAAABAAAAAQAIAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Utilities\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.GameObjectPool" Collapsed="true">
+    <Position X="4.75" Y="11" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAARAAAAAAgAABAAAAgAAABACAABACAA=</HashCode>
+      <FileName>Assets\Scripts\Utilities\GameObjectPool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.GUItest" Collapsed="true">
+    <Position X="76.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAIAAAAAAAABAACQAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Utilities\GUItest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.MonoSingleton&lt;T&gt;" Collapsed="true">
+    <Position X="4.75" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAACAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Utilities\MonoSingleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.ObjectPoolManager" Collapsed="true">
+    <Position X="67.75" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAEAAAAQAgABAAIAAQAAEAAQAAEA=</HashCode>
+      <FileName>Assets\Scripts\Utilities\ObjectPoolManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.ResourceManager" Collapsed="true">
+    <Position X="76.5" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAIAAAAAAgAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Utilities\ResourceManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.BasePanel" Collapsed="true">
+    <Position X="0.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEACAAAAQAAIAAAAA=</HashCode>
+      <FileName>Assets\UI\Base\BasePanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.FloatText" Collapsed="true">
+    <Position X="71.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACBAAEAoRBAQgADACgAJRCQEACAAAIRApoACwAEBA=</HashCode>
+      <FileName>Assets\UI\Base\FloatText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CustomEditor_FloatText" Collapsed="true">
+    <Position X="67.75" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\UI\Base\FloatText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.TextStyle" Collapsed="true">
+    <Position X="78.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAACIRAAQAAAAAAAgABAAAAAAABEAQAAAAAA=</HashCode>
+      <FileName>Assets\UI\Base\FloatText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.TextStyleLibrary" Collapsed="true">
+    <Position X="64.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\UI\Base\FloatText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.UIManager" Collapsed="true">
+    <Position X="67.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAEAAAAAAAAAAAAACAAAEAAAAQEQAAAAAAUA=</HashCode>
+      <FileName>Assets\UI\Base\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.UIConst" Collapsed="true">
+    <Position X="66" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\UI\Base\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.CharacterBaseHealthBar" Collapsed="true">
+    <Position X="78.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAACAACQABAAAIAAAAIAAABAAAAAAAAACAAAA=</HashCode>
+      <FileName>Assets\UI\CharacterBaseHealthBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.EnergyBar" Collapsed="true">
+    <Position X="69.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAABCAACAABAAAAAAAAAAAABAgAAAAAAAAAEEE=</HashCode>
+      <FileName>Assets\UI\EnergyBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.HealthBar" Collapsed="true">
+    <Position X="78.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAgAAAAAAAAAAAIIAAAAIAAACAgAAAAAAAAAAkA=</HashCode>
+      <FileName>Assets\UI\HealthBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.LoadManager" Collapsed="true">
+    <Position X="64.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAIAAAABJAABJQAAEAAAEAEA=</HashCode>
+      <FileName>Assets\UI\Panel\LoadManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JWOAGameSystem.MainMenuPannel" Collapsed="true">
+    <Position X="0.5" Y="12" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAEAAAAAAAAEA=</HashCode>
+      <FileName>Assets\UI\Panel\MainMenuPannel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="JWOAGameSystem.IAttackSelector" Collapsed="true">
+    <Position X="66" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\Selectors\IAttackSelector.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="JWOAGameSystem.IImpactEffect">
-    <Position X="9.75" Y="4.5" Width="1.5" />
+  <Interface Name="JWOAGameSystem.IImpactEffect" Collapsed="true">
+    <Position X="69.5" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Skills\ImpactEffects\IImpactEffect.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="JWOAGameSystem.IEnemyState" Collapsed="true">
+    <Position X="67.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyStates\Base\IEnemyState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="JWOAGameSystem.IAgent" Collapsed="true">
+    <Position X="64.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\AgentSystem\IAgent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="JWOAGameSystem.IState" Collapsed="true">
+    <Position X="73" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAFCAAAAAAAAAAAAAAQAAAAAEAIAAYAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\StateMachine\Base\IState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="JWOAGameSystem.IResetable" Collapsed="true">
+    <Position X="71.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Assets\Scripts\Utilities\GameObjectPool.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="JWOAGameSystem.NodeState" Collapsed="true">
+    <Position X="66" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\BehaviorTree\Node.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="JWOAGameSystem.EnemyState" Collapsed="true">
+    <Position X="64.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAABAAAAAAAAAAAEAAAAAAIAAAAAIAAABSAAiAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Enemy\EnemyAnimatorController.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="JWOAGameSystem.WeaponType" Collapsed="true">
+    <Position X="71.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Player\Utilities\AttackDetection\WeaponManager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="JWOAGameSystem.SelectorType" Collapsed="true">
+    <Position X="67.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Skills\Base\SelectorType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="JWOAGameSystem.SkillAttackType" Collapsed="true">
+    <Position X="69.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Skills\Base\SkillAttackType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Microsoft YaHei UI" Size="9" />
 </ClassDiagram>

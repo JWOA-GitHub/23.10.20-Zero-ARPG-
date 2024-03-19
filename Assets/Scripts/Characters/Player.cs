@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
+using static Cinemachine.DocumentationSortingAttribute;
 
 namespace JWOAGameSystem
 {
@@ -35,6 +38,19 @@ namespace JWOAGameSystem
         [field: SerializeField] public EffectManager effectManager;
         public OwnerSkillManager SkillManager;
         public OwnerSkillSystem SkillSystem;
+
+        [field:Header("检测目标")]
+        public Transform currentTarget;
+        [Tooltip("缓存检测目标")]public Collider[] detectionedTarget = new Collider[1];
+
+
+
+        //// 定义一个委托类型，用于定义怪物死亡时的事件
+        //public delegate void EnemyDeathAction(int experienceValue);
+        //// 定义一个事件，当怪物死亡时触发
+        //public event EnemyDeathAction OnEnemyDeath;
+
+
 
         public Player(string name, int startingLevel) : base(name, startingLevel)
         {
@@ -81,6 +97,13 @@ namespace JWOAGameSystem
         private void Start()
         {
             movementStateMachine.InitState(movementStateMachine.IdingState);
+
+            //OnEnemyDeath += GainExp;
+        }
+
+        private void OnDestroy()
+        {
+            //OnEnemyDeath -= GainExp;        // 防止内存泄漏
         }
 
         private void OnTriggerEnter(Collider collider)
@@ -158,6 +181,42 @@ namespace JWOAGameSystem
 
 
         #region  Methods
+        public void GainExp(int exp)
+        {
+            Exp += exp;
+            Debug.Log("获取了" + exp + "经验");
+            CheckLevelUp();
+        }
+
+        private void CheckLevelUp()
+        {
+            if (Exp >= experienceToNextLevel)
+            {
+                LevelUp();
+            }
+        }
+
+        public void LevelUp()
+        {
+            Level++;
+            Exp -= experienceToNextLevel;
+            // 可以根据需要调整升级所需经验值的增长方式，例如每次升级所需经验值增加固定值或者按比例增加
+            experienceToNextLevel = CalculateNextLevelExperience();
+            // 添加一些升级时的特效或者处理其他升级相关的逻辑
+            Debug.Log("Level Up! Current Level: " + Level);
+
+            // 升级会恢复所有生命值和能量值
+            Hp = maxHp;
+            Mp = maxMp;
+        }
+
+        // 计算下一级所需经验值
+        private int CalculateNextLevelExperience()
+        {
+            return experienceToNextLevel * 2; // 以当前所需经验值的两倍作为下一级的所需经验值
+        }
+
+
         /// <summary> 在需要隐藏鼠标光标的地方调用此函数
         /// </summary>
         public static void HideCursor()
