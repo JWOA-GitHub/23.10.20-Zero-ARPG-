@@ -392,9 +392,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2904174466141777856, guid: 6e293a0cc768ff04ebc894bc7481d01b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904174466141777856, guid: 6e293a0cc768ff04ebc894bc7481d01b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2904174466141777856, guid: 6e293a0cc768ff04ebc894bc7481d01b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904174466141777857, guid: 6e293a0cc768ff04ebc894bc7481d01b, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904174466141777857, guid: 6e293a0cc768ff04ebc894bc7481d01b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 373dc9df885fe884eb1fbd257f644eeb, type: 3}
     - target: {fileID: 2904174466141777857, guid: 6e293a0cc768ff04ebc894bc7481d01b, type: 3}
       propertyPath: m_Color.b
       value: 0.41189036
@@ -407,10 +423,30 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9811321
       objectReference: {fileID: 0}
+    - target: {fileID: 2904174466330216423, guid: 6e293a0cc768ff04ebc894bc7481d01b, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904174466452308485, guid: 6e293a0cc768ff04ebc894bc7481d01b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904174466452308486, guid: 6e293a0cc768ff04ebc894bc7481d01b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2904174466452308486, guid: 6e293a0cc768ff04ebc894bc7481d01b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2904174466452308486, guid: 6e293a0cc768ff04ebc894bc7481d01b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904174466452308487, guid: 6e293a0cc768ff04ebc894bc7481d01b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 58397089a4f280d41943dc2a5ba29b07, type: 3}
     - target: {fileID: 2904174467139691813, guid: 6e293a0cc768ff04ebc894bc7481d01b, type: 3}
       propertyPath: m_Name
       value: loadScreen

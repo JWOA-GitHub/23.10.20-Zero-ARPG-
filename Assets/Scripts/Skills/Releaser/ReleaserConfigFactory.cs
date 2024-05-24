@@ -10,6 +10,13 @@ namespace JWOAGameSystem
     /// </summary>
     public class ReleaserConfigFactory
     {
+        private static Dictionary<string, object> cache;
+
+        static ReleaserConfigFactory()
+        {
+            cache = new Dictionary<string, object>();
+        }
+
         public static IAttackSelector CreateAttackSelector(SkillData data)
         {
             // MARKER: 创建选区要注意 命名空间 和 类名 格式！！！！！
@@ -50,8 +57,16 @@ namespace JWOAGameSystem
         /// <returns></returns>
         private static T CreateObject<T>(string className) where T : class
         {
-            Type type = Type.GetType(className);
-            return Activator.CreateInstance(type) as T; //使用默认构造函数创建指定类型的实例
+            // 通过反射创建类型时，若不包含该类型
+            if(!cache.ContainsKey(className))
+            {
+                Debug.Log("反射");
+                Type type = Type.GetType(className);
+                object instance = Activator.CreateInstance(type) as T; //使用默认构造函数创建指定类型的实例
+                cache.Add(className, instance);
+            }
+            return cache[className] as T;
+            //return (T)cache[className];
         }
     }
 }

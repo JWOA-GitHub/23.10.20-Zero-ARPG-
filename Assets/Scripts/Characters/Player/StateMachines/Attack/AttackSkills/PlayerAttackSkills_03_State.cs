@@ -56,6 +56,9 @@ namespace JWOAGameSystem
         {
             base.OnAnimationEnterEvent();
 
+            //Debug.Log("放技能3      ");
+            // TODO: 封装为技能系统
+            //stateMachine.Player.SkillSystem.AttackUseSkill(1003); 
         }
 
         public override void OnAnimationExitEvent()

@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace JWOAGameSystem
 {
-    public class CheckDeath : Action
+    public class CheckDeath : Condition
     {
         private Transform _transform;
         private EnemyAnimatorController _animatorController;

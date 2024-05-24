@@ -53,7 +53,10 @@ namespace JWOAGameSystem
             {
                 // AudioManager.Instance.Play("NormalAttack1");
                 SoundManger.Instance.PlayAudio(Globals.S_Skill1);
-                stateMachine.Player.effectManager.SpawnEffect("Skill2", stateMachine.Player.effectManager.effects[6].prefab.transform.position, stateMachine.Player.effectManager.effects[6].prefab.transform.rotation);
+                // TODO: 封装为技能系统
+                //stateMachine.Player.SkillSystem.AttackUseSkill(1002);
+                stateMachine.Player.SkillSystem.AttackUseSkill(1002,false, stateMachine.Player.effectManager.effects[6].prefab.transform.position, stateMachine.Player.effectManager.effects[6].prefab.transform.rotation);
+                //stateMachine.Player.effectManager.SpawnEffect("Skill2", stateMachine.Player.effectManager.effects[6].prefab.transform.position, stateMachine.Player.effectManager.effects[6].prefab.transform.rotation);
 
                 isEffecting = false;
             }

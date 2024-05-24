@@ -143,6 +143,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Esc"",
+                    ""type"": ""Button"",
+                    ""id"": ""ceb357ae-02e6-4577-8253-5b24c76d8da9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -343,6 +352,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""SkillAttack4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""256ca572-ab58-4ca4-ba26-c28368edef66"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -364,6 +384,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_SkillAttack2 = m_Player.FindAction("SkillAttack2", throwIfNotFound: true);
         m_Player_SkillAttack3 = m_Player.FindAction("SkillAttack3", throwIfNotFound: true);
         m_Player_SkillAttack4 = m_Player.FindAction("SkillAttack4", throwIfNotFound: true);
+        m_Player_Esc = m_Player.FindAction("Esc", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -438,6 +459,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SkillAttack2;
     private readonly InputAction m_Player_SkillAttack3;
     private readonly InputAction m_Player_SkillAttack4;
+    private readonly InputAction m_Player_Esc;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -455,6 +477,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @SkillAttack2 => m_Wrapper.m_Player_SkillAttack2;
         public InputAction @SkillAttack3 => m_Wrapper.m_Player_SkillAttack3;
         public InputAction @SkillAttack4 => m_Wrapper.m_Player_SkillAttack4;
+        public InputAction @Esc => m_Wrapper.m_Player_Esc;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -503,6 +526,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @SkillAttack4.started += instance.OnSkillAttack4;
             @SkillAttack4.performed += instance.OnSkillAttack4;
             @SkillAttack4.canceled += instance.OnSkillAttack4;
+            @Esc.started += instance.OnEsc;
+            @Esc.performed += instance.OnEsc;
+            @Esc.canceled += instance.OnEsc;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -546,6 +572,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @SkillAttack4.started -= instance.OnSkillAttack4;
             @SkillAttack4.performed -= instance.OnSkillAttack4;
             @SkillAttack4.canceled -= instance.OnSkillAttack4;
+            @Esc.started -= instance.OnEsc;
+            @Esc.performed -= instance.OnEsc;
+            @Esc.canceled -= instance.OnEsc;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -578,5 +607,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnSkillAttack2(InputAction.CallbackContext context);
         void OnSkillAttack3(InputAction.CallbackContext context);
         void OnSkillAttack4(InputAction.CallbackContext context);
+        void OnEsc(InputAction.CallbackContext context);
     }
 }

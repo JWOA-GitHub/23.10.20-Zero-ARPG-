@@ -323,8 +323,8 @@ namespace JWOAGameSystem
                 return;
             }
 
-            // TODO: 封装为技能系统
-            stateMachine.Player.SkillSystem.AttackUseSkill(1002);
+            //// TODO: 封装为技能系统
+            //stateMachine.Player.SkillSystem.AttackUseSkill(1002);
             // 进入技能状态
             stateMachine.ChangeState(stateMachine.AttackSkills_02_State);
         }
@@ -336,6 +336,7 @@ namespace JWOAGameSystem
                 return;
             }
 
+            // 进入技能状态
             stateMachine.ChangeState(stateMachine.AttackSkills_03_State);
         }
 

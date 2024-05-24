@@ -25,8 +25,8 @@ namespace JWOAGameSystem
 
         [SerializeField] private CharactersBase charactersBase;
 
-        [SerializeField] private WeaponType weaponType= WeaponType.Normal;
-        [SerializeField] private float skillDamageModifier = 2f;
+        //[SerializeField] private WeaponType weaponType= WeaponType.Normal;
+        //[SerializeField] private float skillDamageModifier = 2f;
 
 
         private void Update()
@@ -42,16 +42,16 @@ namespace JWOAGameSystem
                 {
                     foreach (var hit in item.GetDetection())
                     {
-                        if(weaponType == WeaponType.Normal)
-                        {
+                        //if(weaponType == WeaponType.Normal)
+                        //{
                             hit.GetComponent<AgentHitBox>().GetDamage(charactersBase.AttackDamage, transform.position);
                             Debug.Log( "            attack伤害 "+charactersBase.AttackDamage);
-                        }
-                        else
-                        {
-                            hit.GetComponent<AgentHitBox>().GetDamage(charactersBase.SkillDamage * skillDamageModifier, transform.position);
-                            Debug.Log( "            skill伤害 "+charactersBase.SkillDamage * skillDamageModifier);
-                        }
+                        //}
+                        //else
+                        //{
+                        //    hit.GetComponent<AgentHitBox>().GetDamage(charactersBase.SkillDamage * skillDamageModifier, transform.position);
+                        //    Debug.Log( "            skill伤害 "+charactersBase.SkillDamage * skillDamageModifier);
+                        //}
                     }
                 }
             }

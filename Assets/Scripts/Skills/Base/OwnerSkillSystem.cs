@@ -34,15 +34,14 @@ namespace JWOAGameSystem
         {
             // 如果连击，则从上一个释放的技能中获取连击技能编号
             if (skill != null && isBatter)
-                skillID = skill.NextBatterld; 
+                skillID = skill.NextBatterId;   
 
             // 准备技能
             skill = skillManager.PrepareSkill(skillID);
             if (skill == null) return;
             // 播放动画
             // animator.SetBool(skill.AnimationName, true);
-            // 生成技能
-            ReleaserSkill(skill, position, rotation);
+            
             // 如果单攻
             if (skill.AttackType != SkillAttackType.Single) return;
             // -- 查找目标
@@ -50,7 +49,7 @@ namespace JWOAGameSystem
             // -- 朝向目标
             // TODO：
             transform.LookAt(targetTF);
-            Debug.Log("     12222222222222" + targetTF);
+            Debug.Log("     朝向目标：  " + targetTF);
             // -- 选中目标
             // 1. 选中目标，间隔指定时间后取消选中
             // 2. 选中A目标，在自动取消前，又选中B目标，则需要手动将A取消
@@ -62,6 +61,8 @@ namespace JWOAGameSystem
             SetSelectedActiveFx(true);
             // targetTF.Find("xxx").gameObject.SetActive(true);
 
+            // 生成技能
+            ReleaserSkill(skill, position, rotation);
         }
 
         private Transform SelectTarget()

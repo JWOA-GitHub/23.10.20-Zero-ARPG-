@@ -120,6 +120,13 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 4
       events:
+      - time: 0.088773385
+        functionName: TriggerOnMovementStateAnimationEnterEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.115549214
         functionName: EnableSkill2_Detection
         data: 

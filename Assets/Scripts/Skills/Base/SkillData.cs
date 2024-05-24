@@ -32,7 +32,7 @@ namespace JWOAGameSystem
         /// <summary> 技能影响类型（在运行时决定） </summary>
         public string[] ImpactType = { "CostMP", "Damage" };
         /// <summary> 技能连击的下一个技能编号 </summary>
-        public int NextBatterld;
+        public int NextBatterId;
         /// <summary> 技能伤害比率 </summary>
         public float AtkRatio;
         /// <summary> 技能持续时间 </summary>

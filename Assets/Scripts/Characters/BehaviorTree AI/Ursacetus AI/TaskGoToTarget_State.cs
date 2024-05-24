@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace JWOAGameSystem
 {
-    public class TaskGoToTarget_State : Condition
+    public class TaskGoToTarget_State : Action
     {
         // private static int _enemyLayerMask = 1 << 9;
 

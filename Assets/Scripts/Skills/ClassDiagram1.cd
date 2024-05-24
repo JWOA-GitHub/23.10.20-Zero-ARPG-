@@ -371,7 +371,7 @@
   <Class Name="JWOAGameSystem.CharactersBase">
     <Position X="3" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAYGAJQAAAokAAgCMAAIEBAAABEABBABAABSGgRARkI=</HashCode>
+      <HashCode>EAYGAJQAAAokAAgCMAAIEBAAABEABBAFAABSGgRARkI=</HashCode>
       <FileName>Assets\Scripts\Characters\CharactersBase.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -385,15 +385,8 @@
   </Class>
   <Class Name="JWOAGameSystem.EnemyController">
     <Position X="5.25" Y="7.75" Width="1.5" />
-    <NestedTypes>
-      <Delegate Name="JWOAGameSystem.EnemyController.EnemyDeathAction" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Scripts\Characters\Enemy\EnemyController.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAQBAAAQACAABAAAAAAEAAAAAAAAAAAAAAAACAAAAgA=</HashCode>
+      <HashCode>AAQAAAAQACAABAAAAAAAAAAAAAAAAAABAAAACQAAAgA=</HashCode>
       <FileName>Assets\Scripts\Characters\Enemy\EnemyController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -868,7 +861,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="JWOAGameSystem.PlayerRunningState" Collapsed="true">
-    <Position X="30.25" Y="18.25" Width="1.75" />
+    <Position X="30.5" Y="19.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAQABAAAAAAgAABAAAgAAAAAAAEAAAAIAAAAAAAAgA=</HashCode>
       <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\Grounded\Moving\PlayerRunningState.cs</FileName>
@@ -938,7 +931,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="JWOAGameSystem.PlayerMovementState" Collapsed="true">
-    <Position X="32.5" Y="7.5" Width="2" />
+    <Position X="33.25" Y="7.5" Width="2" />
     <TypeIdentifier>
       <HashCode>oCAcAFCAQICQhAgBAAAEA4BAEoyEAYRA+AggCQEAQow=</HashCode>
       <FileName>Assets\Scripts\Characters\Player\StateMachines\Movement\States\PlayerMovementState.cs</FileName>
@@ -1046,7 +1039,7 @@
   <Class Name="JWOAGameSystem.Player">
     <Position X="5.5" Y="13" Width="5.25" />
     <TypeIdentifier>
-      <HashCode>gAQAAAABAigAQIAFAAEAAABBlBAAJNAAYRCCigRACEA=</HashCode>
+      <HashCode>gAQBAAABAigAQoAFAAEAAABBlBAAJNAAYBCCigRACEA=</HashCode>
       <FileName>Assets\Scripts\Characters\Player.cs</FileName>
     </TypeIdentifier>
   </Class>

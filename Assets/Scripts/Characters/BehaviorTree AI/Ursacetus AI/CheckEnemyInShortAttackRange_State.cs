@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 namespace JWOAGameSystem
 {
-    public class CheckEnemyInShortAttackRange_State : Action
+    public class CheckEnemyInShortAttackRange_State : Condition
     {
         private Transform _transform;
         private EnemyStateMachine _enemyStateMachine;
